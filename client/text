@@ -1,0 +1,35 @@
+<div id="${theme.id}" class="training-item" data-allowed-viewing="${theme.allowed_viewing}" data-pay-link="${theme.viewing_pay_link}">
+    <div class="training-image-wrap">
+        <img rel="preload" src="${theme.image_url}" alt="" class="training-image">
+    </div>
+    <div class="training-brief">
+        <div class="training-brief-inner">
+            <div class="brief-bg"></div>
+            <div class="${theme.allowed_viewing === true ? `brief-locked-hidden` : `brief-locked`}">
+                <div class="brief-locked-inner">
+                    <span class="lock-wrap" id="brief-lock">
+                        <svg
+                            width="24"
+                            height="35"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 17 25"
+                            class="training-lock-ic"
+                        >
+                            <path d="M2.83691 24.1785H14.458C16.0327 24.1785 16.8018 23.3973 16.8018 21.6883V12.7283C16.8018 11.1902 16.167 10.3968 14.8608 10.2625V7.18634C14.8608 2.58429 11.8457 0.36261 8.64746 0.36261C5.44922 0.36261 2.43408 2.58429 2.43408 7.18634V10.3235C1.23779 10.5067 0.493164 11.2879 0.493164 12.7283V21.6883C0.493164 23.3973 1.26221 24.1785 2.83691 24.1785ZM4.39941 6.92999C4.39941 3.86603 6.36475 2.24249 8.64746 2.24249C10.9302 2.24249 12.8955 3.86603 12.8955 6.92999V10.2503L4.39941 10.2625V6.92999Z" fill="#E6E6E6"/>
+                        </svg>
+                    </span>
+                    <span class="brief-error">
+                        ${theme.viewing_ban_comment}
+                    </span>
+                </div>
+            </div>
+            <h1 class="button-header button-header_training button-header_training__title">
+                ${theme.title}
+            </h1>
+            <span class="training-text">
+                ${theme.short_description}
+            </span>
+        </div>
+    </div>
+    ${theme.allowed_viewing === true ? renderSubthemes() : ``}
+</div>

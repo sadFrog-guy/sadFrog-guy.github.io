@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Benzin';
+    src: url('../assets/fonts/Benzin-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'SF Pro Regular';
+    src: url('../assets/fonts/SFProDisplay-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'SF Pro Medium';
+    src: url('../assets/fonts/SFProDisplay-Medium.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'SF Pro Bold';
+    src: url('../assets/fonts/SFProDisplay-Bold.woff2') format('woff2');
+}
