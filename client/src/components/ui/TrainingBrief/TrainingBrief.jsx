@@ -1,10 +1,13 @@
 import React from 'react';
 
-const TrainingBrief = ({children}) => {
+const TrainingBrief = ({children, isShow, ...props}) => {
+    const briefActiveClass = "training-brief active"
+    const briefClass = "training-brief"
+
     return (
-        <div className="training-brief">
+        <div className={isShow ? briefActiveClass : briefClass} {...props}>
             <div className="training-brief-inner">
-                <div className="brief-bg"></div>
+                <div className="brief-bg"/>
                 {children}
             </div>
         </div>

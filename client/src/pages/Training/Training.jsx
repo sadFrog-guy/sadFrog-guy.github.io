@@ -1,14 +1,23 @@
 import React from 'react';
+import {useContext, useEffect, useState} from 'react';
 import Header from "../../components/ui/Header/Header";
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
-import P2PIcon from "../../components/icons/P2PIcon/P2PIcon";
 import TrainingList from "../../components/ui/TrainingList/TrainingList";
-import {useContext, useEffect, useState} from "@types/react";
 import {Context} from "../../utils/context";
 import TrainingItem from "../../components/ui/TrainingItem/TrainingItem";
+import {observer} from "mobx-react-lite";
+import useModal from "../../hooks/useModal";
+import Modal from "../../components/ui/Modal/Modal";
+import Dragger from "../../components/ui/Dragger/Dragger";
+import ModalHeader from "../../components/ui/ModalHeader/ModalHeader";
+import LockIcon from "../../components/icons/LockIcon/LockIcon";
+import ModalText from "../../components/ui/ModalText/ModalText";
+import {Link} from "react-router-dom";
 
 const Training = () => {
     const {Trainings} = useContext(Context);
+
+    const {modalActive, modalHide, modalShow} = useModal()
 
     const [isLoading, setLoading] = useState(true)
 
@@ -20,29 +29,45 @@ const Training = () => {
         fetchData()
     }, [])
 
-    if(Trainings.have_subscribe) {
-        return (
-            <Wrapper>
-                <Header>
-                    Обучение
-                </Header>
+    return (
+        <Wrapper>
+            <Modal isActive={modalActive} modalHide={modalHide}>
+                <Dragger/>
+                <span className="modal-header-wrap">
+                    <ModalHeader>
+                        Ошибка
+                    </ModalHeader>
+                    <LockIcon color="#000"/>
+                </span>
+                <ModalText>
 
-                <TrainingList title="Обучение">
-                    {Trainings.trainings.map(training => {
-                        return (
-                            <TrainingItem
-                                title={training.title}
-                                description={training.short_description}
-                                imageUrl={training.image_url}
-                                isAllowed={training.allowed_viewing}
-                                viewed={training.viewed}
-                            />
-                        )
-                    })}
-                </TrainingList>
-            </Wrapper>
-        );
-    }
+                </ModalText>
+                <Link
+                    to=""
+                    className="button-reusable modal-button"
+                >
+                    Перейти к оплате
+                </Link>
+            </Modal>
+
+            <Header>
+                Обучение
+            </Header>
+
+            <TrainingList title="Обучение">
+                {Trainings.trainings.map(training => {
+                    return (
+                        <TrainingItem
+                            id={training.id}
+                            key={training.id}
+                            trainingInfo={training}
+                            onClick={training.allowed_viewing ? () => {} : modalShow}
+                        />
+                    )
+                })}
+            </TrainingList>
+        </Wrapper>
+    );
 };
 
-export default Training;
+export default observer(Training);

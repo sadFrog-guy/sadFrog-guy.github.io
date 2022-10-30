@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TrainingImage from "../TrainingImage/TrainingImage";
 import TrainingBrief from "../TrainingBrief/TrainingBrief";
 import TrainingHeader from "../TrainingHeader/TrainingHeader";
@@ -6,40 +6,79 @@ import TrainingText from "../TrainingText/TrainingText";
 import LockIcon from "../../icons/LockIcon/LockIcon";
 import TrainingError from "../TrainingError/TrainingError";
 import TrainingBriefInner from "../TrainingBriefInner/TrainingBriefInner";
+import TrainingSubitemList from "../TrainingSubitemList/TrainingSubitemList";
 import TrainingSubitem from "../TrainingSubitem/TrainingSubitem";
+import {toJS} from "mobx";
+import {observer} from "mobx-react-lite";
 
-const TrainingItem = ({imageUrl, title, description, isAllowed, viewed, ...props}) => {
+const TrainingItem = ({trainingInfo, ...props}) => {
+    const [isShow, setShow] = useState(false)
+
+    const toggleContentHandler = () => {
+        if(trainingInfo.allowed_viewing) {
+            setShow(!isShow)
+        }
+    }
+
     return (
-        <div className="training-item" {...props}>
-           <TrainingImage src={imageUrl}/>
-            <TrainingBrief>
+        <div className="training-item" id={trainingInfo.id} {...props}>
+           <TrainingImage src={trainingInfo.image_url}/>
+            <TrainingBrief isShow={isShow}  onClick={toggleContentHandler}>
                 <TrainingBriefInner
                     className={
-                        isAllowed
+                        trainingInfo.allowed_viewing
                         ? 'brief-locked-hidden'
                         : 'brief-locked'
                     }
                 >
                     <LockIcon color="#000" overrideClass="training-lock-ic"/>
                     <TrainingError>
-                        {isAllowed
-                            ? 'Эксклюзивно по подписке'
-                            : ''
+                        {trainingInfo.allowed_viewing
+                            ? ''
+                            : 'Эксклюзивно по подписке'
                         }
                     </TrainingError>
                 </TrainingBriefInner>
                 <TrainingHeader>
-                    {title}
+                    {trainingInfo.title}
                 </TrainingHeader>
                 <TrainingText>
-                    {description}
+                    {trainingInfo.short_description}
                 </TrainingText>
             </TrainingBrief>
-            <TrainingSubitem>
+            <TrainingSubitemList isShow={isShow}>
+                {trainingInfo.subsections.map((subitem, index, array) => {
+                    const isNextViewed = array[(index - 1) + 1] !== undefined && array[(index - 1) + 1].viewed === false
+                    const isViewed = array[index - 1]?.viewed === true
+                    const isFirst = (index === 0)
 
-            </TrainingSubitem>
+                    if(isFirst) {
+                        return <TrainingSubitem
+                                    key={subitem.id}
+                                    id={subitem.id}
+                                    subitemInfo={subitem}
+                                    active={true}
+                                />
+                    }
+
+                    if(isViewed && isNextViewed) {
+                        return <TrainingSubitem
+                                    key={subitem.id}
+                                    id={subitem.id}
+                                    subitemInfo={subitem}
+                                    active={true}
+                                />
+                    }
+
+                    return <TrainingSubitem
+                                key={subitem.id}
+                                id={subitem.id}
+                                subitemInfo={subitem}
+                            />
+                })}
+            </TrainingSubitemList>
         </div>
     );
 };
 
-export default TrainingItem;
+export default observer(TrainingItem);

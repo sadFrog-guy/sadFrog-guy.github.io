@@ -1,8 +1,11 @@
 import React from 'react';
 
-const TrainingSubitem = ({children}) => {
+const TrainingSubitemList = ({children, isShow}) => {
+    const contentActiveClass = "training-content training-content_page active"
+    const contentClass = "training-content training-content_page"
+
     return (
-        <div className="training-content training-content_page">
+        <div className={isShow ? contentActiveClass : contentClass}>
             <div className="training-content-inner">
                 <span className="medium training_medium">Уроки</span>
                 <div className="training-lesson-wrap">
@@ -13,4 +16,4 @@ const TrainingSubitem = ({children}) => {
     );
 };
 
-export default TrainingSubitem;
+export default TrainingSubitemList;

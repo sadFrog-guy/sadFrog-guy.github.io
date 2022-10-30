@@ -734,7 +734,6 @@ img {
 .subtheme-lock-ic {
     width: 11px;
     height: 16px;
-    display: none;
 }
 
 .subtheme-lock-ic > path {
@@ -762,7 +761,6 @@ img {
     fill: var(--tg-theme-button-color);
     width: 16px;
     height: 16px;
-    display: none;
 }
 
 .copied {
@@ -905,6 +903,7 @@ img {
 .brief-error {
     font-size: 17px;
     font-weight: 700;
+    margin-bottom: 3px;
 }
 
 .brief-error.dark {
@@ -927,8 +926,9 @@ img {
     margin-bottom: 12px;
 }
 
-.training-content.active {
-    max-width: 100%;
+.training-content.training-content_page.active {
+    max-height: 9999px;
+    transition: max-height 0.2s cubic-bezier(1, 0, 1, 0);
 }
 
 .training-text {
@@ -938,7 +938,7 @@ img {
 .training-content.training-content_page{
     overflow: hidden;
     max-height: 0;
-    transition: max-height 0.2s ease-out;
+    transition: max-height 0.15s cubic-bezier(0, 1, 0, 1);;
     background: linear-gradient(180deg, #C8F660 0%, #D1F779 100%);
 }
 
