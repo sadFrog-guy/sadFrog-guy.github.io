@@ -5,7 +5,8 @@ import {createContext} from "react";
 
 export const storeContext = {
     User,
-    Trainings
+    Trainings,
+    Referal
 }
 
 export const Context = createContext(storeContext)
