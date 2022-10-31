@@ -3,7 +3,7 @@ import LockIcon from "../../icons/LockIcon/LockIcon";
 import {toJS} from "mobx";
 import CheckIcon from "../../icons/CheckIcon/CheckIcon";
 
-const TrainingSubitem = ({subitemInfo, active = false, ...props}) => {
+const TrainingSubitem = ({subitemInfo, viewed, active = false, ...props}) => {
     const subitemClasses = ["training-lesson"]
 
     if(active) {
@@ -22,7 +22,7 @@ const TrainingSubitem = ({subitemInfo, active = false, ...props}) => {
                 : <LockIcon color="#AAB2BD" overrideClass="subtheme-lock-ic"/>
             }
 
-            {subitemInfo.viewed
+            {viewed
                 ? <CheckIcon/>
                 : ""
             }

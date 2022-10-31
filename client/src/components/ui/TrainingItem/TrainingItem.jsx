@@ -58,6 +58,7 @@ const TrainingItem = ({trainingInfo, ...props}) => {
                                     id={subitem.id}
                                     subitemInfo={subitem}
                                     active={true}
+                                    viewed={subitem.viewed}
                                 />
                     }
 
@@ -67,6 +68,15 @@ const TrainingItem = ({trainingInfo, ...props}) => {
                                     id={subitem.id}
                                     subitemInfo={subitem}
                                     active={true}
+                                    viewed={subitem.viewed}
+                                />
+                    } else {
+                        return <TrainingSubitem
+                                    key={subitem.id}
+                                    id={subitem.id}
+                                    subitemInfo={subitem}
+                                    active={true}
+                                    viewed={subitem.viewed}
                                 />
                     }
 
@@ -74,7 +84,8 @@ const TrainingItem = ({trainingInfo, ...props}) => {
                                 key={subitem.id}
                                 id={subitem.id}
                                 subitemInfo={subitem}
-                            />
+                                viewed={subitem.viewed}
+                    />
                 })}
             </TrainingSubitemList>
         </div>

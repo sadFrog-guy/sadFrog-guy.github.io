@@ -12,12 +12,13 @@ import Dragger from "../../components/ui/Dragger/Dragger";
 import ModalHeader from "../../components/ui/ModalHeader/ModalHeader";
 import LockIcon from "../../components/icons/LockIcon/LockIcon";
 import ModalText from "../../components/ui/ModalText/ModalText";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const Training = () => {
     const {Trainings} = useContext(Context);
 
     const {modalActive, modalHide, modalShow} = useModal()
+    const navigate = useNavigate()
 
     const [isLoading, setLoading] = useState(true)
 
@@ -40,22 +41,24 @@ const Training = () => {
                     <LockIcon color="#000"/>
                 </span>
                 <ModalText>
-
+                    {Trainings.comment}
                 </ModalText>
-                <Link
-                    to=""
+                <a
+                    href={Trainings.link}
                     className="button-reusable modal-button"
                 >
                     Перейти к оплате
-                </Link>
+                </a>
             </Modal>
 
-            <Header>
+            <Header backButtonOnClick={() => navigate(-1)}>
                 Обучение
             </Header>
 
             <TrainingList title="Обучение">
                 {Trainings.trainings.map(training => {
+                    Trainings.checkAccess(training)
+
                     return (
                         <TrainingItem
                             id={training.id}
