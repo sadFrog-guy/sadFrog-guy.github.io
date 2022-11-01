@@ -19,6 +19,7 @@ import useModal from "../../hooks/useModal";
 import useTimeout from "../../hooks/useTimeout";
 import useLoading from "../../hooks/useLoad";
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
+import SectionHeader from "../../components/ui/SectionHeader/SectionHeader";
 
 const Home = () => {
     const {User} = useContext(Context);
@@ -87,9 +88,9 @@ const Home = () => {
                         >
                             <div className="training-wrap main_training-wrap">
                                 <P2PIcon/>
-                                <h1 className="button-header button-header_training">
+                                <SectionHeader className="button-header button-header_training">
                                     Обучение
-                                </h1>
+                                </SectionHeader>
                             </div>
                             <span className="training-content">
                                 Какой-то текст, про то&nbsp;что за&nbsp;10&ndash;20
@@ -105,14 +106,14 @@ const Home = () => {
                             className="button"
                             id="calculator"
                         >
-                            <h1 className="button-header button-header_calculator">
+                            <SectionHeader className="button-header button-header_calculator">
                                 Калькулятор
 
                                 {User.user.allowed_calculator
                                     ? <ArrowIcon color="#fff"/>
                                     : <LockIcon color="#fff"/>
                                 }
-                            </h1>
+                            </SectionHeader>
                         </Link>
                         <Link to={LINK_REFERAL} className="button" id="ref">
                             Реферальная система

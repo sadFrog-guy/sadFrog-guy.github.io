@@ -1,11 +1,12 @@
 import {makeAutoObservable} from "mobx";
-import User from "../services/user";
 import Trainings from "../services/trainings";
 
 export default new class StoreTrainings {
 
     trainings = []
     have_subscribe = false
+    comment = ''
+    link = ''
 
     constructor() {
         makeAutoObservable(this)
@@ -22,4 +23,10 @@ export default new class StoreTrainings {
         }
     }
 
+    checkAccess(training) {
+        if(training.allowed_viewing === false) {
+            this.comment = training.viewing_ban_comment
+            this.link = training.viewing_pay_link
+        }
+    }
 }

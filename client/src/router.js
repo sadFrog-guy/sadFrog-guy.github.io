@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Training from "./pages/Training/Training";
+import Referal from "./pages/Referal";
 
 export const LINK_TRAININGS = '/trainings';
 export const LINK_CALCULATOR = '/calculator';
@@ -25,7 +26,7 @@ const routes = [
     },
     {
         path: LINK_REFERAL,
-        element: <div>referal</div>,
+        element: <Referal/>,
     }
 ]
 

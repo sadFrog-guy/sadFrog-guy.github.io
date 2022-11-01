@@ -551,7 +551,6 @@ img {
 /* referal */
 
 .referal {
-    display: none;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -678,11 +677,13 @@ img {
 
 .share-icon-wrap {
     order: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .share-telegram {
     order: 2;
-    display: none;
 }
 
 .share-telegram:visited {
@@ -692,7 +693,6 @@ img {
 
 .share-system {
     order: 2;
-    display: none;
     color: var(--tg-theme-button-text-color);
 }
 
@@ -752,8 +752,8 @@ img {
 
 .copy-ic {
     fill: var(--tg-theme-button-color);
-    width: 22px;
-    height: 22px;
+    width: 19px;
+    height: 18px;
     order: 2;
 }
 
