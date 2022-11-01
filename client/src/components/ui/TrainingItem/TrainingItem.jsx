@@ -10,6 +10,7 @@ import TrainingSubitemList from "../TrainingSubitemList/TrainingSubitemList";
 import TrainingSubitem from "../TrainingSubitem/TrainingSubitem";
 import {toJS} from "mobx";
 import {observer} from "mobx-react-lite";
+import CheckIcon from "../../icons/CheckIcon/CheckIcon";
 
 const TrainingItem = ({trainingInfo, ...props}) => {
     const [isShow, setShow] = useState(false)
@@ -41,6 +42,8 @@ const TrainingItem = ({trainingInfo, ...props}) => {
                 </TrainingBriefInner>
                 <TrainingHeader>
                     {trainingInfo.title}
+
+                    {trainingInfo.viewed && <CheckIcon overrideClass="check-ic-training"/>}
                 </TrainingHeader>
                 <TrainingText>
                     {trainingInfo.short_description}
@@ -48,35 +51,17 @@ const TrainingItem = ({trainingInfo, ...props}) => {
             </TrainingBrief>
             <TrainingSubitemList isShow={isShow}>
                 {trainingInfo.subsections.map((subitem, index, array) => {
-                    const isNextViewed = array[(index - 1) + 1] !== undefined && array[(index - 1) + 1].viewed === false
-                    const isViewed = array[index - 1]?.viewed === true
+                    const isNextViewed = array[(index - 1) + 1] !== undefined && array[(index - 1) + 1].viewed === true
                     const isFirst = (index === 0)
 
-                    if(isFirst) {
+                    if(isFirst || isNextViewed) {
                         return <TrainingSubitem
                                     key={subitem.id}
                                     id={subitem.id}
                                     subitemInfo={subitem}
-                                    active={true}
                                     viewed={subitem.viewed}
-                                />
-                    }
-
-                    if(isViewed && isNextViewed) {
-                        return <TrainingSubitem
-                                    key={subitem.id}
-                                    id={subitem.id}
-                                    subitemInfo={subitem}
                                     active={true}
-                                    viewed={subitem.viewed}
-                                />
-                    } else {
-                        return <TrainingSubitem
-                                    key={subitem.id}
-                                    id={subitem.id}
-                                    subitemInfo={subitem}
-                                    active={true}
-                                    viewed={subitem.viewed}
+                                    allowedViewing={subitem.allowed_viewing}
                                 />
                     }
 
@@ -85,7 +70,9 @@ const TrainingItem = ({trainingInfo, ...props}) => {
                                 id={subitem.id}
                                 subitemInfo={subitem}
                                 viewed={subitem.viewed}
-                    />
+                                active={false}
+                                allowedViewing={subitem.allowed_viewing}
+                            />
                 })}
             </TrainingSubitemList>
         </div>
