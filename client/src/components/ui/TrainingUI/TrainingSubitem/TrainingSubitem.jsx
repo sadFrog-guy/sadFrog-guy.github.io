@@ -2,6 +2,7 @@ import React from 'react';
 import LockIcon from "../../../icons/LockIcon/LockIcon";
 import {toJS} from "mobx";
 import CheckIcon from "../../../icons/CheckIcon/CheckIcon";
+import {Link} from "react-router-dom";
 
 const TrainingSubitem = ({subitemInfo, viewed, allowedViewing, active = false, ...props}) => {
     const subitemClasses = ["training-lesson"]
@@ -11,7 +12,7 @@ const TrainingSubitem = ({subitemInfo, viewed, allowedViewing, active = false, .
     }
 
     return (
-        <a
+        <Link
             className={subitemClasses.join(' ')}
             {...props}
         >
@@ -26,7 +27,7 @@ const TrainingSubitem = ({subitemInfo, viewed, allowedViewing, active = false, .
                 ? <CheckIcon/>
                 : ""
             }
-        </a>
+        </Link>
     );
 };
 

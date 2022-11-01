@@ -19,7 +19,6 @@ const Training = () => {
     const {Trainings} = useContext(Context);
 
     const {modalActive, modalHide, modalShow} = useModal()
-    const navigate = useNavigate()
 
     const [isLoading, setLoading] = useState(true)
 
@@ -56,7 +55,7 @@ const Training = () => {
                 </a>
             </Modal>
 
-            <Navigation backButtonOnClick={() => navigate(-1)}>
+            <Navigation>
                 Обучение
             </Navigation>
 

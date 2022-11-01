@@ -60,6 +60,7 @@ const TrainingItem = ({trainingInfo, ...props}) => {
                                     id={subitem.id}
                                     subitemInfo={subitem}
                                     viewed={subitem.viewed}
+                                    to={`/trainings/${subitem.id}`}
                                     active={true}
                                     allowedViewing={subitem.allowed_viewing}
                                 />
@@ -70,6 +71,7 @@ const TrainingItem = ({trainingInfo, ...props}) => {
                                 id={subitem.id}
                                 subitemInfo={subitem}
                                 viewed={subitem.viewed}
+                                to={`/trainings/${subitem.id}`}
                                 active={false}
                                 allowedViewing={subitem.allowed_viewing}
                             />

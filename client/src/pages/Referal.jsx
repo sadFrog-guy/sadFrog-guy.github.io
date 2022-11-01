@@ -44,7 +44,7 @@ const Referal = () => {
                 isLoading={isLoading}
             />
 
-            <Navigation backButtonOnClick={() => navigate(-1)}>
+            <Navigation>
                 Обучение
             </Navigation>
 

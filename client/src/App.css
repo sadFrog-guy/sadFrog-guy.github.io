@@ -1000,14 +1000,6 @@ img {
 
 /* training-item */
 
-.article {
-    display: none;
-}
-
-.article_header {
-    display: none;
-}
-
 .article_image-wrap {
     background: transparent;
 }
@@ -1021,6 +1013,10 @@ img {
 
 .article_image-wrap {
     margin-bottom: 20px;
+}
+
+[data-plyr="fast-forward"], [data-plyr="rewind"], .plyr__menu {
+    display: none;
 }
 
 .article_image-wrap.hide {

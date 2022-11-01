@@ -4,6 +4,7 @@ import Trainings from "../services/trainings";
 export default new class StoreTrainings {
 
     trainings = []
+    training = {}
     have_subscribe = false
     comment = ''
     link = ''
@@ -18,6 +19,16 @@ export default new class StoreTrainings {
             console.log(data)
             this.trainings = data.sections
             this.have_subscribe = data.have_subscribe
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async getOneTraining(id) {
+        try {
+            const {data} = await Trainings.getOneTraining(id.id);
+            console.log(data)
+            this.training = data
         } catch (e) {
             console.log(e)
         }
