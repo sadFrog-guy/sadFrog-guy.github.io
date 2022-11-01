@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import LockIcon from "../../icons/LockIcon/LockIcon";
+import LockIcon from "../../../icons/LockIcon/LockIcon";
 
 const Modal = ({children, isActive, modalHide}) => {
     return (

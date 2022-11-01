@@ -1,6 +1,6 @@
 import React from 'react';
 import Wrapper from "../components/utils/Wrapper/Wrapper";
-import Header from "../components/ui/Header/Header";
+import Navigation from "../components/ui/GlobalUI/Navigation/Navigation";
 import {useContext, useEffect, useState} from "react";
 import {Context} from "../utils/context";
 import useModal from "../hooks/useModal";
@@ -9,15 +9,16 @@ import {toJS} from "mobx";
 import lines from '../assets/images/lines.png';
 import CopyIcon from "../components/icons/CopyIcon/CopyIcon";
 import {CopyToClipboard} from "react-copy-to-clipboard/src";
-import Copied from "../components/ui/Copied/Copied";
-import CopyButton from "../components/ui/CopyButton/CopyButton";
+import Copied from "../components/ui/ReferalUI/Copied/Copied";
+import CopyButton from "../components/ui/ReferalUI/CopyButton/CopyButton";
 import WrapperReferal from "../components/utils/WrapperReferal/WrapperReferal";
-import ReferalBalance from "../components/ui/ReferalBalance/ReferalBalance";
+import ReferalBalance from "../components/ui/ReferalUI/ReferalBalance/ReferalBalance";
 import Wrap from "../components/utils/Wrap/Wrap";
-import ReferalDescription from "../components/ui/ReferalDescription/ReferalDescription";
-import Text from "../components/ui/Text/Text";
-import Button from "../components/ui/Button/Button";
+import ReferalDescription from "../components/ui/ReferalUI/ReferalDescription/ReferalDescription";
+import Text from "../components/ui/GlobalUI/Text/Text";
+import Button from "../components/ui/GlobalUI/Button/Button";
 import {useCopy} from "../hooks/useCopy";
+import Loader from "../components/ui/GlobalUI/Loader/Loader";
 
 const Referal = () => {
 
@@ -39,9 +40,14 @@ const Referal = () => {
 
     return (
         <Wrapper>
-            <Header backButtonOnClick={() => navigate(-1)}>
+            <Loader
+                isLoading={isLoading}
+            />
+
+            <Navigation backButtonOnClick={() => navigate(-1)}>
                 Обучение
-            </Header>
+            </Navigation>
+
             <WrapperReferal>
                 <Wrap className="content">
                     <ReferalBalance

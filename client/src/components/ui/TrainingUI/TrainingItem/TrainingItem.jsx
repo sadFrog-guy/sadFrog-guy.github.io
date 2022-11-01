@@ -3,14 +3,14 @@ import TrainingImage from "../TrainingImage/TrainingImage";
 import TrainingBrief from "../TrainingBrief/TrainingBrief";
 import TrainingHeader from "../TrainingHeader/TrainingHeader";
 import TrainingText from "../TrainingText/TrainingText";
-import LockIcon from "../../icons/LockIcon/LockIcon";
+import LockIcon from "../../../icons/LockIcon/LockIcon";
 import TrainingError from "../TrainingError/TrainingError";
 import TrainingBriefInner from "../TrainingBriefInner/TrainingBriefInner";
 import TrainingSubitemList from "../TrainingSubitemList/TrainingSubitemList";
 import TrainingSubitem from "../TrainingSubitem/TrainingSubitem";
 import {toJS} from "mobx";
 import {observer} from "mobx-react-lite";
-import CheckIcon from "../../icons/CheckIcon/CheckIcon";
+import CheckIcon from "../../../icons/CheckIcon/CheckIcon";
 
 const TrainingItem = ({trainingInfo, ...props}) => {
     const [isShow, setShow] = useState(false)

@@ -1,5 +1,5 @@
 import React from 'react';
-import P2PIcon from "../../icons/P2PIcon/P2PIcon";
+import P2PIcon from "../../../icons/P2PIcon/P2PIcon";
 
 const TrainingList = ({children, title}) => {
     return (

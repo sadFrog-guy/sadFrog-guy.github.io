@@ -796,8 +796,9 @@ img {
 
 .training > .training-wrap {
     display: flex;
+    gap: 11px;
     align-items: center;
-    padding: 38px 30px;
+    padding: 33px 30px;
 }
 
 .p2p.p2p-training {

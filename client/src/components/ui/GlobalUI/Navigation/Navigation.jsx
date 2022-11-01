@@ -1,7 +1,7 @@
 import React from 'react';
-import ArrowIcon from "../../icons/ArrowIcon/ArrowIcon";
+import ArrowIcon from "../../../icons/ArrowIcon/ArrowIcon";
 
-const Header = ({children, backButtonOnClick}) => {
+const Navigation = ({children, backButtonOnClick}) => {
     return (
         <header className="header referal_header training_header">
             <div className="bubble-wrap bubble-wrap_referal bubble-arrow-wrap" onClick={backButtonOnClick}>
@@ -14,4 +14,4 @@ const Header = ({children, backButtonOnClick}) => {
     );
 };
 
-export default Header;
+export default Navigation;
