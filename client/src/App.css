@@ -813,6 +813,15 @@ img {
     font-size: 24px;
     line-height: 28px;
     margin-bottom: 10px;
+    position: relative;
+}
+
+.check-ic-training {
+    position: absolute;
+    right: -10px;
+    top: -5px;
+    width: 20px;
+    height: 20px;
 }
 
 .training-item {
