@@ -49,25 +49,23 @@ const TrainingDetail = () => {
                         />
                     }
 
-                    {/*{Trainings.training.video_url && isIOS() === true*/}
-                    {/*    ? <Player video={Trainings.training.video_url}/>*/}
-                    {/*    : Trainings.training.video_url && isIOS() === false*/}
-                    {/*    && <div className="go-to-browser">*/}
-                    {/*            <Button id="go-to-button">*/}
-                    {/*                <a href={Trainings.video_link} target="_blank">*/}
-                    {/*                    Перейти в браузер для просмотра урока*/}
-                    {/*                </a>*/}
-                    {/*            </Button>*/}
-                    {/*       </div>*/}
-                    {/*}*/}
-
-                    <video
-                        controls
-                        className="video"
-                        disablePictureInPicture
-                        controlsList="noplaybackrate nodownload"
-                        src={Trainings.training.video_url}
-                    />
+                    {Trainings.training.video_url && isIOS() === true
+                        ? <video
+                            controls
+                            className="video"
+                            disablePictureInPicture
+                            controlsList="noplaybackrate nodownload"
+                            src={Trainings.training.video_url}
+                        />
+                        : Trainings.training.video_url && isIOS() === false
+                        && <div className="go-to-browser">
+                                <Button id="go-to-button">
+                                    <a href={Trainings.video_link} target="_blank">
+                                        Перейти в браузер для просмотра урока
+                                    </a>
+                                </Button>
+                           </div>
+                    }
                 </Wrap>
                 <Wrap className="article-content">
                     <Text type="medium" overrideClass="article_medium" id="article-bold">
