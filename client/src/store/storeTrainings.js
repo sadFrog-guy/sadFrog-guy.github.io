@@ -1,5 +1,6 @@
 import {makeAutoObservable} from "mobx";
 import Trainings from "../services/trainings";
+import {tgID} from "../utils/tgID";
 
 export default new class StoreTrainings {
 
@@ -8,6 +9,7 @@ export default new class StoreTrainings {
     have_subscribe = false
     comment = ''
     link = ''
+    video_link = ''
 
     constructor() {
         makeAutoObservable(this)
@@ -29,6 +31,16 @@ export default new class StoreTrainings {
             const {data} = await Trainings.getOneTraining(id.id);
             console.log(data)
             this.training = data
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    async getAccessToVideo(id) {
+        try {
+            const {data} = await Trainings.getAccessToVideo(id.id)
+            console.log(data)
+            this.video_link = `https://crypto-learn.ru/watch_video/${tgID}/${id.id}/${data?.hash_code}`
         } catch (e) {
             console.log(e)
         }

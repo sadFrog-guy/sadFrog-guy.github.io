@@ -1,5 +1,6 @@
 import {request} from "../utils/axiosInstance";
 import {useParams} from "react-router-dom";
+import {tgID} from "../utils/tgID";
 
 export default class Trainings {
 
@@ -8,7 +9,7 @@ export default class Trainings {
             'training_general_info',
             {
                 params: {
-                    telegram_id: 875571046,
+                    telegram_id: tgID,
                 }
             }
         )
@@ -23,7 +24,24 @@ export default class Trainings {
             'training_section_info',
             {
                 params: {
-                    telegram_id: 875571046,
+                    telegram_id: tgID,
+                    section_id: id
+                }
+            }
+        )
+
+        return {
+            response,
+            data: response.data
+        }
+    }
+
+    static async getAccessToVideo(id) {
+        const response = await request.get(
+            'get_access_to_article',
+            {
+                params: {
+                    telegram_id: tgID,
                     section_id: id
                 }
             }

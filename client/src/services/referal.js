@@ -1,4 +1,5 @@
 import {request} from "../utils/axiosInstance";
+import {tgID} from "../utils/tgID";
 
 export default class Referal {
     static async getReferalInfo() {
@@ -6,7 +7,7 @@ export default class Referal {
             'referal_info',
             {
                 params: {
-                    telegram_id: 875571046,
+                    telegram_id: tgID,
                 }
             }
         )

@@ -1,4 +1,5 @@
 import {request} from "../utils/axiosInstance";
+import {tgID} from "../utils/tgID";
 
 export default class User {
     static async getUser() {
@@ -6,7 +7,7 @@ export default class User {
             'general_info',
             {
                 params: {
-                    telegram_id: 875571046,
+                    telegram_id: tgID,
                 }
             }
         )

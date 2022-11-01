@@ -8,6 +8,8 @@ import useModal from "../../hooks/useModal";
 import Wrap from "../../components/utils/Wrap/Wrap";
 import Text from "../../components/ui/GlobalUI/Text/Text";
 import Player from "../../components/ui/GlobalUI/Player/Player";
+import {isIOS} from "../../utils/isIOS";
+import Button from "../../components/ui/GlobalUI/Button/Button";
 
 const TrainingDetail = () => {
     const id = useParams()
@@ -17,6 +19,7 @@ const TrainingDetail = () => {
     useEffect(() => {
         async function fetchData() {
             await Trainings.getOneTraining(id)
+            await Trainings.getAccessToVideo(id)
             setLoading(false)
         }
         fetchData()
@@ -46,9 +49,25 @@ const TrainingDetail = () => {
                         />
                     }
 
-                    {Trainings.training.video_url &&
-                        <Player video={Trainings.training.video_url}/>
-                    }
+                    {/*{Trainings.training.video_url && isIOS() === true*/}
+                    {/*    ? <Player video={Trainings.training.video_url}/>*/}
+                    {/*    : Trainings.training.video_url && isIOS() === false*/}
+                    {/*    && <div className="go-to-browser">*/}
+                    {/*            <Button id="go-to-button">*/}
+                    {/*                <a href={Trainings.video_link} target="_blank">*/}
+                    {/*                    Перейти в браузер для просмотра урока*/}
+                    {/*                </a>*/}
+                    {/*            </Button>*/}
+                    {/*       </div>*/}
+                    {/*}*/}
+
+                    <video
+                        controls
+                        className="video"
+                        disablePictureInPicture
+                        controlsList="noplaybackrate nodownload"
+                        src={Trainings.training.video_url}
+                    />
                 </Wrap>
                 <Wrap className="article-content">
                     <Text type="medium" overrideClass="article_medium" id="article-bold">
