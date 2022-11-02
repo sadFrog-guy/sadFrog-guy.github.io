@@ -1,4 +1,4 @@
-import {useContext} from "@types/react";
+import {useContext} from "react";
 import {Context} from "./context";
 
 export const tgWebApp = window.Telegram.WebApp
