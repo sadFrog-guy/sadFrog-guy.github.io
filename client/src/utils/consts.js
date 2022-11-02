@@ -24,3 +24,7 @@ export function tgToggleButton(viewed) {
 
     tgMainButton.show()
 }
+
+export function tgHideButton() {
+    tgMainButton.hide()
+}

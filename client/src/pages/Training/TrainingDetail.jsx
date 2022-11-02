@@ -8,7 +8,7 @@ import Wrap from "../../components/utils/Wrap/Wrap";
 import Text from "../../components/ui/GlobalUI/Text/Text";
 import {isIOS} from "../../utils/isIOS";
 import Button from "../../components/ui/GlobalUI/Button/Button";
-import {openLinkExternal, tgID, tgToggleButton} from "../../utils/consts";
+import {openLinkExternal, tgHideButton, tgID, tgToggleButton} from "../../utils/consts";
 import Plyr from "plyr-react"
 import "plyr-react/plyr.css"
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
@@ -22,6 +22,8 @@ const TrainingDetail = () => {
     const trackScrolling = () => {
         if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
             tgToggleButton(Trainings.training.viewed)
+        } else {
+            tgHideButton()
         }
     }
 
