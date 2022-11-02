@@ -21,4 +21,6 @@ export function tgToggleButton(viewed) {
     } else {
         tgMainButton.text = "Завершить"
     }
+
+    tgMainButton.show()
 }
