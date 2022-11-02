@@ -30,11 +30,9 @@ const TrainingDetail = () => {
     const [openInBrowser, setOpenInBrowser] = useState(false)
     const location = useLocation();
 
-    const trackScrolling = () => {
-        if(Trainings.training.viewed === false) {
-            tgHideButton()
-        }
+    tgWebApp.MainButton.hide()
 
+    const trackScrolling = () => {
         tgToggleButton(Trainings.training.viewed)
 
         tgButtonOnClick(async() => {
