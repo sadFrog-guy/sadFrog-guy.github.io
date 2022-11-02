@@ -1,37 +1,53 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {useParams} from "react-router-dom";
 import Navigation from "../../components/ui/GlobalUI/Navigation/Navigation";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {useContext, useEffect, useState} from "react";
 import {Context} from "../../utils/context";
-import useModal from "../../hooks/useModal";
 import Wrap from "../../components/utils/Wrap/Wrap";
 import Text from "../../components/ui/GlobalUI/Text/Text";
-import Player from "../../components/ui/GlobalUI/Player/Player";
 import {isIOS} from "../../utils/isIOS";
 import Button from "../../components/ui/GlobalUI/Button/Button";
-import {openLinkExternal, tgID} from "../../utils/consts";
+import {openLinkExternal, tgID, tgToggleButton} from "../../utils/consts";
+import Plyr from "plyr-react"
+import "plyr-react/plyr.css"
+import Wrapper from "../../components/utils/Wrapper/Wrapper";
 
 const TrainingDetail = () => {
     const id = useParams()
     const {Trainings} = useContext(Context);
     const [isLoading, setLoading] = useState(true)
+    const [openInBrowser, setOpenInBrowser] = useState(false)
 
-    useEffect(() => {
-        async function fetchData() {
-            await Trainings.getOneTraining(id)
-            setLoading(false)
+    const isBottom = (el) => {
+        return el.getBoundingClientRect().bottom <= window.innerHeight;
+    }
+
+    const trackScrolling = () => {
+        const wrapper = document.querySelector('.wrapper')
+        if(isBottom(wrapper)) {
+            tgToggleButton(Trainings.training.viewed)
         }
-        fetchData()
-    }, [])
+    }
 
     const browserRedirect = async() => {
         await Trainings.getAccessToVideo(id)
         openLinkExternal(Trainings.video_link)
     }
 
+    useEffect(() => {
+        async function fetchData() {
+            await Trainings.getOneTraining(id)
+            setLoading(false)
+        }
+
+        fetchData()
+
+        trackScrolling()
+    }, [])
+
     return (
-        <div className="wrapper">
+        <Wrapper>
             <Loader
                 isLoading={isLoading}
             />
@@ -54,8 +70,8 @@ const TrainingDetail = () => {
                         />
                     }
 
-                    {Trainings.training.video_url && isIOS() === true
-                        ? <video
+                    {/*{isIOS() &&*/}
+                         <video
                             controls
                             className="video"
                             disablePictureInPicture
@@ -63,12 +79,14 @@ const TrainingDetail = () => {
                             src={Trainings.training.video_url}
                             poster={Trainings.training.video_preview_image}
                         />
-                        : Trainings.training.video_url && isIOS() === false
-                        && <div className="go-to-browser">
-                                <Button onClick={browserRedirect} id="go-to-button">
-                                    Перейти в браузер для просмотра урока
-                                </Button>
-                           </div>
+                    {/*}*/}
+
+                    {openInBrowser &&
+                        <div className="go-to-browser">
+                            <Button onClick={browserRedirect} id="go-to-button">
+                                Перейти в браузер для просмотра урока
+                            </Button>
+                        </div>
                     }
                 </Wrap>
                 <Wrap className="article-content">
@@ -80,7 +98,7 @@ const TrainingDetail = () => {
                     </Text>
                 </Wrap>
             </Wrap>
-        </div>
+        </Wrapper>
     );
 };
 
