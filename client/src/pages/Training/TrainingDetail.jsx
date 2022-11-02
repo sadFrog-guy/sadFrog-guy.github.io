@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {useParams} from "react-router-dom";
+import {matchPath, useLocation, useParams} from "react-router-dom";
 import Navigation from "../../components/ui/GlobalUI/Navigation/Navigation";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {useContext, useEffect, useState} from "react";
@@ -21,15 +21,20 @@ import Plyr from "plyr-react"
 import "plyr-react/plyr.css"
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
 import {observer} from "mobx-react-lite";
+import {LINK_TRAININGS_ITEM} from "../../router";
 
 const TrainingDetail = () => {
     const id = useParams()
     const {Trainings} = useContext(Context);
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
+    const location = useLocation();
 
     const trackScrolling = () => {
-        if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+        const wrapper = document.querySelector(".wrapper")
+
+        if((wrapper.innerHeight + wrapper.scrollY) >= document.body.offsetHeight - 100) {
+            console.log('a')
             tgToggleButton(Trainings.training.viewed)
         } else {
             tgHideButton()
@@ -37,6 +42,7 @@ const TrainingDetail = () => {
     }
 
     tgButtonOnClick(async() => {
+        tgChangeButtonText("Завершается...")
         await Trainings.readTraining(id)
         tgChangeButtonText("Прочитано")
     })
@@ -46,7 +52,9 @@ const TrainingDetail = () => {
         openLinkExternal(Trainings.video_link)
     }
 
-    window.addEventListener('scroll', trackScrolling)
+    if(matchPath(location.pathname, {path: LINK_TRAININGS_ITEM}) !== null) {
+        window.addEventListener('scroll', trackScrolling)
+    }
 
     useEffect(() => {
         async function fetchData() {
@@ -55,9 +63,9 @@ const TrainingDetail = () => {
         }
 
         fetchData()
+        tgHideButton()
 
         return () => {
-            tgHideButton()
             window.removeEventListener('scroll', () => {})
         }
     }, [])
