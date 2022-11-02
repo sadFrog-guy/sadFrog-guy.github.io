@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 import Modal from "../../ModalUI/Modal/Modal";
 import {useContext} from "react";
 import {Context} from "../../../../utils/context";
+import {tgWebApp} from "../../../../utils/consts";
 
 const ModalHome = ({modalActive, modalHide}) => {
     const {User} = useContext(Context);
@@ -19,7 +20,7 @@ const ModalHome = ({modalActive, modalHide}) => {
                 <ModalHeader>
                     Ошибка
                 </ModalHeader>
-                <LockIcon color="#000"/>
+                <LockIcon color={tgWebApp.colorScheme === 'dark' ? '#fff' : '#000'}/>
             </Text>
             <ModalText>
                 {User.checkAccess.comment}

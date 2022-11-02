@@ -623,8 +623,13 @@ body.dark > #root > .wrapper > .referal > .content > .balance-wrap {
 }
 
 body.dark > #root > .wrapper > .training > .training-item > .training-brief > .training-brief-inner,
-body.dark > #root > .wrapper > .training > .training-item > .training-brief > .training-brief-inner > .brief-bg{
+body.dark > #root > .wrapper > .training > .training-item > .training-brief > .training-brief-inner > .brief-bg,
+body.dark > #root > .wrapper > .training > .training-item > .training-content > .training-content-inner {
     background-color: #1c1c1e;
+}
+
+body.dark > #root > .wrapper > .training > .training-item > .training-brief > .training-brief-inner > .brief-locked {
+    background: linear-gradient(180deg,#1c1c1e6b,#1c1c1e 60.7%);
 }
 
 .balance-text {
@@ -1051,7 +1056,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 }
 
 .go-to-browser {
-    background-color: #1c1c1e;
+    background-color: #000;
     width: 100%;
     height: 100%;
     border-radius: 26px;

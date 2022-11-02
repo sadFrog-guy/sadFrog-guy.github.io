@@ -14,6 +14,7 @@ import LockIcon from "../../components/icons/LockIcon/LockIcon";
 import ModalText from "../../components/ui/ModalUI/ModalText/ModalText";
 import {Link, useNavigate} from "react-router-dom";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
+import {tgWebApp} from "../../utils/consts";
 
 const Training = () => {
     const {Trainings} = useContext(Context);
@@ -42,7 +43,7 @@ const Training = () => {
                     <ModalHeader>
                         Ошибка
                     </ModalHeader>
-                    <LockIcon color="#000"/>
+                    <LockIcon color={tgWebApp.colorScheme === 'dark' ? '#fff' : '#000'}/>
                 </span>
                 <ModalText>
                     {Trainings.comment}

@@ -1,5 +1,6 @@
 import {makeAutoObservable} from "mobx";
 import User from "../services/user";
+import {tgUser} from "../utils/consts";
 
 export default new class StoreUser {
 
@@ -10,6 +11,7 @@ export default new class StoreUser {
     subscription_name
     technical_support_link
     avatar
+    username
 
     constructor() {
         makeAutoObservable(this)
@@ -20,6 +22,7 @@ export default new class StoreUser {
             const {data} = await User.getUser()
             console.log(data)
             this.user = data
+            this.username = tgUser.username
             this.subscribe_expire_datetime = data.subscribe_expire_datetime
             this.subscription_name = data.subscription_name
             this.technical_support_link = data.technical_support_link

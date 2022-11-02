@@ -14,7 +14,7 @@ import ModalHome from "../../components/ui/HomeUI/ModalHome/ModalHome";
 import {tgInintial, tgWebApp} from "../../utils/consts";
 
 const Home = () => {
-    const {User, Theme} = useContext(Context);
+    const {User} = useContext(Context);
 
     const {modalActive, modalHide, modalShow} = useModal()
     const {subscribtion, isSubscribtionStarter, subscribeTimer} = useTimeout()
