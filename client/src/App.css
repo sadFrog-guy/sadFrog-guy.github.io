@@ -486,6 +486,10 @@ img {
     }
 }
 
+.wrapper.dark {
+    background-color: #1c1c1e;
+}
+
 /* loader */
 
 .loader-wrap {

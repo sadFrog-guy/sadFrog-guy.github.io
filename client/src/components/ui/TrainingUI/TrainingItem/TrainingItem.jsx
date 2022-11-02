@@ -49,34 +49,35 @@ const TrainingItem = ({trainingInfo, ...props}) => {
                     {trainingInfo.short_description}
                 </TrainingText>
             </TrainingBrief>
-            <TrainingSubitemList isShow={isShow}>
-                {trainingInfo.subsections.map((subitem, index, array) => {
-                    const isNextViewed = array[(index - 1) + 1] !== undefined && array[(index - 1) + 1].viewed === true
-                    const isFirst = (index === 0)
+            {trainingInfo.allowed_viewing &&
+                <TrainingSubitemList isShow={isShow}>
+                    {trainingInfo.subsections.map((subitem, index, array) => {
+                        const isNextViewed = array[(index - 1) + 1] !== undefined && array[(index - 1) + 1].viewed === true
+                        const isFirst = (index === 0)
 
-                    if(isFirst || isNextViewed) {
-                        return <TrainingSubitem
-                                    key={subitem.id}
-                                    id={subitem.id}
-                                    subitemInfo={subitem}
-                                    viewed={subitem.viewed}
-                                    to={`/trainings/${subitem.id}`}
-                                    active={true}
-                                    allowedViewing={subitem.allowed_viewing}
-                                />
-                    }
-
-                    return <TrainingSubitem
+                        if(isFirst || isNextViewed) {
+                            return <TrainingSubitem
                                 key={subitem.id}
                                 id={subitem.id}
                                 subitemInfo={subitem}
                                 viewed={subitem.viewed}
                                 to={`/trainings/${subitem.id}`}
-                                active={false}
+                                active={true}
                                 allowedViewing={subitem.allowed_viewing}
                             />
-                })}
-            </TrainingSubitemList>
+                        }
+
+                        return <TrainingSubitem
+                            key={subitem.id}
+                            id={subitem.id}
+                            subitemInfo={subitem}
+                            viewed={subitem.viewed}
+                            active={false}
+                            allowedViewing={subitem.allowed_viewing}
+                        />
+                    })}
+                </TrainingSubitemList>
+            }
         </div>
     );
 };

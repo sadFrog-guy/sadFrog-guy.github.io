@@ -35,7 +35,7 @@ import FooterHome from "../../components/ui/HomeUI/FooterHome/FooterHome";
 import ModalHome from "../../components/ui/HomeUI/ModalHome/ModalHome";
 
 const Home = () => {
-    const {User} = useContext(Context);
+    const {User, Theme} = useContext(Context);
 
     const {modalActive, modalHide, modalShow} = useModal()
     const {subscribtion, isSubscribtionStarter, subscribeTimer} = useTimeout()
@@ -51,7 +51,7 @@ const Home = () => {
     }, [])
 
     return (
-        <Wrapper>
+        <Wrapper overrideClass={Theme.isDark && 'dark'}>
             <Loader
                 isLoading={isLoading}
             />

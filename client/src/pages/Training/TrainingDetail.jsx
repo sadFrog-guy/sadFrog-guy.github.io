@@ -19,11 +19,15 @@ const TrainingDetail = () => {
     useEffect(() => {
         async function fetchData() {
             await Trainings.getOneTraining(id)
-            await Trainings.getAccessToVideo(id)
             setLoading(false)
         }
         fetchData()
     }, [])
+
+    const browserRedirect = async() => {
+        await Trainings.getAccessToVideo(id)
+
+    }
 
     return (
         <div className="wrapper">
@@ -59,10 +63,8 @@ const TrainingDetail = () => {
                         />
                         : Trainings.training.video_url && isIOS() === false
                         && <div className="go-to-browser">
-                                <Button id="go-to-button">
-                                    <a href={Trainings.video_link} target="_blank">
-                                        Перейти в браузер для просмотра урока
-                                    </a>
+                                <Button onClick={browserRedirect} id="go-to-button">
+                                    Перейти в браузер для просмотра урока
                                 </Button>
                            </div>
                     }

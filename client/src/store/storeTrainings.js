@@ -1,6 +1,6 @@
 import {makeAutoObservable} from "mobx";
 import Trainings from "../services/trainings";
-import {tgID} from "../utils/tgID";
+import {tgID} from "../utils/consts";
 
 export default new class StoreTrainings {
 

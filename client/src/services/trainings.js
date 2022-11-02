@@ -1,6 +1,6 @@
 import {request} from "../utils/axiosInstance";
 import {useParams} from "react-router-dom";
-import {tgID} from "../utils/tgID";
+import {tgID} from "../utils/consts";
 
 export default class Trainings {
 

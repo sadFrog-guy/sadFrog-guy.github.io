@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Wrapper = ({children}) => {
+const Wrapper = ({children, overrideClass}) => {
     return (
-        <div className="wrapper">
+        <div className={`wrapper ${overrideClass}`}>
             {children}
         </div>
     );

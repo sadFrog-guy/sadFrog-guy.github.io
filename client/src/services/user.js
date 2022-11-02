@@ -1,5 +1,5 @@
 import {request} from "../utils/axiosInstance";
-import {tgID} from "../utils/tgID";
+import {tgID} from "../utils/consts";
 
 export default class User {
     static async getUser() {
