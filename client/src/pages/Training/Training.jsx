@@ -18,13 +18,14 @@ import {tgWebApp} from "../../utils/consts";
 
 const Training = () => {
     const {Trainings} = useContext(Context);
-
     const {modalActive, modalHide, modalShow} = useModal()
-
     const [isLoading, setLoading] = useState(true)
 
     useEffect(() => {
         async function fetchData() {
+            tgWebApp.MainButton.hide()
+            window.removeEventListener("scroll", () => {})
+
             await Trainings.getAllTrainings()
             setLoading(false)
         }

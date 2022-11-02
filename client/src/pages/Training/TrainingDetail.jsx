@@ -30,8 +30,6 @@ const TrainingDetail = () => {
     const [openInBrowser, setOpenInBrowser] = useState(false)
     const location = useLocation();
 
-    tgWebApp.MainButton.hide()
-
     const trackScrolling = () => {
         tgToggleButton(Trainings.training.viewed)
 
@@ -54,6 +52,8 @@ const TrainingDetail = () => {
 
     useEffect(() => {
         async function fetchData() {
+            tgWebApp.MainButton.hide()
+
             await Trainings.getOneTraining(id)
             setLoading(false)
         }
