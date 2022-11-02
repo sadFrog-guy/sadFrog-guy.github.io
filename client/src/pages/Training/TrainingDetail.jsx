@@ -34,9 +34,9 @@ const TrainingDetail = () => {
         const wrapper = document.querySelector(".wrapper")
 
         if((wrapper.innerHeight + wrapper.scrollY) >= document.body.offsetHeight - 100) {
-            if(matchPath(LINK_TRAININGS_ITEM, location.pathname) !== null) {
+            // if(matchPath(LINK_TRAININGS_ITEM, location.pathname) !== null) {
                 tgToggleButton(Trainings.training.viewed)
-            }
+            // }
         } else {
             tgHideButton()
         }
