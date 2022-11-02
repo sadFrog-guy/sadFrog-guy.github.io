@@ -22,7 +22,7 @@ export default new class StoreUser {
             const {data} = await User.getUser()
             console.log(data)
             this.user = data
-            this.username = tgUser.username
+            this.username = tgUser.first_name
             this.subscribe_expire_datetime = data.subscribe_expire_datetime
             this.subscription_name = data.subscription_name
             this.technical_support_link = data.technical_support_link

@@ -10,6 +10,7 @@ import Text from "../../components/ui/GlobalUI/Text/Text";
 import Player from "../../components/ui/GlobalUI/Player/Player";
 import {isIOS} from "../../utils/isIOS";
 import Button from "../../components/ui/GlobalUI/Button/Button";
+import {openLinkExternal, tgID} from "../../utils/consts";
 
 const TrainingDetail = () => {
     const id = useParams()
@@ -26,7 +27,7 @@ const TrainingDetail = () => {
 
     const browserRedirect = async() => {
         await Trainings.getAccessToVideo(id)
-
+        openLinkExternal(Trainings.video_link)
     }
 
     return (
