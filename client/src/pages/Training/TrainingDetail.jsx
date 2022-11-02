@@ -34,8 +34,9 @@ const TrainingDetail = () => {
         const wrapper = document.querySelector(".wrapper")
 
         if((wrapper.innerHeight + wrapper.scrollY) >= document.body.offsetHeight - 100) {
-            console.log('a')
-            tgToggleButton(Trainings.training.viewed)
+            if(matchPath(LINK_TRAININGS_ITEM, location.pathname) !== null) {
+                tgToggleButton(Trainings.training.viewed)
+            }
         } else {
             tgHideButton()
         }
@@ -52,9 +53,7 @@ const TrainingDetail = () => {
         openLinkExternal(Trainings.video_link)
     }
 
-    if(matchPath(LINK_TRAININGS_ITEM, location.pathname) !== null) {
-        window.addEventListener('scroll', trackScrolling)
-    }
+    window.addEventListener('scroll', trackScrolling)
 
     useEffect(() => {
         async function fetchData() {
