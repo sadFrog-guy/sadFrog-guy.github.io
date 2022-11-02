@@ -56,13 +56,24 @@ const TrainingItem = ({trainingInfo, ...props}) => {
                         const isNextViewed = array[(index - 1) + 1] !== undefined && array[(index - 1) + 1].viewed === true
                         const isFirst = (index === 0)
 
-                        if(isFirst || !isNextViewed) {
+                        if(isFirst || isNextViewed) {
                             return <TrainingSubitem
                                 key={subitem.id}
                                 id={subitem.id}
                                 subitemInfo={subitem}
                                 viewed={subitem.viewed}
                                 to={`/trainings/${subitem.id}`}
+                                active={true}
+                                allowedViewing={subitem.allowed_viewing}
+                            />
+                        }
+
+                        if(subitem.allowed_viewing) {
+                            return <TrainingSubitem
+                                key={subitem.id}
+                                id={subitem.id}
+                                subitemInfo={subitem}
+                                viewed={subitem.viewed}
                                 active={true}
                                 allowedViewing={subitem.allowed_viewing}
                             />
