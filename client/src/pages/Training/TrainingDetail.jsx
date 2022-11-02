@@ -32,6 +32,8 @@ const TrainingDetail = () => {
         openLinkExternal(Trainings.video_link)
     }
 
+    window.addEventListener('scroll', trackScrolling)
+
     useEffect(() => {
         async function fetchData() {
             await Trainings.getOneTraining(id)
@@ -40,9 +42,10 @@ const TrainingDetail = () => {
 
         fetchData()
 
+        return () => {
+            window.removeEventListener('scroll', () => {})
+        }
     }, [])
-
-    window.addEventListener('scroll', trackScrolling)
 
     return (
         <Wrapper>
