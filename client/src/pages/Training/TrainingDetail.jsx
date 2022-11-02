@@ -52,7 +52,7 @@ const TrainingDetail = () => {
         openLinkExternal(Trainings.video_link)
     }
 
-    if(matchPath(location.pathname, {path: LINK_TRAININGS_ITEM}) !== null) {
+    if(matchPath(LINK_TRAININGS_ITEM, location.pathname) !== null) {
         window.addEventListener('scroll', trackScrolling)
     }
 
