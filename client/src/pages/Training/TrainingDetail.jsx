@@ -33,7 +33,7 @@ const TrainingDetail = () => {
     const trackScrolling = () => {
         tgToggleButton(Trainings.training.viewed)
 
-        tgButtonOnClick(async() => {
+        tgWebApp.MainButton.onClick(async() => {
             tgChangeButtonText("Завершается...")
             await Trainings.readTraining(id)
             tgChangeButtonText("Прочитано")
@@ -56,12 +56,10 @@ const TrainingDetail = () => {
             setLoading(false)
         }
 
+        tgWebApp.MainButton.hide()
+
         fetchData()
 
-
-        window.addEventListener("load", () => {
-            tgWebApp.MainButton.hide()
-        })
         window.addEventListener('scroll', () => {
             if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
                 trackScrolling()
