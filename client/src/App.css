@@ -737,14 +737,6 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
     height: 35px;
 }
 
-.training-lock-ic > path {
-    fill: #000;
-}
-
-.training-lock-ic.dark > path {
-    fill: #fff;
-}
-
 .subtheme-lock-ic {
     width: 11px;
     height: 16px;
