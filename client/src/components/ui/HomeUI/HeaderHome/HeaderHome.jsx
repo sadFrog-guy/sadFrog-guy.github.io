@@ -14,7 +14,7 @@ const HeaderHome = () => {
     return (
         <Header>
             <Wrap className="user-info">
-                <Text type="medium" id="username">Username</Text>
+                <Text type="medium" id="username">{User.username}</Text>
                 <Avatar source={User.avatar}/>
             </Wrap>
             <LinkTG source={User.technical_support_link} id="settings-bubble">

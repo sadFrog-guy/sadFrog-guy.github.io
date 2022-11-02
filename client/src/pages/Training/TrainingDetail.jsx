@@ -60,6 +60,7 @@ const TrainingDetail = () => {
                             disablePictureInPicture
                             controlsList="noplaybackrate nodownload"
                             src={Trainings.training.video_url}
+                            poster={Trainings.training.video_preview_image}
                         />
                         : Trainings.training.video_url && isIOS() === false
                         && <div className="go-to-browser">

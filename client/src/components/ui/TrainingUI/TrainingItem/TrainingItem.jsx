@@ -11,6 +11,7 @@ import TrainingSubitem from "../TrainingSubitem/TrainingSubitem";
 import {toJS} from "mobx";
 import {observer} from "mobx-react-lite";
 import CheckIcon from "../../../icons/CheckIcon/CheckIcon";
+import {tgWebApp} from "../../../../utils/consts";
 
 const TrainingItem = ({trainingInfo, ...props}) => {
     const [isShow, setShow] = useState(false)
@@ -32,7 +33,7 @@ const TrainingItem = ({trainingInfo, ...props}) => {
                         : 'brief-locked'
                     }
                 >
-                    <LockIcon color="#000" overrideClass="training-lock-ic"/>
+                    <LockIcon color={tgWebApp.colorScheme === 'dark' ? '#fff' : '#000'} overrideClass="training-lock-ic"/>
                     <TrainingError>
                         {trainingInfo.allowed_viewing
                             ? ''
