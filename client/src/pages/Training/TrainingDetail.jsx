@@ -30,30 +30,36 @@ const TrainingDetail = () => {
     const [openInBrowser, setOpenInBrowser] = useState(false)
     const location = useLocation();
 
-    tgHideButton()
-
     const trackScrolling = () => {
-        if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
-            if(matchPath(LINK_TRAININGS_ITEM, location.pathname) !== null) {
-                tgToggleButton(Trainings.training.viewed)
-            }
-        } else {
+        if(Trainings.training.viewed === false) {
             tgHideButton()
         }
+
+        tgToggleButton(Trainings.training.viewed)
+
+        tgButtonOnClick(async() => {
+            tgChangeButtonText("Завершается...")
+            await Trainings.readTraining(id)
+            tgChangeButtonText("Прочитано")
+        })
     }
 
-    tgButtonOnClick(async() => {
-        tgChangeButtonText("Завершается...")
-        await Trainings.readTraining(id)
-        tgChangeButtonText("Прочитано")
-    })
+    const trackNotScrolling = () => {
+        tgHideButton()
+    }
 
     const browserRedirect = async() => {
         await Trainings.getAccessToVideo(id)
         openLinkExternal(Trainings.video_link)
     }
 
-    window.addEventListener('scroll', trackScrolling)
+    window.addEventListener('scroll', () => {
+        if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+            trackScrolling()
+        } else {
+            trackNotScrolling()
+        }
+    })
 
     useEffect(() => {
         async function fetchData() {
