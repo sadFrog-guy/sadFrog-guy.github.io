@@ -31,16 +31,6 @@ const Home = () => {
         fetchData()
     }, [])
 
-    tgWebApp.onEvent('themeChanged', () => {
-        if(tgWebApp.colorScheme === 'dark') {
-            document.body.classList.remove("light")
-            document.body.classList.add("dark")
-        } else {
-            document.body.classList.remove("dark")
-            document.body.classList.add("light")
-        }
-    })
-
     return (
         <Wrapper>
             <Loader
