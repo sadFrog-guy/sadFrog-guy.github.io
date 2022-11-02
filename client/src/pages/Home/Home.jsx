@@ -11,7 +11,7 @@ import HeaderHome from "../../components/ui/HomeUI/HeaderHome/HeaderHome";
 import Subscribtion from "../../components/ui/HomeUI/Subscribtion/Subscribtion";
 import FooterHome from "../../components/ui/HomeUI/FooterHome/FooterHome";
 import ModalHome from "../../components/ui/HomeUI/ModalHome/ModalHome";
-import {tgWebApp} from "../../utils/consts";
+import {tgInintial, tgWebApp} from "../../utils/consts";
 
 const Home = () => {
     const {User, Theme} = useContext(Context);
@@ -21,6 +21,8 @@ const Home = () => {
     const [isLoading, setLoading] = useState(true)
 
     useEffect(() => {
+        tgInintial()
+
         async function fetchData() {
             await User.getUserInfo()
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
@@ -30,11 +32,17 @@ const Home = () => {
     }, [])
 
     tgWebApp.onEvent('themeChanged', () => {
-        Theme.setCurrentTheme()
+        if(tgWebApp.colorScheme === 'dark') {
+            document.body.classList.remove("light")
+            document.body.classList.add("dark")
+        } else {
+            document.body.classList.remove("dark")
+            document.body.classList.add("light")
+        }
     })
 
     return (
-        <Wrapper overrideClass={Theme.isDark && 'dark'}>
+        <Wrapper>
             <Loader
                 isLoading={isLoading}
             />
