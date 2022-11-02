@@ -55,6 +55,7 @@ const TrainingItem = ({trainingInfo, ...props}) => {
                     {trainingInfo.subsections.map((subitem, index, array) => {
                         const isNextViewed = array[(index - 1) + 1] !== undefined && array[(index - 1) + 1].viewed === true
                         const isFirst = (index === 0)
+                        const isAllowed = subitem.allowed_viewing
 
                         if(isFirst || isNextViewed) {
                             return <TrainingSubitem
@@ -68,12 +69,13 @@ const TrainingItem = ({trainingInfo, ...props}) => {
                             />
                         }
 
-                        if(subitem.allowed_viewing) {
+                        if(isAllowed) {
                             return <TrainingSubitem
                                 key={subitem.id}
                                 id={subitem.id}
                                 subitemInfo={subitem}
                                 viewed={subitem.viewed}
+                                to={`/trainings/${subitem.id}`}
                                 active={true}
                                 allowedViewing={subitem.allowed_viewing}
                             />
