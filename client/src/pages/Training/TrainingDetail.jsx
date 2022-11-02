@@ -30,6 +30,8 @@ const TrainingDetail = () => {
     const [openInBrowser, setOpenInBrowser] = useState(false)
     const location = useLocation();
 
+    tgHideButton()
+
     const trackScrolling = () => {
         if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
             if(matchPath(LINK_TRAININGS_ITEM, location.pathname) !== null) {
@@ -60,7 +62,6 @@ const TrainingDetail = () => {
         }
 
         fetchData()
-        tgHideButton()
 
         return () => {
             window.removeEventListener('scroll', () => {})
