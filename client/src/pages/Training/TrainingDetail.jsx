@@ -19,13 +19,8 @@ const TrainingDetail = () => {
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
 
-    const isBottom = (el) => {
-        return el.getBoundingClientRect().bottom <= window.innerHeight;
-    }
-
     const trackScrolling = () => {
-        const wrapper = document.querySelector('.wrapper')
-        if(isBottom(wrapper)) {
+        if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
             tgToggleButton(Trainings.training.viewed)
         }
     }
@@ -43,8 +38,9 @@ const TrainingDetail = () => {
 
         fetchData()
 
-        trackScrolling()
     }, [])
+
+    window.addEventListener('scroll', trackScrolling)
 
     return (
         <Wrapper>
