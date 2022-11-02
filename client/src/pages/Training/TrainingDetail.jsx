@@ -8,7 +8,15 @@ import Wrap from "../../components/utils/Wrap/Wrap";
 import Text from "../../components/ui/GlobalUI/Text/Text";
 import {isIOS} from "../../utils/isIOS";
 import Button from "../../components/ui/GlobalUI/Button/Button";
-import {openLinkExternal, tgHideButton, tgID, tgToggleButton} from "../../utils/consts";
+import {
+    openLinkExternal,
+    tgButtonOnClick,
+    tgChangeButtonText,
+    tgHideButton,
+    tgID,
+    tgToggleButton,
+    tgWebApp
+} from "../../utils/consts";
 import Plyr from "plyr-react"
 import "plyr-react/plyr.css"
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
@@ -25,6 +33,11 @@ const TrainingDetail = () => {
         } else {
             tgHideButton()
         }
+
+        tgButtonOnClick(async() => {
+            await Trainings.readTraining(id)
+            tgChangeButtonText("Прочитано")
+        })
     }
 
     const browserRedirect = async() => {

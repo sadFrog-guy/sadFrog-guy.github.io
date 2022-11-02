@@ -47,6 +47,17 @@ export default new class StoreTrainings {
         }
     }
 
+    async readTraining(id) {
+        try {
+            await Trainings.readTraining(id)
+            const {data} = await Trainings.getOneTraining(id.id);
+
+            this.training = data
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     checkAccess(training) {
         if(training.allowed_viewing === false) {
             this.comment = training.viewing_ban_comment

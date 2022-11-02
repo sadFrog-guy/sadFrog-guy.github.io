@@ -28,3 +28,11 @@ export function tgToggleButton(viewed) {
 export function tgHideButton() {
     tgMainButton.hide()
 }
+
+export function tgChangeButtonText(text) {
+    tgMainButton.text = text
+}
+
+export function tgButtonOnClick(callback) {
+    tgMainButton.onClick(callback)
+}
