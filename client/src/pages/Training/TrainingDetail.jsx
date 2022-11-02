@@ -53,13 +53,6 @@ const TrainingDetail = () => {
         openLinkExternal(Trainings.video_link)
     }
 
-    window.addEventListener('scroll', () => {
-        if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
-            trackScrolling()
-        } else {
-            trackNotScrolling()
-        }
-    })
 
     useEffect(() => {
         async function fetchData() {
@@ -68,6 +61,14 @@ const TrainingDetail = () => {
         }
 
         fetchData()
+
+        window.addEventListener('scroll', () => {
+            if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+                trackScrolling()
+            } else {
+                trackNotScrolling()
+            }
+        })
 
         return () => {
             window.removeEventListener('scroll', () => {})
