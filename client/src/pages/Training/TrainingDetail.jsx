@@ -20,6 +20,7 @@ import {
 import Plyr from "plyr-react"
 import "plyr-react/plyr.css"
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
+import {observer} from "mobx-react-lite";
 
 const TrainingDetail = () => {
     const id = useParams()
@@ -33,12 +34,12 @@ const TrainingDetail = () => {
         } else {
             tgHideButton()
         }
-
-        tgButtonOnClick(async() => {
-            await Trainings.readTraining(id)
-            tgChangeButtonText("Прочитано")
-        })
     }
+
+    tgButtonOnClick(async() => {
+        await Trainings.readTraining(id)
+        tgChangeButtonText("Прочитано")
+    })
 
     const browserRedirect = async() => {
         await Trainings.getAccessToVideo(id)
@@ -56,6 +57,7 @@ const TrainingDetail = () => {
         fetchData()
 
         return () => {
+            tgHideButton()
             window.removeEventListener('scroll', () => {})
         }
     }, [])
@@ -116,4 +118,4 @@ const TrainingDetail = () => {
     );
 };
 
-export default TrainingDetail;
+export default observer(TrainingDetail);
