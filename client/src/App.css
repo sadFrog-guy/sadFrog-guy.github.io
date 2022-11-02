@@ -617,9 +617,14 @@ img {
     backdrop-filter: blur(16px);
 }
 
-.balance-wrap.dark {
+body.dark > #root > .wrapper > .referal > .content > .balance-wrap {
     background: linear-gradient(180deg, #313439 0%, #1F2022 100%);
     backdrop-filter: blur(16px);
+}
+
+body.dark > #root > .wrapper > .training > .training-item > .training-brief > .training-brief-inner,
+body.dark > #root > .wrapper > .training > .training-item > .training-brief > .training-brief-inner > .brief-bg{
+    background-color: #1c1c1e;
 }
 
 .balance-text {
