@@ -52,14 +52,16 @@ const TrainingDetail = () => {
 
     useEffect(() => {
         async function fetchData() {
-            tgWebApp.MainButton.hide()
-
             await Trainings.getOneTraining(id)
             setLoading(false)
         }
 
         fetchData()
 
+
+        window.addEventListener("load", () => {
+            tgWebApp.MainButton.hide()
+        })
         window.addEventListener('scroll', () => {
             if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
                 trackScrolling()
