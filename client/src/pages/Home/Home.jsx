@@ -38,32 +38,28 @@ const Home = () => {
 
     return (
         <Wrapper>
-            {!isLoading
-                ?
-                <WrapperHome>
-                    <ModalHome
-                        modalActive={modalActive}
-                        modalHide={modalHide}
-                    />
-
-                    <HeaderHome avatarOnLoad={() => setLoaded(true)} />
-
-                    <ButtonList
-                        modalShow={modalShow}
-                    />
-
-                    <Subscribtion
-                        isSubscribtionStarter={isSubscribtionStarter}
-                        subscribtion={subscribtion}
-                    />
-
-                    <FooterHome/>
-                </WrapperHome>
-                :
-                <Loader
-                    isLoading={isLoading}
+            <WrapperHome>
+                <ModalHome
+                    modalActive={modalActive}
+                    modalHide={modalHide}
                 />
-            }
+
+                <HeaderHome avatarOnLoad={() => setLoaded(true)} />
+
+                <ButtonList
+                    modalShow={modalShow}
+                />
+
+                <Subscribtion
+                    isSubscribtionStarter={isSubscribtionStarter}
+                    subscribtion={subscribtion}
+                />
+
+                <FooterHome/>
+            </WrapperHome>
+            <Loader
+                isLoading={isLoading}
+            />
         </Wrapper>
     );
 };
