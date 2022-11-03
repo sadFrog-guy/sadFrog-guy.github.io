@@ -47,7 +47,7 @@ const TrainingDetail = () => {
                 tgButtonText(viewedStatus)
             }
 
-            if(Trainings.training.viewed) {
+            if(tgMainButton.text === viewedStatus) {
                 tgButtonText(viewedStatus)
                 tgMainButton.onClick(viewedOnClick)
             } else {
