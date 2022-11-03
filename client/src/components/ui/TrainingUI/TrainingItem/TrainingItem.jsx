@@ -13,7 +13,7 @@ import {observer} from "mobx-react-lite";
 import CheckIcon from "../../../icons/CheckIcon/CheckIcon";
 import {tgWebApp} from "../../../../utils/consts";
 
-const TrainingItem = ({trainingInfo, ...props}) => {
+const TrainingItem = ({trainingInfo, imageOnLoad, ...props}) => {
     const [isShow, setShow] = useState(false)
 
     const toggleContentHandler = () => {
@@ -24,7 +24,7 @@ const TrainingItem = ({trainingInfo, ...props}) => {
 
     return (
         <div className="training-item" id={trainingInfo.id} {...props}>
-            <TrainingImage src={trainingInfo.image_url}/>
+            <TrainingImage src={trainingInfo.image_url} onLoad={imageOnLoad}/>
             <TrainingBrief isShow={isShow}  onClick={toggleContentHandler}>
                 <TrainingBriefInner
                     className={

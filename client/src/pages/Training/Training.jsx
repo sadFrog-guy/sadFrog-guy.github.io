@@ -20,14 +20,18 @@ const Training = () => {
     const {Trainings} = useContext(Context);
     const {modalActive, modalHide, modalShow} = useModal()
     const [isLoading, setLoading] = useState(true)
+    const [isLoaded, setLoaded] = useState(false)
 
     useEffect(() => {
         async function fetchData() {
             await Trainings.getAllTrainings()
-            setLoading(false)
+
+            if(isLoaded) {
+                setLoading(false)
+            }
         }
         fetchData()
-    }, [])
+    }, [isLoaded])
 
     return (
         <Wrapper>
@@ -67,6 +71,7 @@ const Training = () => {
                             id={training.id}
                             key={training.id}
                             trainingInfo={training}
+                            imageOnLoad={() => setLoaded(true)}
                             onClick={training.allowed_viewing ? () => {} : modalShow}
                         />
                     )
