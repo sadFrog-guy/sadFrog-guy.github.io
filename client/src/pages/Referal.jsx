@@ -49,7 +49,7 @@ const Referal = () => {
             link: Referal.referalLink
         }
 
-        window.location.href = `tg://msg_url?url=${shareData.link}&text=${shareData.text}`
+        window.location.href = `https://telegram.me/share/url?url=${shareData.link}&text=${shareData.text}`
     }
 
     return (
