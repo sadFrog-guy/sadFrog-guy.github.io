@@ -80,13 +80,10 @@ const TrainingDetail = () => {
     useEffect(() => {
         async function fetchData() {
             await Trainings.getOneTraining(id)
+            tgButtonFunctionality()
             setLoading(false)
         }
         fetchData()
-    }, [])
-
-    useEffect(() => {
-        tgButtonFunctionality()
 
         return () => {
             tgMainButton.hide()
