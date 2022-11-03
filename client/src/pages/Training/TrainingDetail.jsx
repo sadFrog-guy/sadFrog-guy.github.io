@@ -35,13 +35,9 @@ const TrainingDetail = () => {
 
             const onClickHandler = async() => {
                 if(Trainings.training.viewed) {
-                    if(Trainings.training.next_article_id) {
-                        tgButtonText(viewedStatus)
-                        navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
-                        navigate(0)
-                    } else {
-                        tgMainButton.hide()
-                    }
+                    tgButtonText(viewedStatus)
+                    navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
+                    navigate(0)
                 } else {
                     tgButtonText(finishPendingStatus)
                     await Trainings.readTraining(id)
@@ -52,7 +48,11 @@ const TrainingDetail = () => {
             tgMainButton.onClick(onClickHandler)
 
             if(Trainings.training.viewed) {
-                tgButtonText(viewedStatus)
+                if(Trainings.training.next_article_id) {
+                    tgButtonText(viewedStatus)
+                } else {
+                    tgMainButton.hide()
+                }
             } else {
                 tgButtonText(finishStatus)
             }
