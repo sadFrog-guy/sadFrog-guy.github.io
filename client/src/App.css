@@ -41,11 +41,11 @@ body.dark {
     background-color: #1c1c1e;
 }
 
-body > .training-image {
+body.light > #root > .wrapper > .training > .training-item > .training-image-wrap > .training-image {
     background-color: #fff;
 }
 
-body.dark > .training-image {
+body.dark > #root > .wrapper > .training > .training-item > .training-image-wrap > .training-image {
     background-color: #000;
 }
 
