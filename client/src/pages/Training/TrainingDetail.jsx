@@ -48,10 +48,11 @@ const TrainingDetail = () => {
             tgMainButton.onClick(onClickHandler)
 
             if(Trainings.training.viewed) {
+                console.log('viewed')
                 tgButtonText(viewedStatus)
             } else {
                 tgButtonText(finishStatus)
-
+                console.log('finish')
             }
 
             tgButtonInitial()
