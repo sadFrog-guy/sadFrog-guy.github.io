@@ -41,6 +41,14 @@ body.dark {
     background-color: #1c1c1e;
 }
 
+body:has(.training-image) {
+    background-color: #fff;
+}
+
+body.dark:has(.training-image) {
+    background-color: #000;
+}
+
 img {
     max-width: 100%;
     max-height: 100%;
