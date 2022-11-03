@@ -16,11 +16,12 @@ import {
 } from "../../utils/consts";
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
 import {observer} from "mobx-react-lite";
+import Button from "../../components/ui/GlobalUI/Button/Button";
 
 const TrainingDetail = () => {
     const id = useParams()
     const navigate = useNavigate();
-    const {Trainings} = useContext(Context);
+    const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
 
@@ -29,10 +30,8 @@ const TrainingDetail = () => {
 
         if(Trainings.training.viewed) {
             tgButtonText("Прочитано")
-            console.log('viewed')
         } else {
             tgButtonText("Завершить")
-            console.log('not')
         }
 
         if(Trainings.training.next_article_in_new_section) {
@@ -42,7 +41,6 @@ const TrainingDetail = () => {
         tgMainButton.onClick(() => {
             if(Trainings.training.viewed) {
                 navigate(`/trainings/${Trainings.training.next_article_id}`)
-                console.log(`/trainings/${Trainings.training.next_article_id}`)
             } else {
                 const post = async() => {
                     tgButtonText("Завершается...")
@@ -62,6 +60,14 @@ const TrainingDetail = () => {
     const browserRedirect = async() => {
         await Trainings.getAccessToVideo(id)
         openLinkExternal(Trainings.video_link)
+    }
+
+    const onFullscreen = () => {
+        if(openInBrowser) {
+            setOpenInBrowser(false)
+        } else {
+            setOpenInBrowser(true)
+        }
     }
 
     useEffect(() => {
@@ -99,27 +105,32 @@ const TrainingDetail = () => {
                             src={Trainings.training.image_url}
                             rel="preload"
                             alt=""
+                            onClick={() => {
+                                navigate(`/trainings/4`)
+                            }}
                         />
                     }
 
                     {Trainings.training.video_url &&
-                        <video
-                            controls
-                            className="video"
-                            disablePictureInPicture
-                            controlsList="noplaybackrate nodownload"
-                            src={Trainings.training.video_url}
-                            poster={Trainings.training.video_preview_image}
-                        />
-                    }
+                        <Wrap className="video-wrapper">
+                            <video
+                                controls
+                                className="video"
+                                disablePictureInPicture
+                                controlsList={`noplaybackrate nodownload ${isIOS() === false ? 'nofullscreen' : ''}`}
+                                src={Trainings.training.video_url}
+                                poster={Trainings.training.video_preview_image}
+                            />
+                            <div className="fullscreen-button" onClick={onFullscreen}/>
 
-                    {/*{openInBrowser &&*/}
-                    {/*    <div className="go-to-browser">*/}
-                    {/*        <Button onClick={browserRedirect} id="go-to-button">*/}
-                    {/*            Перейти в браузер для просмотра урока*/}
-                    {/*        </Button>*/}
-                    {/*    </div>*/}
-                    {/*}*/}
+                            <div className={`go-to-browser ${openInBrowser ? 'active' : ''}`}>
+                                <Button onClick={browserRedirect} id="go-to-button">
+                                    Перейти в браузер для просмотра урока
+                                </Button>
+                                <div className="fullscreen-button go-to" onClick={onFullscreen}/>
+                            </div>
+                        </Wrap>
+                    }
                 </Wrap>
                 <Wrap className="article-content">
                     <Text type="medium" overrideClass="article_medium" id="article-bold">

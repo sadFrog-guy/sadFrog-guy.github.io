@@ -1006,6 +1006,20 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 
 /* training-item */
 
+.video-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.fullscreen-button {
+    position: absolute;
+    right: 15px;
+    bottom: 38px;
+    width: 18px;
+    height: 18px;
+}
+
 .article_image-wrap {
     background: transparent;
     border-radius: 26px;
@@ -1061,6 +1075,8 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 }
 
 .go-to-browser {
+    position: absolute;
+    top: 0;
     background-color: #000;
     width: 100%;
     height: 100%;
@@ -1068,6 +1084,21 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s, visibility .2s;
+}
+
+.go-to-browser.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .2s, visibility .2s;
+}
+
+.fullscreen-button.go-to {
+    background-color: var(--tg-theme-button-color);
+    border-radius: 8px;
+    top: 20px;
 }
 
 #go-to-button {
