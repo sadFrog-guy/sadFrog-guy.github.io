@@ -26,7 +26,7 @@ const TrainingDetail = () => {
     const [openInBrowser, setOpenInBrowser] = useState(false)
 
     const mainButtonMount = () => {
-        tgToggleButton(Trainings.trainingviewed)
+        tgToggleButton(Trainings.training.viewed)
 
         if(Trainings.training.next_article_in_new_section) {
             tgChangeButtonText("Перейти к следующей теме")
@@ -76,7 +76,7 @@ const TrainingDetail = () => {
                 isLoading={isLoading}
             />
 
-            <Navigation>
+            <Navigation to="/trainings">
                 Обучение
             </Navigation>
 
