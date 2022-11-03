@@ -26,7 +26,7 @@ const TrainingDetail = () => {
     const [openInBrowser, setOpenInBrowser] = useState(false)
 
     const mainButtonMount = () => {
-        tgToggleButton(Trainings.training.viewed)
+        tgToggleButton(Trainings.viewed)
 
         if(Trainings.training.next_article_in_new_section) {
             tgChangeButtonText("Перейти к следующей теме")
