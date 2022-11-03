@@ -850,6 +850,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 }
 
 .training-image {
+    background-color: #f1f1f1;
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
     width: 100%;
