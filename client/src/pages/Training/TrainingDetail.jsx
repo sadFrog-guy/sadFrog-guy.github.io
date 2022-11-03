@@ -33,10 +33,14 @@ const TrainingDetail = () => {
     const trackScrolling = () => {
         tgToggleButton(Trainings.training.viewed)
 
-        tgWebApp.MainButton.onClick(async() => {
-            tgChangeButtonText("Завершается...")
-            await Trainings.readTraining(id)
-            tgChangeButtonText("Прочитано")
+        tgWebApp.MainButton.onClick(() => {
+            const post = async() => {
+                tgChangeButtonText("Завершается...")
+                await Trainings.readTraining(id)
+                tgChangeButtonText("Прочитано")
+            }
+
+            post()
         })
     }
 
