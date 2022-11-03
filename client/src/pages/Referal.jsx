@@ -49,7 +49,11 @@ const Referal = () => {
             link: Referal.referalLink
         }
 
-        window.location.href = `https://telegram.me/share/url?url=${shareData.link}&text=${shareData.text}`
+        if(isIOS()) {
+            window.location.href = `tg://msg?url=${shareData.link}&text=${shareData.text}`
+        } else {
+            window.location.href = `https://telegram.me/share/url?url=${shareData.link}&text=${shareData.text}`
+        }
     }
 
     return (
@@ -65,7 +69,7 @@ const Referal = () => {
             <WrapperReferal>
                 <Wrap className="content">
                     <ReferalBalance
-                        balance={Referal.referalBalance}
+                        balance={Referal.referalBalance + ' ₽'}
                         title="Баланс"
                     />
                     <ReferalDescription
