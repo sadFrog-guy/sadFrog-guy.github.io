@@ -17,6 +17,7 @@ import {
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
 import {observer} from "mobx-react-lite";
 import Button from "../../components/ui/GlobalUI/Button/Button";
+import fullscreen from "../../assets/icons/fullscreen.png";
 
 const TrainingDetail = () => {
     const id = useParams()
@@ -121,13 +122,17 @@ const TrainingDetail = () => {
                                 src={Trainings.training.video_url}
                                 poster={Trainings.training.video_preview_image}
                             />
-                            <div className="fullscreen-button" onClick={onFullscreen}/>
+                            <div className="fullscreen-button" onClick={onFullscreen}>
+                                <img className="icon-fullscreen" src={fullscreen} alt=""/>
+                            </div>
 
                             <div className={`go-to-browser ${openInBrowser ? 'active' : ''}`}>
                                 <Button onClick={browserRedirect} id="go-to-button">
                                     Перейти в браузер для просмотра урока
                                 </Button>
-                                <div className="fullscreen-button go-to" onClick={onFullscreen}/>
+                                <div className="fullscreen-button go-to" onClick={onFullscreen}>
+                                    <img className="icon-fullscreen" src={fullscreen} alt=""/>
+                                </div>
                             </div>
                         </Wrap>
                     }

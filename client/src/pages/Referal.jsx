@@ -19,6 +19,8 @@ import Text from "../components/ui/GlobalUI/Text/Text";
 import Button from "../components/ui/GlobalUI/Button/Button";
 import {useCopy} from "../hooks/useCopy";
 import Loader from "../components/ui/GlobalUI/Loader/Loader";
+import {isIOS} from "../utils/isIOS";
+import {tgWebApp} from "../utils/consts";
 
 const Referal = () => {
 
@@ -39,6 +41,15 @@ const Referal = () => {
 
     const onShare = async() => {
         await navigator.share({ title: "Вот моя реферальная ссылка!", url: Referal.referalLink })
+    }
+
+    const onShareTg = () => {
+        const shareData = {
+            text: `Вот моя реферальная ссылка! - ${Referal.referalLink}`,
+            link: Referal.referalLink
+        }
+
+        window.location.href = `tg://msg_url?url=${shareData.link}&text=${shareData.text}`
     }
 
     return (
@@ -76,11 +87,17 @@ const Referal = () => {
 
                         <CopyIcon/>
                     </CopyButton>
-                    <Button id="share-button">
-                        <span className="share-system" onClick={onShare}>
-                            Поделиться ссылкой
-                        </span>
-                    </Button>
+                    {isIOS()
+                        ?
+                        <Button id="share-button" onClick={onShare}>
+                            Поделиться
+                        </Button>
+                        :
+                        <Button id="share-button" onClick={onShareTg}>
+                            Поделиться в Telegram
+                        </Button>
+                    }
+
                 </Wrap>
             </WrapperReferal>
         </Wrapper>
