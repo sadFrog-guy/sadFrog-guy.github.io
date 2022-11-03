@@ -29,8 +29,10 @@ const TrainingDetail = () => {
 
         if(Trainings.training.viewed) {
             tgButtonText("Прочитано")
+            console.log('viewed')
         } else {
             tgButtonText("Завершить")
+            console.log('not')
         }
 
         if(Trainings.training.next_article_in_new_section) {
@@ -39,8 +41,7 @@ const TrainingDetail = () => {
 
         tgMainButton.onClick(() => {
             if(Trainings.training.viewed) {
-                // navigate()
-                window.location.href = `/trainings/${Trainings.training.next_article_id}`
+                navigate(`/trainings/${Trainings.training.next_article_id}`)
             } else {
                 const post = async() => {
                     tgButtonText("Завершается...")
