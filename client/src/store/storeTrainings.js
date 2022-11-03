@@ -41,7 +41,7 @@ export default new class StoreTrainings {
             const {data} = await Trainings.getAccessToVideo(id.id)
             console.log(data)
             console.log(tgID)
-            this.video_link = `https://crypto-learn.ru/watch_video/${tgID}/${id.id}/${data?.hash_code}?telegram_id=${tgID}&section_id=${id.id}`
+            this.video_link = `https://crypto-learn.ru/watch_video/${tgID}/${id.id}/${data?.hash_code}`
         } catch (e) {
             console.log(e)
         }
