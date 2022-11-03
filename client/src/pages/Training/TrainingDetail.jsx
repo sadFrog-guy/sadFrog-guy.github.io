@@ -42,12 +42,12 @@ const TrainingDetail = () => {
 
                     await Trainings.readTraining(id)
 
-                    navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
-                    navigate(0)
-                }
-
-                if(Trainings.training.viewed && !Trainings.training.next_article_id) {
-                    tgMainButton.hide()
+                    if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                        tgMainButton.hide()
+                    } else {
+                        navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
+                        navigate(0)
+                    }
                 }
             }
 
