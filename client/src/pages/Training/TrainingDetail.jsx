@@ -27,34 +27,34 @@ const TrainingDetail = () => {
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
 
-    if(location.pathname.includes("/trainings/")) {
-        const viewedStatus = "Прочитано"
-        const finishStatus = "Завершить"
-        const finishPendingStatus = "Завершается..."
+    const tgButtonFunctionality = () => {
+        if(location.pathname.includes("/trainings/")) {
+            const viewedStatus = "Прочитано"
+            const finishStatus = "Завершить"
+            const finishPendingStatus = "Завершается..."
 
-        tgButtonInitial()
+            tgButtonInitial()
 
-        tgMainButton.show()
+            tgMainButton.show()
 
-        const viewedOnClick = () => {
+            const viewedOnClick = () => {
 
+            }
+
+            const finishOnClick = async() => {
+                tgButtonText(finishPendingStatus)
+                await Trainings.readTraining(id)
+                tgButtonText(viewedStatus)
+            }
+
+            if(Trainings.training.viewed) {
+                tgButtonText(viewedStatus)
+                tgMainButton.onClick(viewedOnClick)
+            } else {
+                tgButtonText(finishStatus)
+                tgMainButton.onClick(finishOnClick)
+            }
         }
-
-        const finishOnClick = async() => {
-            tgButtonText(finishPendingStatus)
-            await Trainings.readTraining(id)
-            tgButtonText(viewedStatus)
-        }
-
-        if(Trainings.training.viewed) {
-            tgButtonText(viewedStatus)
-            tgMainButton.onClick(viewedOnClick)
-        } else {
-            tgButtonText(finishStatus)
-            tgMainButton.onClick(finishOnClick)
-        }
-    } else {
-        tgMainButton.hide()
     }
 
     const browserRedirect = async() => {
@@ -77,6 +77,14 @@ const TrainingDetail = () => {
         }
         fetchData()
     }, [])
+
+    useEffect(() => {
+        tgButtonFunctionality()
+
+        return () => {
+            tgMainButton.hide()
+        }
+    })
 
     return (
         <Wrapper>
