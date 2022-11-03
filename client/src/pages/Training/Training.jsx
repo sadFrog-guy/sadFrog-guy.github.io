@@ -36,37 +36,34 @@ const Training = () => {
 
     return (
         <Wrapper>
-            {!isLoading
-                ?
-                <TrainingList title="Обучение">
-                    <TrainingModal
-                        modalHide={modalHide}
-                        modalActive={modalActive}
-                    />
-
-                    <Navigation to="/">
-                        Обучение
-                    </Navigation>
-
-                    {Trainings.trainings.map(training => {
-                        Trainings.checkAccess(training)
-
-                        return (
-                            <TrainingItem
-                                id={training.id}
-                                key={training.id}
-                                trainingInfo={training}
-                                imageOnLoad={() => setLoaded(true)}
-                                onClick={training.allowed_viewing ? () => {} : modalShow}
-                            />
-                        )
-                    })}
-                </TrainingList>
-                :
-                <Loader
-                    isLoading={isLoading}
+            <TrainingList title="Обучение">
+                <TrainingModal
+                    modalHide={modalHide}
+                    modalActive={modalActive}
                 />
-            }
+
+                <Navigation to="/">
+                    Обучение
+                </Navigation>
+
+                {Trainings.trainings.map(training => {
+                    Trainings.checkAccess(training)
+
+                    return (
+                        <TrainingItem
+                            id={training.id}
+                            key={training.id}
+                            trainingInfo={training}
+                            imageOnLoad={() => setLoaded(true)}
+                            onClick={training.allowed_viewing ? () => {} : modalShow}
+                        />
+                    )
+                })}
+            </TrainingList>
+
+            <Loader
+                isLoading={isLoading}
+            />
         </Wrapper>
     );
 };
