@@ -24,10 +24,9 @@ const Referal = () => {
 
     const {Referal} = useContext(Context);
 
-    const {modalActive, modalHide, modalShow} = useModal()
-    const {copied, onCopyHandler} = useCopy()
     const navigate = useNavigate()
-
+    const {copied, onCopyHandler} = useCopy()
+    const {modalActive, modalHide, modalShow} = useModal()
     const [isLoading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -37,6 +36,10 @@ const Referal = () => {
         }
         fetchData()
     }, [])
+
+    const onShare = async() => {
+        await navigator.share({ title: "Вот моя реферальная ссылка!", url: Referal.referalLink })
+    }
 
     return (
         <Wrapper>
@@ -74,7 +77,7 @@ const Referal = () => {
                         <CopyIcon/>
                     </CopyButton>
                     <Button id="share-button">
-                        <span className="share-system">
+                        <span className="share-system" onClick={onShare}>
                             Поделиться ссылкой
                         </span>
                     </Button>

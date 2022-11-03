@@ -53,26 +53,29 @@ const TrainingDetail = () => {
         openLinkExternal(Trainings.video_link)
     }
 
+    const onPageEnd = () => {
+        if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+            trackScrolling()
+        } else {
+            trackNotScrolling()
+        }
+    }
+
 
     useEffect(() => {
+        tgWebApp.MainButton.hide()
+
         async function fetchData() {
-            tgWebApp.MainButton.hide()
             await Trainings.getOneTraining(id)
             setLoading(false)
         }
 
         fetchData()
 
-        window.addEventListener('scroll', () => {
-            if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
-                trackScrolling()
-            } else {
-                trackNotScrolling()
-            }
-        })
+        window.addEventListener('scroll', onPageEnd)
 
         return () => {
-            window.removeEventListener('scroll', () => {})
+            window.removeEventListener('scroll', onPageEnd)
         }
     }, [])
 
