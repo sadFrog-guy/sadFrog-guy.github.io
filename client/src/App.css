@@ -41,11 +41,11 @@ body.dark {
     background-color: #1c1c1e;
 }
 
-body:has(.training-image) {
+body > .training-image {
     background-color: #fff;
 }
 
-body.dark:has(.training-image) {
+body.dark > .training-image {
     background-color: #000;
 }
 
