@@ -122,9 +122,11 @@ const TrainingDetail = () => {
                                 src={Trainings.training.video_url}
                                 poster={Trainings.training.video_preview_image}
                             />
-                            <div className="fullscreen-button" onClick={onFullscreen}>
-                                <img className="icon-fullscreen" src={fullscreen} alt=""/>
-                            </div>
+                            {!isIOS() &&
+                                <div className="fullscreen-button" onClick={onFullscreen}>
+                                    <img className="icon-fullscreen" src={fullscreen} alt=""/>
+                                </div>
+                            }
 
                             <div className={`go-to-browser ${openInBrowser ? 'active' : ''}`}>
                                 <Button onClick={browserRedirect} id="go-to-button">
