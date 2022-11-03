@@ -63,14 +63,16 @@ const TrainingDetail = () => {
 
 
     useEffect(() => {
-        tgWebApp.MainButton.hide()
-
         async function fetchData() {
             await Trainings.getOneTraining(id)
             setLoading(false)
         }
 
         fetchData()
+
+        if(tgWebApp.MainButton.isVisible) {
+            tgWebApp.MainButton.hide()
+        }
 
         window.addEventListener('scroll', onPageEnd)
 
