@@ -33,31 +33,27 @@ const TrainingDetail = () => {
             const finishStatus = "Завершить"
             const finishPendingStatus = "Завершается..."
 
-            tgButtonInitial()
+            if(Trainings.training.viewed) {
+                tgButtonText(viewedStatus)
+            } else {
+                tgButtonText(finishStatus)
+            }
 
+            tgButtonInitial()
             tgMainButton.show()
 
-            const viewedOnClick = () => {
-                console.log('redirected to ' + Trainings.training.next_article_id)
-                navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
-                navigate(0)
+            const onClickHandler = async() => {
+                if(Trainings.training.viewed) {
+                    navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
+                    navigate(0)
+                } else {
+                    tgButtonText(finishPendingStatus)
+                    await Trainings.readTraining(id)
+                    tgButtonText(viewedStatus)
+                }
             }
 
-            const finishOnClick = async() => {
-                tgButtonText(finishPendingStatus)
-                await Trainings.readTraining(id)
-                tgButtonText(viewedStatus)
-            }
-
-            if(Trainings.training.viewed) {
-                tgMainButton.offClick(finishOnClick)
-                tgButtonText(viewedStatus)
-                tgMainButton.onClick(viewedOnClick)
-            } else {
-                tgMainButton.offClick(viewedOnClick)
-                tgButtonText(finishStatus)
-                tgMainButton.onClick(finishOnClick)
-            }
+            tgMainButton.onClick(onClickHandler)
         }
     }
 
