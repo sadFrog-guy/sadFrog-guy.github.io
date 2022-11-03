@@ -58,8 +58,6 @@ const Referal = () => {
 
     return (
         <Wrapper>
-
-
             {!isLoading
                 ?
                 <WrapperReferal>
