@@ -39,7 +39,8 @@ const TrainingDetail = () => {
 
         tgMainButton.onClick(() => {
             if(Trainings.training.viewed) {
-                navigate(`/trainings/${Trainings.training.next_article_id}`)
+                // navigate()
+                window.location.href = `/trainings/${Trainings.training.next_article_id}`
             } else {
                 const post = async() => {
                     tgButtonText("Завершается...")
