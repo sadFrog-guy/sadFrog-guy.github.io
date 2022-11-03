@@ -34,12 +34,17 @@ const TrainingDetail = () => {
             const finishPendingStatus = "Завершается..."
 
             const onClickHandler = async() => {
-                tgButtonText(finishPendingStatus)
+                if(Trainings.training.viewed) {
+                    navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
+                    navigate(0)
+                } else {
+                    tgButtonText(finishPendingStatus)
 
-                await Trainings.readTraining(id)
+                    await Trainings.readTraining(id)
 
-                navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
-                navigate(0)
+                    navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
+                    navigate(0)
+                }
 
                 if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                     tgMainButton.hide()
