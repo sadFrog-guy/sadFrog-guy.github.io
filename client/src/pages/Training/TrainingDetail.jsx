@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {matchPath, useLocation, useParams} from "react-router-dom";
+import {matchPath, useHistory, useLocation, useParams} from "react-router-dom";
 import Navigation from "../../components/ui/GlobalUI/Navigation/Navigation";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {useContext, useEffect, useState} from "react";
@@ -10,37 +10,45 @@ import {isIOS} from "../../utils/isIOS";
 import Button from "../../components/ui/GlobalUI/Button/Button";
 import {
     openLinkExternal,
-    tgButtonOnClick,
     tgChangeButtonText,
     tgHideButton,
-    tgID,
     tgToggleButton,
     tgWebApp
 } from "../../utils/consts";
-import Plyr from "plyr-react"
-import "plyr-react/plyr.css"
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
 import {observer} from "mobx-react-lite";
-import {LINK_TRAININGS_ITEM} from "../../router";
 
 const TrainingDetail = () => {
     const id = useParams()
+    const navigate = useNavigate();
     const {Trainings} = useContext(Context);
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
 
-    const mainButtonInit = () => {
+    const mainButtonMount = () => {
         tgToggleButton(Trainings.training.viewed)
 
-        tgWebApp.MainButton.onClick(() => {
-            const post = async() => {
-                tgChangeButtonText("Завершается...")
-                await Trainings.readTraining(id)
-                tgChangeButtonText("Прочитано")
-            }
+        if(Trainings.training.next_article_in_new_section) {
+            tgChangeButtonText("Перейти к следующей теме")
+        }
 
-            post()
+        tgWebApp.MainButton.onClick(() => {
+            if(Trainings.viewed) {
+                navigate(`/trainings/${Trainings.training.next_article_id}`)
+            } else {
+                const post = async() => {
+                    tgChangeButtonText("Завершается...")
+                    await Trainings.readTraining(id)
+                    tgChangeButtonText("Прочитано")
+                }
+
+                post()
+            }
         })
+    }
+
+    const mainButtonUnmount = () => {
+        tgHideButton()
     }
 
     const browserRedirect = async() => {
@@ -55,7 +63,11 @@ const TrainingDetail = () => {
         }
 
         fetchData()
-        mainButtonInit()
+        mainButtonMount()
+
+        return () => {
+            mainButtonUnmount()
+        }
     }, [])
 
     return (
