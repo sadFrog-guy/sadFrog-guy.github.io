@@ -56,11 +56,10 @@ const TrainingDetail = () => {
 
     useEffect(() => {
         async function fetchData() {
+            tgWebApp.MainButton.hide()
             await Trainings.getOneTraining(id)
             setLoading(false)
         }
-
-        tgWebApp.MainButton.hide()
 
         fetchData()
 
