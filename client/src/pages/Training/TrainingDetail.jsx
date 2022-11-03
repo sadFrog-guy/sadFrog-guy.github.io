@@ -40,10 +40,14 @@ const TrainingDetail = () => {
             }
 
             tgButtonInitial()
-            tgMainButton.show()
+
+            setTimeout(() => {
+                tgMainButton.show()
+            }, 500)
 
             const onClickHandler = async() => {
                 if(Trainings.training.viewed) {
+                    tgButtonText(viewedStatus)
                     navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
                     navigate(0)
                 } else {
