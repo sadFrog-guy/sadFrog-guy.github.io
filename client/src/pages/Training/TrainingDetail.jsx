@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {matchPath, useHistory, useLocation, useParams} from "react-router-dom";
+import {matchPath, useHistory, useLocation, useNavigate, useParams} from "react-router-dom";
 import Navigation from "../../components/ui/GlobalUI/Navigation/Navigation";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {useContext, useEffect, useState} from "react";
