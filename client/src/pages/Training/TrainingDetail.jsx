@@ -60,13 +60,11 @@ const TrainingDetail = () => {
 
             tgButtonInitial()
 
-            setTimeout(() => {
-                if(Trainings.training.viewed && !Trainings.training.next_article_id) {
-                    tgMainButton.hide()
-                } else {
-                    tgMainButton.show()
-                }
-            }, 1500)
+            if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                tgMainButton.hide()
+            } else {
+                tgMainButton.show()
+            }
         }
     }
 
