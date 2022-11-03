@@ -54,7 +54,7 @@ const Training = () => {
                 </a>
             </Modal>
 
-            <Navigation>
+            <Navigation to="/">
                 Обучение
             </Navigation>
 

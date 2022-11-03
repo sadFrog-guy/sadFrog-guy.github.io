@@ -1007,8 +1007,17 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 /* training-item */
 
 .article_image-wrap {
-    background: #000;
+    background: #fff;
     border-radius: 26px;
+    margin-bottom: 20px;
+}
+
+.article_image-wrap:has(.video) {
+    background-color: #000;
+}
+
+.article_image-wrap:empty {
+    height: 0;
 }
 
 .video {
@@ -1100,7 +1109,6 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 .article-content {
     padding: 0 30px;
     padding-bottom: 27px;
-    padding-top: 20px;
     display: inline-flex;
     flex-direction: column;
 }

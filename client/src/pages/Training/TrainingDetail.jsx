@@ -40,6 +40,8 @@ const TrainingDetail = () => {
         }
 
         tgMainButton.onClick(() => {
+            console.log(Trainings.training.viewed)
+
             if(Trainings.training.viewed) {
                 navigate(`/trainings/${Trainings.training.next_article_id}`)
                 console.log(Trainings.training.next_article_id)
