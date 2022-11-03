@@ -40,6 +40,7 @@ const TrainingDetail = () => {
             const viewedOnClick = () => {
                 console.log('redirected to ' + Trainings.training.next_article_id)
                 navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
+                navigate(0)
             }
 
             const finishOnClick = async() => {
