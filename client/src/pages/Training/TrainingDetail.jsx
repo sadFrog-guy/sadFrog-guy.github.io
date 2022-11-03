@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {matchPath, useHistory, useLocation, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Navigation from "../../components/ui/GlobalUI/Navigation/Navigation";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {useContext, useEffect, useState} from "react";
@@ -7,11 +7,10 @@ import {Context} from "../../utils/context";
 import Wrap from "../../components/utils/Wrap/Wrap";
 import Text from "../../components/ui/GlobalUI/Text/Text";
 import {isIOS} from "../../utils/isIOS";
-import Button from "../../components/ui/GlobalUI/Button/Button";
 import {
     openLinkExternal,
     tgButtonText,
-    tgHideButton,
+    tgMainButton,
     tgToggleButton,
     tgWebApp
 } from "../../utils/consts";
@@ -38,7 +37,7 @@ const TrainingDetail = () => {
             tgButtonText("Перейти к следующей теме")
         }
 
-        tgWebApp.MainButton.onClick(() => {
+        tgMainButton.onClick(() => {
             if(Trainings.training.viewed) {
                 navigate(`/trainings/${Trainings.training.next_article_id}`)
             } else {
@@ -54,7 +53,7 @@ const TrainingDetail = () => {
     }
 
     const mainButtonUnmount = () => {
-        tgHideButton()
+        tgMainButton.hide()
     }
 
     const browserRedirect = async() => {
@@ -67,8 +66,8 @@ const TrainingDetail = () => {
             await Trainings.getOneTraining(id)
             setLoading(false)
         }
-
         fetchData()
+
         mainButtonMount()
 
         return () => {

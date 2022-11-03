@@ -1,7 +1,7 @@
 export const tgWebApp = window.Telegram.WebApp
 export const tgUser = tgWebApp.initDataUnsafe?.user
 export const tgID = 875571046//tgUser.id
-const tgMainButton = tgWebApp.MainButton
+export const tgMainButton = tgWebApp.MainButton
 
 export function openLinkExternal(link) {
     tgWebApp.openLink(link)
