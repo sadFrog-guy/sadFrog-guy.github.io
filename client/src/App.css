@@ -1007,7 +1007,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 /* training-item */
 
 .article_image-wrap {
-    background: #fff;
+    background: transparent;
     border-radius: 26px;
     margin-bottom: 20px;
 }
