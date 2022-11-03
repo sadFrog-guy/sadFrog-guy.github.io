@@ -38,6 +38,7 @@ const TrainingDetail = () => {
             tgMainButton.show()
 
             const viewedOnClick = () => {
+                console.log('redirected to ' + Trainings.training.next_article_id)
                 navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
             }
 
@@ -47,10 +48,12 @@ const TrainingDetail = () => {
                 tgButtonText(viewedStatus)
             }
 
-            if(tgMainButton.text === viewedStatus) {
+            if(Trainings.training.viewed) {
+                tgMainButton.offClick(finishOnClick)
                 tgButtonText(viewedStatus)
                 tgMainButton.onClick(viewedOnClick)
             } else {
+                tgMainButton.offClick(viewedOnClick)
                 tgButtonText(finishStatus)
                 tgMainButton.onClick(finishOnClick)
             }
