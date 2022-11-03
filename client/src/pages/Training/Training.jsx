@@ -36,16 +36,16 @@ const Training = () => {
 
     return (
         <Wrapper>
+            <TrainingModal
+                modalHide={modalHide}
+                modalActive={modalActive}
+            />
+
+            <Navigation to="/">
+                Обучение
+            </Navigation>
+
             <TrainingList title="Обучение">
-                <TrainingModal
-                    modalHide={modalHide}
-                    modalActive={modalActive}
-                />
-
-                <Navigation to="/">
-                    Обучение
-                </Navigation>
-
                 {Trainings.trainings.map(training => {
                     Trainings.checkAccess(training)
 
