@@ -6,7 +6,6 @@ export default new class StoreTrainings {
 
     trainings = []
     training = {}
-    viewed = false
     have_subscribe = false
     comment = ''
     link = ''
@@ -51,7 +50,9 @@ export default new class StoreTrainings {
     async readTraining(id) {
         try {
             await Trainings.readTraining(id)
-            this.viewed = true
+            const {data} = await Trainings.getOneTraining(id.id);
+
+            this.training = data
         } catch (e) {
             console.log(e)
         }

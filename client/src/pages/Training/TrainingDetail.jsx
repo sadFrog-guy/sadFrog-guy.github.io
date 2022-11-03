@@ -26,14 +26,14 @@ const TrainingDetail = () => {
     const [openInBrowser, setOpenInBrowser] = useState(false)
 
     const mainButtonMount = () => {
-        tgToggleButton(Trainings.viewed)
+        tgToggleButton(Trainings.trainingviewed)
 
         if(Trainings.training.next_article_in_new_section) {
             tgChangeButtonText("Перейти к следующей теме")
         }
 
         tgWebApp.MainButton.onClick(() => {
-            if(Trainings.viewed) {
+            if(Trainings.training.viewed) {
                 navigate(`/trainings/${Trainings.training.next_article_id}`)
             } else {
                 const post = async() => {
