@@ -45,7 +45,7 @@ const Referal = () => {
 
     const onShareTg = () => {
         const shareData = {
-            text: `Вот моя реферальная ссылка! - ${Referal.referalLink}`,
+            text: `Вот здесь я научился P2P`,
             link: Referal.referalLink
         }
 
