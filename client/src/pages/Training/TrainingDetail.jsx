@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Navigation from "../../components/ui/GlobalUI/Navigation/Navigation";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {useContext, useEffect, useState} from "react";
@@ -8,7 +8,7 @@ import Wrap from "../../components/utils/Wrap/Wrap";
 import Text from "../../components/ui/GlobalUI/Text/Text";
 import {isIOS} from "../../utils/isIOS";
 import {
-    openLinkExternal,
+    openLinkExternal, tgButtonInitial,
     tgButtonText,
     tgMainButton,
     tgToggleButton,
@@ -21,41 +21,38 @@ import fullscreen from "../../assets/icons/fullscreen.png";
 
 const TrainingDetail = () => {
     const id = useParams()
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const location = useLocation()
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
 
-    const mainButtonMount = () => {
-        setTimeout(tgToggleButton, 1000)
+    if(location.pathname.includes("/trainings/")) {
+        const viewedStatus = "Прочитано"
+        const finishStatus = "Завершить"
+        const finishPendingStatus = "Завершается..."
+
+        tgButtonInitial()
+
+        tgMainButton.show()
+
+        const viewedOnClick = async() => {
+            tgButtonText(finishPendingStatus)
+            await Trainings.readTraining(id)
+            tgButtonText(viewedStatus)
+        }
+
+        const finishOnClick = () => {
+
+        }
 
         if(Trainings.training.viewed) {
-            tgButtonText("Прочитано")
+            tgButtonText(viewedStatus)
+            tgMainButton.onClick(viewedOnClick)
         } else {
-            tgButtonText("Завершить")
+            tgButtonText(finishStatus)
+            tgMainButton.onClick(finishOnClick)
         }
-
-        if(Trainings.training.next_article_in_new_section) {
-            tgButtonText("Перейти к следующей теме")
-        }
-
-        tgMainButton.onClick(() => {
-            if(Trainings.training.viewed) {
-                navigate(`/trainings/${Trainings.training.next_article_id}`)
-            } else {
-                const post = async() => {
-                    tgButtonText("Завершается...")
-                    await Trainings.readTraining(id)
-                    tgButtonText("Прочитано")
-                }
-
-                post()
-            }
-        })
-    }
-
-    const mainButtonUnmount = () => {
-        tgMainButton.hide()
     }
 
     const browserRedirect = async() => {
@@ -75,14 +72,8 @@ const TrainingDetail = () => {
         async function fetchData() {
             await Trainings.getOneTraining(id)
             setLoading(false)
-
-            mainButtonMount()
         }
         fetchData()
-
-        return () => {
-            mainButtonUnmount()
-        }
     }, [])
 
     return (

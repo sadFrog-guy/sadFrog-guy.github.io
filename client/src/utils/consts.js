@@ -12,11 +12,9 @@ export function tgInintial() {
     tgWebApp.expand()
 }
 
-export function tgToggleButton() {
+export function tgButtonInitial() {
     tgMainButton.textColor = tgWebApp.themeParams.button_text_color
     tgMainButton.color = tgWebApp.themeParams.button_color
-
-    tgMainButton.show()
 }
 
 export function tgButtonText(text) {
