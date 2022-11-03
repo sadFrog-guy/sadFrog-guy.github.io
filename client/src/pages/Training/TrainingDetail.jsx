@@ -41,7 +41,12 @@ const TrainingDetail = () => {
                 } else {
                     tgButtonText(finishPendingStatus)
                     await Trainings.readTraining(id)
-                    tgButtonText(viewedStatus)
+
+                    if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                        tgMainButton.hide()
+                    } else {
+                        tgButtonText(viewedStatus)
+                    }
                 }
             }
 
