@@ -38,7 +38,7 @@ const TrainingDetail = () => {
             tgMainButton.show()
 
             const viewedOnClick = () => {
-                navigate('/trainings/' + Trainings.training.next_article_id)
+                navigate('/trainings/' + Trainings.training.next_article_id, {replace: state})
             }
 
             const finishOnClick = async() => {
