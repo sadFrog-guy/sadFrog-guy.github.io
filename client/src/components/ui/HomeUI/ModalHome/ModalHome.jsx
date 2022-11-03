@@ -25,12 +25,12 @@ const ModalHome = ({modalActive, modalHide}) => {
             <ModalText>
                 {User.checkAccess.comment}
             </ModalText>
-            <Link
-                to={User.checkAccess.link}
+            <a
+                href={User.checkAccess.link}
                 className="button-reusable modal-button"
             >
                 Перейти к оплате
-            </Link>
+            </a>
         </Modal>
     );
 };

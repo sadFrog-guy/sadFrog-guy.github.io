@@ -10,7 +10,7 @@ import {isIOS} from "../../utils/isIOS";
 import Button from "../../components/ui/GlobalUI/Button/Button";
 import {
     openLinkExternal,
-    tgChangeButtonText,
+    tgButtonText,
     tgHideButton,
     tgToggleButton,
     tgWebApp
@@ -26,10 +26,16 @@ const TrainingDetail = () => {
     const [openInBrowser, setOpenInBrowser] = useState(false)
 
     const mainButtonMount = () => {
-        tgToggleButton(Trainings.training.viewed)
+        setTimeout(tgToggleButton, 1000)
+
+        if(Trainings.training.viewed) {
+            tgButtonText("Прочитано")
+        } else {
+            tgButtonText("Завершить")
+        }
 
         if(Trainings.training.next_article_in_new_section) {
-            tgChangeButtonText("Перейти к следующей теме")
+            tgButtonText("Перейти к следующей теме")
         }
 
         tgWebApp.MainButton.onClick(() => {
@@ -37,9 +43,9 @@ const TrainingDetail = () => {
                 navigate(`/trainings/${Trainings.training.next_article_id}`)
             } else {
                 const post = async() => {
-                    tgChangeButtonText("Завершается...")
+                    tgButtonText("Завершается...")
                     await Trainings.readTraining(id)
-                    tgChangeButtonText("Прочитано")
+                    tgButtonText("Прочитано")
                 }
 
                 post()
@@ -94,8 +100,8 @@ const TrainingDetail = () => {
                         />
                     }
 
-                    {/*{isIOS() &&*/}
-                         <video
+                    {Trainings.training.video_url &&
+                        <video
                             controls
                             className="video"
                             disablePictureInPicture
@@ -103,15 +109,15 @@ const TrainingDetail = () => {
                             src={Trainings.training.video_url}
                             poster={Trainings.training.video_preview_image}
                         />
-                    {/*}*/}
-
-                    {openInBrowser &&
-                        <div className="go-to-browser">
-                            <Button onClick={browserRedirect} id="go-to-button">
-                                Перейти в браузер для просмотра урока
-                            </Button>
-                        </div>
                     }
+
+                    {/*{openInBrowser &&*/}
+                    {/*    <div className="go-to-browser">*/}
+                    {/*        <Button onClick={browserRedirect} id="go-to-button">*/}
+                    {/*            Перейти в браузер для просмотра урока*/}
+                    {/*        </Button>*/}
+                    {/*    </div>*/}
+                    {/*}*/}
                 </Wrap>
                 <Wrap className="article-content">
                     <Text type="medium" overrideClass="article_medium" id="article-bold">

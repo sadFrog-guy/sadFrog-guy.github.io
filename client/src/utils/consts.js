@@ -12,27 +12,13 @@ export function tgInintial() {
     tgWebApp.expand()
 }
 
-export function tgToggleButton(viewed) {
+export function tgToggleButton() {
     tgMainButton.textColor = tgWebApp.themeParams.button_text_color
     tgMainButton.color = tgWebApp.themeParams.button_color
-
-    if(viewed) {
-        tgMainButton.text = "Прочитано"
-    } else {
-        tgMainButton.text = "Завершить"
-    }
 
     tgMainButton.show()
 }
 
-export function tgHideButton() {
-    tgMainButton.hide()
-}
-
-export function tgChangeButtonText(text) {
+export function tgButtonText(text) {
     tgMainButton.text = text
-}
-
-export function tgButtonOnClick(callback) {
-    tgMainButton.onClick(callback)
 }
