@@ -28,9 +28,8 @@ const TrainingDetail = () => {
     const {Trainings} = useContext(Context);
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
-    const location = useLocation();
 
-    const trackScrolling = () => {
+    const mainButtonInit = () => {
         tgToggleButton(Trainings.training.viewed)
 
         tgWebApp.MainButton.onClick(() => {
@@ -44,23 +43,10 @@ const TrainingDetail = () => {
         })
     }
 
-    const trackNotScrolling = () => {
-        tgHideButton()
-    }
-
     const browserRedirect = async() => {
         await Trainings.getAccessToVideo(id)
         openLinkExternal(Trainings.video_link)
     }
-
-    const onPageEnd = () => {
-        if((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
-            trackScrolling()
-        } else {
-            trackNotScrolling()
-        }
-    }
-
 
     useEffect(() => {
         async function fetchData() {
@@ -69,16 +55,7 @@ const TrainingDetail = () => {
         }
 
         fetchData()
-
-        if(tgWebApp.MainButton.isVisible) {
-            tgWebApp.MainButton.hide()
-        }
-
-        window.addEventListener('scroll', onPageEnd)
-
-        return () => {
-            window.removeEventListener('scroll', onPageEnd)
-        }
+        mainButtonInit()
     }, [])
 
     return (
