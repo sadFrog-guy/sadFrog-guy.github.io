@@ -88,7 +88,7 @@ const TrainingDetail = () => {
         return () => {
             tgMainButton.hide()
         }
-    }, [Trainings.training])
+    }, [])
 
     return (
         <Wrapper>
