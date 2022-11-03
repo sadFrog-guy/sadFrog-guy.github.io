@@ -33,18 +33,6 @@ const TrainingDetail = () => {
             const finishStatus = "Завершить"
             const finishPendingStatus = "Завершается..."
 
-            if(Trainings.training.viewed) {
-                tgButtonText(viewedStatus)
-            } else {
-                tgButtonText(finishStatus)
-            }
-
-            tgButtonInitial()
-
-            setTimeout(() => {
-                tgMainButton.show()
-            }, 500)
-
             const onClickHandler = async() => {
                 if(Trainings.training.viewed) {
                     tgButtonText(viewedStatus)
@@ -58,6 +46,19 @@ const TrainingDetail = () => {
             }
 
             tgMainButton.onClick(onClickHandler)
+
+            if(Trainings.training.viewed) {
+                tgButtonText(viewedStatus)
+            } else {
+                tgButtonText(finishStatus)
+
+            }
+
+            tgButtonInitial()
+
+            setTimeout(() => {
+                tgMainButton.show()
+            }, 500)
         }
     }
 
