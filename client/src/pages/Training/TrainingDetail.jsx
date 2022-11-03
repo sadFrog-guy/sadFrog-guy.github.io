@@ -48,11 +48,7 @@ const TrainingDetail = () => {
             tgMainButton.onClick(onClickHandler)
 
             if(Trainings.training.viewed) {
-                if(Trainings.training.next_article_id) {
-                    tgButtonText(viewedStatus)
-                } else {
-                    tgMainButton.hide()
-                }
+                tgButtonText(viewedStatus)
             } else {
                 tgButtonText(finishStatus)
             }
@@ -60,8 +56,12 @@ const TrainingDetail = () => {
             tgButtonInitial()
 
             setTimeout(() => {
-                tgMainButton.show()
-            }, 500)
+                if(Trainings.training.viewed && Trainings.training.next_article_id) {
+                    tgMainButton.hide()
+                } else {
+                    tgMainButton.show()
+                }
+            }, 1500)
         }
     }
 
