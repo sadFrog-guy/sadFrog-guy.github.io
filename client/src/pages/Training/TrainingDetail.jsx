@@ -47,6 +47,7 @@ const TrainingDetail = () => {
 
             tgMainButton.onClick(onClickHandler)
 
+            console.log(Trainings.training.viewed)
             if(Trainings.training.viewed) {
                 console.log('viewed')
                 tgButtonText(viewedStatus)
