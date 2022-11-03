@@ -36,14 +36,14 @@ const TrainingDetail = () => {
 
         tgMainButton.show()
 
-        const viewedOnClick = async() => {
+        const viewedOnClick = () => {
+
+        }
+
+        const finishOnClick = async() => {
             tgButtonText(finishPendingStatus)
             await Trainings.readTraining(id)
             tgButtonText(viewedStatus)
-        }
-
-        const finishOnClick = () => {
-
         }
 
         if(Trainings.training.viewed) {
@@ -53,6 +53,8 @@ const TrainingDetail = () => {
             tgButtonText(finishStatus)
             tgMainButton.onClick(finishOnClick)
         }
+    } else {
+        tgMainButton.hide()
     }
 
     const browserRedirect = async() => {
