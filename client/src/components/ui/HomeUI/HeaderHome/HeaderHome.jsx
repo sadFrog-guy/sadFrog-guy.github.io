@@ -8,14 +8,14 @@ import Header from "../../GlobalUI/Header/Header";
 import {useContext} from "react";
 import {Context} from "../../../../utils/context";
 
-const HeaderHome = () => {
+const HeaderHome = ({avatarOnLoad}) => {
     const {User} = useContext(Context);
 
     return (
         <Header>
             <Wrap className="user-info">
                 <Text type="medium" id="username">{User.username}</Text>
-                <Avatar source={User.avatar}/>
+                <Avatar onLoad={avatarOnLoad} source={User.avatar}/>
             </Wrap>
             <LinkTG source={User.technical_support_link} id="settings-bubble">
                 <QuestionIcon/>

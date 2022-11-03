@@ -87,67 +87,71 @@ const TrainingDetail = () => {
 
     return (
         <Wrapper>
-            <Loader
-                isLoading={isLoading}
-            />
+            {!isLoading
+                ?
+                <Wrap className="article">
+                    <Navigation to="/trainings">
+                        Обучение
+                    </Navigation>
 
-            <Navigation to="/trainings">
-                Обучение
-            </Navigation>
+                    <h1 className="button-header article_button-header" id="article-title">
+                        {Trainings.training.title}
+                    </h1>
 
-            <Wrap className="article">
-                <h1 className="button-header article_button-header" id="article-title">
-                    {Trainings.training.title}
-                </h1>
-                <Wrap className="training-image-wrap article_image-wrap">
-                    {Trainings.training.image_url &&
-                         <img
-                            className="training-image" id="article-image"
-                            src={Trainings.training.image_url}
-                            rel="preload"
-                            alt=""
-                            onClick={() => {
-                                navigate(`/trainings/4`)
-                            }}
-                        />
-                    }
-
-                    {Trainings.training.video_url &&
-                        <Wrap className="video-wrapper">
-                            <video
-                                controls
-                                className="video"
-                                disablePictureInPicture
-                                controlsList={`noplaybackrate nodownload ${isIOS() === false ? 'nofullscreen' : ''}`}
-                                src={Trainings.training.video_url}
-                                poster={Trainings.training.video_preview_image}
+                    <Wrap className="training-image-wrap article_image-wrap">
+                        {Trainings.training.image_url &&
+                            <img
+                                className="training-image" id="article-image"
+                                src={Trainings.training.image_url}
+                                rel="preload"
+                                alt=""
+                                onClick={() => {
+                                    navigate(`/trainings/4`)
+                                }}
                             />
-                            {!isIOS() &&
-                                <div className="fullscreen-button" onClick={onFullscreen}>
-                                    <img className="icon-fullscreen" src={fullscreen} alt=""/>
-                                </div>
-                            }
+                        }
 
-                            <div className={`go-to-browser ${openInBrowser ? 'active' : ''}`}>
-                                <Button onClick={browserRedirect} id="go-to-button">
-                                    Перейти в браузер для просмотра урока
-                                </Button>
-                                <div className="fullscreen-button go-to" onClick={onFullscreen}>
-                                    <img className="icon-fullscreen" src={fullscreen} alt=""/>
+                        {Trainings.training.video_url &&
+                            <Wrap className="video-wrapper">
+                                <video
+                                    controls
+                                    className="video"
+                                    disablePictureInPicture
+                                    controlsList={`noplaybackrate nodownload ${isIOS() === false ? 'nofullscreen' : ''}`}
+                                    src={Trainings.training.video_url}
+                                    poster={Trainings.training.video_preview_image}
+                                />
+                                {!isIOS() &&
+                                    <div className="fullscreen-button" onClick={onFullscreen}>
+                                        <img className="icon-fullscreen" src={fullscreen} alt=""/>
+                                    </div>
+                                }
+
+                                <div className={`go-to-browser ${openInBrowser ? 'active' : ''}`}>
+                                    <Button onClick={browserRedirect} id="go-to-button">
+                                        Перейти в браузер для просмотра урока
+                                    </Button>
+                                    <div className="fullscreen-button go-to" onClick={onFullscreen}>
+                                        <img className="icon-fullscreen" src={fullscreen} alt=""/>
+                                    </div>
                                 </div>
-                            </div>
-                        </Wrap>
-                    }
+                            </Wrap>
+                        }
+                    </Wrap>
+                    <Wrap className="article-content">
+                        <Text type="medium" overrideClass="article_medium" id="article-bold">
+                            {Trainings.training.bold_text}
+                        </Text>
+                        <Text type="medium" overrideClass="text article_text" id="article-content">
+                            {Trainings.training.main_text}
+                        </Text>
+                    </Wrap>
                 </Wrap>
-                <Wrap className="article-content">
-                    <Text type="medium" overrideClass="article_medium" id="article-bold">
-                        {Trainings.training.bold_text}
-                    </Text>
-                    <Text type="medium" overrideClass="text article_text" id="article-content">
-                        {Trainings.training.main_text}
-                    </Text>
-                </Wrap>
-            </Wrap>
+                :
+                <Loader
+                    isLoading={isLoading}
+                />
+            }
         </Wrapper>
     );
 };

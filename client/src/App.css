@@ -497,6 +497,10 @@ img {
     background-color: #1c1c1e;
 }
 
+.wrapper.hidden {
+    display: none;
+}
+
 /* loader */
 
 .loader-wrap {

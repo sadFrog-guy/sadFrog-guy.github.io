@@ -19,6 +19,7 @@ const Home = () => {
     const {modalActive, modalHide, modalShow} = useModal()
     const {subscribtion, isSubscribtionStarter, subscribeTimer} = useTimeout()
     const [isLoading, setLoading] = useState(true)
+    const [isLoaded, setLoaded] = useState(false)
 
     useEffect(() => {
         tgInintial()
@@ -26,36 +27,43 @@ const Home = () => {
         async function fetchData() {
             await User.getUserInfo()
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
-            setLoading(false)
+
+            if(isLoaded) {
+                setLoading(false)
+            }
         }
+
         fetchData()
-    }, [])
+    }, [isLoaded])
 
     return (
         <Wrapper>
-            <Loader
-                isLoading={isLoading}
-            />
+            {!isLoading
+                ?
+                <WrapperHome>
+                    <ModalHome
+                        modalActive={modalActive}
+                        modalHide={modalHide}
+                    />
 
-            <ModalHome
-                modalActive={modalActive}
-                modalHide={modalHide}
-            />
+                    <HeaderHome avatarOnLoad={() => setLoaded(true)} />
 
-            <WrapperHome>
-                <HeaderHome/>
+                    <ButtonList
+                        modalShow={modalShow}
+                    />
 
-                <ButtonList
-                    modalShow={modalShow}
+                    <Subscribtion
+                        isSubscribtionStarter={isSubscribtionStarter}
+                        subscribtion={subscribtion}
+                    />
+
+                    <FooterHome/>
+                </WrapperHome>
+                :
+                <Loader
+                    isLoading={isLoading}
                 />
-
-                <Subscribtion
-                    isSubscribtionStarter={isSubscribtionStarter}
-                    subscribtion={subscribtion}
-                />
-
-                <FooterHome/>
-            </WrapperHome>
+            }
         </Wrapper>
     );
 };

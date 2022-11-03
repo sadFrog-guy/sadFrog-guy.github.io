@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Avatar = ({source}) => {
+const Avatar = ({source, onLoad}) => {
     return (
         <div className="avatar-wrap">
-            <img src={source} id="avatar" alt="avatar"/>
+            <img src={source} onLoad={onLoad} id="avatar" alt="avatar"/>
         </div>
     );
 };

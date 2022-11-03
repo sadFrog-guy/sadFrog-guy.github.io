@@ -15,6 +15,7 @@ import ModalText from "../../components/ui/ModalUI/ModalText/ModalText";
 import {Link, useNavigate} from "react-router-dom";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {tgWebApp} from "../../utils/consts";
+import TrainingModal from "../../components/ui/TrainingUI/TrainingModal/TrainingModal";
 
 const Training = () => {
     const {Trainings} = useContext(Context);
@@ -35,48 +36,37 @@ const Training = () => {
 
     return (
         <Wrapper>
-            <Loader
-                isLoading={isLoading}
-            />
+            {!isLoading
+                ?
+                <TrainingList title="Обучение">
+                    <TrainingModal
+                        modalHide={modalHide}
+                        modalActive={modalActive}
+                    />
 
-            <Modal isActive={modalActive} modalHide={modalHide}>
-                <Dragger/>
-                <span className="modal-header-wrap">
-                    <ModalHeader>
-                        Ошибка
-                    </ModalHeader>
-                    <LockIcon color={tgWebApp.colorScheme === 'dark' ? '#fff' : '#000'}/>
-                </span>
-                <ModalText>
-                    {Trainings.comment}
-                </ModalText>
-                <a
-                    href={Trainings.link}
-                    className="button-reusable modal-button"
-                >
-                    Перейти к оплате
-                </a>
-            </Modal>
+                    <Navigation to="/">
+                        Обучение
+                    </Navigation>
 
-            <Navigation to="/">
-                Обучение
-            </Navigation>
+                    {Trainings.trainings.map(training => {
+                        Trainings.checkAccess(training)
 
-            <TrainingList title="Обучение">
-                {Trainings.trainings.map(training => {
-                    Trainings.checkAccess(training)
-
-                    return (
-                        <TrainingItem
-                            id={training.id}
-                            key={training.id}
-                            trainingInfo={training}
-                            imageOnLoad={() => setLoaded(true)}
-                            onClick={training.allowed_viewing ? () => {} : modalShow}
-                        />
-                    )
-                })}
-            </TrainingList>
+                        return (
+                            <TrainingItem
+                                id={training.id}
+                                key={training.id}
+                                trainingInfo={training}
+                                imageOnLoad={() => setLoaded(true)}
+                                onClick={training.allowed_viewing ? () => {} : modalShow}
+                            />
+                        )
+                    })}
+                </TrainingList>
+                :
+                <Loader
+                    isLoading={isLoading}
+                />
+            }
         </Wrapper>
     );
 };
