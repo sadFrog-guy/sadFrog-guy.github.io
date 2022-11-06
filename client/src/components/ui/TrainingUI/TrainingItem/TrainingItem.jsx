@@ -16,7 +16,7 @@ import useModal from "../../../../hooks/useModal";
 
 const TrainingItem = ({trainingInfo, imageOnLoad, ...props}) => {
     const [isShow, setShow] = useState(false)
-    const {modalShow} = useModal()
+    const {modalActive, modalHide, modalShow} = useModal()
 
     const toggleContentHandler = () => {
         if(trainingInfo.allowed_viewing) {
@@ -60,16 +60,17 @@ const TrainingItem = ({trainingInfo, imageOnLoad, ...props}) => {
                         const isAllowed = subitem.allowed_viewing
                         const condition = isFirst || isAllowed || isViewed
 
+                        modalShow()
+
                         return <TrainingSubitem
-                            key={subitem.id}
-                            id={subitem.id}
-                            subitemInfo={subitem}
-                            viewed={subitem.viewed}
-                            to={condition ? `/trainings/${subitem.id}` : ''}
-                            active={!!condition}
-                            allowedViewing={subitem.allowed_viewing}
-                            onClick={subitem.allowed_viewing ? () => {} : modalShow}
-                        />
+                                    key={subitem.id}
+                                    id={subitem.id}
+                                    subitemInfo={subitem}
+                                    viewed={subitem.viewed}
+                                    to={condition ? `/trainings/${subitem.id}` : ''}
+                                    active={!!condition}
+                                    allowedViewing={subitem.allowed_viewing}
+                                />
                     })}
                 </TrainingSubitemList>
             }
