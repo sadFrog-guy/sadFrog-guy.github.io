@@ -31,6 +31,11 @@ const Referal = () => {
     const {modalActive, modalHide, modalShow} = useModal()
     const [isLoading, setLoading] = useState(true)
 
+    const shareData = {
+        text: `Вот здесь я научился P2P`,
+        link: Referal.referalLink
+    }
+
     useEffect(() => {
         async function fetchData() {
             await Referal.getReferalInfo()
@@ -40,20 +45,11 @@ const Referal = () => {
     }, [])
 
     const onShare = async() => {
-        await navigator.share({ title: "Вот моя реферальная ссылка!", url: Referal.referalLink })
+        await navigator.share({ text: shareData.text, url: shareData.link })
     }
 
     const onShareTg = () => {
-        const shareData = {
-            text: `Вот здесь я научился P2P`,
-            link: Referal.referalLink
-        }
-
-        if(isIOS()) {
-            window.location.href = `tg://msg?url=${shareData.link}&text=${shareData.text}`
-        } else {
-            window.location.href = `https://telegram.me/share/url?url=${shareData.link}&text=${shareData.text}`
-        }
+        window.location.href = `https://telegram.me/share/url?url=${shareData.link}&text=${shareData.text}`
     }
 
     return (

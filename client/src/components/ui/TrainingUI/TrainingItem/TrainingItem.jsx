@@ -12,9 +12,11 @@ import {toJS} from "mobx";
 import {observer} from "mobx-react-lite";
 import CheckIcon from "../../../icons/CheckIcon/CheckIcon";
 import {tgWebApp} from "../../../../utils/consts";
+import useModal from "../../../../hooks/useModal";
 
 const TrainingItem = ({trainingInfo, imageOnLoad, ...props}) => {
     const [isShow, setShow] = useState(false)
+    const {modalActive, modalHide, modalShow} = useModal()
 
     const toggleContentHandler = () => {
         if(trainingInfo.allowed_viewing) {
@@ -52,31 +54,21 @@ const TrainingItem = ({trainingInfo, imageOnLoad, ...props}) => {
             </TrainingBrief>
             {trainingInfo.allowed_viewing &&
                 <TrainingSubitemList isShow={isShow}>
-                    {trainingInfo.subsections.map((subitem, index, array) => {
-                        const isNextNotViewed = array[index + 1] !== undefined && array[index + 1].viewed === false
+                    {trainingInfo.subsections.map((subitem, index) => {
                         const isFirst = (index === 0)
                         const isViewed = subitem.viewed
                         const isAllowed = subitem.allowed_viewing
-
-                        if(isFirst || isAllowed || isViewed) {
-                            return <TrainingSubitem
-                                key={subitem.id}
-                                id={subitem.id}
-                                subitemInfo={subitem}
-                                viewed={subitem.viewed}
-                                to={`/trainings/${subitem.id}`}
-                                active={true}
-                                allowedViewing={subitem.allowed_viewing}
-                            />
-                        }
+                        const condition = isFirst || isAllowed || isViewed
 
                         return <TrainingSubitem
                             key={subitem.id}
                             id={subitem.id}
                             subitemInfo={subitem}
                             viewed={subitem.viewed}
-                            active={false}
+                            to={condition ? `/trainings/${subitem.id}` : ''}
+                            active={!!condition}
                             allowedViewing={subitem.allowed_viewing}
+                            onClick={modalShow}
                         />
                     })}
                 </TrainingSubitemList>
