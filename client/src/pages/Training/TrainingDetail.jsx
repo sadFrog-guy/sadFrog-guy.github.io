@@ -23,6 +23,7 @@ const TrainingDetail = () => {
     const id = useParams()
     const navigate = useNavigate()
     const location = useLocation()
+    const videoRef = useRef(null)
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
@@ -77,8 +78,10 @@ const TrainingDetail = () => {
     const onFullscreen = () => {
         if(openInBrowser) {
             setOpenInBrowser(false)
+            videoRef.current.play()
         } else {
             setOpenInBrowser(true)
+            videoRef.current.pause()
         }
     }
 
@@ -130,6 +133,7 @@ const TrainingDetail = () => {
                                     controlsList={`noplaybackrate nodownload ${isIOS() === false ? 'nofullscreen' : ''}`}
                                     src={Trainings.training.video_url}
                                     poster={Trainings.training.video_preview_image}
+                                    ref={videoRef}
                                 />
                                 {!isIOS() &&
                                     <div className="fullscreen-button" onClick={onFullscreen}>
