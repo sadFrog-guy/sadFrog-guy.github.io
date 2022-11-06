@@ -14,9 +14,8 @@ import CheckIcon from "../../../icons/CheckIcon/CheckIcon";
 import {tgWebApp} from "../../../../utils/consts";
 import useModal from "../../../../hooks/useModal";
 
-const TrainingItem = ({trainingInfo, imageOnLoad, ...props}) => {
+const TrainingItem = ({trainingInfo, imageOnLoad, modalshow, ...props}) => {
     const [isShow, setShow] = useState(false)
-    const {modalActive, modalHide, modalShow} = useModal()
 
     const toggleContentHandler = () => {
         if(trainingInfo.allowed_viewing) {
@@ -67,7 +66,7 @@ const TrainingItem = ({trainingInfo, imageOnLoad, ...props}) => {
                                     viewed={subitem.viewed}
                                     to={condition ? `/trainings/${subitem.id}` : ''}
                                     active={!!condition}
-                                    onClick={() => modalShow()}
+                                    onClick={modalshow}
                                     allowedViewing={subitem.allowed_viewing}
                                 />
                     })}

@@ -55,6 +55,7 @@ const Training = () => {
                             key={training.id}
                             trainingInfo={training}
                             imageOnLoad={() => setLoaded(true)}
+                            modalshow={modalShow}
                             onClick={training.allowed_viewing ? () => {} : modalShow}
                         />
                     )
