@@ -16,7 +16,7 @@ import useModal from "../../../../hooks/useModal";
 
 const TrainingItem = ({trainingInfo, imageOnLoad, ...props}) => {
     const [isShow, setShow] = useState(false)
-    const {modalActive, modalHide, modalShow} = useModal()
+    const {modalShow} = useModal()
 
     const toggleContentHandler = () => {
         if(trainingInfo.allowed_viewing) {
