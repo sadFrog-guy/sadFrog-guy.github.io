@@ -889,7 +889,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
     padding: 30px;
     padding-top: 0;
     background-color: #fff;
-    transition: border-radius .1s;
+    transition: border-radius .5s;
     position: relative;
 }
 
@@ -959,7 +959,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 
 .training-content.training-content_page.active {
     max-height: 9999px;
-    transition: max-height 0.2s cubic-bezier(1, 0, 1, 0);
+    transition: max-height .35s cubic-bezier(0,1,0,1);
 }
 
 .training-text {
@@ -969,8 +969,11 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 .training-content.training-content_page{
     overflow: hidden;
     max-height: 0;
-    transition: max-height 0.15s cubic-bezier(0, 1, 0, 1);;
+    transition: max-height .35s cubic-bezier(0,1,0,1);
     background: linear-gradient(180deg, #C8F660 0%, #D1F779 100%);
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 .training-content-inner {
@@ -978,6 +981,11 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
     border-bottom-left-radius: 32px;
     border-bottom-right-radius: 32px;
     background-color: #fff;
+    width: 85%;
+}
+
+.training-content.training-content_page.active > .training-content-inner {
+    width: 100%;
 }
 
 .training_medium {
