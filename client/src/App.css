@@ -889,7 +889,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
     padding: 30px;
     padding-top: 0;
     background-color: #fff;
-    transition: border-radius .5s;
+    transition: border-radius .1s;
     position: relative;
 }
 
@@ -899,7 +899,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 
 .brief-bg {
     transform: translateY(-95%);
-    background-color: #ffffff;
+    background-color: #fff;
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
     height: 30px;
@@ -959,7 +959,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 
 .training-content.training-content_page.active {
     max-height: 9999px;
-    transition: max-height .35s cubic-bezier(0,1,0,1);
+    transition: max-height 0.2s cubic-bezier(1, 0, 1, 0);
 }
 
 .training-text {
@@ -969,7 +969,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 .training-content.training-content_page{
     overflow: hidden;
     max-height: 0;
-    transition: max-height .35s cubic-bezier(0,1,0,1);
+    transition: max-height 0.15s cubic-bezier(0, 1, 0, 1);;
     background: linear-gradient(180deg, #C8F660 0%, #D1F779 100%);
 }
 
