@@ -8,15 +8,23 @@ import Text from "../../GlobalUI/Text/Text";
 import ArrowIcon from "../../../icons/ArrowIcon/ArrowIcon";
 import LockIcon from "../../../icons/LockIcon/LockIcon";
 import {Context} from "../../../../utils/context";
-import {haptic, vibrationDuration} from "../../../../utils/consts";
+import {haptic, heavyHaptic, lightHaptic, mediumHaptic, vibrationDuration} from "../../../../utils/consts";
 
 const ButtonList = ({modalShow}) => {
     const {User} = useContext(Context);
 
     const linkOnClick = (e) => {
-        haptic()
+        if(e.target.id === 'training') {
+            heavyHaptic()
+        }
 
-        console.log(e.target)
+        if(e.target.id === 'calculator') {
+            mediumHaptic()
+        }
+
+        if(e.target.id === 'ref') {
+            lightHaptic()
+        }
 
         if(!User.user.allowed_training || !User.user.allowed_calculator) {
             modalShow()
