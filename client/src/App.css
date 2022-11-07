@@ -975,9 +975,15 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 
 .training-content-inner {
     padding: 0 30px;
-    border-bottom-left-radius: 32px;
-    border-bottom-right-radius: 32px;
+    border-radius: 32px;
     background-color: #fff;
+    transition: border-radius .1s;
+}
+
+.training-content.training-content_page.active > .training-content-inner {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    transition: border-radius .1s;
 }
 
 .training_medium {
