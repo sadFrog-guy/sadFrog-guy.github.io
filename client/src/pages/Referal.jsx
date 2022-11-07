@@ -82,10 +82,10 @@ const Referal = () => {
                         </ReferalDescription>
                     </Wrap>
                     <Wrap className="share-wrap">
-                        <CopyButton onClick={onClickHandler} onCopy={onCopyHandler} text={Referal.referalLink}>
+                        <CopyButton onCopy={onCopyHandler} text={Referal.referalLink}>
                             <Copied isCopied={copied}>Скопировано</Copied>
 
-                            <Text type="medium" id="referal-link">
+                            <Text onClick={onClickHandler} type="medium" id="referal-link">
                                 {Referal.referalLink}
                             </Text>
 

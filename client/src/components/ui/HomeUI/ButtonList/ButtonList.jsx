@@ -60,6 +60,7 @@ const ButtonList = ({modalShow}) => {
                 to={LINK_REFERAL}
                 className="button"
                 id="ref"
+                onClick={linkOnClick}
             >
                 Реферальная система
                 <Wrap className="bubble-wrap bubble-wrap_main arrow-wrap">

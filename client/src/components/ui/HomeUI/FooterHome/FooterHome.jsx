@@ -6,9 +6,14 @@ import TelegramIcon from "../../../icons/TelegramIcon/TelegramIcon";
 import Footer from "../../GlobalUI/Footer/Footer";
 import {useContext} from "react";
 import {Context} from "../../../../utils/context";
+import {vibrationDuration} from "../../../../utils/consts";
 
 const FooterHome = () => {
     const {User} = useContext(Context);
+
+    const linkOnClick = () => {
+        window.navigator.vibrate(vibrationDuration)
+    }
 
     return (
         <Footer>
@@ -20,6 +25,7 @@ const FooterHome = () => {
                 <LinkTG
                     source={User.user.course_support_link}
                     id="telegram"
+                    onClick={linkOnClick}
                 >
                     Напишите нам
                 </LinkTG>
