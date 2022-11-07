@@ -13,8 +13,10 @@ import {haptic, vibrationDuration} from "../../../../utils/consts";
 const ButtonList = ({modalShow}) => {
     const {User} = useContext(Context);
 
-    const linkOnClick = () => {
+    const linkOnClick = (e) => {
         haptic()
+
+        console.log(e.target)
 
         if(!User.user.allowed_training || !User.user.allowed_calculator) {
             modalShow()
