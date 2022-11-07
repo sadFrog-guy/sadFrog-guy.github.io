@@ -71,6 +71,7 @@ const TrainingDetail = () => {
     }
 
     const browserRedirect = async() => {
+        window.navigator.vibrate(200)
         await Trainings.getAccessToVideo(id)
         openLinkExternal(Trainings.video_link)
     }

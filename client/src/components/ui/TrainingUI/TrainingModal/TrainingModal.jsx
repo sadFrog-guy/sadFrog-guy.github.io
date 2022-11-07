@@ -7,6 +7,7 @@ import ModalText from "../../ModalUI/ModalText/ModalText";
 import Modal from "../../ModalUI/Modal/Modal";
 import {useContext} from "react";
 import {Context} from "../../../../utils/context";
+import Button from "../../GlobalUI/Button/Button";
 
 const TrainingModal = ({modalActive, modalHide}) => {
     const {Trainings} = useContext(Context);
@@ -23,12 +24,13 @@ const TrainingModal = ({modalActive, modalHide}) => {
             <ModalText>
                 {Trainings.comment}
             </ModalText>
-            <a
+            <Button
+                onClick={() => window.navigator.vibrate(200)}
                 href={Trainings.link}
                 className="button-reusable modal-button"
             >
                 Перейти к оплате
-            </a>
+            </Button>
         </Modal>
     );
 };

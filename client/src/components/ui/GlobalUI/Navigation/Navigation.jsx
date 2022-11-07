@@ -5,9 +5,14 @@ import {useNavigate} from "react-router-dom";
 const Navigation = ({children, to}) => {
     const navigate = useNavigate()
 
+    const navigationOnClick = () => {
+        window.navigator.vibrate(200)
+        navigate(to ? to : -1)
+    }
+
     return (
         <header className="header referal_header training_header">
-            <div className="bubble-wrap bubble-wrap_referal bubble-arrow-wrap" onClick={() => navigate(to ? to : -1)}>
+            <div className="bubble-wrap bubble-wrap_referal bubble-arrow-wrap" onClick={navigationOnClick}>
                 <ArrowIcon color="#000"/>
             </div>
             <span className="medium">

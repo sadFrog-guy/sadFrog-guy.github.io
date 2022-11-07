@@ -45,10 +45,12 @@ const Referal = () => {
     }, [])
 
     const onShare = async() => {
+        window.navigator.vibrate(200)
         await navigator.share({ text: shareData.text, url: shareData.link })
     }
 
     const onShareTg = () => {
+        window.navigator.vibrate(200)
         window.location.href = `https://telegram.me/share/url?url=${shareData.link}&text=${shareData.text}`
     }
 

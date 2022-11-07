@@ -9,6 +9,7 @@ import Modal from "../../ModalUI/Modal/Modal";
 import {useContext} from "react";
 import {Context} from "../../../../utils/context";
 import {tgWebApp} from "../../../../utils/consts";
+import Button from "../../GlobalUI/Button/Button";
 
 const ModalHome = ({modalActive, modalHide}) => {
     const {User} = useContext(Context);
@@ -25,12 +26,12 @@ const ModalHome = ({modalActive, modalHide}) => {
             <ModalText>
                 {User.checkAccess.comment}
             </ModalText>
-            <a
+            <Button
                 href={User.checkAccess.link}
                 className="button-reusable modal-button"
             >
                 Перейти к оплате
-            </a>
+            </Button>
         </Modal>
     );
 };
