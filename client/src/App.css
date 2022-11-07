@@ -980,10 +980,6 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
     background-color: #fff;
 }
 
-.training-content.training-content_page.active > .training-content-inner {
-    width: 100%;
-}
-
 .training_medium {
     font-size: 20px;
     margin-bottom: 27px;
