@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 import Modal from "../../ModalUI/Modal/Modal";
 import {useContext} from "react";
 import {Context} from "../../../../utils/context";
-import {tgWebApp} from "../../../../utils/consts";
+import {tgWebApp, vibrationDuration} from "../../../../utils/consts";
 import Button from "../../GlobalUI/Button/Button";
 
 const ModalHome = ({modalActive, modalHide}) => {
@@ -29,6 +29,7 @@ const ModalHome = ({modalActive, modalHide}) => {
             <Button
                 href={User.checkAccess.link}
                 className="button-reusable modal-button"
+                onClick={() => window.navigator.vibrate(vibrationDuration)}
             >
                 Перейти к оплате
             </Button>

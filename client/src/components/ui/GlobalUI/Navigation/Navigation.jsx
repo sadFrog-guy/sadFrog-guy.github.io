@@ -6,7 +6,7 @@ const Navigation = ({children, to}) => {
     const navigate = useNavigate()
 
     const navigationOnClick = () => {
-        window.navigator.vibrate(200)
+        window.navigator.vibrate(vibrationDuration)
         navigate(to ? to : -1)
     }
 

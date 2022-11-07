@@ -2,6 +2,7 @@ export const tgWebApp = window.Telegram.WebApp
 export const tgUser = tgWebApp.initDataUnsafe?.user
 export const tgID = tgUser.id
 export const tgMainButton = tgWebApp.MainButton
+export const vibrationDuration = 100
 
 export function openLinkExternal(link) {
     tgWebApp.openLink(link)

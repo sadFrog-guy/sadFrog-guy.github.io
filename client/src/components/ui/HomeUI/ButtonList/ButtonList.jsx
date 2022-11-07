@@ -8,15 +8,24 @@ import Text from "../../GlobalUI/Text/Text";
 import ArrowIcon from "../../../icons/ArrowIcon/ArrowIcon";
 import LockIcon from "../../../icons/LockIcon/LockIcon";
 import {Context} from "../../../../utils/context";
+import {vibrationDuration} from "../../../../utils/consts";
 
 const ButtonList = ({modalShow}) => {
     const {User} = useContext(Context);
+
+    const linkOnClick = () => {
+        window.navigator.vibrate(vibrationDuration)
+
+        if(!User.user.allowed_training || !User.user.allowed_calculator) {
+            modalShow()
+        }
+    }
 
     return (
         <Wrap className="button-group">
             <Link
                 to={User.user.allowed_training ? LINK_TRAININGS : ''}
-                onClick={User.user.allowed_training && modalShow}
+                onClick={linkOnClick}
                 className="button"
                 id="training"
             >
@@ -34,7 +43,7 @@ const ButtonList = ({modalShow}) => {
             </Link>
             <Link
                 to={User.user.allowed_calculator ? LINK_CALCULATOR : ''}
-                onClick={!User.user.allowed_calculator ? modalShow : {}}
+                onClick={linkOnClick}
                 className="button"
                 id="calculator"
             >
@@ -47,7 +56,11 @@ const ButtonList = ({modalShow}) => {
                     }
                 </SectionHeader>
             </Link>
-            <Link to={LINK_REFERAL} className="button" id="ref">
+            <Link
+                to={LINK_REFERAL}
+                className="button"
+                id="ref"
+            >
                 Реферальная система
                 <Wrap className="bubble-wrap bubble-wrap_main arrow-wrap">
                     <ArrowIcon/>

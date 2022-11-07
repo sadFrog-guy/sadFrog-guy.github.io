@@ -12,7 +12,7 @@ import {
     tgButtonText,
     tgMainButton,
     tgToggleButton,
-    tgWebApp
+    tgWebApp, vibrationDuration
 } from "../../utils/consts";
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
 import {observer} from "mobx-react-lite";
@@ -35,6 +35,8 @@ const TrainingDetail = () => {
             const finishPendingStatus = "Завершается..."
 
             const onClickHandler = async() => {
+                window.navigator.vibrate(vibrationDuration)
+
                 if(Trainings.training.viewed) {
                     navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
                     navigate(0)
@@ -46,7 +48,7 @@ const TrainingDetail = () => {
                     if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                         tgMainButton.hide()
                     } else {
-                        navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
+                        navigate('/trainings/' + Trainings.training.next_article_id)
                         navigate(0)
                     }
                 }
@@ -71,7 +73,7 @@ const TrainingDetail = () => {
     }
 
     const browserRedirect = async() => {
-        window.navigator.vibrate(200)
+        window.navigator.vibrate(vibrationDuration)
         await Trainings.getAccessToVideo(id)
         openLinkExternal(Trainings.video_link)
     }
