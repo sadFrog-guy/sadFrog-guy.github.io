@@ -13,7 +13,7 @@ const HeaderHome = ({avatarOnLoad}) => {
     const {User} = useContext(Context);
 
     const linkOnClick = () => {
-        window.navigator.vibrate(vibrationDuration)
+        window.navigator.vibrate(3)
     }
 
     return (
