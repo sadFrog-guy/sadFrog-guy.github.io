@@ -8,6 +8,7 @@ import Wrap from "../../components/utils/Wrap/Wrap";
 import Text from "../../components/ui/GlobalUI/Text/Text";
 import {isIOS} from "../../utils/isIOS";
 import {
+    haptic,
     openLinkExternal, tgButtonInitial,
     tgButtonText,
     tgMainButton,
@@ -35,7 +36,7 @@ const TrainingDetail = () => {
             const finishPendingStatus = "Завершается..."
 
             const onClickHandler = async() => {
-                window.navigator.vibrate(vibrationDuration)
+                haptic()
 
                 if(Trainings.training.viewed) {
                     navigate('/trainings/' + Trainings.training.next_article_id, {replace: true})
@@ -73,7 +74,8 @@ const TrainingDetail = () => {
     }
 
     const browserRedirect = async() => {
-        window.navigator.vibrate(vibrationDuration)
+        haptic()
+
         await Trainings.getAccessToVideo(id)
         openLinkExternal(Trainings.video_link)
     }

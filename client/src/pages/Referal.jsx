@@ -20,7 +20,7 @@ import Button from "../components/ui/GlobalUI/Button/Button";
 import {useCopy} from "../hooks/useCopy";
 import Loader from "../components/ui/GlobalUI/Loader/Loader";
 import {isIOS} from "../utils/isIOS";
-import {tgWebApp, vibrationDuration} from "../utils/consts";
+import {haptic, tgWebApp} from "../utils/consts";
 
 const Referal = () => {
 
@@ -44,17 +44,13 @@ const Referal = () => {
         fetchData()
     }, [])
 
-    const onClickHandler = () => {
-        window.navigator.vibrate(vibrationDuration)
-    }
-
     const onShare = async() => {
-        window.navigator.vibrate(vibrationDuration)
+        haptic()
         await navigator.share({ text: shareData.text, url: shareData.link })
     }
 
     const onShareTg = () => {
-        window.navigator.vibrate(vibrationDuration)
+        haptic()
         window.location.href = `https://telegram.me/share/url?url=${shareData.link}&text=${shareData.text}`
     }
 
@@ -85,7 +81,7 @@ const Referal = () => {
                         <CopyButton onCopy={onCopyHandler} text={Referal.referalLink}>
                             <Copied isCopied={copied}>Скопировано</Copied>
 
-                            <Text onClick={onClickHandler} type="medium" id="referal-link">
+                            <Text onClick={haptic} type="medium" id="referal-link">
                                 {Referal.referalLink}
                             </Text>
 

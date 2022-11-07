@@ -8,13 +8,13 @@ import Text from "../../GlobalUI/Text/Text";
 import ArrowIcon from "../../../icons/ArrowIcon/ArrowIcon";
 import LockIcon from "../../../icons/LockIcon/LockIcon";
 import {Context} from "../../../../utils/context";
-import {vibrationDuration} from "../../../../utils/consts";
+import {haptic, vibrationDuration} from "../../../../utils/consts";
 
 const ButtonList = ({modalShow}) => {
     const {User} = useContext(Context);
 
     const linkOnClick = () => {
-        window.navigator.vibrate(vibrationDuration)
+        haptic()
 
         if(!User.user.allowed_training || !User.user.allowed_calculator) {
             modalShow()

@@ -2,7 +2,7 @@ import React from 'react';
 import Dragger from "../../ModalUI/Dragger/Dragger";
 import ModalHeader from "../../ModalUI/ModalHeader/ModalHeader";
 import LockIcon from "../../../icons/LockIcon/LockIcon";
-import {tgWebApp, vibrationDuration} from "../../../../utils/consts";
+import {haptic, tgWebApp, vibrationDuration} from "../../../../utils/consts";
 import ModalText from "../../ModalUI/ModalText/ModalText";
 import Modal from "../../ModalUI/Modal/Modal";
 import {useContext} from "react";
@@ -25,7 +25,7 @@ const TrainingModal = ({modalActive, modalHide}) => {
                 {Trainings.comment}
             </ModalText>
             <Button
-                onClick={() => window.navigator.vibrate(vibrationDuration)}
+                onClick={haptic}
                 href={Trainings.link}
                 className="button-reusable modal-button"
             >
