@@ -899,7 +899,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 
 .brief-bg {
     transform: translateY(-95%);
-    background-color: #fff;
+    background-color: #ffffff;
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
     height: 30px;
