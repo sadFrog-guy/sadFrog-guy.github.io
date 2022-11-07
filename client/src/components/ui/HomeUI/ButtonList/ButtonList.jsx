@@ -14,17 +14,7 @@ const ButtonList = ({modalShow}) => {
     const {User} = useContext(Context);
 
     const linkOnClick = (e) => {
-        if(e.target.id === 'training') {
-            heavyHaptic()
-        }
-
-        if(e.target.id === 'calculator') {
-            mediumHaptic()
-        }
-
-        if(e.target.id === 'ref') {
-            lightHaptic()
-        }
+        haptic()
 
         if(!User.user.allowed_training || !User.user.allowed_calculator) {
             modalShow()
