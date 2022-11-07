@@ -8,7 +8,7 @@ export function haptic() {
 }
 
 export function lightHaptic() {
-    tgWebApp.HapticFeedback.impactOccurred("light")
+    tgWebApp.HapticFeedback.impactOccurred("rigid")
 }
 
 export function mediumHaptic() {

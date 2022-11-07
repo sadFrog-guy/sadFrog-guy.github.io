@@ -15,17 +15,14 @@ const ButtonList = ({modalShow}) => {
 
     const linkOnClick = (e) => {
         if(e.target.id === 'training') {
-            console.log('trainnig')
             heavyHaptic()
         }
 
         if(e.target.id === 'calculator') {
-            console.log('calculator')
             mediumHaptic()
         }
 
         if(e.target.id === 'ref') {
-            console.log('ref')
             lightHaptic()
         }
 
