@@ -1,6 +1,7 @@
 import React from 'react';
 import ArrowIcon from "../../../icons/ArrowIcon/ArrowIcon";
 import {useNavigate} from "react-router-dom";
+import {vibrationDuration} from "../../../../utils/consts";
 
 const Navigation = ({children, to}) => {
     const navigate = useNavigate()
