@@ -48,7 +48,7 @@ const TrainingDetail = () => {
                     if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                         tgMainButton.hide()
                     } else {
-                        navigate('/trainings/' + Trainings.training.next_article_id)
+                        navigate(`/${Trainings.training.next_article_id}`)
                         navigate(0)
                     }
                 }
