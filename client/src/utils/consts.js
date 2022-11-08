@@ -17,25 +17,7 @@ export function haptic() {
 }
 
 export function exitConfirmation() {
-    const exitButton = {
-        id: 'exit',
-        type: 'close',
-        text: 'Да, уверен'
-    }
-
-    const cancelButton = {
-        id: 'cancel',
-        type: 'cancel',
-        text: 'Нет, не уверен'
-    }
-
-    const params = {
-        title: '',
-        message: 'Вы уверены, что хотите выйти?',
-        buttons: [exitButton, cancelButton]
-    }
-
-    tgWebApp.showPopup(params)
+    tgWebApp.showAlert('Вы уверены, что хотите закрыть приложение?')
 }
 
 export function openLinkExternal(link) {
