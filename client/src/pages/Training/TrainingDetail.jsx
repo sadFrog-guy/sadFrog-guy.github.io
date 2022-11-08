@@ -64,14 +64,10 @@ const TrainingDetail = () => {
 
             tgButtonInitial()
 
-            const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight
-
-            if (bottom) {
-                if(Trainings.training.viewed && !Trainings.training.next_article_id) {
-                    tgMainButton.hide()
-                } else {
-                    tgMainButton.show()
-                }
+            if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                tgMainButton.hide()
+            } else {
+                tgMainButton.show()
             }
         }
     }
