@@ -20,7 +20,7 @@ import Button from "../components/ui/GlobalUI/Button/Button";
 import {useCopy} from "../hooks/useCopy";
 import Loader from "../components/ui/GlobalUI/Loader/Loader";
 import {isIOS} from "../utils/isIOS";
-import {haptic, tgWebApp} from "../utils/consts";
+import {backButtonShow, haptic, tgWebApp} from "../utils/consts";
 
 const Referal = () => {
 
@@ -37,6 +37,8 @@ const Referal = () => {
     }
 
     useEffect(() => {
+        backButtonShow()
+
         async function fetchData() {
             await Referal.getReferalInfo()
             setLoading(false)

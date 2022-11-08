@@ -3,6 +3,14 @@ export const tgUser = tgWebApp.initDataUnsafe?.user
 export const tgID = tgUser.id
 export const tgMainButton = tgWebApp.MainButton
 
+export function backButtonShow() {
+    tgWebApp.BackButton.show()
+}
+
+export function backButtonHide() {
+    tgWebApp.BackButton.hide()
+}
+
 export function haptic() {
     tgWebApp.HapticFeedback.notificationOccurred('success')
 }

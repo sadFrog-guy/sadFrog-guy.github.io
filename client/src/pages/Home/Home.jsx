@@ -11,7 +11,7 @@ import HeaderHome from "../../components/ui/HomeUI/HeaderHome/HeaderHome";
 import Subscribtion from "../../components/ui/HomeUI/Subscribtion/Subscribtion";
 import FooterHome from "../../components/ui/HomeUI/FooterHome/FooterHome";
 import ModalHome from "../../components/ui/HomeUI/ModalHome/ModalHome";
-import {tgInintial, tgWebApp} from "../../utils/consts";
+import {backButtonHide, tgInintial, tgWebApp} from "../../utils/consts";
 
 const Home = () => {
     const {User} = useContext(Context);
@@ -23,6 +23,8 @@ const Home = () => {
 
     useEffect(() => {
         tgInintial()
+
+        backButtonHide()
 
         async function fetchData() {
             await User.getUserInfo()

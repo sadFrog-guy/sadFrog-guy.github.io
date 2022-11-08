@@ -8,6 +8,7 @@ import Wrap from "../../components/utils/Wrap/Wrap";
 import Text from "../../components/ui/GlobalUI/Text/Text";
 import {isIOS} from "../../utils/isIOS";
 import {
+    backButtonShow,
     haptic,
     openLinkExternal, tgButtonInitial,
     tgButtonText,
@@ -91,6 +92,8 @@ const TrainingDetail = () => {
     }
 
     useEffect(() => {
+        backButtonShow()
+
         async function fetchData() {
             await Trainings.getOneTraining(id)
             tgButtonFunctionality()
