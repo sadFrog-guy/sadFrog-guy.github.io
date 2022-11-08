@@ -37,6 +37,8 @@ const Referal = () => {
     }
 
     useEffect(() => {
+        tgWebApp.enableClosingConfirmation()
+
         backButtonShow(() => {
             navigate('/')
         })

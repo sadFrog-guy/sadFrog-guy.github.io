@@ -25,6 +25,8 @@ const Training = () => {
     const [isLoaded, setLoaded] = useState(false)
 
     useEffect(() => {
+        tgWebApp.enableClosingConfirmation()
+
         backButtonShow(() => {
             navigate('/')
         })

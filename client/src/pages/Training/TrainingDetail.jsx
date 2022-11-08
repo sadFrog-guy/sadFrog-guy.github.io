@@ -12,7 +12,7 @@ import {
     haptic,
     openLinkExternal, tgButtonInitial,
     tgButtonText,
-    tgMainButton,
+    tgMainButton, tgWebApp,
 } from "../../utils/consts";
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
 import {observer} from "mobx-react-lite";
@@ -90,6 +90,8 @@ const TrainingDetail = () => {
     }
 
     useEffect(() => {
+        tgWebApp.enableClosingConfirmation()
+
         backButtonShow(() => {
             navigate('/trainings')
         })
