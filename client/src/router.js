@@ -9,7 +9,7 @@ import Referal from "./pages/Referal";
 import TrainingDetail from "./pages/Training/TrainingDetail";
 
 export const LINK_TRAININGS = '/trainings';
-export const LINK_TRAININGS_ITEM = '/trainings?section_id=:id';
+export const LINK_TRAININGS_ITEM = '/trainings/:id';
 export const LINK_CALCULATOR = '/calculator';
 export const LINK_REFERAL = '/referal';
 
