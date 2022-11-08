@@ -8,7 +8,7 @@ import Wrap from "../../components/utils/Wrap/Wrap";
 import Text from "../../components/ui/GlobalUI/Text/Text";
 import {isIOS} from "../../utils/isIOS";
 import {
-    backButtonShow,
+    backButtonShow, exitConfirmation,
     haptic,
     openLinkExternal, tgButtonInitial,
     tgButtonText,
@@ -90,7 +90,7 @@ const TrainingDetail = () => {
     }
 
     useEffect(() => {
-        tgWebApp.enableClosingConfirmation()
+        exitConfirmation()
 
         backButtonShow(() => {
             navigate('/trainings')

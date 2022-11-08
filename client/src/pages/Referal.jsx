@@ -20,7 +20,7 @@ import Button from "../components/ui/GlobalUI/Button/Button";
 import {useCopy} from "../hooks/useCopy";
 import Loader from "../components/ui/GlobalUI/Loader/Loader";
 import {isIOS} from "../utils/isIOS";
-import {backButtonShow, haptic, tgWebApp} from "../utils/consts";
+import {backButtonShow, exitConfirmation, haptic, tgWebApp} from "../utils/consts";
 
 const Referal = () => {
 
@@ -37,7 +37,7 @@ const Referal = () => {
     }
 
     useEffect(() => {
-        tgWebApp.enableClosingConfirmation()
+        exitConfirmation()
 
         backButtonShow(() => {
             navigate('/')

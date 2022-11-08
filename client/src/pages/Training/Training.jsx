@@ -14,7 +14,7 @@ import LockIcon from "../../components/icons/LockIcon/LockIcon";
 import ModalText from "../../components/ui/ModalUI/ModalText/ModalText";
 import {Link, useNavigate} from "react-router-dom";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
-import {backButtonShow, tgWebApp} from "../../utils/consts";
+import {backButtonShow, exitConfirmation, tgWebApp} from "../../utils/consts";
 import TrainingModal from "../../components/ui/TrainingUI/TrainingModal/TrainingModal";
 
 const Training = () => {
@@ -25,7 +25,7 @@ const Training = () => {
     const [isLoaded, setLoaded] = useState(false)
 
     useEffect(() => {
-        tgWebApp.enableClosingConfirmation()
+        exitConfirmation()
 
         backButtonShow(() => {
             navigate('/')
