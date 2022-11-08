@@ -89,6 +89,14 @@ const TrainingDetail = () => {
         }
     }
 
+    const handleScroll = () => {
+        const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight
+
+        if (bottom) {
+            tgButtonFunctionality()
+        }
+    };
+
     useEffect(() => {
         exitConfirmation()
 
@@ -96,9 +104,10 @@ const TrainingDetail = () => {
             navigate('/trainings')
         })
 
+        window.addEventListener('scroll', handleScroll)
+
         async function fetchData() {
             await Trainings.getOneTraining(id)
-            tgButtonFunctionality()
             setLoading(false)
         }
         fetchData()
