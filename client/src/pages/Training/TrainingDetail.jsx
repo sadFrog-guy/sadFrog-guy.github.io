@@ -13,8 +13,6 @@ import {
     openLinkExternal, tgButtonInitial,
     tgButtonText,
     tgMainButton,
-    tgToggleButton,
-    tgWebApp, vibrationDuration
 } from "../../utils/consts";
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
 import {observer} from "mobx-react-lite";

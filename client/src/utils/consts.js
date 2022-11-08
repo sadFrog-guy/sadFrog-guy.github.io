@@ -13,19 +13,7 @@ export function backButtonHide() {
 }
 
 export function haptic() {
-    tgWebApp.HapticFeedback.notificationOccurred('success')
-}
-
-export function lightHaptic() {
     tgWebApp.HapticFeedback.impactOccurred("light")
-}
-
-export function mediumHaptic() {
-    tgWebApp.HapticFeedback.impactOccurred("medium")
-}
-
-export function heavyHaptic() {
-    tgWebApp.HapticFeedback.impactOccurred("heavy")
 }
 
 export function openLinkExternal(link) {
