@@ -52,7 +52,7 @@ const Referal = () => {
 
     const onShare = async() => {
         haptic()
-        await navigator.share({ text: shareData.text, url: shareData.link })
+        await navigator.share({ text: shareData.text, url: shareData.link, title: 'Тайтл' })
     }
 
     const onShareTg = () => {
