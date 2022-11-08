@@ -64,10 +64,14 @@ const TrainingDetail = () => {
 
             tgButtonInitial()
 
-            if(Trainings.training.viewed && !Trainings.training.next_article_id) {
-                tgMainButton.hide()
-            } else {
-                tgMainButton.show()
+            const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight
+
+            if (bottom) {
+                if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                    tgMainButton.hide()
+                } else {
+                    tgMainButton.show()
+                }
             }
         }
     }
@@ -89,14 +93,6 @@ const TrainingDetail = () => {
         }
     }
 
-    const handleScroll = () => {
-        const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight
-
-        if (bottom) {
-            tgButtonFunctionality()
-        }
-    };
-
     useEffect(() => {
         exitConfirmation()
 
@@ -104,10 +100,9 @@ const TrainingDetail = () => {
             navigate('/trainings')
         })
 
-        window.addEventListener('scroll', handleScroll)
-
         async function fetchData() {
             await Trainings.getOneTraining(id)
+            tgButtonFunctionality()
             setLoading(false)
         }
         fetchData()
