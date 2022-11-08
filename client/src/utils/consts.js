@@ -3,8 +3,9 @@ export const tgUser = tgWebApp.initDataUnsafe?.user
 export const tgID = tgUser.id
 export const tgMainButton = tgWebApp.MainButton
 
-export function backButtonShow() {
+export function backButtonShow(callback) {
     tgWebApp.BackButton.show()
+    tgWebApp.BackButton.onClick(callback)
 }
 
 export function backButtonHide() {

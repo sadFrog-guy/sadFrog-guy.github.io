@@ -20,11 +20,14 @@ import TrainingModal from "../../components/ui/TrainingUI/TrainingModal/Training
 const Training = () => {
     const {Trainings} = useContext(Context);
     const {modalActive, modalHide, modalShow} = useModal()
+    const navigate = useNavigate()
     const [isLoading, setLoading] = useState(true)
     const [isLoaded, setLoaded] = useState(false)
 
     useEffect(() => {
-        backButtonShow()
+        backButtonShow(() => {
+            navigate('/')
+        })
 
         async function fetchData() {
             await Trainings.getAllTrainings()

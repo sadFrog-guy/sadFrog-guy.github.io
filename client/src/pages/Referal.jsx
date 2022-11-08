@@ -37,7 +37,9 @@ const Referal = () => {
     }
 
     useEffect(() => {
-        backButtonShow()
+        backButtonShow(() => {
+            navigate('/')
+        })
 
         async function fetchData() {
             await Referal.getReferalInfo()

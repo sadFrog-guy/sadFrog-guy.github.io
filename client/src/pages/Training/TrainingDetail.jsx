@@ -92,7 +92,9 @@ const TrainingDetail = () => {
     }
 
     useEffect(() => {
-        backButtonShow()
+        backButtonShow(() => {
+            navigate('/trainings')
+        })
 
         async function fetchData() {
             await Trainings.getOneTraining(id)
