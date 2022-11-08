@@ -17,7 +17,7 @@ export function haptic() {
 }
 
 export function exitConfirmation() {
-    tgWebApp.showAlert('Вы уверены, что хотите закрыть приложение?')
+    tgWebApp.enableClosingConfirmation()
 }
 
 export function openLinkExternal(link) {
