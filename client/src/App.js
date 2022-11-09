@@ -4,7 +4,7 @@ import {Context, storeContext} from "./utils/context";
 import React, {useEffect} from 'react';
 import './styles/fonts.css'
 import './App.css'
-import {tgWebApp} from "./utils/consts";
+import {tgWebApp} from "./utils/telegramAPI";
 
 function App() {
 

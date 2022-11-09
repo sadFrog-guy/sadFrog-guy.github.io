@@ -1,6 +1,6 @@
 import {makeAutoObservable} from "mobx";
 import User from "../services/user";
-import {tgUser} from "../utils/consts";
+import {tgUser} from "../utils/telegramAPI";
 
 export default new class StoreUser {
 

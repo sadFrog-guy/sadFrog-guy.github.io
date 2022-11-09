@@ -6,7 +6,7 @@ import TelegramIcon from "../../../icons/TelegramIcon/TelegramIcon";
 import Footer from "../../GlobalUI/Footer/Footer";
 import {useContext} from "react";
 import {Context} from "../../../../utils/context";
-import {haptic, vibrationDuration} from "../../../../utils/consts";
+import {haptic, vibrationDuration} from "../../../../utils/telegramAPI";
 
 const FooterHome = () => {
     const {User} = useContext(Context);

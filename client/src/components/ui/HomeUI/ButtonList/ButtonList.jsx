@@ -8,7 +8,7 @@ import Text from "../../GlobalUI/Text/Text";
 import ArrowIcon from "../../../icons/ArrowIcon/ArrowIcon";
 import LockIcon from "../../../icons/LockIcon/LockIcon";
 import {Context} from "../../../../utils/context";
-import {haptic, heavyHaptic, lightHaptic, mediumHaptic, vibrationDuration} from "../../../../utils/consts";
+import {haptic, heavyHaptic, lightHaptic, mediumHaptic, vibrationDuration} from "../../../../utils/telegramAPI";
 
 const ButtonList = ({modalShow}) => {
     const {User} = useContext(Context);

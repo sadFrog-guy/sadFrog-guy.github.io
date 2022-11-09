@@ -11,7 +11,7 @@ import HeaderHome from "../../components/ui/HomeUI/HeaderHome/HeaderHome";
 import Subscribtion from "../../components/ui/HomeUI/Subscribtion/Subscribtion";
 import FooterHome from "../../components/ui/HomeUI/FooterHome/FooterHome";
 import ModalHome from "../../components/ui/HomeUI/ModalHome/ModalHome";
-import {backButtonHide, tgInintial, tgWebApp} from "../../utils/consts";
+import {backButtonHide, tgInintial, tgWebApp} from "../../utils/telegramAPI";
 
 const Home = () => {
     const {User} = useContext(Context);

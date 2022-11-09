@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import Training from "./pages/Training/Training";
 import Referal from "./pages/Referal";
 import TrainingDetail from "./pages/Training/TrainingDetail";
+import Calculator from "./pages/Calculator";
 
 export const LINK_TRAININGS = '/trainings';
 export const LINK_TRAININGS_ITEM = '/trainings/:id';
@@ -28,7 +29,7 @@ const routes = [
     },
     {
         path: LINK_CALCULATOR,
-        element: <div>calculator</div>,
+        element: <Calculator/>,
     },
     {
         path: LINK_REFERAL,

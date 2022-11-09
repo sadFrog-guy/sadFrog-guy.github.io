@@ -1,7 +1,7 @@
 import React from 'react';
 import ArrowIcon from "../../../icons/ArrowIcon/ArrowIcon";
 import {useNavigate} from "react-router-dom";
-import {haptic, vibrationDuration} from "../../../../utils/consts";
+import {haptic, vibrationDuration} from "../../../../utils/telegramAPI";
 
 const Navigation = ({children, to}) => {
     const navigate = useNavigate()

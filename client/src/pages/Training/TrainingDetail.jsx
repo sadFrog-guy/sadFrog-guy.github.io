@@ -13,7 +13,7 @@ import {
     openLinkExternal, tgButtonInitial,
     tgButtonText,
     tgMainButton, tgWebApp,
-} from "../../utils/consts";
+} from "../../utils/telegramAPI";
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
 import {observer} from "mobx-react-lite";
 import Button from "../../components/ui/GlobalUI/Button/Button";

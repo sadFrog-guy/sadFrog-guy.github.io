@@ -11,7 +11,7 @@ import TrainingSubitem from "../TrainingSubitem/TrainingSubitem";
 import {toJS} from "mobx";
 import {observer} from "mobx-react-lite";
 import CheckIcon from "../../../icons/CheckIcon/CheckIcon";
-import {tgWebApp, vibrationDuration} from "../../../../utils/consts";
+import {tgWebApp, vibrationDuration} from "../../../../utils/telegramAPI";
 import useModal from "../../../../hooks/useModal";
 
 const TrainingItem = ({trainingInfo, imageOnLoad, subitemOnClick, ...props}) => {

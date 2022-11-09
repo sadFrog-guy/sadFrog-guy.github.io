@@ -7,7 +7,7 @@ import QuestionIcon from "../../../icons/QuestionIcon/QuestionIcon";
 import Header from "../../GlobalUI/Header/Header";
 import {useContext} from "react";
 import {Context} from "../../../../utils/context";
-import {haptic, vibrationDuration} from "../../../../utils/consts";
+import {haptic, vibrationDuration} from "../../../../utils/telegramAPI";
 
 const HeaderHome = ({avatarOnLoad}) => {
     const {User} = useContext(Context);

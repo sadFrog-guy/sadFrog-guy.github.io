@@ -2,7 +2,7 @@ import React from 'react';
 import Dragger from "../../ModalUI/Dragger/Dragger";
 import ModalHeader from "../../ModalUI/ModalHeader/ModalHeader";
 import LockIcon from "../../../icons/LockIcon/LockIcon";
-import {haptic, tgWebApp, vibrationDuration} from "../../../../utils/consts";
+import {haptic, tgWebApp, vibrationDuration} from "../../../../utils/telegramAPI";
 import ModalText from "../../ModalUI/ModalText/ModalText";
 import Modal from "../../ModalUI/Modal/Modal";
 import {useContext} from "react";

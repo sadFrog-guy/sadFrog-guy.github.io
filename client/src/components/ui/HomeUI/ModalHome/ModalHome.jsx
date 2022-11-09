@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 import Modal from "../../ModalUI/Modal/Modal";
 import {useContext} from "react";
 import {Context} from "../../../../utils/context";
-import {haptic, tgWebApp, vibrationDuration} from "../../../../utils/consts";
+import {haptic, tgWebApp, vibrationDuration} from "../../../../utils/telegramAPI";
 import Button from "../../GlobalUI/Button/Button";
 
 const ModalHome = ({modalActive, modalHide}) => {

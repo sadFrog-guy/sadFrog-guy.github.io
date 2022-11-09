@@ -1,5 +1,5 @@
 import {request} from "../utils/axiosInstance";
-import {tgID} from "../utils/consts";
+import {tgID} from "../utils/telegramAPI";
 
 export default class Referal {
     static async getReferalInfo() {
