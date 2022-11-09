@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {Redirect, useLocation, useNavigate, useParams} from "react-router-dom";
 import Navigation from "../../components/ui/GlobalUI/Navigation/Navigation";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {useContext, useEffect, useState} from "react";
@@ -27,6 +27,7 @@ const TrainingDetail = () => {
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
+    const [isClicked, setClicked] = useState(false)
 
     const tgButtonFunctionality = () => {
         if(location.pathname.includes("/trainings/")) {
@@ -48,8 +49,9 @@ const TrainingDetail = () => {
                     if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                         tgMainButton.hide()
                     } else {
-                        navigate('/trainings/' + Trainings.training.next_article_id)
-                        navigate(0)
+                        // navigate('/trainings/' + Trainings.training.next_article_id)
+                        // navigate(0)
+                        setClicked(true)
                     }
                 }
             }
@@ -109,74 +111,75 @@ const TrainingDetail = () => {
     }, [])
 
     return (
-        <Wrapper>
-            {!isLoading
-                ?
-                <Wrap className="article">
-                    <Navigation to="/trainings">
-                        Обучение
-                    </Navigation>
-
-                    <h1 className="button-header article_button-header" id="article-title">
-                        {Trainings.training.title}
-                    </h1>
-
-                    <Wrap className="training-image-wrap article_image-wrap">
-                        {Trainings.training.image_url &&
-                            <img
-                                className="training-image" id="article-image"
-                                src={Trainings.training.image_url}
-                                rel="preload"
-                                alt=""
-                                onClick={() => {
-                                    navigate(`/trainings/4`)
-                                }}
-                            />
-                        }
-
-                        {Trainings.training.video_url &&
-                            <Wrap className="video-wrapper">
-                                <video
-                                    controls
-                                    className="video"
-                                    disablePictureInPicture
-                                    controlsList={`noplaybackrate nodownload ${isIOS() === false ? 'nofullscreen' : ''}`}
-                                    src={Trainings.training.video_url}
-                                    poster={Trainings.training.video_preview_image}
-                                    ref={videoRef}
-                                />
-                                {!isIOS() &&
-                                    <div className="fullscreen-button" onClick={onFullscreen}>
-                                        <img className="icon-fullscreen" src={fullscreen} alt=""/>
-                                    </div>
-                                }
-
-                                <div className={`go-to-browser ${openInBrowser ? 'active' : ''}`}>
-                                    <Button onClick={browserRedirect} id="go-to-button">
-                                        Перейти в браузер для просмотра урока
-                                    </Button>
-                                    <div className="fullscreen-button go-to" onClick={onFullscreen}>
-                                        <img className="icon-fullscreen" src={fullscreen} alt=""/>
-                                    </div>
-                                </div>
-                            </Wrap>
-                        }
-                    </Wrap>
-                    <Wrap className="article-content">
-                        <Text type="medium" overrideClass="article_medium" id="article-bold">
-                            {Trainings.training.bold_text}
-                        </Text>
-                        <Text type="medium" overrideClass="text article_text" id="article-content">
-                            {Trainings.training.main_text}
-                        </Text>
-                    </Wrap>
-                </Wrap>
-                :
-                <Loader
-                    isLoading={isLoading}
-                />
-            }
-        </Wrapper>
+        <Redirect to="/"/>
+        // <Wrapper>
+        //     {!isLoading
+        //         ?
+        //         <Wrap className="article">
+        //             <Navigation to="/trainings">
+        //                 Обучение
+        //             </Navigation>
+        //
+        //             <h1 className="button-header article_button-header" id="article-title">
+        //                 {Trainings.training.title}
+        //             </h1>
+        //
+        //             <Wrap className="training-image-wrap article_image-wrap">
+        //                 {Trainings.training.image_url &&
+        //                     <img
+        //                         className="training-image" id="article-image"
+        //                         src={Trainings.training.image_url}
+        //                         rel="preload"
+        //                         alt=""
+        //                         onClick={() => {
+        //                             navigate(`/trainings/4`)
+        //                         }}
+        //                     />
+        //                 }
+        //
+        //                 {Trainings.training.video_url &&
+        //                     <Wrap className="video-wrapper">
+        //                         <video
+        //                             controls
+        //                             className="video"
+        //                             disablePictureInPicture
+        //                             controlsList={`noplaybackrate nodownload ${isIOS() === false ? 'nofullscreen' : ''}`}
+        //                             src={Trainings.training.video_url}
+        //                             poster={Trainings.training.video_preview_image}
+        //                             ref={videoRef}
+        //                         />
+        //                         {!isIOS() &&
+        //                             <div className="fullscreen-button" onClick={onFullscreen}>
+        //                                 <img className="icon-fullscreen" src={fullscreen} alt=""/>
+        //                             </div>
+        //                         }
+        //
+        //                         <div className={`go-to-browser ${openInBrowser ? 'active' : ''}`}>
+        //                             <Button onClick={browserRedirect} id="go-to-button">
+        //                                 Перейти в браузер для просмотра урока
+        //                             </Button>
+        //                             <div className="fullscreen-button go-to" onClick={onFullscreen}>
+        //                                 <img className="icon-fullscreen" src={fullscreen} alt=""/>
+        //                             </div>
+        //                         </div>
+        //                     </Wrap>
+        //                 }
+        //             </Wrap>
+        //             <Wrap className="article-content">
+        //                 <Text type="medium" overrideClass="article_medium" id="article-bold">
+        //                     {Trainings.training.bold_text}
+        //                 </Text>
+        //                 <Text type="medium" overrideClass="text article_text" id="article-content">
+        //                     {Trainings.training.main_text}
+        //                 </Text>
+        //             </Wrap>
+        //         </Wrap>
+        //         :
+        //         <Loader
+        //             isLoading={isLoading}
+        //         />
+        //     }
+        // </Wrapper>
     );
 };
 
