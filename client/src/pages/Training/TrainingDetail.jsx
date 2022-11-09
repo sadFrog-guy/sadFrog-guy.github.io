@@ -48,7 +48,7 @@ const TrainingDetail = () => {
                     if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                         tgMainButton.hide()
                     } else {
-                        setClicked(true)
+                        // setClicked(true)
                     }
                 }
             }
