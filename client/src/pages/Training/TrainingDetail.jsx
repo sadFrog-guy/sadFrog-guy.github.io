@@ -112,7 +112,7 @@ const TrainingDetail = () => {
     return (
         <Wrapper>
             {isClicked &&
-                <Navigate replace={true} to="/trainings/4"/>
+                <Navigate replace={true} to={`/trainings/${Trainings.training.next_article_id}`}/>
             }
 
             {!isLoading
