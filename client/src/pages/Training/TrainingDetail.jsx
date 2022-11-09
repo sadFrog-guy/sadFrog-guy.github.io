@@ -110,7 +110,7 @@ const TrainingDetail = () => {
     }, [])
 
     if(isClicked) {
-        return <Navigate replace={true} to={'/trainings/' + Trainings.training.next_article_id}/>
+        return <h1>adilet</h1>
     } else {
         return (
             <Wrapper>
