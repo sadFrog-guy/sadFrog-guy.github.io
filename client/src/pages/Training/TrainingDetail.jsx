@@ -109,13 +109,15 @@ const TrainingDetail = () => {
         }
     }, [])
 
+    console.log(`/trainings/${Trainings.training.next_article_id}`)
+
     // <Navigate replace={true} to={'/trainings/' + Trainings.training.next_article_id}/>
 
     return (
         <Wrapper>
-            {isClicked &&
-                <Navigate replace={true} to={`/trainings/${Trainings.training.next_article_id}`}/>
-            }
+            {/*{isClicked &&*/}
+            {/*    <Navigate replace={true} to={`/trainings/${Trainings.training.next_article_id}`}/>*/}
+            {/*}*/}
 
             {!isLoading
                 ?
