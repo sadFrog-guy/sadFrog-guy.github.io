@@ -10,7 +10,7 @@ const Calculator = () => {
                 Калькулятор
             </Navigation>
 
-            <input type="text" id="referal-link" value={100}/>
+            <input type="text" className="share-link" value={100}/>
 
         </Wrapper>
     );
