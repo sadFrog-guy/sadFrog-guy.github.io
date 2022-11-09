@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {Redirect, useLocation, useNavigate, useParams} from "react-router-dom";
+import {Navigate, useLocation, useNavigate, useParams} from "react-router-dom";
 import Navigation from "../../components/ui/GlobalUI/Navigation/Navigation";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {useContext, useEffect, useState} from "react";
@@ -111,7 +111,7 @@ const TrainingDetail = () => {
     }, [])
 
     return (
-        <Redirect to="/"/>
+        <Navigate replace={true} to="/"/>
         // <Wrapper>
         //     {!isLoading
         //         ?
