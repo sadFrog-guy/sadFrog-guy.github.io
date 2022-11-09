@@ -97,7 +97,9 @@ const TrainingDetail = () => {
 
         async function fetchData() {
             await Trainings.getOneTraining(id)
+
             tgButtonFunctionality()
+
             setLoading(false)
         }
         fetchData()
