@@ -111,7 +111,6 @@ const Referal = () => {
                     isLoading={isLoading}
                 />
             }
-
         </Wrapper>
     );
 };

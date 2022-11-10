@@ -6,7 +6,7 @@ export default new class StoreTrainings {
 
     trainings = []
     training = {}
-    have_subscribe = false
+    have_subscribe
     comment = ''
     link = ''
     video_link = ''

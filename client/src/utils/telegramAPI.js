@@ -1,6 +1,6 @@
 export const tgWebApp = window.Telegram.WebApp
 export const tgUser = tgWebApp.initDataUnsafe?.user
-export const tgID = tgUser.id
+export const tgID = 875571046 //tgUser.id
 export const tgMainButton = tgWebApp.MainButton
 
 export function backButtonShow(callback) {

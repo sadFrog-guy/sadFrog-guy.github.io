@@ -14,7 +14,7 @@ export default class Calculator {
         )
         return {
             response,
-            data: response.data
+            data: response.data.chains
         }
     }
 }

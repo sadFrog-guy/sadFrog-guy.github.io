@@ -5,7 +5,7 @@ export default new class StoreReferal {
 
     referalBalance = 0
     referalLink = ''
-    success = false
+    success
 
     constructor() {
         makeAutoObservable(this)

@@ -23,6 +23,13 @@ time, mark, audio, video {
     user-select: none;
 }
 
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     font-family: 'SF Pro Regular', sans-serif;
     background-color: #fff;
@@ -495,6 +502,10 @@ img {
 
 .wrapper.dark {
     background-color: #1c1c1e;
+}
+
+.wrapper {
+    min-height: 100vh;
 }
 
 .wrapper.hidden {
@@ -1229,4 +1240,157 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 #page-video {
     height: 500px;
     width: 94.5%;
+}
+
+.lighting {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.form {
+    width: calc(100% - 60px);
+    margin: 0 28px;
+    margin-top: 20px;
+    margin-bottom: 27.66px;
+    display: flex;
+    flex-direction: column;
+    gap: 8.34px;
+}
+
+.input-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.input {
+    padding: 18px 15px;
+    width: 100%;
+    border: none;
+    background-color: #F4F4F4;
+    color: #1C1C1E;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 16px;
+    font-family: SF Pro Medium, sans-serif;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.button-reusable.calculator_button {
+    position: relative;
+}
+
+.button-loader {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    border: 3px solid var(--tg-theme-button-text-color);
+    border-top: 3px solid transparent;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    animation: spin 1s infinite ease-in-out;
+}
+
+.currency-list {
+    width: 100%;
+}
+
+.currency-item {
+    padding: 20px 20px 26px 20px;
+    margin-bottom: 26px;
+    font-family: SF Pro Medium, sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    gap: 21px;
+}
+
+.currency-item.lighting {
+    background: linear-gradient(180deg, #E6E9ED 0%, #F5F7FA 100%);
+}
+
+.currency-item.green {
+    background: rgba(6, 191, 102, 0.08);
+    backdrop-filter: blur(16px);
+}
+
+.currency-item.red {
+    background: #FFFAFA;
+    backdrop-filter: blur(16px);
+}
+
+.currency-value,
+.currency-header,
+.currency-market{
+    z-index: 2;
+}
+
+.currency-header {
+    display: flex;
+    align-items: center;
+}
+
+.bubble-white {
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    margin-right: 9px;
+}
+
+.currency-header > span {
+    font-weight: 500;
+    font-size: 17px;
+    word-spacing: .3rem;
+}
+
+.currency-code {
+    color: #AAB2BD;
+}
+
+.currency-value {
+    display: flex;
+    column-gap: 37px;
+    padding: 0 10px;
+    padding-bottom: 25px;
+    border-bottom: 0.5px solid rgba(28, 28, 30, 0.2);
+}
+
+.currency-forecast {
+    display: flex;
+    flex-direction: column;
+}
+
+.forecast-title {
+    font-weight: 500;
+    font-size: 13px;
+    color: #AAB2BD;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.forecast-value {
+    font-family: Benzin;
+    font-size: 22px;
+    letter-spacing: -0.408px;
+    color: #1C1C1E;
+}
+
+.currency-market {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.market-logo {
+    height: 18px;
 }

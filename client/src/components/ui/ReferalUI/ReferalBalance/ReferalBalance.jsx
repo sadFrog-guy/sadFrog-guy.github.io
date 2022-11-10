@@ -3,10 +3,11 @@ import lines from "../../../../assets/images/lines.png";
 import BalanceTitle from "../BalanceTitle/BalanceTitle";
 import SectionHeader from "../../GlobalUI/SectionHeader/SectionHeader";
 import Wrap from "../../../utils/Wrap/Wrap";
+import Rectangle from "../../GlobalUI/Rectangle/Rectangle";
 
 const ReferalBalance = ({balance, title}) => {
     return (
-        <Wrap className="balance-wrap">
+        <Rectangle>
             <BalanceTitle>
                 {title}
             </BalanceTitle>
@@ -14,7 +15,7 @@ const ReferalBalance = ({balance, title}) => {
                 {balance}
             </SectionHeader>
             <img src={lines} alt="lines" className="lines"/>
-        </Wrap>
+        </Rectangle>
     );
 };
 
