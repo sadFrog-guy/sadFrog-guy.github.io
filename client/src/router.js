@@ -25,7 +25,7 @@ const routes = [
     },
     {
         path: LINK_TRAININGS_ITEM,
-        element: <TrainingDetail/>
+        element: <TrainingDetail/>,
     },
     {
         path: LINK_CALCULATOR,
