@@ -38,7 +38,7 @@ const Calculator = () => {
                     <CurrencyList/>
                 </Wrap>
                 :
-                <Loader/>
+                <Loader isLoading={isLoading}/>
             }
         </Wrapper>
     );
