@@ -631,7 +631,7 @@ img {
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 240px;
+    height: 234px;
     border-radius: 32px;
     position: relative;
     margin-bottom: 25px;
@@ -1247,6 +1247,46 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
     right: 0;
     top: 0;
     z-index: 1;
+}
+
+body.dark > #root > .wrapper > .form > .input-wrap > .input {
+    background-color: #2E2F32;
+    color: #fff;
+}
+
+body.dark > #root > .wrapper > .currency-list > .currency-item.lightning > .lighting > path {
+    fill: #1C1C1E;
+}
+
+body.dark > #root > .wrapper > .currency-list > .currency-item > .currency-header > .bubble-white {
+    background-color: #4f5155;
+}
+
+body.dark > #root > .wrapper > .currency-list > .currency-item > .currency-header > span > .currency-name {
+    color: #fff;
+}
+
+body.dark > #root > .wrapper > .currency-list > .currency-item > .currency-value > .currency-forecast > .forecast-value {
+    color: #E6E6E6;
+}
+
+body.dark > #root > .wrapper > .currency-list > .currency-item > .currency-value {
+    border-bottom: 0.5px solid rgba(28, 28, 30, .5);
+}
+
+body.dark > #root > .wrapper > .currency-list > .currency-item {
+    background: linear-gradient(180deg, #313439 0%, #1F2022 100%);
+    backdrop-filter: blur(16px);
+}
+
+body.dark > #root > .wrapper > .currency-list > .currency-item.green {
+    background: #22342F;
+    backdrop-filter: blur(16px);
+}
+
+body.dark > #root > .wrapper > .currency-list > .currency-item.red {
+    background: rgba(48, 31, 30, .88);
+    backdrop-filter: blur(16px);
 }
 
 .form {

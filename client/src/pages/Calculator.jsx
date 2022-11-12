@@ -24,24 +24,21 @@ const Calculator = () => {
         fetchData()
     }, [])
 
-    return (
-        <Wrapper>
-            {!isLoading
-                ?
-                <Wrap>
-                    <Navigation to="/">
-                        Калькулятор
-                    </Navigation>
+    if(!isLoading) {
+        return (
+            <Wrapper>
+                <Navigation to="/">
+                    Калькулятор
+                </Navigation>
 
-                    <CalculateForm/>
+                <CalculateForm/>
 
-                    <CurrencyList/>
-                </Wrap>
-                :
-                <Loader isLoading={isLoading}/>
-            }
-        </Wrapper>
-    );
+                <CurrencyList/>
+            </Wrapper>
+        )
+    } else {
+        return <Loader isLoading={isLoading}/>
+    }
 };
 
 export default Calculator;
