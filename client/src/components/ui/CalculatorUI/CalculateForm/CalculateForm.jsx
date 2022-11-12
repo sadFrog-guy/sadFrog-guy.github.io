@@ -13,7 +13,7 @@ const CalculateForm = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     const inputOnChange = (e) => {
-        const value = e.target.value.replace(/\D/g, "0")
+        const value = e.target.value.replace(/\D/g, "")
 
         Calculator.changeAmount(value)
     }
