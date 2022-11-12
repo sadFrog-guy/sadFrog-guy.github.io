@@ -6,17 +6,16 @@ import {useContext} from "react";
 import {Context} from "../../../../utils/context";
 import LoaderButton from "../../GlobalUI/LoaderButton/LoaderButton";
 import {observer} from "mobx-react-lite";
+import {isMobile} from "react-device-detect";
 
 const CalculateForm = () => {
     const {Calculator} = useContext(Context)
     const [isLoading, setIsLoading] = useState(false)
 
     const inputOnChange = (e) => {
-        if(e.target.value < 0) {
-            Calculator.changeAmount(0)
-        } else {
-            Calculator.changeAmount(e.target.value)
-        }
+        const value = e.target.value.replace(/\D/g, "0")
+
+        Calculator.changeAmount(value)
     }
 
     const buttonOnClick = async() => {
@@ -27,7 +26,13 @@ const CalculateForm = () => {
 
     return (
         <Wrap className="form">
-            <Input value={Calculator.amount} onChange={inputOnChange}/>
+            <Input
+                min="1"
+                pattern="/^\d+$/"
+                onChange={inputOnChange}
+                value={Calculator.amount}
+                type={isMobile ? "tel" : "number"}
+            />
             <Button overrideClass="calculator_button" onClick={buttonOnClick}>
                 Рассчитать
                 {isLoading && <LoaderButton/>}

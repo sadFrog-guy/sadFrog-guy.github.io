@@ -1,10 +1,10 @@
 import React from 'react';
 import Wrap from "../../../utils/Wrap/Wrap";
 
-const Input = ({overrideClass, ...props}) => {
+const Input = ({overrideClass, type, ...props}) => {
     return (
         <Wrap className={`input-wrap ${overrideClass}`}>
-            <input type="number" className="input" {...props}/>
+            <input type={type} className="input" {...props}/>
         </Wrap>
     );
 };

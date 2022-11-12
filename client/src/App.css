@@ -1249,6 +1249,13 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
     z-index: 1;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
 body.dark > #root > .wrapper > .form > .input-wrap > .input {
     background-color: #2E2F32;
     color: #fff;
