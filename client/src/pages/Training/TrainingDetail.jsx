@@ -40,6 +40,7 @@ const TrainingDetail = () => {
 
                 if(Trainings.training.viewed) {
                     setClicked(true)
+                    console.log(isClicked)
                 } else {
                     tgButtonText(finishPendingStatus)
 
@@ -49,6 +50,7 @@ const TrainingDetail = () => {
                         tgMainButton.hide()
                     } else {
                         setClicked(true)
+                        console.log(isClicked)
                     }
                 }
             }
@@ -109,8 +111,6 @@ const TrainingDetail = () => {
             tgMainButton.hide()
         }
     }, [])
-
-    console.log(isClicked)
 
     // <Navigate to={`/trainings/${Trainings.training.next_article_id}`}/>
 
