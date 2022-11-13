@@ -111,7 +111,7 @@ const TrainingDetail = () => {
 
     return (
         <Wrapper>
-            {isClicked && <Navigate to={`/trainings}`}/>}
+            {isClicked && <Navigate to="/trainings/4"/>}
 
             {!isLoading
                 ?
