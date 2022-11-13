@@ -584,12 +584,12 @@ img {
     color: #1C1C1E;
 }
 
-.body.dark > #root > .not-authorized {
+body.dark > #root > .not-authorized {
     background-color: #1C1C1E;
 }
 
-.body.dark > #root > .not-authorized > .not-authorized-header,
-.body.dark > #root > .not-authorized > .not-authorized-text {
+body.dark > #root > .not-authorized > .not-authorized-header,
+body.dark > #root > .not-authorized > .not-authorized-text {
     color: #fff;
 }
 
