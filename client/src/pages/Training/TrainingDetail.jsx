@@ -38,7 +38,8 @@ const TrainingDetail = () => {
         haptic()
 
         if(Trainings.training.viewed) {
-            await Trainings.getOneTraining(Trainings.training.next_article_id)
+            navigate(`/trainings/${Trainings.training.next_article_id}`)
+            navigate(0)
         } else {
             tgButtonText(finishPendingStatus)
 
@@ -47,7 +48,8 @@ const TrainingDetail = () => {
             if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                 tgMainButton.hide()
             } else {
-                await Trainings.getOneTraining(Trainings.training.next_article_id)
+                navigate(`/trainings/${Trainings.training.next_article_id}`)
+                navigate(0)
             }
         }
     }
@@ -110,6 +112,10 @@ const TrainingDetail = () => {
 
     tgButtonFunctionality()
 
+    if(isClicked) {
+        return <Navigate replace={true} to={`/trainings/4`}/>
+    }
+
     return (
         <Wrapper>
             <Wrap className="article">
@@ -117,7 +123,7 @@ const TrainingDetail = () => {
                     Обучение
                 </Navigation>
 
-                <h1 className="button-header article_button-header" id="article-title">
+                <h1 onClick={() => setClicked(true)} className="button-header article_button-header" id="article-title">
                     {Trainings.training.title}
                 </h1>
 
@@ -128,9 +134,6 @@ const TrainingDetail = () => {
                             src={Trainings.training.image_url}
                             rel="preload"
                             alt=""
-                            onClick={() => {
-                                navigate(`/trainings/4`)
-                            }}
                         />
                     }
 
