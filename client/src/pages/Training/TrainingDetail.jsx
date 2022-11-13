@@ -110,6 +110,10 @@ const TrainingDetail = () => {
         }
     }, [])
 
+    if (isClicked) {
+        console.log(`/trainings/${Trainings.training.next_article_id}`)
+    }
+
     return isClicked ? (
         <Navigate to={`/trainings/${Trainings.training.next_article_id}`}/>
         ) : (
