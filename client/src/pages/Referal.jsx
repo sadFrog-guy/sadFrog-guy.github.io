@@ -53,7 +53,31 @@ const Referal = () => {
 
     const onShare = async() => {
         haptic()
-        await navigator.share({ url: `${shareData.text} - ${shareData.link}` })
+        navigator.share({
+                title: 'Crypto Learn',
+                text: shareData.text,
+                url: shareData.link,
+                fbId: '123456789123456',
+            },
+            {
+                copy: true,
+                email: true,
+                print: true,
+                sms: true,
+                messenger: true,
+                facebook: true,
+                whatsapp: true,
+                twitter: true,
+                linkedin: true,
+                telegram: true,
+                skype: true,
+                pinterest: true,
+                line: true,
+                language: 'ru'
+            }
+        )
+            .then( _ => console.log('Yay, you shared it :)'))
+            .catch( error => console.log('Oh noh! You couldn\'t share it! :\'(\n', error));
     }
 
     const onShareTg = () => {
