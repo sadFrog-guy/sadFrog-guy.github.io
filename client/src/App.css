@@ -581,12 +581,22 @@ img {
 
 .not-authorized-text {
     margin-bottom: 6px;
+    color: #1C1C1E;
+}
+
+.body.dark > #root > .not-authorized {
+    background-color: #1C1C1E;
+}
+
+.body.dark > #root > .not-authorized > .not-authorized-header,
+.body.dark > #root > .not-authorized > .not-authorized-text {
+    color: #fff;
 }
 
 .not-authorized-link {
-    color: #3478F6;
+    color: var(--tg-theme-link-color);
     text-decoration: none;
-    border-bottom: 1px solid rgba(52, 120, 246, 0.22);
+    border-bottom: 1px solid var(--tg-theme-link-color);
 }
 
 .title {
