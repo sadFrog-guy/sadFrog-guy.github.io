@@ -18,6 +18,7 @@ import Wrapper from "../../components/utils/Wrapper/Wrapper";
 import {observer} from "mobx-react-lite";
 import Button from "../../components/ui/GlobalUI/Button/Button";
 import fullscreen from "../../assets/icons/fullscreen.png";
+import {NOT_AUTH} from "../../router";
 
 const TrainingDetail = () => {
     const id = useParams()
@@ -38,21 +39,21 @@ const TrainingDetail = () => {
             const onClickHandler = async() => {
                 haptic()
 
-                // if(Trainings.training.viewed) {
-                //     setClicked(true)
-                //     console.log(isClicked)
-                // } else {
-                //     tgButtonText(finishPendingStatus)
-                //
-                //     await Trainings.readTraining(id)
-                //
-                //     if(Trainings.training.viewed && !Trainings.training.next_article_id) {
-                //         tgMainButton.hide()
-                //     } else {
-                //         setClicked(true)
-                //         console.log(isClicked)
-                //     }
-                // }
+                if(Trainings.training.viewed) {
+                    setClicked(true)
+                    console.log(isClicked)
+                } else {
+                    tgButtonText(finishPendingStatus)
+
+                    await Trainings.readTraining(id)
+
+                    if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                        tgMainButton.hide()
+                    } else {
+                        setClicked(true)
+                        console.log(isClicked)
+                    }
+                }
             }
 
             tgMainButton.onClick(onClickHandler)
@@ -112,85 +113,75 @@ const TrainingDetail = () => {
         }
     }, [])
 
-    setTimeout(() => {
-        setClicked(true)
-        console.log(isClicked)
-    }, 1000)
-
-    console.log(isClicked)
-
     // <Navigate to={`/trainings/${Trainings.training.next_article_id}`}/>
 
-    return (//isClicked ? (
-        // <Navigate to="/trainings/4"/>
-        // ) : (
+    return (
         <Wrapper>
-            {!isLoading
-                ?
-                <Wrap className="article">
-                    <Navigation to="/trainings">
-                        Обучение
-                    </Navigation>
+            <Wrap className="article">
+                <Navigation to="/trainings">
+                    Обучение
+                </Navigation>
 
-                    <h1 className="button-header article_button-header" id="article-title">
-                        {Trainings.training.title}
-                    </h1>
+                <h1 className="button-header article_button-header" id="article-title">
+                    {Trainings.training.title}
+                </h1>
 
-                    <Wrap className="training-image-wrap article_image-wrap">
-                        {Trainings.training.image_url &&
-                            <img
-                                className="training-image" id="article-image"
-                                src={Trainings.training.image_url}
-                                rel="preload"
-                                alt=""
-                                onClick={() => {
-                                    navigate(`/trainings/4`)
-                                }}
+                <Wrap className="training-image-wrap article_image-wrap">
+                    {Trainings.training.image_url &&
+                        <img
+                            className="training-image" id="article-image"
+                            src={Trainings.training.image_url}
+                            rel="preload"
+                            alt=""
+                            onClick={() => {
+                                navigate(`/trainings/4`)
+                            }}
+                        />
+                    }
+
+                    {Trainings.training.video_url &&
+                        <Wrap className="video-wrapper">
+                            <video
+                                controls
+                                className="video"
+                                disablePictureInPicture
+                                controlsList={`noplaybackrate nodownload ${isIOS() === false ? 'nofullscreen' : ''}`}
+                                src={Trainings.training.video_url}
+                                poster={Trainings.training.video_preview_image}
+                                ref={videoRef}
                             />
-                        }
-
-                        {Trainings.training.video_url &&
-                            <Wrap className="video-wrapper">
-                                <video
-                                    controls
-                                    className="video"
-                                    disablePictureInPicture
-                                    controlsList={`noplaybackrate nodownload ${isIOS() === false ? 'nofullscreen' : ''}`}
-                                    src={Trainings.training.video_url}
-                                    poster={Trainings.training.video_preview_image}
-                                    ref={videoRef}
-                                />
-                                {!isIOS() &&
-                                    <div className="fullscreen-button" onClick={onFullscreen}>
-                                        <img className="icon-fullscreen" src={fullscreen} alt=""/>
-                                    </div>
-                                }
-
-                                <div className={`go-to-browser ${openInBrowser ? 'active' : ''}`}>
-                                    <Button onClick={browserRedirect} id="go-to-button">
-                                        Перейти в браузер для просмотра урока
-                                    </Button>
-                                    <div className="fullscreen-button go-to" onClick={onFullscreen}>
-                                        <img className="icon-fullscreen" src={fullscreen} alt=""/>
-                                    </div>
+                            {!isIOS() &&
+                                <div className="fullscreen-button" onClick={onFullscreen}>
+                                    <img className="icon-fullscreen" src={fullscreen} alt=""/>
                                 </div>
-                            </Wrap>
-                        }
-                    </Wrap>
-                    <Wrap className="article-content">
-                        <Text type="medium" overrideClass="article_medium" id="article-bold">
-                            {Trainings.training.bold_text}
-                        </Text>
-                        <Text type="medium" overrideClass="text article_text" id="article-content">
-                            {Trainings.training.main_text}
-                        </Text>
-                    </Wrap>
+                            }
+
+                            <div className={`go-to-browser ${openInBrowser ? 'active' : ''}`}>
+                                <Button onClick={browserRedirect} id="go-to-button">
+                                    Перейти в браузер для просмотра урока
+                                </Button>
+                                <div className="fullscreen-button go-to" onClick={onFullscreen}>
+                                    <img className="icon-fullscreen" src={fullscreen} alt=""/>
+                                </div>
+                            </div>
+                        </Wrap>
+                    }
                 </Wrap>
-                :
-                <Loader
-                    isLoading={isLoading}
-                />
-            }
+                <Wrap className="article-content">
+                    <Text type="medium" overrideClass="article_medium" id="article-bold">
+                        {Trainings.training.bold_text}
+                    </Text>
+                    <Text type="medium" overrideClass="text article_text" id="article-content">
+                        {Trainings.training.main_text}
+                    </Text>
+                </Wrap>
+            </Wrap>
+
+            <Loader
+                isLoading={isLoading}
+            />
+
+            {Trainings.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
         </Wrapper>
     );
 };

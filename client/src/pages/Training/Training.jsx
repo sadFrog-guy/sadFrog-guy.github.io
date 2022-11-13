@@ -12,10 +12,11 @@ import Dragger from "../../components/ui/ModalUI/Dragger/Dragger";
 import ModalHeader from "../../components/ui/ModalUI/ModalHeader/ModalHeader";
 import LockIcon from "../../components/icons/LockIcon/LockIcon";
 import ModalText from "../../components/ui/ModalUI/ModalText/ModalText";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, Navigate} from "react-router-dom";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {backButtonShow, exitConfirmation, tgWebApp} from "../../utils/telegramAPI";
 import TrainingModal from "../../components/ui/TrainingUI/TrainingModal/TrainingModal";
+import {NOT_AUTH} from "../../router";
 
 const Training = () => {
     const {Trainings} = useContext(Context);
@@ -53,7 +54,7 @@ const Training = () => {
             </Navigation>
 
             <TrainingList title="Обучение">
-                {Trainings.trainings.map(training => {
+                {Trainings?.trainings?.map(training => {
                     Trainings.checkAccess(training)
 
                     return (
@@ -72,6 +73,8 @@ const Training = () => {
             <Loader
                 isLoading={isLoading}
             />
+
+            {Trainings.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
         </Wrapper>
     );
 };

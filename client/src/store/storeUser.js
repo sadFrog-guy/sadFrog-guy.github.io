@@ -13,6 +13,7 @@ export default new class StoreUser {
     avatar
     username
     have_subscribe
+    comment
 
     constructor() {
         makeAutoObservable(this)
@@ -29,6 +30,7 @@ export default new class StoreUser {
             this.technical_support_link = data.technical_support_link
             this.avatar = data.avatar
             this.have_subscribe = data.have_subscribe
+            this.comment = data.comment
         } catch (e) {
             console.log(e)
         }

@@ -12,6 +12,8 @@ import Subscribtion from "../../components/ui/HomeUI/Subscribtion/Subscribtion";
 import FooterHome from "../../components/ui/HomeUI/FooterHome/FooterHome";
 import ModalHome from "../../components/ui/HomeUI/ModalHome/ModalHome";
 import {backButtonHide, tgInintial, tgWebApp} from "../../utils/telegramAPI";
+import {Navigate, useLocation, useNavigate, useParams} from "react-router-dom";
+import {NOT_AUTH} from "../../router";
 
 const Home = () => {
     const {User} = useContext(Context);
@@ -59,9 +61,12 @@ const Home = () => {
 
                 <FooterHome/>
             </WrapperHome>
+
             <Loader
                 isLoading={isLoading}
             />
+
+            {User.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
         </Wrapper>
     );
 };

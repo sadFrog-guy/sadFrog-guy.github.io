@@ -64,55 +64,52 @@ const Referal = () => {
 
     return (
         <Wrapper>
-            {!isLoading
-                ?
-                <WrapperReferal>
-                    <Navigation>
-                        Обучение
-                    </Navigation>
+            <WrapperReferal>
+                <Navigation>
+                    Обучение
+                </Navigation>
 
-                    <Wrap className="content">
-                        <ReferalBalance
-                            balance={Referal.referalBalance + ' ₽'}
-                            title="Баланс"
-                        />
-                        <ReferalDescription
-                            header="Это ваша реферальная ссылка"
-                        >
-                            Реферальная ссылка&nbsp;&mdash; специальный URL,
-                            с&nbsp;помощью которого участник партнёрской
-                            программы рекламирует продукт
-                            и&nbsp;получает за&nbsp;это вознаграждение
-                        </ReferalDescription>
-                    </Wrap>
-                    <Wrap className="share-wrap">
-                        <CopyButton onCopy={onCopyHandler} text={Referal.referalLink}>
-                            <Copied isCopied={copied}>Скопировано</Copied>
+                <Wrap className="content">
+                    <ReferalBalance
+                        balance={Referal.referalBalance + ' ₽'}
+                        title="Баланс"
+                    />
+                    <ReferalDescription
+                        header="Это ваша реферальная ссылка"
+                    >
+                        Реферальная ссылка&nbsp;&mdash; специальный URL,
+                        с&nbsp;помощью которого участник партнёрской
+                        программы рекламирует продукт
+                        и&nbsp;получает за&nbsp;это вознаграждение
+                    </ReferalDescription>
+                </Wrap>
+                <Wrap className="share-wrap">
+                    <CopyButton onCopy={onCopyHandler} text={Referal.referalLink}>
+                        <Copied isCopied={copied}>Скопировано</Copied>
 
-                            <Text onClick={haptic} type="medium" id="referal-link">
-                                {Referal.referalLink}
-                            </Text>
+                        <Text onClick={haptic} type="medium" id="referal-link">
+                            {Referal.referalLink}
+                        </Text>
 
-                            <CopyIcon/>
-                        </CopyButton>
-                        {/*{isIOS()*/}
-                        {/*    ?*/}
-                            <Button id="share-button" onClick={onShare}>
-                                Поделиться
-                            </Button>
-                        {/*    :*/}
-                        {/*    <Button id="share-button" onClick={onShareTg}>*/}
-                        {/*        Поделиться в Telegram*/}
-                        {/*    </Button>*/}
-                        {/*}*/}
+                        <CopyIcon/>
+                    </CopyButton>
+                    {/*{isIOS()*/}
+                    {/*    ?*/}
+                        <Button id="share-button" onClick={onShare}>
+                            Поделиться
+                        </Button>
+                    {/*    :*/}
+                    {/*    <Button id="share-button" onClick={onShareTg}>*/}
+                    {/*        Поделиться в Telegram*/}
+                    {/*    </Button>*/}
+                    {/*}*/}
 
-                    </Wrap>
-                </WrapperReferal>
-                :
-                <Loader
-                    isLoading={isLoading}
-                />
-            }
+                </Wrap>
+            </WrapperReferal>
+
+            <Loader
+                isLoading={isLoading}
+            />
         </Wrapper>
     );
 };
