@@ -39,7 +39,6 @@ const TrainingDetail = () => {
 
         if(Trainings.training.viewed) {
             await Trainings.getOneTraining(Trainings.training.next_article_id)
-            navigate(0)
         } else {
             tgButtonText(finishPendingStatus)
 
@@ -49,7 +48,6 @@ const TrainingDetail = () => {
                 tgMainButton.hide()
             } else {
                 await Trainings.getOneTraining(Trainings.training.next_article_id)
-                navigate(0)
             }
         }
     }
