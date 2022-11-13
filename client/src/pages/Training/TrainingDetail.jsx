@@ -38,21 +38,23 @@ const TrainingDetail = () => {
             const onClickHandler = async() => {
                 haptic()
 
-                if(Trainings.training.viewed) {
-                    setClicked(true)
-                    console.log(isClicked)
-                } else {
-                    tgButtonText(finishPendingStatus)
-
-                    await Trainings.readTraining(id)
-
-                    if(Trainings.training.viewed && !Trainings.training.next_article_id) {
-                        tgMainButton.hide()
-                    } else {
-                        setClicked(true)
-                        console.log(isClicked)
-                    }
-                }
+                // if(Trainings.training.viewed) {
+                //     setClicked(true)
+                //     console.log(isClicked)
+                // } else {
+                //     tgButtonText(finishPendingStatus)
+                //
+                //     await Trainings.readTraining(id)
+                //
+                //     if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                //         tgMainButton.hide()
+                //     } else {
+                //         setClicked(true)
+                //         console.log(isClicked)
+                //     }
+                // }
+                setClicked(true)
+                console.log(isClicked)
             }
 
             tgMainButton.onClick(onClickHandler)
