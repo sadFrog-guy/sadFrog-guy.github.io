@@ -30,7 +30,8 @@ export default new class StoreUser {
             this.technical_support_link = data.technical_support_link
             this.avatar = data.avatar
             this.have_subscribe = data.have_subscribe
-            this.comment = data.comment
+
+            window.localStorage.setItem("comment-user", data.comment)
         } catch (e) {
             console.log(e)
         }

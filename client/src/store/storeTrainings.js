@@ -21,7 +21,7 @@ export default new class StoreTrainings {
             console.log(data)
             this.trainings = data.sections
             this.have_subscribe = data.have_subscribe
-            this.comment = data.comment
+            window.localStorage.setItem("comment-training", data.comment)
         } catch (e) {
             console.log(e)
         }
@@ -33,7 +33,8 @@ export default new class StoreTrainings {
             console.log(data)
             this.training = data
             this.have_subscribe = data.have_subscribe
-            this.comment = data.comment
+
+            window.localStorage.setItem("comment-training", data.comment)
         } catch (e) {
             console.log(e)
         }

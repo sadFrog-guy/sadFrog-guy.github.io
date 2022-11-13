@@ -8,13 +8,14 @@ import Wrap from "../components/utils/Wrap/Wrap";
 import Text from "../components/ui/GlobalUI/Text/Text";
 
 const NotAuth = () => {
-    const {User, Trainings} = useContext(Context);
-
     const checkAuthorized = () => {
-        if(User.comment && !Trainings.comment) {
-            return User.comment
-        } else if(!User.comment && Trainings.comment) {
-            return Trainings.comment
+        const UserComment = window.localStorage.getItem("comment-user")
+        const TrainingComment = window.localStorage.getItem("comment-training")
+
+        if(UserComment && !TrainingComment) {
+            return UserComment
+        } else {
+            return TrainingComment
         }
     }
 
