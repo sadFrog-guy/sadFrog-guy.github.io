@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = ({children, overrideClass, ...props}) => {
+const Button = ({children, overrideClass, disabled, ...props}) => {
     return (
         <a className={`button-reusable ${overrideClass}`} {...props}>
             {children}

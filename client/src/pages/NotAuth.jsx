@@ -39,9 +39,6 @@ const NotAuth = () => {
             <Text type="medium" overrideClass="not-authorized-text">
                 {checkAuthorized()}
             </Text>
-            <Link to="/" className="not-authorized-link">
-                Попробовать еще раз
-            </Link>
         </Wrap>
     );
 };
