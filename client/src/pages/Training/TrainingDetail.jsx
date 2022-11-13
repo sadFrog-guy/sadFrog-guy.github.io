@@ -53,8 +53,6 @@ const TrainingDetail = () => {
                 //         console.log(isClicked)
                 //     }
                 // }
-                setClicked(true)
-                console.log(isClicked)
             }
 
             tgMainButton.onClick(onClickHandler)
@@ -107,6 +105,11 @@ const TrainingDetail = () => {
             setLoading(false)
         }
         fetchData()
+
+        setTimeout(() => {
+            setClicked(true)
+            console.log(isClicked)
+        }, 1000)
 
         return () => {
             setClicked(false)
