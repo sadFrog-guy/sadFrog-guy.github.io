@@ -105,12 +105,13 @@ const TrainingDetail = () => {
         fetchData()
 
         return () => {
+            setClicked(false)
             tgMainButton.hide()
         }
     }, [])
 
     return isClicked ? (
-        <Navigate to={`/trainings`}/>
+        <Navigate to={`/trainings/${Trainings.training.next_article_id}`}/>
         ) : (
         <Wrapper>
             {!isLoading
