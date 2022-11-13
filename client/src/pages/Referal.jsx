@@ -22,6 +22,7 @@ import Loader from "../components/ui/GlobalUI/Loader/Loader";
 import {isIOS} from "../utils/isIOS";
 import {backButtonShow, exitConfirmation, haptic, tgWebApp} from "../utils/telegramAPI";
 import {NOT_AUTH} from "../router";
+import {RWebShare} from "react-web-share";
 
 const Referal = () => {
 
@@ -51,33 +52,8 @@ const Referal = () => {
         fetchData()
     }, [])
 
-    const onShare = async() => {
+    const onShare = () => {
         haptic()
-        navigator.share({
-                title: 'Crypto Learn',
-                text: shareData.text,
-                url: shareData.link,
-                fbId: '123456789123456',
-            },
-            {
-                copy: true,
-                email: true,
-                print: true,
-                sms: true,
-                messenger: true,
-                facebook: true,
-                whatsapp: true,
-                twitter: true,
-                linkedin: true,
-                telegram: true,
-                skype: true,
-                pinterest: true,
-                line: true,
-                language: 'ru'
-            }
-        )
-            .then( _ => console.log('Yay, you shared it :)'))
-            .catch( error => console.log('Oh noh! You couldn\'t share it! :\'(\n', error));
     }
 
     const onShareTg = () => {
@@ -120,9 +96,18 @@ const Referal = () => {
                     </CopyButton>
                     {/*{isIOS()*/}
                     {/*    ?*/}
-                        <Button id="share-button" onClick={onShare}>
+                    <RWebShare
+                        data={{
+                            text: "Like humans, flamingos make friends for life",
+                            url: "https://on.natgeo.com/2zHaNup",
+                            title: "Flamingos",
+                        }}
+                        onClick={onShare}
+                    >
+                        <Button id="share-button">
                             Поделиться
                         </Button>
+                    </RWebShare>
                     {/*    :*/}
                     {/*    <Button id="share-button" onClick={onShareTg}>*/}
                     {/*        Поделиться в Telegram*/}
