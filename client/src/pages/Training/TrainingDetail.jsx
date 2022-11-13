@@ -38,8 +38,7 @@ const TrainingDetail = () => {
         haptic()
 
         if(Trainings.training.viewed) {
-            setClicked(true)
-            console.log(isClicked)
+            navigate('/4')
         } else {
             tgButtonText(finishPendingStatus)
 
@@ -48,8 +47,7 @@ const TrainingDetail = () => {
             if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                 tgMainButton.hide()
             } else {
-                setClicked(true)
-                console.log(isClicked)
+                navigate('/4')
             }
         }
     }
@@ -106,18 +104,13 @@ const TrainingDetail = () => {
         fetchData()
 
         return () => {
-            setClicked(false)
             tgMainButton.hide()
         }
     }, [])
 
     tgButtonFunctionality()
 
-    console.log(isClicked)
-
-    return isClicked ? (
-        <Navigate to={`/trainings/${Trainings.training.next_article_id}`}/>
-    ) : (
+    return (
         <Wrapper>
             <Wrap className="article">
                 <Navigation to="/trainings">
