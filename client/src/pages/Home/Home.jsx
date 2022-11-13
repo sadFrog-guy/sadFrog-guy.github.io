@@ -23,6 +23,8 @@ const Home = () => {
     const [isLoading, setLoading] = useState(true)
     const [isLoaded, setLoaded] = useState(false)
 
+    console.log(tgWebApp.initData)
+
     useEffect(() => {
         tgInintial()
 

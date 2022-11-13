@@ -1364,6 +1364,10 @@ body.dark > #root > .wrapper > .currency-list > .currency-item.red {
     font-family: SF Pro Medium, sans-serif;
 }
 
+.button-reusable.button-reusable-disabled {
+    background-color: #CCD0D9;
+}
+
 .input:focus {
     outline: none;
 }

@@ -1,8 +1,12 @@
 import React from 'react';
 
-const Button = ({children, overrideClass, disabled, ...props}) => {
+const Button = ({children, isDisabled, overrideClass, disabled, ...props}) => {
     return (
-        <a className={`button-reusable ${overrideClass}`} {...props}>
+        <a
+            className={`${isDisabled ? 'button-reusable button-reusable-disabled' : 'button-reusable'}
+             ${overrideClass}`}
+            {...props}
+        >
             {children}
         </a>
     );

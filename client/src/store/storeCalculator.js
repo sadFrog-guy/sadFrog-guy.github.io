@@ -4,7 +4,7 @@ import Calculator from "../services/calculator";
 export default new class StoreCalculator {
 
     chains = []
-    amount
+    amount = ''
     error
     have_subscribe
 

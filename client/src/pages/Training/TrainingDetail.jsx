@@ -19,79 +19,21 @@ import {observer} from "mobx-react-lite";
 import Button from "../../components/ui/GlobalUI/Button/Button";
 import fullscreen from "../../assets/icons/fullscreen.png";
 import {NOT_AUTH} from "../../router";
+import {useTelegramButton} from "../../hooks/useTelegramButton";
+import {useVideo} from "../../hooks/useVideo";
 
 const TrainingDetail = () => {
     const id = useParams()
     const navigate = useNavigate()
-    const location = useLocation()
     const videoRef = useRef(null)
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
-
-    const viewedStatus = "Прочитано"
-    const finishStatus = "Завершить"
-    const finishPendingStatus = "Завершается..."
-
-    const onClickHandler = async() => {
-        haptic()
-
-        if(Trainings.training.viewed) {
-            // navigate(`/trainings/${Trainings.training.next_article_id}`)
-            window.location.href = `/trainings/${Trainings.training.next_article_id}`
-            // navigate(0)
-        } else {
-            tgButtonText(finishPendingStatus)
-
-            await Trainings.readTraining(id)
-
-            if(Trainings.training.viewed && !Trainings.training.next_article_id) {
-                tgMainButton.hide()
-            } else {
-                window.location.href = `/trainings/${Trainings.training.next_article_id}`
-                // navigate(`/trainings/${Trainings.training.next_article_id}`)
-                // navigate(0)
-            }
-        }
-    }
-
-    tgMainButton.onClick(onClickHandler)
-
-    const tgButtonFunctionality = () => {
-        if(location.pathname.includes("/trainings/")) {
-
-            if(Trainings.training.viewed) {
-                tgButtonText(viewedStatus)
-            } else {
-                tgButtonText(finishStatus)
-            }
-
-            tgButtonInitial()
-
-            if(Trainings.training.viewed && !Trainings.training.next_article_id) {
-                tgMainButton.hide()
-            } else {
-                tgMainButton.show()
-            }
-        }
-    }
-
-    const browserRedirect = async() => {
-        haptic()
-
-        await Trainings.getAccessToVideo(id)
-        openLinkExternal(Trainings.video_link)
-    }
-
-    const onFullscreen = () => {
-        if(openInBrowser) {
-            setOpenInBrowser(false)
-            videoRef.current.play()
-        } else {
-            setOpenInBrowser(true)
-            videoRef.current.pause()
-        }
-    }
+    const telegramButton = useTelegramButton(Trainings, id.id, () => {
+        navigate(`/trainings/${Trainings.training.next_article_id}`)
+        navigate(0)
+    })
+    const {onFullscreen, browserRedirect} = useVideo(Trainings, id.id, videoRef, openInBrowser, setOpenInBrowser)
 
     useEffect(() => {
         exitConfirmation()
@@ -103,6 +45,7 @@ const TrainingDetail = () => {
         async function fetchData() {
             await Trainings.getOneTraining(id)
             setLoading(false)
+            telegramButton()
         }
         fetchData()
 
@@ -110,8 +53,6 @@ const TrainingDetail = () => {
             tgMainButton.hide()
         }
     }, [])
-
-    tgButtonFunctionality()
 
     return (
         <Wrapper>
@@ -171,6 +112,12 @@ const TrainingDetail = () => {
                     </Text>
                 </Wrap>
             </Wrap>
+
+            <div className="main-button">
+                <Text type="medium" overrideClass="main-button-text">
+
+                </Text>
+            </div>
 
             <Loader
                 isLoading={isLoading}
