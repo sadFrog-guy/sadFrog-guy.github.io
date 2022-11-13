@@ -94,16 +94,16 @@ const Referal = () => {
 
                         <CopyIcon/>
                     </CopyButton>
-                    {/*{isIOS()*/}
-                    {/*    ?*/}
+                    {isIOS()
+                        ?
                         <Button id="share-button" onClick={onShare}>
                             Поделиться
                         </Button>
-                    {/*    :*/}
-                    {/*    <Button id="share-button" onClick={onShareTg}>*/}
-                    {/*        Поделиться в Telegram*/}
-                    {/*    </Button>*/}
-                    {/*}*/}
+                        :
+                        <Button id="share-button" onClick={onShareTg}>
+                            Поделиться в Telegram
+                        </Button>
+                    }
 
                 </Wrap>
             </WrapperReferal>

@@ -92,8 +92,6 @@ const TrainingDetail = () => {
         }
     }
 
-    tgButtonFunctionality()
-
     useEffect(() => {
         exitConfirmation()
 
@@ -113,10 +111,14 @@ const TrainingDetail = () => {
         }
     }, [])
 
-    return (
-        <Wrapper>
-            {isClicked && <Navigate to={`/trainings/${Trainings.training.next_article_id}`}/>}
+    tgButtonFunctionality()
 
+    console.log(isClicked)
+
+    return isClicked ? (
+        <Navigate to={`/trainings/${Trainings.training.next_article_id}`}/>
+    ) : (
+        <Wrapper>
             <Wrap className="article">
                 <Navigation to="/trainings">
                     Обучение
