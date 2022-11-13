@@ -106,16 +106,16 @@ const TrainingDetail = () => {
         }
         fetchData()
 
-        setTimeout(() => {
-            setClicked(true)
-            console.log(isClicked)
-        }, 1000)
-
         return () => {
             setClicked(false)
             tgMainButton.hide()
         }
     }, [])
+
+    setTimeout(() => {
+        setClicked(true)
+        console.log(isClicked)
+    }, 1000)
 
     console.log(isClicked)
 
