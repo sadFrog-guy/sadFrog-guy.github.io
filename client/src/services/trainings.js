@@ -1,6 +1,6 @@
 import {request} from "../utils/axiosInstance";
 import {useParams} from "react-router-dom";
-import {tgID} from "../utils/telegramAPI";
+import {tgHash, tgID} from "../utils/telegramAPI";
 
 export default class Trainings {
 
@@ -10,6 +10,7 @@ export default class Trainings {
             {
                 params: {
                     telegram_id: tgID,
+                    hash_key: tgHash
                 }
             }
         )
@@ -25,7 +26,8 @@ export default class Trainings {
             {
                 params: {
                     telegram_id: tgID,
-                    section_id: id
+                    section_id: id,
+                    hash_key: tgHash
                 }
             }
         )
@@ -42,7 +44,8 @@ export default class Trainings {
             {
                 params: {
                     telegram_id: tgID,
-                    section_id: id
+                    section_id: id,
+                    hash_key: tgHash
                 }
             }
         )
@@ -59,7 +62,8 @@ export default class Trainings {
             url: 'section_viewed',
             params: {
                 telegram_id: tgID,
-                section_id: id.id
+                section_id: id.id,
+                hash_key: tgHash
             },
             data: {
                 viewed: true

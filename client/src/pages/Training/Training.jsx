@@ -34,12 +34,14 @@ const Training = () => {
 
         async function fetchData() {
             await Trainings.getAllTrainings()
-
-            if(isLoaded) {
-                setLoading(false)
-            }
         }
         fetchData()
+    }, [])
+
+    useEffect(() => {
+        if(isLoaded) {
+            setLoading(false)
+        }
     }, [isLoaded])
 
     return (

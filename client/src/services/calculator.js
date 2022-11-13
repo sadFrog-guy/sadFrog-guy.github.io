@@ -1,5 +1,5 @@
 import {request} from "../utils/axiosInstance";
-import {tgID} from "../utils/telegramAPI";
+import {tgHash, tgID} from "../utils/telegramAPI";
 
 export default class Calculator {
     static async getChains(amount) {
@@ -8,6 +8,7 @@ export default class Calculator {
             {
                 params: {
                     telegram_id: tgID,
+                    hash_key: tgHash,
                     amount: amount
                 }
             }
