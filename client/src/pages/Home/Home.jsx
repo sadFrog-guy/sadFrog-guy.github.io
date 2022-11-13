@@ -34,7 +34,7 @@ const Home = () => {
             const response = await axios.post('https://crypto-learn.ru/api/authorization', {
                 init_data: 'query_id=AAFmJzA0AAAAAGYnMDQz78RL&user=%7B%22id%22%3A875571046%2C%22first_name%22%3A%22Morde%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22hgshit%22%2C%22language_code%22%3A%22ru%22%7D&auth_date=1668377003&hash=9af46089ea10076f0f4fad309688ad7b41412e86f2a8777e405e21b3f08d2b76',
                 telegram_id: 976284834
-            })
+            }, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
             console.log(response)
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
 
