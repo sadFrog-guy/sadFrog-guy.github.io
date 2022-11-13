@@ -114,10 +114,10 @@ const TrainingDetail = () => {
         }
     }, [])
 
-    // <Navigate to={`/trainings/${Trainings.training.next_article_id}`}/>
-
     return (
         <Wrapper>
+            {isClicked && <Navigate to={`/trainings/${Trainings.training.next_article_id}`}/>}
+
             <Wrap className="article">
                 <Navigation to="/trainings">
                     Обучение
