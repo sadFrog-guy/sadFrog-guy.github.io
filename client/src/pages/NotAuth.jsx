@@ -4,6 +4,8 @@ import {NOT_AUTH} from "../router";
 import {useContext} from "react";
 import {Context} from "../utils/context";
 import {observer} from "mobx-react-lite";
+import Wrap from "../components/utils/Wrap/Wrap";
+import Text from "../components/ui/GlobalUI/Text/Text";
 
 const NotAuth = () => {
     const {User, Trainings} = useContext(Context);
@@ -17,13 +19,17 @@ const NotAuth = () => {
     }
 
     return (
-        <h1>
-            {checkAuthorized()}
-
-            <Link to="/">
-                перейти на главную
+        <Wrap className="not-authorized">
+            <Text type="medium" className="not-authorized-header">
+                Закрыто
+            </Text>
+            <Text type="medium" overrideClass="not-authorized-text">
+                {checkAuthorized()}
+            </Text>
+            <Link to="/" className="not-authorized-link">
+                Попробовать еще раз
             </Link>
-        </h1>
+        </Wrap>
     );
 };
 

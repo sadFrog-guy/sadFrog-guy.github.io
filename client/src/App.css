@@ -562,15 +562,31 @@ img {
 /* no subscribe */
 
 .not-authorized {
-    display: none;
-}
-
-.not-authorized.active {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
     height: 100vh;
-    background-color: var(--tg-theme-bg-color);
+    background-color: #fff;
+    padding: 30px;
+}
+
+.not-authorized-header {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    color: #1C1C1E;
+    margin-bottom: 11px;
+}
+
+.not-authorized-text {
+    margin-bottom: 6px;
+}
+
+.not-authorized-link {
+    color: #3478F6;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(52, 120, 246, 0.22);
 }
 
 .title {
