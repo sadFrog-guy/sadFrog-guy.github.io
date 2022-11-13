@@ -15,25 +15,28 @@ const CalculateForm = () => {
     const inputOnChange = (e) => {
         const value = e.target.value.replace(/\D/g, "")
 
-        if(value !== 0 || value) {
+        if(value > 0) {
+            e.target.value = value
             Calculator.changeAmount(value)
         }
     }
 
     const buttonOnClick = async() => {
-        setIsLoading(true)
-        await Calculator.getChains(Calculator.amount)
-        setIsLoading(false)
+        if(Calculator.amount) {
+            setIsLoading(true)
+            await Calculator.getChains(Calculator.amount)
+            setIsLoading(false)
+        }
     }
 
     return (
         <Wrap className="form">
             <Input
-                min="1"
+                min="0"
                 pattern="/^\d+$/"
                 onChange={inputOnChange}
-                value={Calculator.amount}
                 type={isMobile ? "tel" : "number"}
+                placeholder="Введите сумму прогрутки"
             />
             <Button overrideClass="calculator_button" onClick={buttonOnClick}>
                 Рассчитать

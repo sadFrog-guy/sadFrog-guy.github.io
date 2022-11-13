@@ -52,12 +52,14 @@ const Referal = () => {
 
     const onShare = async() => {
         haptic()
-        await navigator.share({ text: shareData.text, url: shareData.link, title: 'Тайтл' })
+        await navigator.share({ text: shareData.text, url: shareData.link, title: shareData.text })
     }
 
     const onShareTg = () => {
         haptic()
-        window.location.href = `https://telegram.me/share/url?url=${shareData.link}&text=${shareData.text}`
+        window.location.href = `
+            https://telegram.me/share/url?url=${shareData.link}&text=${shareData.text}
+        `
     }
 
     return (

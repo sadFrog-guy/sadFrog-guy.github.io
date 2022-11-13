@@ -4,7 +4,7 @@ import Calculator from "../services/calculator";
 export default new class StoreCalculator {
 
     chains = []
-    amount = 1000
+    amount
 
     constructor() {
         makeAutoObservable(this)
@@ -14,7 +14,7 @@ export default new class StoreCalculator {
         try {
             const {data} = await Calculator.getChains(amount)
             console.log(data)
-            this.chains = data
+            this.chains = data.chains
         } catch (e) {
             console.log(e)
         }

@@ -11,34 +11,17 @@ import {Context} from "../utils/context";
 import Loader from "../components/ui/GlobalUI/Loader/Loader";
 
 const Calculator = () => {
-    const {Calculator} = useContext(Context)
-    const [isLoading, setLoading] = useState(false)
+    return (
+        <Wrapper>
+            <Navigation to="/">
+                Калькулятор
+            </Navigation>
 
-    useEffect(() => {
-        const fetchData = async() => {
-            setLoading(true)
-            await Calculator.getChains(Calculator.amount)
-            setLoading(false)
-        }
+            <CalculateForm/>
 
-        fetchData()
-    }, [])
-
-    if(!isLoading) {
-        return (
-            <Wrapper>
-                <Navigation to="/">
-                    Калькулятор
-                </Navigation>
-
-                <CalculateForm/>
-
-                <CurrencyList/>
-            </Wrapper>
-        )
-    } else {
-        return <Loader isLoading={isLoading}/>
-    }
+            <CurrencyList/>
+        </Wrapper>
+    )
 };
 
 export default Calculator;

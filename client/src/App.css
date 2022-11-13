@@ -349,6 +349,11 @@ img {
     display: none;
 }
 
+.infinity {
+    width: 121px;
+    height: 43px;
+}
+
 .footer {
     order: 3;
     padding-bottom: 40px;
