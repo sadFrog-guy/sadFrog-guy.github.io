@@ -38,7 +38,7 @@ const TrainingDetail = () => {
         haptic()
 
         if(Trainings.training.viewed) {
-            navigate(`/trainings/${Trainings.training.next_article_id}`)
+            await Trainings.getOneTraining(Trainings.training.next_article_id)
             navigate(0)
         } else {
             tgButtonText(finishPendingStatus)
@@ -48,7 +48,7 @@ const TrainingDetail = () => {
             if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                 tgMainButton.hide()
             } else {
-                navigate(`/trainings/${Trainings.training.next_article_id}`)
+                await Trainings.getOneTraining(Trainings.training.next_article_id)
                 navigate(0)
             }
         }
