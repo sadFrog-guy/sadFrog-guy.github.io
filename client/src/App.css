@@ -605,6 +605,17 @@ body.dark > #root > .not-authorized > .not-authorized-text {
     text-align: center;
 }
 
+.calculator-error {
+    color: #FF3B30;
+    font-size: 13px;
+    margin-bottom: 8px;
+    margin-left: 3px;
+}
+
+.calculator-input {
+    margin-bottom: 4px;
+}
+
 /* referal */
 
 .referal {
@@ -1334,7 +1345,6 @@ body.dark > #root > .wrapper > .currency-list > .currency-item.red {
     margin-bottom: 27.66px;
     display: flex;
     flex-direction: column;
-    gap: 8.34px;
 }
 
 .input-wrap {

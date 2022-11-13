@@ -7,6 +7,7 @@ import {Context} from "../../../../utils/context";
 import LoaderButton from "../../GlobalUI/LoaderButton/LoaderButton";
 import {observer} from "mobx-react-lite";
 import {isMobile} from "react-device-detect";
+import Text from "../../GlobalUI/Text/Text";
 
 const CalculateForm = () => {
     const {Calculator} = useContext(Context)
@@ -37,7 +38,11 @@ const CalculateForm = () => {
                 onChange={inputOnChange}
                 type={isMobile ? "tel" : "number"}
                 placeholder="Введите сумму прокрутки"
+                overrideClass="calculator-input"
             />
+            <Text type="medium" overrideClass="calculator-error">
+                {Calculator.error}
+            </Text>
             <Button overrideClass="calculator_button" onClick={buttonOnClick}>
                 Рассчитать
                 {isLoading && <LoaderButton/>}
