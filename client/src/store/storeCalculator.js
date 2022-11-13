@@ -5,6 +5,7 @@ export default new class StoreCalculator {
 
     chains = []
     amount
+    error
 
     constructor() {
         makeAutoObservable(this)
@@ -15,6 +16,7 @@ export default new class StoreCalculator {
             const {data} = await Calculator.getChains(amount)
             console.log(data)
             this.chains = data.chains
+            this.error = data.error
         } catch (e) {
             console.log(e)
         }

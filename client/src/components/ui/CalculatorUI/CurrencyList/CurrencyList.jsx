@@ -12,8 +12,9 @@ const CurrencyList = () => {
 
     return (
         <Wrap className="currency-list">
-            {Calculator.chains.length !== 0
-                ?
+            {Calculator.error
+                ? <h1>{Calculator.error}</h1>
+                :
                 Calculator.chains.map((chain, index) => {
                     return (
                         <CurrencyItem
@@ -22,8 +23,6 @@ const CurrencyList = () => {
                         />
                     )
                 })
-                :
-                <h1>На введённую сумму связок нет, попробуйте другую</h1>
             }
         </Wrap>
     );

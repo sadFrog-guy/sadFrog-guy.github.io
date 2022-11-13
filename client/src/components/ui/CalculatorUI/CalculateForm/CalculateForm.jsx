@@ -36,7 +36,7 @@ const CalculateForm = () => {
                 pattern="/^\d+$/"
                 onChange={inputOnChange}
                 type={isMobile ? "tel" : "number"}
-                placeholder="Введите сумму прогрутки"
+                placeholder="Введите сумму прокрутки"
             />
             <Button overrideClass="calculator_button" onClick={buttonOnClick}>
                 Рассчитать
