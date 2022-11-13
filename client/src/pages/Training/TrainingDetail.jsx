@@ -109,10 +109,10 @@ const TrainingDetail = () => {
         }
     }, [])
 
-    return (
+    return isClicked ? (
+        <Navigate to={`/trainings`}/>
+        ) : (
         <Wrapper>
-            {isClicked && <Navigate to="/trainings/4"/>}
-
             {!isLoading
                 ?
                 <Wrap className="article">
