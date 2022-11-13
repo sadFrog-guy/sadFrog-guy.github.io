@@ -13,7 +13,6 @@ export default new class StoreUser {
     avatar
     username
     have_subscribe
-    comment
 
     constructor() {
         makeAutoObservable(this)

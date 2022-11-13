@@ -4,7 +4,7 @@ import Navigation from "../components/ui/GlobalUI/Navigation/Navigation";
 import {useContext, useEffect, useState} from "react";
 import {Context} from "../utils/context";
 import useModal from "../hooks/useModal";
-import {useNavigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import {toJS} from "mobx";
 import lines from '../assets/images/lines.png';
 import CopyIcon from "../components/icons/CopyIcon/CopyIcon";
@@ -21,6 +21,7 @@ import {useCopy} from "../hooks/useCopy";
 import Loader from "../components/ui/GlobalUI/Loader/Loader";
 import {isIOS} from "../utils/isIOS";
 import {backButtonShow, exitConfirmation, haptic, tgWebApp} from "../utils/telegramAPI";
+import {NOT_AUTH} from "../router";
 
 const Referal = () => {
 
@@ -110,6 +111,8 @@ const Referal = () => {
             <Loader
                 isLoading={isLoading}
             />
+
+            {Referal.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
         </Wrapper>
     );
 };

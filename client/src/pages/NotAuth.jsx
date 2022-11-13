@@ -11,11 +11,23 @@ const NotAuth = () => {
     const checkAuthorized = () => {
         const UserComment = window.localStorage.getItem("comment-user")
         const TrainingComment = window.localStorage.getItem("comment-training")
+        const ReferalComment = window.localStorage.getItem("comment-referal")
+        const CalculatorComment = window.localStorage.getItem("comment-calculator")
 
-        if(UserComment && !TrainingComment) {
+        if(UserComment) {
             return UserComment
-        } else {
+        }
+
+        if(TrainingComment) {
             return TrainingComment
+        }
+
+        if(ReferalComment) {
+            return ReferalComment
+        }
+
+        if(CalculatorComment) {
+            return CalculatorComment
         }
     }
 

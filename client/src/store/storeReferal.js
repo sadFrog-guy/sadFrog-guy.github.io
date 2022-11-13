@@ -5,7 +5,7 @@ export default new class StoreReferal {
 
     referalBalance = 0
     referalLink = ''
-    success
+    have_subscribe
 
     constructor() {
         makeAutoObservable(this)
@@ -17,7 +17,9 @@ export default new class StoreReferal {
             console.log(data)
             this.referalBalance = data.referal_balance
             this.referalLink = data.referal_link
-            this.success = data.success
+            this.have_subscribe = data.have_subscribe
+
+            window.localStorage.setItem("comment-referal", data.comment)
         } catch (e) {
             console.log(e)
         }

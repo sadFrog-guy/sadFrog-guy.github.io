@@ -7,7 +7,6 @@ export default new class StoreTrainings {
     trainings = []
     training = {}
     have_subscribe
-    comment = ''
     link = ''
     video_link = ''
 
@@ -21,6 +20,7 @@ export default new class StoreTrainings {
             console.log(data)
             this.trainings = data.sections
             this.have_subscribe = data.have_subscribe
+
             window.localStorage.setItem("comment-training", data.comment)
         } catch (e) {
             console.log(e)

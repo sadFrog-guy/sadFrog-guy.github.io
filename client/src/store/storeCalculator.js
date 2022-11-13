@@ -6,6 +6,7 @@ export default new class StoreCalculator {
     chains = []
     amount
     error
+    have_subscribe
 
     constructor() {
         makeAutoObservable(this)
@@ -17,6 +18,9 @@ export default new class StoreCalculator {
             console.log(data)
             this.chains = data.chains
             this.error = data.error
+            this.have_subscribe = data.have_subscribe
+
+            window.localStorage.setItem("comment-calculator", data.comment)
         } catch (e) {
             console.log(e)
         }
