@@ -114,7 +114,9 @@ const TrainingDetail = () => {
 
     // <Navigate to={`/trainings/${Trainings.training.next_article_id}`}/>
 
-    return (
+    return isClicked ? (
+        <h1>adiletka</h1>
+        ) : (
         <Wrapper>
             {!isLoading
                 ?
