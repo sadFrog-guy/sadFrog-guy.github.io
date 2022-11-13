@@ -22,7 +22,6 @@ import Loader from "../components/ui/GlobalUI/Loader/Loader";
 import {isIOS} from "../utils/isIOS";
 import {backButtonShow, exitConfirmation, haptic, tgWebApp} from "../utils/telegramAPI";
 import {NOT_AUTH} from "../router";
-import {RWebShare} from "react-web-share";
 
 const Referal = () => {
 
@@ -52,8 +51,9 @@ const Referal = () => {
         fetchData()
     }, [])
 
-    const onShare = () => {
+    const onShare = async() => {
         haptic()
+        await navigator.share({ url: shareData.link, text: shareData.text, title: '' })
     }
 
     const onShareTg = () => {
@@ -96,18 +96,9 @@ const Referal = () => {
                     </CopyButton>
                     {/*{isIOS()*/}
                     {/*    ?*/}
-                    <RWebShare
-                        data={{
-                            text: "Like humans, flamingos make friends for life",
-                            url: "https://on.natgeo.com/2zHaNup",
-                            title: "Flamingos",
-                        }}
-                        onClick={onShare}
-                    >
-                        <Button id="share-button">
+                        <Button id="share-button" onClick={onShare}>
                             Поделиться
                         </Button>
-                    </RWebShare>
                     {/*    :*/}
                     {/*    <Button id="share-button" onClick={onShareTg}>*/}
                     {/*        Поделиться в Telegram*/}

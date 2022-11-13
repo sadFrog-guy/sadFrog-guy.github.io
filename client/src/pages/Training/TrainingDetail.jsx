@@ -30,33 +30,34 @@ const TrainingDetail = () => {
     const [openInBrowser, setOpenInBrowser] = useState(false)
     const [isClicked, setClicked] = useState(false)
 
+    const viewedStatus = "Прочитано"
+    const finishStatus = "Завершить"
+    const finishPendingStatus = "Завершается..."
+
+    const onClickHandler = async() => {
+        haptic()
+
+        if(Trainings.training.viewed) {
+            setClicked(true)
+            console.log(isClicked)
+        } else {
+            tgButtonText(finishPendingStatus)
+
+            await Trainings.readTraining(id)
+
+            if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                tgMainButton.hide()
+            } else {
+                setClicked(true)
+                console.log(isClicked)
+            }
+        }
+    }
+
+    tgMainButton.onClick(onClickHandler)
+
     const tgButtonFunctionality = () => {
         if(location.pathname.includes("/trainings/")) {
-            const viewedStatus = "Прочитано"
-            const finishStatus = "Завершить"
-            const finishPendingStatus = "Завершается..."
-
-            const onClickHandler = async() => {
-                haptic()
-
-                if(Trainings.training.viewed) {
-                    setClicked(true)
-                    console.log(isClicked)
-                } else {
-                    tgButtonText(finishPendingStatus)
-
-                    await Trainings.readTraining(id)
-
-                    if(Trainings.training.viewed && !Trainings.training.next_article_id) {
-                        tgMainButton.hide()
-                    } else {
-                        setClicked(true)
-                        console.log(isClicked)
-                    }
-                }
-            }
-
-            tgMainButton.onClick(onClickHandler)
 
             if(Trainings.training.viewed) {
                 tgButtonText(viewedStatus)
