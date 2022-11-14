@@ -21,7 +21,7 @@ export default new class StoreUser {
     async getUserInfo() {
         try {
             const {data} = await User.getUser()
-            console.log(tgHash)
+            console.log(data)
 
             runInAction(() => {
                 this.user = data
