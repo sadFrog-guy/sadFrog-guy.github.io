@@ -47,12 +47,17 @@ const TrainingDetail = ({id}) => {
                     tgButtonText(finishPendingStatus)
 
                     await Trainings.readTraining(id)
+                    await Trainings.getOneTraining(Trainings.training.next_article_id)
+
+                    window.scrollTo(0, 0)
 
                     if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                         tgMainButton.hide()
                     } else {
                         await Trainings.getOneTraining(Trainings.training.next_article_id)
                         tgButtonText(viewedStatus)
+
+                        window.scrollTo(0, 0)
                     }
                 }
             }
@@ -82,8 +87,6 @@ const TrainingDetail = ({id}) => {
     };
 
     useEffect(() => {
-        window.scrollTo(0, 0)
-
         exitConfirmation()
 
         backButtonShow(() => {
