@@ -48,7 +48,7 @@ export default new class StoreTrainings {
 
     async getAccessToVideo(id) {
         try {
-            const {data} = await Trainings.getAccessToVideo(id.id)
+            const {data} = await Trainings.getAccessToVideo(id)
 
             runInAction(() => {
                 this.video_link = `https://crypto-learn.ru/watch_video/${tgID}/${id.id}/${data?.hash_code}`
@@ -61,7 +61,7 @@ export default new class StoreTrainings {
     async readTraining(id) {
         try {
             await Trainings.readTraining(id)
-            const {data} = await Trainings.getOneTraining(id.id);
+            const {data} = await Trainings.getOneTraining(id);
 
             runInAction(() => {
                 this.training = data
