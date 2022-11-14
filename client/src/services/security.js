@@ -6,8 +6,7 @@ export default class Security {
         const response = await request.post(
             'authorization',
             {
-                init_data: tgInitData,
-                telegram_id: tgID
+                init_data: tgInitData
             },
             {
                 headers:
