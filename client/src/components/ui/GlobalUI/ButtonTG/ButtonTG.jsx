@@ -55,15 +55,16 @@ const ButtonTg = ({hide, setHide}) => {
     }, [])
 
     return (
-        <Link
+        <a
             className={`main-button ${hide}`}
             onClick={onClickHandler}
-            to={checkForHref()}
+            // to={checkForHref()}
+            href={`?section_id=${Trainings.training.next_article_id}`}
         >
             <Text type="medium" overrideClass="main-button-text">
                 {Trainings.training.viewed ? viewedStatus : finishStatus}
             </Text>
-        </Link>
+        </a>
     );
 };
 
