@@ -4,6 +4,7 @@ export const tgHash = decodeURI(tgWebApp.initData.split('hash=')[1])
 export const tgID = tgUser.id
 export const tgMainButton = tgWebApp.MainButton
 
+
 export function backButtonShow(callback) {
     tgWebApp.BackButton.show()
     tgWebApp.BackButton.onClick(callback)
