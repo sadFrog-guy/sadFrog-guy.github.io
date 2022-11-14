@@ -11,7 +11,7 @@ import HeaderHome from "../../components/ui/HomeUI/HeaderHome/HeaderHome";
 import Subscribtion from "../../components/ui/HomeUI/Subscribtion/Subscribtion";
 import FooterHome from "../../components/ui/HomeUI/FooterHome/FooterHome";
 import ModalHome from "../../components/ui/HomeUI/ModalHome/ModalHome";
-import {backButtonHide, tgHash, tgID, tgInintial, tgWebApp} from "../../utils/telegramAPI";
+import {backButtonHide, tgID, tgInintial, tgWebApp} from "../../utils/telegramAPI";
 import {Navigate, useLocation, useNavigate, useParams} from "react-router-dom";
 import {NOT_AUTH} from "../../router";
 import axios from "axios";
@@ -44,7 +44,7 @@ const Home = () => {
         }
     }, [isLoaded])
 
-    console.log(JSON.parse(decodeURI(tgHash).replace(/=([^&]+)\&/g, "=\"$1\",\n\r").replace(/(^|\r)([^=]+)=/g, "\"$2\":").replace(/^/, '{').replace(/$/, '}}')))
+    console.log(decodeURI(tgWebApp.initData))
 
     return (
         <Wrapper>
