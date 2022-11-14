@@ -14,6 +14,7 @@ import CheckIcon from "../../../icons/CheckIcon/CheckIcon";
 import {tgWebApp, vibrationDuration} from "../../../../utils/telegramAPI";
 import useModal from "../../../../hooks/useModal";
 import {useSearchParams} from "react-router-dom";
+import {LINK_TRAININGS_ITEM} from "../../../../router";
 
 const TrainingItem = ({trainingInfo, imageOnLoad, subitemOnClick, ...props}) => {
     const [isShow, setShow] = useState(false)
@@ -65,7 +66,7 @@ const TrainingItem = ({trainingInfo, imageOnLoad, subitemOnClick, ...props}) => 
                                     id={subitem.id}
                                     subitemInfo={subitem}
                                     viewed={subitem.viewed}
-                                    to={condition ? `?section_id=${subitem.id}` : ''}
+                                    to={condition ? LINK_TRAININGS_ITEM + subitem.id : ''}
                                     active={!!condition}
                                     onClick={subitem.allowed_viewing ? () => {} : subitemOnClick}
                                     allowedViewing={subitem.allowed_viewing}

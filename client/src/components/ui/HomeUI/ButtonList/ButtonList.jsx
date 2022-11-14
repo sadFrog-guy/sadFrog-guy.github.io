@@ -24,7 +24,7 @@ const ButtonList = ({modalShow}) => {
     return (
         <Wrap className="button-group">
             <Link
-                to={User.user.allowed_training ? '/trainings?section_id=4' : ''}
+                to={User.user.allowed_training ? LINK_TRAININGS : ''}
                 onClick={linkOnClick}
                 className="button"
                 id="training"
