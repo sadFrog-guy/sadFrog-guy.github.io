@@ -137,9 +137,9 @@ const TrainingDetail = () => {
 
             {Trainings.training.success === false
                 &&
-            <Wrap className="not-found">
-                <Text type="medium">{Trainings.training.comment}</Text>
-            </Wrap>
+                <Wrap className="not-found">
+                    <Text type="medium">{Trainings.training.comment}</Text>
+                </Wrap>
             }
 
             {Trainings.have_subscribe === false
