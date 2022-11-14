@@ -20,7 +20,7 @@ const CalculateForm = () => {
     const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "");
 
     const inputOnChange = (e) => {
-        const value = e.target.value.replace(/^(\s*|\d+)$/, "")
+        const value = e.target.value.replace(/\D/g, "")
 
         if(value > 0 || value === '') {
             Calculator.changeAmount(value)
