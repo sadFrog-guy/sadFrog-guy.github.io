@@ -32,7 +32,7 @@ export default new class StoreTrainings {
 
     async getOneTraining(id) {
         try {
-            const {data} = await Trainings.getOneTraining(id.id);
+            const {data} = await Trainings.getOneTraining(id);
             console.log(data)
 
             runInAction(() => {
