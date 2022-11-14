@@ -24,13 +24,16 @@ const Home = () => {
     const [isLoading, setLoading] = useState(true)
     const [isLoaded, setLoaded] = useState(false)
 
+    window.onload(async() => {
+        await Security.postHashKey()
+    })
+
     useEffect(() => {
         tgInintial()
 
         backButtonHide()
 
         async function fetchData() {
-            await Security.postHashKey()
             await User.getUserInfo()
             console.log(tgInitData)
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
