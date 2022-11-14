@@ -27,7 +27,6 @@ const CalculateForm = () => {
         } else {
             setDisabled(true)
         }
-
     }
 
     const inputOnFocus = () => {
@@ -35,14 +34,11 @@ const CalculateForm = () => {
     }
 
     const buttonOnClick = async() => {
-        if(Calculator.amount) {
+        if(Calculator.amount && !Calculator.error) {
+            setDisabled(false)
             setIsLoading(true)
             await Calculator.getChains(Calculator.amount)
             setIsLoading(false)
-        }
-
-        if(Calculator.error) {
-            setDisabled(true)
         }
     }
 
