@@ -23,9 +23,6 @@ const CalculateForm = () => {
 
         if(value >= 0) {
             Calculator.changeAmount(value)
-            setDisabled(false)
-        } else {
-            setDisabled(true)
         }
     }
 
@@ -34,8 +31,7 @@ const CalculateForm = () => {
     }
 
     const buttonOnClick = async() => {
-        if(Calculator.amount && !Calculator.error) {
-            setDisabled(false)
+        if(!Calculator.chains) {
             setIsLoading(true)
             await Calculator.getChains(Calculator.amount)
             setIsLoading(false)
@@ -43,10 +39,10 @@ const CalculateForm = () => {
     }
 
     useEffect(() => {
-        if(Calculator.auto_update) {
+        if(Calculator.chains || !Calculator.auto_update) {
             intervalId = setInterval(async() => {
                 await Calculator.getChains(Calculator.amount)
-            }, 3000)
+            }, Calculator.autoupdate_delay)
         }
 
         return () => {
