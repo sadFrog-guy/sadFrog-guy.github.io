@@ -6,6 +6,7 @@ export default new class StoreCalculator {
     chains = []
     amount = ''
     auto_update = false
+    autoupdate_delay
     error
     have_subscribe
 
@@ -22,6 +23,7 @@ export default new class StoreCalculator {
                 this.error = data.error
                 this.have_subscribe = data.have_subscribe
                 this.auto_update = data.autoupdate
+                this.autoupdate_delay = data.autoupdate_delay
             })
 
             window.localStorage.setItem("comment-calculator", data.comment)

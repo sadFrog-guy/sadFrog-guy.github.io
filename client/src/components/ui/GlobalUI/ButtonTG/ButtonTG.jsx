@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Text from "../Text/Text";
-import {Link, useNavigate, Navigate, useParams} from "react-router-dom";
+import {Link, useNavigate, Navigate, useParams, NavLink} from "react-router-dom";
 import {Context} from "../../../../utils/context";
 import {finishPendingStatus, finishStatus, viewedStatus} from "../../../../utils/consts";
 import {haptic, tgButtonText, tgMainButton} from "../../../../utils/telegramAPI";
@@ -55,15 +55,15 @@ const ButtonTg = ({hide, setHide}) => {
     }, [])
 
     return (
-        <a
+        <NavLink
             className={`main-button ${hide}`}
             onClick={onClickHandler}
-            href={checkForHref()}
+            to={checkForHref()}
         >
             <Text type="medium" overrideClass="main-button-text">
                 {Trainings.training.viewed ? viewedStatus : finishStatus}
             </Text>
-        </a>
+        </NavLink>
     );
 };
 

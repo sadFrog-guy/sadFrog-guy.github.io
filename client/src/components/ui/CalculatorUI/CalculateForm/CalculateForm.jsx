@@ -8,6 +8,7 @@ import LoaderButton from "../../GlobalUI/LoaderButton/LoaderButton";
 import {observer} from "mobx-react-lite";
 import {isMobile} from "react-device-detect";
 import Text from "../../GlobalUI/Text/Text";
+import {haptic} from "../../../../utils/telegramAPI";
 
 const CalculateForm = () => {
     const {Calculator} = useContext(Context)
@@ -35,23 +36,26 @@ const CalculateForm = () => {
     }
 
     const buttonOnClick = async() => {
-        if(Calculator.amount) {
+        if(!isDisabled) {
+            haptic()
+
             setIsLoading(true)
             await Calculator.getChains(Calculator.amount)
             setIsLoading(false)
+        } else {
+            setDisabled(true)
         }
 
         if(Calculator.error) {
             setDisabled(true)
         }
-
     }
 
     useEffect(() => {
         if(Calculator.auto_update) {
             intervalId = setInterval(async() => {
                 await Calculator.getChains(Calculator.amount)
-            }, 3000)
+            }, Calculator.autoupdate_delay)
         }
 
         return () => {
