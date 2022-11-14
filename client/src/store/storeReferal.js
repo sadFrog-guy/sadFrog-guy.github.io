@@ -14,7 +14,6 @@ export default new class StoreReferal {
     async getReferalInfo() {
         try {
             const {data} = await Referal.getReferalInfo()
-            console.log(data)
 
             runInAction(() => {
                 this.referalBalance = data.referal_balance

@@ -13,7 +13,6 @@ export default new class StoreSecurity {
     async postHashKey() {
         try {
             const {data} = await Security.postHashKey()
-            console.log(data)
 
             this.success = data.success
         } catch (e) {
