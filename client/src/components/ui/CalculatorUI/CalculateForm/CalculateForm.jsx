@@ -22,6 +22,8 @@ const CalculateForm = () => {
     const inputOnChange = (e) => {
         const value = e.target.value.replace(/\D/g, "")
 
+        setDisabled(false)
+
         if(value > 0 || value === '') {
             Calculator.changeAmount(value)
         }
