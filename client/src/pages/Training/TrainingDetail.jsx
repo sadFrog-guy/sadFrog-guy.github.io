@@ -18,11 +18,11 @@ import Wrapper from "../../components/utils/Wrapper/Wrapper";
 import {observer} from "mobx-react-lite";
 import Button from "../../components/ui/GlobalUI/Button/Button";
 import fullscreen from "../../assets/icons/fullscreen.png";
-import {NOT_AUTH} from "../../router";
+import {LINK_TRAININGS_ITEM, NOT_AUTH} from "../../router";
 import {useTelegramButton} from "../../hooks/useTelegramButton";
 import {useVideo} from "../../hooks/useVideo";
 import ButtonTG from "../../components/ui/GlobalUI/ButtonTG/ButtonTG";
-import {finishPendingStatus} from "../../utils/consts";
+import {finishPendingStatus, finishStatus, viewedStatus} from "../../utils/consts";
 import {isAndroid} from "react-device-detect";
 
 const TrainingDetail = ({id}) => {
@@ -31,12 +31,48 @@ const TrainingDetail = ({id}) => {
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
-    const telegramButton = useTelegramButton(Trainings, id, () => {
-        navigate(`/trainings/${Trainings.training.next_article_id}`)
-        navigate(0)
-    })
     const [hide, setHide] = useState('')
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
+
+    const tgButton = () => {
+        if(window.location.href.includes("section_id")) {
+            tgButtonInitial()
+
+            const onClickHandler = async() => {
+                haptic()
+
+                if(Trainings.training.viewed) {
+                    navigate(LINK_TRAININGS_ITEM + Trainings.training.next_article_id)
+                    navigate(0)
+                } else {
+                    tgButtonText(finishPendingStatus)
+
+                    await Trainings.readTraining(id)
+
+                    if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                        tgMainButton.hide()
+                    } else {
+                        navigate((LINK_TRAININGS_ITEM + Trainings.training.next_article_id))
+                        navigate(0)
+                    }
+                }
+            }
+
+            tgMainButton.onClick(onClickHandler)
+
+            if(Trainings.training.viewed) {
+                tgButtonText(viewedStatus)
+            } else {
+                tgButtonText(finishStatus)
+            }
+
+            if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                tgMainButton.hide()
+            } else {
+                tgMainButton.show()
+            }
+        }
+    }
 
     useEffect(() => {
         if(isAndroid) {
@@ -57,8 +93,8 @@ const TrainingDetail = ({id}) => {
 
         async function fetchData() {
             await Trainings.getOneTraining(id)
+            tgButton()
             setLoading(false)
-            telegramButton()
         }
         fetchData()
 
