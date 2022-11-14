@@ -33,7 +33,7 @@ const CalculateForm = () => {
         if(Calculator.chains || !Calculator.auto_update) {
             setInterval(async() => {
                 await Calculator.getChains(Calculator.amount)
-            }, Calculator.autoupdate_delay)
+            }, Number(`${Calculator.autoupdate_delay}000`))
         }
 
         if(Calculator.chains) {
