@@ -42,8 +42,9 @@ const TrainingDetail = ({id}) => {
                 haptic()
 
                 if(Trainings.training.viewed) {
-                    navigate(LINK_TRAININGS_ITEM + Trainings.training.next_article_id)
-                    navigate(0)
+                    // navigate(LINK_TRAININGS_ITEM + Trainings.training.next_article_id)
+                    // navigate(0)
+                    await Trainings.getOneTraining(Trainings.training.next_article_id)
                 } else {
                     tgButtonText(finishPendingStatus)
 
@@ -52,8 +53,9 @@ const TrainingDetail = ({id}) => {
                     if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                         tgMainButton.hide()
                     } else {
-                        navigate(LINK_TRAININGS_ITEM + Trainings.training.next_article_id)
-                        navigate(0)
+                        // navigate(LINK_TRAININGS_ITEM + Trainings.training.next_article_id)
+                        // navigate(0)
+                        await Trainings.getOneTraining(Trainings.training.next_article_id)
                     }
                 }
             }
