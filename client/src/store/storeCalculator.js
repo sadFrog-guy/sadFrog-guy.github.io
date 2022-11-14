@@ -17,6 +17,7 @@ export default new class StoreCalculator {
     async getChains(amount) {
         try {
             const {data} = await Calculator.getChains(amount)
+            console.log(data)
 
             runInAction(() => {
                 this.chains = data.chains
