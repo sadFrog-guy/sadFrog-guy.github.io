@@ -21,7 +21,7 @@ export default new class StoreUser {
     async getUserInfo() {
         try {
             const {data} = await User.getUser()
-            console.log('https://crypto-learn.ru/api/general_info?telegram_id' + tgID + '&hash_key=' + tgHash)
+            console.log(data)
 
             runInAction(() => {
                 this.user = data
