@@ -25,19 +25,18 @@ import ButtonTG from "../../components/ui/GlobalUI/ButtonTG/ButtonTG";
 import {finishPendingStatus} from "../../utils/consts";
 import {isAndroid} from "react-device-detect";
 
-const TrainingDetail = () => {
-    const id = useParams()
+const TrainingDetail = ({id}) => {
     const navigate = useNavigate()
     const videoRef = useRef(null)
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
-    // const telegramButton = useTelegramButton(Trainings, id.id, () => {
+    // const telegramButton = useTelegramButton(Trainings, id, () => {
     //     navigate(`/trainings/${Trainings.training.next_article_id}`)
     //     navigate(0)
     // })
     const [hide, setHide] = useState('')
-    const {onFullscreen, browserRedirect} = useVideo(Trainings, id.id, videoRef, openInBrowser, setOpenInBrowser)
+    const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
 
     // useEffect(() => {
     //     if(isAndroid) {
