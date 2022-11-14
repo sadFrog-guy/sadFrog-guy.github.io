@@ -45,7 +45,7 @@ const CalculateForm = () => {
             delay()
         }
 
-        if(!Calculator.chains) {
+        if(Calculator.chains) {
             setIsLoading(true)
             await Calculator.getChains(Calculator.amount)
             setIsLoading(false)
