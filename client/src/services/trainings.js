@@ -62,7 +62,7 @@ export default class Trainings {
             url: 'section_viewed',
             params: {
                 telegram_id: tgID,
-                section_id: id.id,
+                section_id: id,
                 hash_key: tgHash
             },
             data: {
