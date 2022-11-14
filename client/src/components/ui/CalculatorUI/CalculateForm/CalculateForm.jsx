@@ -8,11 +8,13 @@ import LoaderButton from "../../GlobalUI/LoaderButton/LoaderButton";
 import {observer} from "mobx-react-lite";
 import {isMobile} from "react-device-detect";
 import Text from "../../GlobalUI/Text/Text";
+import {clear} from "@testing-library/user-event/dist/clear";
 
 const CalculateForm = () => {
     const {Calculator} = useContext(Context)
     const [isLoading, setIsLoading] = useState(false)
     const [isDisabled, setDisabled] = useState(true)
+    let intervalId
 
     const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "");
@@ -30,29 +32,27 @@ const CalculateForm = () => {
     }
 
     const buttonOnClick = async() => {
-        const delay = () => {
-            setInterval(async() => {
-                await Calculator.getChains(Calculator.amount)
-
-                if(Calculator.auto_update) {
-                    delay()
-                } else {
-                    return ''
-                }
-            }, Calculator.autoupdate_delay * 1000)
-        }
-
         if(Calculator.chains) {
             setIsLoading(true)
             await Calculator.getChains(Calculator.amount)
 
             if(Calculator.auto_update) {
-                delay()
+                 intervalId = setInterval(async() => {
+                    await Calculator.getChains(Calculator.amount)
+                }, Calculator.autoupdate_delay * 1000)
+            } else {
+                clearInterval(intervalId)
             }
 
             setIsLoading(false)
         }
     }
+
+    useEffect(() => {
+        return () => {
+            clearInterval(intervalId)
+        }
+    }, [])
 
     useEffect(() => {
         if(Calculator.error) {
