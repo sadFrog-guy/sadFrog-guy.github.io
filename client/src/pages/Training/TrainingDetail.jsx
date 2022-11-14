@@ -21,6 +21,9 @@ import fullscreen from "../../assets/icons/fullscreen.png";
 import {NOT_AUTH} from "../../router";
 import {useTelegramButton} from "../../hooks/useTelegramButton";
 import {useVideo} from "../../hooks/useVideo";
+import ButtonTG from "../../components/ui/GlobalUI/ButtonTG/ButtonTG";
+import {finishPendingStatus} from "../../utils/consts";
+import {isAndroid} from "react-device-detect";
 
 const TrainingDetail = () => {
     const id = useParams()
@@ -33,7 +36,14 @@ const TrainingDetail = () => {
         navigate(`/trainings/${Trainings.training.next_article_id}`)
         navigate(0)
     })
+    const [hide, setHide] = useState('')
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id.id, videoRef, openInBrowser, setOpenInBrowser)
+
+    useEffect(() => {
+        if(isAndroid) {
+            tgMainButton.hide()
+        }
+    }, [])
 
     useEffect(() => {
         exitConfirmation()
@@ -41,6 +51,8 @@ const TrainingDetail = () => {
         backButtonShow(() => {
             navigate('/trainings')
         })
+
+        window.scrollTo(0, 0)
 
         async function fetchData() {
             await Trainings.getOneTraining(id)
@@ -113,17 +125,24 @@ const TrainingDetail = () => {
                 </Wrap>
             </Wrap>
 
-            <div className="main-button">
-                <Text type="medium" overrideClass="main-button-text">
-
-                </Text>
-            </div>
-
             <Loader
                 isLoading={isLoading}
             />
 
-            {Trainings.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
+            {isAndroid
+                && <ButtonTG hide={hide} setHide={setHide}/>
+            }
+
+            {Trainings.training.success === false
+                &&
+            <Wrap className="not-found">
+                <Text type="medium">{Trainings.training.comment}</Text>
+            </Wrap>
+            }
+
+            {Trainings.have_subscribe === false
+                && <Navigate to={NOT_AUTH}/>
+            }
         </Wrapper>
     );
 };

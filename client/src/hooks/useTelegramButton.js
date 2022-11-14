@@ -1,10 +1,7 @@
 import {haptic, tgButtonInitial, tgButtonText, tgMainButton} from "../utils/telegramAPI";
+import {finishPendingStatus, finishStatus, viewedStatus} from "../utils/consts";
 
 export const useTelegramButton = () => (Trainings, trainingId, navigateFoo) => {
-    const viewedStatus = "Прочитано"
-    const finishStatus = "Завершить"
-    const finishPendingStatus = "Завершается..."
-
     if(window.location.pathname.includes("/trainings/")) {
         tgButtonInitial()
 

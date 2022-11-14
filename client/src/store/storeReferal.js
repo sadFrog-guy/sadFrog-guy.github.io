@@ -1,4 +1,4 @@
-import {makeAutoObservable} from "mobx";
+import {makeAutoObservable, runInAction} from "mobx";
 import Referal from "../services/referal";
 
 export default new class StoreReferal {
@@ -15,9 +15,12 @@ export default new class StoreReferal {
         try {
             const {data} = await Referal.getReferalInfo()
             console.log(data)
-            this.referalBalance = data.referal_balance
-            this.referalLink = data.referal_link
-            this.have_subscribe = data.have_subscribe
+
+            runInAction(() => {
+                this.referalBalance = data.referal_balance
+                this.referalLink = data.referal_link
+                this.have_subscribe = data.have_subscribe
+            })
 
             window.localStorage.setItem("comment-referal", data.comment)
         } catch (e) {
@@ -27,8 +30,10 @@ export default new class StoreReferal {
 
     checkAccess(training) {
         if(training.allowed_viewing === false) {
-            this.comment = training.viewing_ban_comment
-            this.link = training.viewing_pay_link
+            runInAction(() => {
+                this.comment = training.viewing_ban_comment
+                this.link = training.viewing_pay_link
+            })
         }
     }
 }

@@ -144,6 +144,41 @@ img {
     overflow-y: visible;
 }
 
+.main-button {
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    position: fixed;
+    -webkit-box-shadow: 0px -6px 10px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px -6px 10px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px -6px 10px 2px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.main-button.hide {
+    display: none;
+}
+
+.main-button:hover {
+    background: var(--tg-theme-button-color);
+}
+
+.main-button-text {
+    font-size: 15px;
+}
+
+.not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 /* button */
 
 .button-group {
@@ -1197,7 +1232,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 
 .article-content {
     padding: 0 30px;
-    padding-bottom: 27px;
+    padding-bottom: 77px;
     display: inline-flex;
     flex-direction: column;
 }

@@ -1,6 +1,6 @@
-import {makeAutoObservable} from "mobx";
+import {makeAutoObservable, runInAction} from "mobx";
 import User from "../services/user";
-import {tgUser} from "../utils/telegramAPI";
+import {tgHash, tgID, tgUser} from "../utils/telegramAPI";
 
 export default new class StoreUser {
 
@@ -22,13 +22,17 @@ export default new class StoreUser {
         try {
             const {data} = await User.getUser()
             console.log(data)
-            this.user = data
-            this.username = tgUser?.first_name
-            this.subscribe_expire_datetime = data.subscribe_expire_datetime
-            this.subscription_name = data.subscription_name
-            this.technical_support_link = data.technical_support_link
-            this.avatar = data.avatar
-            this.have_subscribe = data.have_subscribe
+            console.log('https://crypto-learn.ru/api/general_info?telegram_id' + tgID + '&hash_key=' + tgHash)
+
+            runInAction(() => {
+                this.user = data
+                this.username = tgUser?.first_name
+                this.subscribe_expire_datetime = data.subscribe_expire_datetime
+                this.subscription_name = data.subscription_name
+                this.technical_support_link = data.technical_support_link
+                this.avatar = data.avatar
+                this.have_subscribe = data.have_subscribe
+            })
 
             window.localStorage.setItem("comment-user", data.comment)
         } catch (e) {

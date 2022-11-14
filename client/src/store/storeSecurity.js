@@ -1,5 +1,6 @@
 import {makeAutoObservable} from "mobx";
 import Security from "../services/security";
+import {tgHash} from "../utils/telegramAPI";
 
 export default new class StoreSecurity {
 

@@ -1,4 +1,4 @@
-import {makeAutoObservable} from "mobx";
+import {makeAutoObservable, runInAction} from "mobx";
 import Trainings from "../services/trainings";
 import {tgID} from "../utils/telegramAPI";
 
@@ -18,8 +18,11 @@ export default new class StoreTrainings {
         try {
             const {data} = await Trainings.getAllTrainings()
             console.log(data)
-            this.trainings = data.sections
-            this.have_subscribe = data.have_subscribe
+
+            runInAction(() => {
+                this.trainings = data.sections
+                this.have_subscribe = data.have_subscribe
+            })
 
             window.localStorage.setItem("comment-training", data.comment)
         } catch (e) {
@@ -31,8 +34,11 @@ export default new class StoreTrainings {
         try {
             const {data} = await Trainings.getOneTraining(id.id);
             console.log(data)
-            this.training = data
-            this.have_subscribe = data.have_subscribe
+
+            runInAction(() => {
+                this.training = data
+                this.have_subscribe = data.have_subscribe
+            })
 
             window.localStorage.setItem("comment-training", data.comment)
         } catch (e) {
@@ -43,9 +49,10 @@ export default new class StoreTrainings {
     async getAccessToVideo(id) {
         try {
             const {data} = await Trainings.getAccessToVideo(id.id)
-            console.log(data)
-            console.log(tgID)
-            this.video_link = `https://crypto-learn.ru/watch_video/${tgID}/${id.id}/${data?.hash_code}`
+
+            runInAction(() => {
+                this.video_link = `https://crypto-learn.ru/watch_video/${tgID}/${id.id}/${data?.hash_code}`
+            })
         } catch (e) {
             console.log(e)
         }
@@ -56,7 +63,9 @@ export default new class StoreTrainings {
             await Trainings.readTraining(id)
             const {data} = await Trainings.getOneTraining(id.id);
 
-            this.training = data
+            runInAction(() => {
+                this.training = data
+            })
         } catch (e) {
             console.log(e)
         }
@@ -64,8 +73,11 @@ export default new class StoreTrainings {
 
     checkAccess(training) {
         if(training.allowed_viewing === false) {
-            this.comment = training.viewing_ban_comment
-            this.link = training.viewing_pay_link
+
+            runInAction(() => {
+                this.comment = training.viewing_ban_comment
+                this.link = training.viewing_pay_link
+            })
         }
     }
 }

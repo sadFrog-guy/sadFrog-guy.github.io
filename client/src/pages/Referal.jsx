@@ -89,7 +89,7 @@ const Referal = () => {
                         <Copied isCopied={copied}>Скопировано</Copied>
 
                         <Text onClick={haptic} type="medium" id="referal-link">
-                            {Referal.referalLink}
+                            {Referal.referalLink.substring(0, 29) + '...'}
                         </Text>
 
                         <CopyIcon/>

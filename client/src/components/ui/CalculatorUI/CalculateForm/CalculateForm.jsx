@@ -13,6 +13,10 @@ const CalculateForm = () => {
     const {Calculator} = useContext(Context)
     const [isLoading, setIsLoading] = useState(false)
     const [isDisabled, setDisabled] = useState(true)
+    let intervalId
+
+    const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "");
 
     const inputOnChange = (e) => {
         const value = e.target.value.replace(/\D/g, "")
@@ -23,8 +27,8 @@ const CalculateForm = () => {
         } else {
             setDisabled(true)
         }
-    }
 
+    }
     const buttonOnClick = async() => {
         if(Calculator.amount) {
             setIsLoading(true)
@@ -33,7 +37,20 @@ const CalculateForm = () => {
         } else {
             setDisabled(true)
         }
+
     }
+
+    useEffect(() => {
+        if(Calculator.auto_update) {
+            intervalId = setInterval(async() => {
+                await Calculator.getChains(Calculator.amount)
+            }, 3000)
+        }
+
+        return () => {
+            clearInterval(intervalId)
+        }
+    }, [Calculator.auto_update])
 
     useEffect(() => {
         if(Calculator.error) {
@@ -49,7 +66,7 @@ const CalculateForm = () => {
                 min="0"
                 pattern="/^\d+$/"
                 onChange={inputOnChange}
-                value={Calculator.amount}
+                value={addCommas(removeNonNumeric(Calculator.amount))}
                 type={isMobile ? "tel" : "number"}
                 placeholder="Введите сумму прокрутки"
                 overrideClass="calculator-input"

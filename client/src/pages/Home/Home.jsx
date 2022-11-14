@@ -44,6 +44,8 @@ const Home = () => {
         }
     }, [isLoaded])
 
+    console.log(decodeURI(tgWebApp.initData))
+
     return (
         <Wrapper>
             <WrapperHome>

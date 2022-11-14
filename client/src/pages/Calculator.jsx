@@ -21,7 +21,7 @@ const Calculator = () => {
         backButtonShow(() => {
             navigate('/trainings')
         })
-    })
+    }, [])
 
     return (
         <Wrapper>
