@@ -42,16 +42,14 @@ const CalculateForm = () => {
     }
 
     const buttonOnClick = async() => {
-        if(Calculator.chains && !Calculator.error) {
+        if(Calculator.chains.length !== 0 && !Calculator.error) {
             setIsLoading(true)
             await Calculator.getChains(Calculator.amount)
 
             intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
 
             setIsLoading(false)
-        }
-
-        if(!Calculator.amount) {
+        } else {
             setDisabled(true)
         }
     }
