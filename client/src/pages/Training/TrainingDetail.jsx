@@ -90,13 +90,13 @@ const TrainingDetail = ({id}) => {
             navigate('/trainings')
         })
 
-        window.addEventListener('scroll', handleScroll)
-
         async function fetchData() {
             await Trainings.getOneTraining(id)
+            window.addEventListener('scroll', handleScroll)
             tgButton()
             setLoading(false)
         }
+
         fetchData()
 
         return () => {
