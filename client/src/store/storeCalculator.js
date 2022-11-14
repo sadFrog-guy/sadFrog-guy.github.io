@@ -16,7 +16,7 @@ export default new class StoreCalculator {
 
     async getChains(amount) {
         try {
-            const {data} = await Calculator.getChains(amount)
+            const {data} = await Calculator.getChains(amount > 0 ? amount : 0)
             console.log(data)
 
             runInAction(() => {
@@ -39,5 +39,9 @@ export default new class StoreCalculator {
 
     clearError() {
         this.error = ''
+    }
+
+    changeAutoPlayDelay(delay) {
+        this.autoupdate_delay = delay
     }
 }

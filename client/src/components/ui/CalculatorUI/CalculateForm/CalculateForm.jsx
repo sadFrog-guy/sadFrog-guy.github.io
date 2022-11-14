@@ -39,6 +39,7 @@ const CalculateForm = () => {
              intervalId = setInterval(async() => {
                  if(Calculator.auto_update) {
                      await Calculator.getChains(Calculator.amount)
+                     Calculator.changeAutoPlayDelay(Calculator.autoupdate_delay)
                  }
             }, Calculator.autoupdate_delay * 1000)
 
