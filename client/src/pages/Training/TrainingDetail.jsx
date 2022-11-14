@@ -52,6 +52,7 @@ const TrainingDetail = ({id}) => {
                         tgMainButton.hide()
                     } else {
                         await Trainings.getOneTraining(Trainings.training.next_article_id)
+                        tgButtonText(viewedStatus)
                     }
                 }
             }
@@ -66,11 +67,17 @@ const TrainingDetail = ({id}) => {
 
             if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                 tgMainButton.hide()
-            } else {
-                tgMainButton.show()
             }
         }
     }
+
+    const handleScroll = () => {
+        const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight
+
+        if(bottom) {
+            tgMainButton.show()
+        }
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -79,8 +86,9 @@ const TrainingDetail = ({id}) => {
 
         backButtonShow(() => {
             navigate('/trainings')
-
         })
+
+        window.addEventListener('scroll', handleScroll)
 
         async function fetchData() {
             await Trainings.getOneTraining(id)
