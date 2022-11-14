@@ -66,7 +66,7 @@ const TrainingItem = ({trainingInfo, imageOnLoad, subitemOnClick, ...props}) => 
                                     id={subitem.id}
                                     subitemInfo={subitem}
                                     viewed={subitem.viewed}
-                                    to={condition ? LINK_TRAININGS_ITEM + subitem.id : ''}
+                                    href={condition ? LINK_TRAININGS_ITEM + subitem.id : ''}
                                     active={!!condition}
                                     onClick={subitem.allowed_viewing ? () => {} : subitemOnClick}
                                     allowedViewing={subitem.allowed_viewing}
