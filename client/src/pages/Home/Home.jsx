@@ -44,7 +44,7 @@ const Home = () => {
         }
     }, [isLoaded])
 
-    console.log(decodeURI(tgWebApp.initData))
+    console.log(decodeURI(tgWebApp.initData.split('hash=')[1]))
 
     return (
         <Wrapper>
