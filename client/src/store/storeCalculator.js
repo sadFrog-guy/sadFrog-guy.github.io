@@ -34,7 +34,7 @@ export default new class StoreCalculator {
     }
 
     changeAmount(amount) {
-        this.amount = amount.replace(/\D/g, "")
+        this.amount = amount
     }
 
     clearError() {
