@@ -3,7 +3,7 @@ import {finishPendingStatus, finishStatus, viewedStatus} from "../utils/consts";
 import {toJS} from "mobx";
 
 export const useTelegramButton = () => (Trainings, trainingId, navigateFoo) => {
-    if(window.location.pathname.includes("/trainings/")) {
+    if(window.location.pathname.includes("section_id")) {
         tgButtonInitial()
 
         const onClickHandler = async() => {
