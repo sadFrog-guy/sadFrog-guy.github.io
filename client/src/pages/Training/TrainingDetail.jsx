@@ -74,20 +74,18 @@ const TrainingDetail = ({id}) => {
             if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                 tgMainButton.hide()
             }
-
-            const handleScroll = () => {
-                const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 170
-
-                if(bottom) {
-                    tgMainButton.show()
-                } else {
-                    tgMainButton.hide()
-                }
-            };
-
-            window.addEventListener('scroll', handleScroll)
         }
     }
+
+    const handleScroll = () => {
+        const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 170
+
+        if(bottom) {
+            tgMainButton.show()
+        } else {
+            tgMainButton.hide()
+        }
+    };
 
     useEffect(() => {
         exitConfirmation()
@@ -102,6 +100,7 @@ const TrainingDetail = ({id}) => {
         async function fetchData() {
             await Trainings.getOneTraining(id)
             tgButton()
+            window.addEventListener('scroll', handleScroll)
             setLoading(false)
         }
 
@@ -109,6 +108,7 @@ const TrainingDetail = ({id}) => {
 
         return () => {
             tgMainButton.hide()
+            window.removeEventListener('scroll', handleScroll)
         }
     }, [])
 
