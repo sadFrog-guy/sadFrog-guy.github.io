@@ -1,9 +1,12 @@
 import {haptic, tgButtonInitial, tgButtonText, tgMainButton} from "../utils/telegramAPI";
 import {finishPendingStatus, finishStatus, viewedStatus} from "../utils/consts";
+import {toJS} from "mobx";
 
 export const useTelegramButton = () => (Trainings, trainingId, navigateFoo) => {
     if(window.location.pathname.includes("/trainings/")) {
         tgButtonInitial()
+
+        console.log(toJS(Trainings))
 
         const onClickHandler = async() => {
             haptic()
