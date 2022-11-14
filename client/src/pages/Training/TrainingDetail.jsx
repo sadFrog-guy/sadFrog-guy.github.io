@@ -42,6 +42,8 @@ const TrainingDetail = () => {
     useEffect(() => {
         if(isAndroid) {
             tgMainButton.hide()
+        } else {
+            tgMainButton.show()
         }
     }, [])
 
@@ -115,7 +117,7 @@ const TrainingDetail = () => {
                         </Wrap>
                     }
                 </Wrap>
-                <Wrap className="article-content">
+                <Wrap className={`article-content ${isAndroid ? 'custom' : '' }`}>
                     <Text type="medium" overrideClass="article_medium" id="article-bold">
                         {Trainings.training.bold_text}
                     </Text>

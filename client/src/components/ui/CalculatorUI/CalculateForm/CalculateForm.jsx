@@ -22,7 +22,7 @@ const CalculateForm = () => {
         const value = e.target.value.replace(/\D/g, "")
 
         if(value >= 0) {
-            Calculator.changeAmount(parseInt(value))
+            Calculator.changeAmount(removeNonNumeric(value))
             setDisabled(false)
         } else {
             setDisabled(true)

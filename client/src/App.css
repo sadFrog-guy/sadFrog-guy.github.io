@@ -1232,9 +1232,13 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 
 .article-content {
     padding: 0 30px;
-    padding-bottom: 77px;
+    padding-bottom: 27px;
     display: inline-flex;
     flex-direction: column;
+}
+
+.article-content.custom {
+    padding-bottom: 77px;
 }
 
 .article_medium {
