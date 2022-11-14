@@ -22,7 +22,7 @@ const CalculateForm = () => {
         const value = e.target.value.replace(/\D/g, "")
 
         if(value >= 0) {
-            Calculator.changeAmount(removeNonNumeric(value))
+            Calculator.changeAmount(value)
             setDisabled(false)
         } else {
             setDisabled(true)
@@ -34,7 +34,9 @@ const CalculateForm = () => {
             setIsLoading(true)
             await Calculator.getChains(Calculator.amount)
             setIsLoading(false)
-        } else {
+        }
+
+        if(Calculator.error) {
             setDisabled(true)
         }
 
@@ -66,7 +68,7 @@ const CalculateForm = () => {
                 pattern="/^\d+$/"
                 onChange={inputOnChange}
                 value={addCommas(removeNonNumeric(Calculator.amount))}
-                type={isMobile ? "tel" : "number"}
+                type={isMobile ? "tel" : "text"}
                 placeholder="Введите сумму прокрутки"
                 overrideClass="calculator-input"
             />
