@@ -75,6 +75,7 @@ const TrainingDetail = ({id}) => {
         const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight
 
         if(bottom) {
+            console.log('bottom')
             tgMainButton.show()
         }
     };
@@ -151,7 +152,7 @@ const TrainingDetail = ({id}) => {
                         </Wrap>
                     }
                 </Wrap>
-                <Wrap className={`article-content ${isAndroid ? 'custom' : '' }`}>
+                <Wrap className="article-content">
                     <Text type="medium" overrideClass="article_medium" id="article-bold">
                         {Trainings.training.bold_text}
                     </Text>
