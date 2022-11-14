@@ -30,7 +30,7 @@ const routes = [
     //     element: <TrainingDetail/>,
     // },
     {
-        path: '?section_id=:id',
+        path: '/trainings?section_id=:id',
         element: <TrainingDetail/>,
     },
     {
