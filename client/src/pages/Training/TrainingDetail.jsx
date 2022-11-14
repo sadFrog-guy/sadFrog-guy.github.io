@@ -75,14 +75,6 @@ const TrainingDetail = ({id}) => {
     }
 
     useEffect(() => {
-        if(isAndroid) {
-            tgMainButton.hide()
-        } else {
-            tgMainButton.show()
-        }
-    }, [])
-
-    useEffect(() => {
         exitConfirmation()
 
         backButtonShow(() => {
@@ -165,10 +157,6 @@ const TrainingDetail = ({id}) => {
             <Loader
                 isLoading={isLoading}
             />
-
-            {isAndroid
-                && <ButtonTG hide={hide} setHide={setHide}/>
-            }
 
             {Trainings.training.success === false
                 &&
