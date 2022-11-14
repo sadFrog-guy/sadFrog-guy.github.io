@@ -33,4 +33,8 @@ export default new class StoreCalculator {
     changeAmount(amount) {
         this.amount = amount
     }
+
+    clearError() {
+        this.error = ''
+    }
 }

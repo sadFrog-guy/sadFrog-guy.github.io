@@ -29,6 +29,11 @@ const CalculateForm = () => {
         }
 
     }
+
+    const inputOnFocus = () => {
+        Calculator.clearError()
+    }
+
     const buttonOnClick = async() => {
         if(Calculator.amount) {
             setIsLoading(true)
@@ -67,6 +72,7 @@ const CalculateForm = () => {
             <Input
                 pattern="/^\d+$/"
                 onChange={inputOnChange}
+                onFocus={inputOnFocus}
                 value={addCommas(removeNonNumeric(Calculator.amount))}
                 type={isMobile ? "tel" : "text"}
                 placeholder="Введите сумму прокрутки"
