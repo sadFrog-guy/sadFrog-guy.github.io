@@ -42,7 +42,7 @@ const CalculateForm = () => {
     }
 
     const buttonOnClick = async() => {
-        if(Calculator.chains.length !== 0 && !Calculator.error) {
+        if(Calculator.amount && !Calculator.error) {
             setIsLoading(true)
             await Calculator.getChains(Calculator.amount)
 
