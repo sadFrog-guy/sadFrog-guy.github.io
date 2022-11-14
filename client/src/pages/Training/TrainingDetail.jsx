@@ -38,6 +38,12 @@ const TrainingDetail = ({id}) => {
         if(window.location.href.includes("section_id")) {
             tgButtonInitial()
 
+            if(Trainings.training.viewed) {
+                tgButtonText(viewedStatus)
+            } else {
+                tgButtonText(finishStatus)
+            }
+
             const onClickHandler = async() => {
                 haptic()
 
@@ -66,12 +72,6 @@ const TrainingDetail = ({id}) => {
 
             tgMainButton.onClick(onClickHandler)
 
-            if(Trainings.training.viewed) {
-                tgButtonText(viewedStatus)
-            } else {
-                tgButtonText(finishStatus)
-            }
-
             if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                 tgMainButton.hide()
             }
@@ -90,6 +90,8 @@ const TrainingDetail = ({id}) => {
 
     useEffect(() => {
         exitConfirmation()
+
+        window.scrollTo(0, 0)
 
         backButtonShow(() => {
             navigate('/trainings')
