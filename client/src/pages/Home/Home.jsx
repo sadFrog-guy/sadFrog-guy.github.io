@@ -11,7 +11,7 @@ import HeaderHome from "../../components/ui/HomeUI/HeaderHome/HeaderHome";
 import Subscribtion from "../../components/ui/HomeUI/Subscribtion/Subscribtion";
 import FooterHome from "../../components/ui/HomeUI/FooterHome/FooterHome";
 import ModalHome from "../../components/ui/HomeUI/ModalHome/ModalHome";
-import {backButtonHide, tgID, tgInintial, tgWebApp} from "../../utils/telegramAPI";
+import {backButtonHide, tgID, tgInintial, tgInitData, tgWebApp} from "../../utils/telegramAPI";
 import {Navigate, useLocation, useNavigate, useParams} from "react-router-dom";
 import {NOT_AUTH} from "../../router";
 import axios from "axios";
@@ -32,6 +32,7 @@ const Home = () => {
         async function fetchData() {
             await Security.postHashKey()
             await User.getUserInfo()
+            console.log(tgInitData)
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
         }
 

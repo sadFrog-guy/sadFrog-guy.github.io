@@ -1,6 +1,6 @@
 import {makeAutoObservable} from "mobx";
 import Security from "../services/security";
-import {tgHash} from "../utils/telegramAPI";
+import {tgInitData} from "../utils/telegramAPI";
 
 export default new class StoreSecurity {
 
@@ -13,6 +13,7 @@ export default new class StoreSecurity {
     async postHashKey() {
         try {
             const {data} = await Security.postHashKey()
+            console.log(data)
 
             this.success = data.success
         } catch (e) {
