@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {Navigate, useLocation, useNavigate, useParams} from "react-router-dom";
+import {Navigate, useLocation, useNavigate, useParams, useSearchParams} from "react-router-dom";
 import Navigation from "../../components/ui/GlobalUI/Navigation/Navigation";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {useContext, useEffect, useState} from "react";
@@ -37,6 +37,8 @@ const TrainingDetail = () => {
         navigate(0)
     })
     const [hide, setHide] = useState('')
+    const [searchParams] = useSearchParams();
+    console.log(searchParams)
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id.id, videoRef, openInBrowser, setOpenInBrowser)
 
     useEffect(() => {
