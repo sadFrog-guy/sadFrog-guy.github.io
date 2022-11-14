@@ -31,24 +31,26 @@ const CalculateForm = () => {
     }
 
     const buttonOnClick = async() => {
+        const delay = () => {
+            setTimeout(async() => {
+                await Calculator.getChains(Calculator.amount)
+
+                if(Calculator.auto_update) {
+                    delay()
+                }
+            }, Calculator.autoupdate_delay)
+        }
+
+        if(Calculator.chains || !Calculator.auto_update) {
+            delay()
+        }
+
         if(!Calculator.chains) {
             setIsLoading(true)
             await Calculator.getChains(Calculator.amount)
             setIsLoading(false)
         }
     }
-
-    useEffect(() => {
-        if(Calculator.chains || !Calculator.auto_update) {
-            intervalId = setInterval(async() => {
-                await Calculator.getChains(Calculator.amount)
-            }, Calculator.autoupdate_delay)
-        }
-
-        return () => {
-            clearInterval(intervalId)
-        }
-    }, [Calculator.auto_update])
 
     useEffect(() => {
         if(Calculator.error) {
