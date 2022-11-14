@@ -30,11 +30,13 @@ const CalculateForm = () => {
     }
 
     const buttonOnClick = async() => {
-        if(Calculator.chains || !Calculator.auto_update) {
-            setInterval(async() => {
-                await Calculator.getChains(Calculator.amount)
-            }, Calculator.autoupdate_delay * 1000)
-        }
+        // if(Calculator.chains || !Calculator.auto_update) {
+        //     setInterval(async() => {
+        //         await Calculator.getChains(Calculator.amount)
+        //     }, Calculator.autoupdate_delay * 1000)
+        // }
+
+        console.log(Calculator.autoupdate_delay * 1000)
 
         if(Calculator.chains) {
             setIsLoading(true)
