@@ -27,6 +27,8 @@ const Home = () => {
     window.addEventListener('load', async() => {
         await Security.postHashKey()
         await User.getUserInfo()
+
+        subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
     })
 
     useEffect(() => {
@@ -36,9 +38,8 @@ const Home = () => {
 
         async function fetchData() {
             await User.getUserInfo()
-
-            console.log(tgInitData)
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
+            console.log(tgInitData)
         }
 
         fetchData()
