@@ -46,6 +46,7 @@ const TrainingDetail = ({id}) => {
 
                     window.scrollTo(0, 0)
                 } else {
+                    console.log(Trainings.training.viewed)
                     tgButtonText(finishPendingStatus)
 
                     await Trainings.readTraining(id)
