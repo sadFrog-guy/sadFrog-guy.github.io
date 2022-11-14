@@ -41,13 +41,14 @@ const TrainingDetail = ({id}) => {
             const onClickHandler = async() => {
                 haptic()
 
-                if(Trainings.training.viewed) {
+                if(Trainings.training.viewed && tgMainButton.text === viewedStatus) {
                     await Trainings.getOneTraining(Trainings.training.next_article_id)
+
+                    window.scrollTo(0, 0)
                 } else {
                     tgButtonText(finishPendingStatus)
 
                     await Trainings.readTraining(id)
-                    await Trainings.getOneTraining(Trainings.training.next_article_id)
 
                     window.scrollTo(0, 0)
 
