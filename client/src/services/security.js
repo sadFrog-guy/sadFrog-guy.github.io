@@ -1,12 +1,12 @@
 import {request} from "../utils/axiosInstance";
-import {tgHash, tgID} from "../utils/telegramAPI";
+import {tgHash, tgID, tgInitData} from "../utils/telegramAPI";
 
 export default class Security {
     static async postHashKey() {
         const response = await request.post(
             'authorization',
             {
-                init_data: tgHash,
+                init_data: tgInitData,
                 telegram_id: tgID
             },
             {

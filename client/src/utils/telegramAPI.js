@@ -1,5 +1,6 @@
 export const tgWebApp = window.Telegram.WebApp
 export const tgUser = tgWebApp.initDataUnsafe?.user
+export const tgInitData = decodeURI(tgWebApp.initData)
 export const tgHash = decodeURI(tgWebApp.initData.split('hash=')[1])
 export const tgID = tgUser.id
 export const tgMainButton = tgWebApp.MainButton
