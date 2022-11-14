@@ -33,6 +33,7 @@ const CalculateForm = () => {
 
     const inputOnFocus = () => {
         Calculator.clearError()
+        setDisabled(false)
     }
 
     const intervalDelayUpdate = async() => {
