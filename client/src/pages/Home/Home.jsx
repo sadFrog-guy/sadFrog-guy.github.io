@@ -74,7 +74,7 @@ const Home = () => {
                 isLoading={isLoading}
             />
 
-            {User.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
+            {/*{Use && <Navigate to={NOT_AUTH}/>}*/}
         </Wrapper>
     );
 };
