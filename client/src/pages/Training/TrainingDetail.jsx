@@ -72,7 +72,7 @@ const TrainingDetail = ({id}) => {
     }
 
     const handleScroll = () => {
-        const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight
+        const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 100
 
         if(bottom) {
             tgMainButton.show()
