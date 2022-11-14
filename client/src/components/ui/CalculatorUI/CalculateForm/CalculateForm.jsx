@@ -36,11 +36,10 @@ const CalculateForm = () => {
         //     }, Calculator.autoupdate_delay * 1000)
         // }
 
-        console.log(Calculator.autoupdate_delay * 1000)
-
         if(Calculator.chains) {
             setIsLoading(true)
             await Calculator.getChains(Calculator.amount)
+            console.log(Calculator.autoupdate_delay * 1000)
             setIsLoading(false)
         }
     }
