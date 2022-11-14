@@ -25,12 +25,8 @@ const routes = [
         path: LINK_TRAININGS,
         element: <Training/>,
     },
-    // {
-    //     path: LINK_TRAININGS_ITEM,
-    //     element: <TrainingDetail/>,
-    // },
     {
-        path: '/trainings?section_id=:id',
+        path: LINK_TRAININGS_ITEM,
         element: <TrainingDetail/>,
     },
     {

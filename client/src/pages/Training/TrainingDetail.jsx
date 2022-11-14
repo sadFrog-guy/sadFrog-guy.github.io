@@ -37,8 +37,6 @@ const TrainingDetail = () => {
         navigate(0)
     })
     const [hide, setHide] = useState('')
-    const [searchParams] = useSearchParams();
-    console.log(searchParams)
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id.id, videoRef, openInBrowser, setOpenInBrowser)
 
     useEffect(() => {

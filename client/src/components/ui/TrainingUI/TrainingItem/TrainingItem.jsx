@@ -13,9 +13,12 @@ import {observer} from "mobx-react-lite";
 import CheckIcon from "../../../icons/CheckIcon/CheckIcon";
 import {tgWebApp, vibrationDuration} from "../../../../utils/telegramAPI";
 import useModal from "../../../../hooks/useModal";
+import {useSearchParams} from "react-router-dom";
 
 const TrainingItem = ({trainingInfo, imageOnLoad, subitemOnClick, ...props}) => {
     const [isShow, setShow] = useState(false)
+    const [searchParams] = useSearchParams();
+    console.log(searchParams)
 
     const toggleContentHandler = () => {
         if(trainingInfo.allowed_viewing) {
