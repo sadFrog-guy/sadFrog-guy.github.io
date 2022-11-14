@@ -40,8 +40,4 @@ export default new class StoreCalculator {
     clearError() {
         this.error = ''
     }
-
-    changeAutoPlayDelay(delay) {
-        this.autoupdate_delay = delay
-    }
 }

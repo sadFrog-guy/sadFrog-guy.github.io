@@ -31,17 +31,21 @@ const CalculateForm = () => {
         Calculator.clearError()
     }
 
+    const intervalDelayUpdate = async() => {
+        clearInterval(intervalId)
+        if(Calculator.auto_update) {
+            await Calculator.getChains(Calculator.amount)
+        }
+        intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
+    }
+
     const buttonOnClick = async() => {
+
         if(Calculator.chains) {
             setIsLoading(true)
             await Calculator.getChains(Calculator.amount)
 
-             intervalId = setInterval(async() => {
-                 if(Calculator.auto_update) {
-                     await Calculator.getChains(Calculator.amount)
-                     Calculator.changeAutoPlayDelay(Calculator.autoupdate_delay)
-                 }
-            }, Calculator.autoupdate_delay * 1000)
+            intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
 
             setIsLoading(false)
         }
