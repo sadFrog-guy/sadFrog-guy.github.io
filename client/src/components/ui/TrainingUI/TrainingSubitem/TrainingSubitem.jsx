@@ -12,7 +12,7 @@ const TrainingSubitem = ({subitemInfo, viewed, allowedViewing, active = false, .
     }
 
     return (
-        <a
+        <Link
             className={subitemClasses.join(' ')}
             {...props}
         >
@@ -27,7 +27,7 @@ const TrainingSubitem = ({subitemInfo, viewed, allowedViewing, active = false, .
                 ? <CheckIcon/>
                 : ""
             }
-        </a>
+        </Link>
     );
 };
 
