@@ -33,6 +33,8 @@ const Training = () => {
             navigate('/')
         })
 
+        navigate(0)
+
         async function fetchData() {
             await Trainings.getAllTrainings()
         }
