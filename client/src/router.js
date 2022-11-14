@@ -28,7 +28,6 @@ const routes = [
     {
         path: LINK_TRAININGS,
         element: <TrainingDetail/>,
-        search: "?section_id=:id"
     },
     {
         path: LINK_CALCULATOR,

@@ -12,7 +12,7 @@ import Dragger from "../../components/ui/ModalUI/Dragger/Dragger";
 import ModalHeader from "../../components/ui/ModalUI/ModalHeader/ModalHeader";
 import LockIcon from "../../components/icons/LockIcon/LockIcon";
 import ModalText from "../../components/ui/ModalUI/ModalText/ModalText";
-import {Link, useNavigate, Navigate, useSearchParams} from "react-router-dom";
+import {Link, useNavigate, Navigate, useSearchParams, useLocation} from "react-router-dom";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {backButtonShow, exitConfirmation, tgWebApp} from "../../utils/telegramAPI";
 import TrainingModal from "../../components/ui/TrainingUI/TrainingModal/TrainingModal";
@@ -44,9 +44,8 @@ const Training = () => {
         }
     }, [isLoaded])
 
-    const [searchParams] = useSearchParams();
-
-    console.log(searchParams);
+    let location = useLocation();
+    console.log(location.search)
 
     return (
         <Wrapper>
