@@ -6,8 +6,6 @@ export const useTelegramButton = () => (Trainings, trainingId, navigateFoo) => {
     if(window.location.pathname.includes("/trainings/")) {
         tgButtonInitial()
 
-        console.log(toJS(Trainings))
-
         const onClickHandler = async() => {
             haptic()
 

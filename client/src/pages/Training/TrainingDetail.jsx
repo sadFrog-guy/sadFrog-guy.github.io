@@ -31,20 +31,20 @@ const TrainingDetail = ({id}) => {
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
-    // const telegramButton = useTelegramButton(Trainings, id, () => {
-    //     navigate(`/trainings/${Trainings.training.next_article_id}`)
-    //     navigate(0)
-    // })
+    const telegramButton = useTelegramButton(Trainings, id, () => {
+        navigate(`/trainings/${Trainings.training.next_article_id}`)
+        navigate(0)
+    })
     const [hide, setHide] = useState('')
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
 
-    // useEffect(() => {
-    //     if(isAndroid) {
-    //         tgMainButton.hide()
-    //     } else {
-    //         tgMainButton.show()
-    //     }
-    // }, [])
+    useEffect(() => {
+        if(isAndroid) {
+            tgMainButton.hide()
+        } else {
+            tgMainButton.show()
+        }
+    }, [])
 
     useEffect(() => {
         exitConfirmation()
@@ -58,7 +58,7 @@ const TrainingDetail = ({id}) => {
         async function fetchData() {
             await Trainings.getOneTraining(id)
             setLoading(false)
-            // telegramButton()
+            telegramButton()
         }
         fetchData()
 
