@@ -75,13 +75,15 @@ const TrainingDetail = ({id}) => {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+        navigate(0)
+
         exitConfirmation()
 
         backButtonShow(() => {
             navigate('/trainings')
-        })
 
-        window.scrollTo(0, 0)
+        })
 
         async function fetchData() {
             await Trainings.getOneTraining(id)
