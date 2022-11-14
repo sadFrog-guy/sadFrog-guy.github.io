@@ -24,7 +24,7 @@ const Home = () => {
     const [isLoading, setLoading] = useState(true)
     const [isLoaded, setLoaded] = useState(false)
 
-    window.onload(async() => {
+    window.addEventListener('load', async() => {
         await Security.postHashKey()
     })
 
