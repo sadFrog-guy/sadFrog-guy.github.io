@@ -47,6 +47,8 @@ const CalculateForm = () => {
 
             intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
 
+            if(Calculator.error) clearInterval(intervalId)
+
             setIsLoading(false)
         }
     }
