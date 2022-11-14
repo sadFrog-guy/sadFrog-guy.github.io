@@ -31,12 +31,12 @@ const TrainingDetail = ({id}) => {
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
     const [openInBrowser, setOpenInBrowser] = useState(false)
+    const [hide, setHide] = useState('')
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
 
     const tgButton = () => {
         if(window.location.href.includes("section_id")) {
             tgButtonInitial()
-            console.log(Trainings.training.viewed)
 
             const onClickHandler = async() => {
                 haptic()
@@ -48,12 +48,11 @@ const TrainingDetail = ({id}) => {
                     tgButtonText(finishPendingStatus)
 
                     await Trainings.readTraining(id)
-                    console.log(Trainings.training.viewed)
 
                     if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                         tgMainButton.hide()
                     } else {
-                        navigate((LINK_TRAININGS_ITEM + Trainings.training.next_article_id))
+                        navigate(LINK_TRAININGS_ITEM + Trainings.training.next_article_id)
                         navigate(0)
                     }
                 }
@@ -158,6 +157,10 @@ const TrainingDetail = ({id}) => {
             <Loader
                 isLoading={isLoading}
             />
+
+            {isAndroid
+                && <ButtonTG hide={hide} setHide={setHide}/>
+            }
 
             {Trainings.training.success === false
                 &&
