@@ -21,7 +21,7 @@ export default new class StoreReferal {
                 this.have_subscribe = data.have_subscribe
             })
 
-            window.localStorage.setItem("comment-referal", data.comment ? data.comment : 'Неизвестная ошибка')
+            window.localStorage.setItem("comment-referal", data.comment)
         } catch (e) {
             console.log(e)
         }

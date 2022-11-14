@@ -24,7 +24,7 @@ export default new class StoreCalculator {
                 this.auto_update = data.autoupdate
             })
 
-            window.localStorage.setItem("comment-calculator", data.comment ? data.comment : 'Неизвестная ошибка')
+            window.localStorage.setItem("comment-calculator", data.comment)
         } catch (e) {
             console.log(e)
         }

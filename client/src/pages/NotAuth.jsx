@@ -29,6 +29,8 @@ const NotAuth = () => {
         if(CalculatorComment) {
             return CalculatorComment
         }
+
+        return ''
     }
 
     return (
