@@ -76,7 +76,6 @@ const TrainingDetail = ({id}) => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        navigate(0)
 
         exitConfirmation()
 
