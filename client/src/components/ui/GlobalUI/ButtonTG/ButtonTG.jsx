@@ -30,7 +30,7 @@ const ButtonTg = ({hide, setHide}) => {
 
     const checkForHref = () => {
         if(Trainings.training.next_article_id) {
-            return `/trainings/${Trainings.training.next_article_id}`
+            return `/trainings?section_id=${Trainings.training.next_article_id}`
         } else {
             setHide('hide')
         }
@@ -55,7 +55,7 @@ const ButtonTg = ({hide, setHide}) => {
     }, [])
 
     return (
-        <NavLink
+        <Link
             className={`main-button ${hide}`}
             onClick={onClickHandler}
             to={checkForHref()}
@@ -63,7 +63,7 @@ const ButtonTg = ({hide, setHide}) => {
             <Text type="medium" overrideClass="main-button-text">
                 {Trainings.training.viewed ? viewedStatus : finishStatus}
             </Text>
-        </NavLink>
+        </Link>
     );
 };
 

@@ -158,6 +158,10 @@ const TrainingDetail = ({id}) => {
                 isLoading={isLoading}
             />
 
+            {isAndroid
+                && <ButtonTG hide={hide} setHide={setHide}/>
+            }
+
             {Trainings.training.success === false
                 &&
                 <Wrap className="not-found">
