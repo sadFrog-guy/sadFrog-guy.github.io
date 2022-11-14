@@ -22,7 +22,7 @@ const CalculateForm = () => {
         const value = e.target.value.replace(/\D/g, "")
 
         if(value >= 0) {
-            Calculator.changeAmount(value)
+            Calculator.changeAmount(parseInt(value))
             setDisabled(false)
         } else {
             setDisabled(true)
@@ -63,7 +63,6 @@ const CalculateForm = () => {
     return (
         <Wrap className="form">
             <Input
-                min="0"
                 pattern="/^\d+$/"
                 onChange={inputOnChange}
                 value={addCommas(removeNonNumeric(Calculator.amount))}
