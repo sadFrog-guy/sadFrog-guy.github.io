@@ -33,7 +33,7 @@ export default new class StoreUser {
                 this.have_subscribe = data.have_subscribe
             })
 
-            window.localStorage.setItem("comment-user", data.comment)
+            window.localStorage.setItem("comment-user", data.comment ? data.comment : 'Неизвестная ошибка')
         } catch (e) {
             console.log(e)
         }

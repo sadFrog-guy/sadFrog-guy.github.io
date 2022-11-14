@@ -24,7 +24,7 @@ export default new class StoreTrainings {
                 this.have_subscribe = data.have_subscribe
             })
 
-            window.localStorage.setItem("comment-training", data.comment)
+            window.localStorage.setItem("comment-training", data.comment ? data.comment : 'Неизвестная ошибка')
         } catch (e) {
             console.log(e)
         }
@@ -40,7 +40,7 @@ export default new class StoreTrainings {
                 this.have_subscribe = data.have_subscribe
             })
 
-            window.localStorage.setItem("comment-training", data.comment)
+            window.localStorage.setItem("comment-training", data.comment ? data.comment : 'Неизвестная ошибка')
         } catch (e) {
             console.log(e)
         }
