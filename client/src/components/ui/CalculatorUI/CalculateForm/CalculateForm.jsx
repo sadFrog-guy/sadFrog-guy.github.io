@@ -26,7 +26,7 @@ const CalculateForm = () => {
             Calculator.changeAmount(value)
         }
 
-        if(value === 0) {
+        if(value.startsWith('0')) {
             setDisabled(true)
         }
     }
@@ -51,7 +51,7 @@ const CalculateForm = () => {
             setIsLoading(false)
         }
 
-        if(Calculator.amount.length === 0) {
+        if(!Calculator.amount) {
             setDisabled(true)
         }
     }
