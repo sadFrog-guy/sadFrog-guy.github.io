@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Text from "../Text/Text";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate, Navigate, useParams} from "react-router-dom";
 import {Context} from "../../../../utils/context";
 import {finishPendingStatus, finishStatus, viewedStatus} from "../../../../utils/consts";
 import {haptic, tgButtonText, tgMainButton} from "../../../../utils/telegramAPI";
@@ -63,6 +63,8 @@ const ButtonTg = ({hide, setHide}) => {
             <Text type="medium" overrideClass="main-button-text">
                 {Trainings.training.viewed ? viewedStatus : finishStatus}
             </Text>
+
+            <Navigate to={`/trainings/${Trainings.training.next_article_id}`}/>
         </Link>
     );
 };
