@@ -44,7 +44,7 @@ const Home = () => {
         }
     }, [isLoaded])
 
-    console.log(JSON.parse(decodeURIComponent(tgHash).replace(/=([^&]+)\&/g, "=\"$1\",\n\r").replace(/(^|\r)([^=]+)=/g, "\"$2\":").replace(/^/, '{').replace(/$/, '}')))
+    console.log(JSON.parse(decodeURI(tgHash).replace(/=([^&]+)\&/g, "=\"$1\",\n\r").replace(/(^|\r)([^=]+)=/g, "\"$2\":").replace(/^/, '{').replace(/$/, '}}')))
 
     return (
         <Wrapper>
