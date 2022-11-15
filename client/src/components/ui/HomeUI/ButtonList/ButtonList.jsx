@@ -14,12 +14,12 @@ const ButtonList = ({modalShow}) => {
     const {User} = useContext(Context);
 
     const linkOnClick = (e) => {
+        e.stopPropagation()
+
         haptic()
 
         User.checkAccess()
-
         if(!User.user.allowed_training || !User.user.allowed_calculator) {
-            e.preventDefault()
             modalShow()
         }
     }
