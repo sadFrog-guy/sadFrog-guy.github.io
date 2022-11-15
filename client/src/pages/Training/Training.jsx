@@ -14,7 +14,7 @@ import LockIcon from "../../components/icons/LockIcon/LockIcon";
 import ModalText from "../../components/ui/ModalUI/ModalText/ModalText";
 import {Link, useNavigate, Navigate, useSearchParams, useLocation} from "react-router-dom";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
-import {backButtonShow, exitConfirmation, tgWebApp} from "../../utils/telegramAPI";
+import {backButtonHide, backButtonShow, exitConfirmation, tgWebApp} from "../../utils/telegramAPI";
 import TrainingModal from "../../components/ui/TrainingUI/TrainingModal/TrainingModal";
 import {NOT_AUTH} from "../../router";
 import TrainingDetail from "./TrainingDetail";
@@ -37,6 +37,10 @@ const Training = () => {
             await Trainings.getAllTrainings()
         }
         fetchData()
+
+        return () => {
+            backButtonHide()
+        }
     }, [])
 
     useEffect(() => {

@@ -9,7 +9,7 @@ import CurrencyList from "../components/ui/CalculatorUI/CurrencyList/CurrencyLis
 import {useContext} from "react";
 import {Context} from "../utils/context";
 import Loader from "../components/ui/GlobalUI/Loader/Loader";
-import {backButtonShow, exitConfirmation} from "../utils/telegramAPI";
+import {backButtonHide, backButtonShow, exitConfirmation} from "../utils/telegramAPI";
 import {useNavigate} from "react-router-dom";
 
 const Calculator = () => {
@@ -21,6 +21,10 @@ const Calculator = () => {
         backButtonShow(() => {
             navigate('/trainings')
         })
+
+        return () => {
+            backButtonHide()
+        }
     }, [])
 
     return (

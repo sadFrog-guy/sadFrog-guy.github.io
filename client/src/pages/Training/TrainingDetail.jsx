@@ -8,6 +8,7 @@ import Wrap from "../../components/utils/Wrap/Wrap";
 import Text from "../../components/ui/GlobalUI/Text/Text";
 import {isIOS} from "../../utils/isIOS";
 import {
+    backButtonHide,
     backButtonShow, exitConfirmation,
     haptic,
     openLinkExternal, tgButtonInitial,
@@ -107,6 +108,7 @@ const TrainingDetail = ({id}) => {
 
         return () => {
             tgMainButton.hide()
+            backButtonHide()
             window.removeEventListener('scroll', handleScroll)
         }
     }, [])

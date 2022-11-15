@@ -20,7 +20,7 @@ import Button from "../components/ui/GlobalUI/Button/Button";
 import {useCopy} from "../hooks/useCopy";
 import Loader from "../components/ui/GlobalUI/Loader/Loader";
 import {isIOS} from "../utils/isIOS";
-import {backButtonShow, exitConfirmation, haptic, tgWebApp} from "../utils/telegramAPI";
+import {backButtonHide, backButtonShow, exitConfirmation, haptic, tgWebApp} from "../utils/telegramAPI";
 import {NOT_AUTH} from "../router";
 
 const Referal = () => {
@@ -49,6 +49,10 @@ const Referal = () => {
             setLoading(false)
         }
         fetchData()
+
+        return () => {
+            backButtonHide()
+        }
     }, [])
 
     const onShare = async() => {
