@@ -93,7 +93,6 @@ const TrainingDetail = ({id}) => {
         window.scrollTo(0, 0)
 
         backButtonShow(async() => {
-            await Trainings.getAllTrainings()
             navigate('/trainings')
         })
 
@@ -111,6 +110,14 @@ const TrainingDetail = ({id}) => {
             window.removeEventListener('scroll', handleScroll)
         }
     }, [])
+
+    useEffect(() => {
+        if(Trainings.training.viewed) {
+            tgButtonText(viewedStatus)
+        } else {
+            tgButtonText(finishStatus)
+        }
+    }, [Trainings.training.viewed])
 
     return (
         <Wrapper>
