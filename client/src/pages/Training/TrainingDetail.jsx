@@ -92,7 +92,7 @@ const TrainingDetail = ({id}) => {
 
         window.scrollTo(0, 0)
 
-        backButtonShow(async() => {
+        backButtonShow(() => {
             navigate('/trainings')
         })
 

@@ -33,7 +33,7 @@ const Referal = () => {
     const [isLoading, setLoading] = useState(true)
 
     const shareData = {
-        text: `Вот здесь я научился P2P`,
+        text: Referal.sharingText,
         link: Referal.referalLink
     }
 
@@ -89,7 +89,8 @@ const Referal = () => {
                         <Copied isCopied={copied}>Скопировано</Copied>
 
                         <Text onClick={haptic} type="medium" id="referal-link">
-                            {Referal.referalLink.substring(0, 29) + '...'}
+                            {/*{Referal.referalLink.substring(0, 29) + '...'}*/}
+                            {Referal.shortLink}
                         </Text>
 
                         <CopyIcon/>

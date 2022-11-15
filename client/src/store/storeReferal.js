@@ -5,6 +5,8 @@ export default new class StoreReferal {
 
     referalBalance = 0
     referalLink = ''
+    shortLink = ''
+    sharingText = ''
     have_subscribe
 
     constructor() {
@@ -19,6 +21,8 @@ export default new class StoreReferal {
                 this.referalBalance = data.referal_balance
                 this.referalLink = data.referal_link
                 this.have_subscribe = data.have_subscribe
+                this.shortLink = data.visible_part
+                this.sharingText = data.sharing_text
             })
 
             window.localStorage.setItem("comment-referal", data.comment)

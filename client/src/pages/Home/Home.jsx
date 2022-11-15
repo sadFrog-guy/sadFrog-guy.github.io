@@ -42,6 +42,7 @@ const Home = () => {
 
     useEffect(() => {
         disableExitConfirmation()
+        subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
         backButtonHide()
     }, [])
 
