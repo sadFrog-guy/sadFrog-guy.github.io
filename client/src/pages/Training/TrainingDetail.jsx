@@ -108,7 +108,6 @@ const TrainingDetail = ({id}) => {
 
         return () => {
             tgMainButton.hide()
-            backButtonHide()
             window.removeEventListener('scroll', handleScroll)
         }
     }, [])
