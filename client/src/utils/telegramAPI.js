@@ -1,3 +1,5 @@
+import {useLocation} from "react-router-dom";
+
 export const tgWebApp = window.Telegram.WebApp
 export const tgUser = tgWebApp.initDataUnsafe?.user
 export const tgInitData = tgWebApp.initData
@@ -20,7 +22,7 @@ export function haptic() {
 }
 
 export function exitConfirmation() {
-    if(location.pathname !== '/') {
+    if(window.location.pathname !== '/') {
         tgWebApp.enableClosingConfirmation()
     }
 }
