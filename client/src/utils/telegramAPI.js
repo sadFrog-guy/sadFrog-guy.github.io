@@ -20,7 +20,9 @@ export function haptic() {
 }
 
 export function exitConfirmation() {
-    tgWebApp.enableClosingConfirmation()
+    if(location.pathname !== '/') {
+        tgWebApp.enableClosingConfirmation()
+    }
 }
 
 export function openLinkExternal(link) {

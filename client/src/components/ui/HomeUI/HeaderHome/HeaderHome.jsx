@@ -19,7 +19,7 @@ const HeaderHome = ({avatarOnLoad}) => {
                 <Text type="medium" id="username">{User.username}</Text>
                 <Avatar onLoad={avatarOnLoad} source={User.avatar}/>
             </Wrap>
-            <LinkTG onClick={haptic} source={User.technical_support_link} id="settings-bubble">
+            <LinkTG onClick={haptic} source={User.course_support_link} id="settings-bubble">
                 <QuestionIcon/>
             </LinkTG>
         </Header>

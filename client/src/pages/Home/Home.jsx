@@ -33,7 +33,6 @@ const Home = () => {
             await Security.postHashKey()
             await User.getUserInfo()
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
-            console.log(tgInitData)
         }
 
         fetchData()

@@ -35,6 +35,7 @@ const Training = () => {
 
         async function fetchData() {
             await Trainings.getAllTrainings()
+            navigate('/')
         }
         fetchData()
     }, [])

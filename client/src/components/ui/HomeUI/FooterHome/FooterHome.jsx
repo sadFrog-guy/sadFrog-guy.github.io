@@ -19,7 +19,7 @@ const FooterHome = () => {
             </Text>
             <Text className="contact">
                 <LinkTG
-                    source={User.user.course_support_link}
+                    source={User.user.technical_support_link}
                     id="telegram"
                     onClick={haptic}
                 >
