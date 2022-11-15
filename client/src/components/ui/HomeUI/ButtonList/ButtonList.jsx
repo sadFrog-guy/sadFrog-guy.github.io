@@ -8,17 +8,15 @@ import Text from "../../GlobalUI/Text/Text";
 import ArrowIcon from "../../../icons/ArrowIcon/ArrowIcon";
 import LockIcon from "../../../icons/LockIcon/LockIcon";
 import {Context} from "../../../../utils/context";
-import {haptic, heavyHaptic, lightHaptic, mediumHaptic, vibrationDuration} from "../../../../utils/telegramAPI";
+import {haptic} from "../../../../utils/telegramAPI";
 
 const ButtonList = ({modalShow}) => {
     const {User} = useContext(Context);
 
     const linkOnClick = (e) => {
-        e.stopPropagation()
 
         haptic()
 
-        User.checkAccess()
         if(!User.user.allowed_training || !User.user.allowed_calculator) {
             modalShow()
         }
