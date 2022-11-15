@@ -19,6 +19,8 @@ const ButtonList = ({modalShow}) => {
         if(!User.user.allowed_training || !User.user.allowed_calculator) {
             modalShow()
         }
+
+        User.checkAccess()
     }
 
     return (
