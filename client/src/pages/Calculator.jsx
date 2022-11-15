@@ -19,7 +19,7 @@ const Calculator = () => {
         exitConfirmation()
 
         backButtonShow(() => {
-            navigate('/trainings')
+            navigate('/')
         })
 
         return () => {

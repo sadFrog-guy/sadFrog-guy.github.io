@@ -94,7 +94,7 @@ const TrainingDetail = ({id}) => {
         window.scrollTo(0, 0)
 
         backButtonShow(() => {
-            navigate('/trainings')
+            navigate(0)
         })
 
         async function fetchData() {
@@ -108,6 +108,7 @@ const TrainingDetail = ({id}) => {
 
         return () => {
             tgMainButton.hide()
+            backButtonHide()
             window.removeEventListener('scroll', handleScroll)
         }
     }, [])
