@@ -389,6 +389,14 @@ img {
     height: 43px;
 }
 
+body.dark > #root > .wrapper > .main > .main-inner > #timeout > .infinity > .infinity-color {
+    stroke: var(--tg-theme-button-color);
+}
+
+.infinity-color {
+    stroke: #C8F660;
+}
+
 .footer {
     order: 3;
     padding-bottom: 40px;
