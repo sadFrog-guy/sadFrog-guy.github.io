@@ -25,6 +25,10 @@ export function exitConfirmation() {
     tgWebApp.enableClosingConfirmation()
 }
 
+export function disableExitConfirmation() {
+    tgWebApp.disableClosingConfirmation()
+}
+
 export function openLinkExternal(link) {
     tgWebApp.openLink(link)
 }

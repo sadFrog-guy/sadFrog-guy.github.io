@@ -38,6 +38,8 @@ const Referal = () => {
     }
 
     useEffect(() => {
+        exitConfirmation()
+
         backButtonShow(() => {
             navigate('/')
         })

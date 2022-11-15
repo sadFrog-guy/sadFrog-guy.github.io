@@ -88,6 +88,8 @@ const TrainingDetail = ({id}) => {
     };
 
     useEffect(() => {
+        exitConfirmation()
+
         window.scrollTo(0, 0)
 
         backButtonShow(async() => {
