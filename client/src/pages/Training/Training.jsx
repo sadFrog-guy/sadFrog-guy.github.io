@@ -29,6 +29,14 @@ const Training = () => {
     useEffect(() => {
         exitConfirmation()
 
+        backButtonShow(() => {
+            if(location.search) {
+                navigate('/trainings')
+            } else {
+                navigate('/')
+            }
+        })
+
         async function fetchData() {
             await Trainings.getAllTrainings()
         }
