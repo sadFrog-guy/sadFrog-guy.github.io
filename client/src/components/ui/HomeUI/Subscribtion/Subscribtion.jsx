@@ -11,10 +11,6 @@ const Subscribtion = ({isSubscribtionStarter, subscribtion}) => {
                 && <InfinityIcon/>
             }
 
-            {isSubscribtionStarter && tgWebApp.colorScheme === 'light'
-                && <img src={infinity} width="121" height="43" alt=""/>
-            }
-
             {!isSubscribtionStarter
                 && <img className="ellipse" width="125" height="56" src={ellipse} alt=""/>
             }
