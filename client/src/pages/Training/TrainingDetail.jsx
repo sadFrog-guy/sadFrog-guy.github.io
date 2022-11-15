@@ -28,6 +28,7 @@ import {isAndroid} from "react-device-detect";
 
 const TrainingDetail = ({id}) => {
     const navigate = useNavigate()
+    const location = useLocation()
     const videoRef = useRef(null)
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
@@ -94,7 +95,11 @@ const TrainingDetail = ({id}) => {
         window.scrollTo(0, 0)
 
         backButtonShow(() => {
-            navigate(0)
+            if(location.search) {
+                navigate('/trainings')
+            } else {
+                navigate('/')
+            }
         })
 
         async function fetchData() {

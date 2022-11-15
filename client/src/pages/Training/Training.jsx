@@ -29,10 +29,6 @@ const Training = () => {
     useEffect(() => {
         exitConfirmation()
 
-        backButtonShow(() => {
-            navigate('/')
-        })
-
         async function fetchData() {
             await Trainings.getAllTrainings()
         }
