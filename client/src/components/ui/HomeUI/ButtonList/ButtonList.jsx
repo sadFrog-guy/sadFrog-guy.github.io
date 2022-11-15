@@ -16,11 +16,12 @@ const ButtonList = ({modalShow}) => {
     const linkOnClick = (e) => {
         haptic()
 
+        User.checkAccess()
+
         if(!User.user.allowed_training || !User.user.allowed_calculator) {
+            e.preventDefault()
             modalShow()
         }
-
-        User.checkAccess()
     }
 
     return (
