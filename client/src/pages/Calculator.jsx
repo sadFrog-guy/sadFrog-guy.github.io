@@ -16,8 +16,6 @@ const Calculator = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        exitConfirmation()
-
         backButtonShow(() => {
             navigate('/trainings')
         })

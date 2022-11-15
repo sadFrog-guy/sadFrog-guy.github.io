@@ -1,12 +1,13 @@
-import {RouterProvider} from "react-router-dom";
+import {RouterProvider, useLocation} from "react-router-dom";
 import {router} from "./router";
 import {Context, storeContext} from "./utils/context";
 import React, {useEffect} from 'react';
 import './styles/fonts.css'
 import './App.css'
-import {tgWebApp} from "./utils/telegramAPI";
+import {exitConfirmation, tgWebApp} from "./utils/telegramAPI";
 
 function App() {
+    const location = useLocation()
 
     if(tgWebApp.colorScheme === 'dark') {
         document.body.classList.remove("light")
@@ -25,6 +26,12 @@ function App() {
             document.body.classList.add("light")
         }
     })
+
+    useEffect(() => {
+        if(location.pathname !== "/") {
+            exitConfirmation()
+        }
+    }, [])
 
   return (
       <Context.Provider value={storeContext}>
