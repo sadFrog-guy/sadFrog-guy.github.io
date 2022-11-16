@@ -38,11 +38,11 @@ const Home = () => {
         backButtonHide()
 
         const fetchData = async() => {
-            if(!User.user) {
+            // if(!User.user) {
                 await Security.postHashKey()
                 await User.getUserInfo()
                 subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
-            }
+            // }
         }
 
         fetchData()
