@@ -102,13 +102,13 @@ const TrainingDetail = ({id}) => {
         }
     }, [])
 
-    useEffect(() => {
-        console.log(videoRef.current.poster)
+    // useEffect(() => {
+        console.log(videoRef.current)
 
-        if(videoRef.current.poster) {
-            setLoaded(true)
-        }
-    }, [videoRef.current.poster])
+    //     if(videoRef.current.poster) {
+    //         setLoaded(true)
+    //     }
+    // }, [videoRef.current.poster])
 
     useEffect(() => {
         if(Trainings.training.viewed) {
