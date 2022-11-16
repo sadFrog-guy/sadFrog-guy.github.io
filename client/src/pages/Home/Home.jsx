@@ -32,7 +32,7 @@ const Home = () => {
     const [isLoading, setLoading] = useState(false)
     const [isLoaded, setLoaded] = useState(false)
 
-    window.addEventListener('load', async() => {
+    document.addEventListener('DOMContentLoaded', async() => {
         await Security.postHashKey()
         await User.getUserInfo()
         subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
