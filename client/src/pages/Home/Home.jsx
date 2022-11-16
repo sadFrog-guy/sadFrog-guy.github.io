@@ -42,7 +42,7 @@ const Home = () => {
         tgInintial()
 
         disableExitConfirmation()
-        subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
+        // subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
         backButtonHide()
     }, [])
 
