@@ -26,6 +26,7 @@ import ButtonTG from "../../components/ui/GlobalUI/ButtonTG/ButtonTG";
 import {finishPendingStatus, finishStatus, viewedStatus} from "../../utils/consts";
 import {isAndroid} from "react-device-detect";
 import parse from 'html-react-parser'
+import training from "./Training";
 
 const TrainingDetail = ({id}) => {
     const navigate = useNavigate()
@@ -108,7 +109,6 @@ const TrainingDetail = ({id}) => {
             tgButton()
             window.addEventListener('scroll', handleScroll)
             setLoading(false)
-            console.log(parse(Trainings.training.main_text))
         }
 
         fetchData()
@@ -178,10 +178,10 @@ const TrainingDetail = ({id}) => {
                 </Wrap>
                 <Wrap className="article-content">
                     <Text type="medium" overrideClass="article_medium" id="article-bold">
-                        {Trainings.training.bold_text}
+                        {Trainings.bold_text}
                     </Text>
                     <Text type="medium" overrideClass="text article_text" id="article-content">
-                        {parse('<h1>single</h1>')}
+                        {Trainings.main_text}
                     </Text>
                 </Wrap>
             </Wrap>

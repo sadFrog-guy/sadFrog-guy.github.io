@@ -1,11 +1,14 @@
 import {makeAutoObservable, runInAction} from "mobx";
 import Trainings from "../services/trainings";
 import {tgID} from "../utils/telegramAPI";
+import parse from "html-react-parser";
 
 export default new class StoreTrainings {
 
     trainings = []
     training = {}
+    bold_text = ''
+    main_text = ''
     have_subscribe
     comment = ''
     link = ''
@@ -39,6 +42,8 @@ export default new class StoreTrainings {
             runInAction(() => {
                 this.training = data
                 this.have_subscribe = data.have_subscribe
+                this.bold_text = data.bold_text
+                this.main_text = parse(data.main_text)
             })
 
             window.localStorage.setItem("comment-training", data.comment)
