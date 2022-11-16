@@ -10,6 +10,7 @@ export default new class StoreUser {
     subscribe_expire_datetime
     subscription_name
     technical_support_link
+    course_support_link
     avatar
     username
     have_subscribe
@@ -30,6 +31,7 @@ export default new class StoreUser {
                 this.subscribe_expire_datetime = data.subscribe_expire_datetime
                 this.subscription_name = data.subscription_name
                 this.technical_support_link = data.technical_support_link
+                this.course_support_link = data.course_support_link
                 this.avatar = data.avatar
                 this.have_subscribe = data.have_subscribe
             })

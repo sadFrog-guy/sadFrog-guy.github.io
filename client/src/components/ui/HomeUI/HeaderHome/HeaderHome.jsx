@@ -12,8 +12,6 @@ import {haptic, vibrationDuration} from "../../../../utils/telegramAPI";
 const HeaderHome = ({avatarOnLoad}) => {
     const {User} = useContext(Context);
 
-    console.log(User.course_support_link)
-
     return (
         <Header>
             <Wrap className="user-info">
