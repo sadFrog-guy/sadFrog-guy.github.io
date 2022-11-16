@@ -181,7 +181,7 @@ const TrainingDetail = ({id}) => {
                         {Trainings.training.bold_text}
                     </Text>
                     <Text type="medium" overrideClass="text article_text" id="article-content">
-                        {}
+                        {parse('<h1>single</h1>')}
                     </Text>
                 </Wrap>
             </Wrap>
