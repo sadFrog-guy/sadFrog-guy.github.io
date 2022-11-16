@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import TrainingImage from "../TrainingImage/TrainingImage";
 import TrainingBrief from "../TrainingBrief/TrainingBrief";
 import TrainingHeader from "../TrainingHeader/TrainingHeader";
@@ -15,8 +15,10 @@ import {tgWebApp, vibrationDuration} from "../../../../utils/telegramAPI";
 import useModal from "../../../../hooks/useModal";
 import {useSearchParams} from "react-router-dom";
 import {LINK_TRAININGS_ITEM} from "../../../../router";
+import {Context} from "../../../../utils/context";
 
 const TrainingItem = ({trainingInfo, imageOnLoad, subitemOnClick, ...props}) => {
+    const {Trainings} = useContext(Context)
     const [isShow, setShow] = useState(false)
 
     const toggleContentHandler = () => {
@@ -56,6 +58,8 @@ const TrainingItem = ({trainingInfo, imageOnLoad, subitemOnClick, ...props}) => 
             {trainingInfo.allowed_viewing &&
                 <TrainingSubitemList isShow={isShow}>
                     {trainingInfo.subsections.map((subitem, index) => {
+                        Trainings.checkAccess(subitem)
+
                         const isFirst = (index === 0)
                         const isViewed = subitem.viewed
                         const isAllowed = subitem.allowed_viewing

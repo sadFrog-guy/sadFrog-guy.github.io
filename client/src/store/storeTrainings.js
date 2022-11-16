@@ -7,6 +7,7 @@ export default new class StoreTrainings {
     trainings = []
     training = {}
     have_subscribe
+    comment = ''
     link = ''
     video_link = ''
 
@@ -73,11 +74,8 @@ export default new class StoreTrainings {
 
     checkAccess(training) {
         if(training.allowed_viewing === false) {
-
-            runInAction(() => {
-                this.comment = training.viewing_ban_comment
-                this.link = training.viewing_pay_link
-            })
+            this.comment = training.viewing_ban_comment
+            this.link = training.viewing_pay_link
         }
     }
 }
