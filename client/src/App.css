@@ -1121,6 +1121,15 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
     display: flex;
 }
 
+.article_text > a {
+    color: var(--tg-theme-button-color);
+    text-decoration: none;
+}
+
+.article_text > a:hover {
+    text-decoration: underline;
+}
+
 /* training-item */
 
 .video-wrapper {
