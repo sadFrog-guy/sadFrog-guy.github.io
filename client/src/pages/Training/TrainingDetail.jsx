@@ -103,7 +103,7 @@ const TrainingDetail = ({id}) => {
     }, [])
 
     // useEffect(() => {
-        console.log(videoRef.current)
+        console.log(videoRef.current.poster)
 
     //     if(videoRef.current.poster) {
     //         setLoaded(true)
