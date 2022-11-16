@@ -13,12 +13,11 @@ import {haptic} from "../../../../utils/telegramAPI";
 const ButtonList = ({modalShow}) => {
     const {User} = useContext(Context);
 
-    const linkOnClick = async(e) => {
+    const linkOnClick = (e) => {
 
         haptic()
 
         if(!User.user.allowed_training || !User.user.allowed_calculator) {
-            await User.checkAccess()
             modalShow()
         }
     }

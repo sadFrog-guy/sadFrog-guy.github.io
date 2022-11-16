@@ -46,8 +46,7 @@ export default new class StoreUser {
                 comment: this.user.ban_training_comment,
                 link: this.user.pay_training_link
             }
-        }
-        else {
+        } else {
             return {
                 comment: this.user.ban_calculator_comment,
                 link: this.user.pay_calculator_link
