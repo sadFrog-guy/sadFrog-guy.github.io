@@ -32,19 +32,23 @@ const Home = () => {
     const [isLoading, setLoading] = useState(false)
     const [isLoaded, setLoaded] = useState(false)
 
-    document.addEventListener('DOMContentLoaded', async() => {
-        await Security.postHashKey()
-        await User.getUserInfo()
-        subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
-    })
-
     useEffect(() => {
         tgInintial()
-
         disableExitConfirmation()
-        subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
         backButtonHide()
+
+        const fetchData = async() => {
+            if(!User.user) {
+                await Security.postHashKey()
+                await User.getUserInfo()
+                subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
+            }
+        }
+
+        fetchData()
+
     }, [])
+
 
     useEffect(() => {
         if(isLoaded) {
