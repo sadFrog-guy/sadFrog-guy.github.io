@@ -34,6 +34,7 @@ const TrainingDetail = ({id}) => {
     const videoRef = useRef(null)
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
+    const [isLoaded, setLoaded] = useState(false)
     const [openInBrowser, setOpenInBrowser] = useState(false)
     const [hide, setHide] = useState('')
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
@@ -91,6 +92,16 @@ const TrainingDetail = ({id}) => {
         }
     };
 
+    const handleOnLoad = () => {
+        setLoaded(true)
+    }
+
+    useEffect(() => {
+        if(isLoaded) {
+            setLoading(false)
+        }
+    }, [])
+
     useEffect(() => {
         exitConfirmation()
 
@@ -145,6 +156,7 @@ const TrainingDetail = ({id}) => {
                             src={Trainings.training.image_url}
                             rel="preload"
                             alt=""
+                            onLoad={handleOnLoad}
                         />
                     }
 
@@ -158,10 +170,11 @@ const TrainingDetail = ({id}) => {
                                 src={Trainings.training.video_url}
                                 poster={Trainings.training.video_preview_image}
                                 ref={videoRef}
+                                onLoad={handleOnLoad}
                             />
                             {!isIOS() &&
                                 <div className="fullscreen-button" onClick={onFullscreen}>
-                                    <img className="icon-fullscreen" src={fullscreen} alt=""/>
+                                    <img className="icon-fullscreen" onLoad={handleOnLoad} src={fullscreen} alt=""/>
                                 </div>
                             }
 
