@@ -108,6 +108,7 @@ const TrainingDetail = ({id}) => {
             tgButton()
             window.addEventListener('scroll', handleScroll)
             setLoading(false)
+            console.log(parse(Trainings.training.main_text))
         }
 
         fetchData()
@@ -180,7 +181,7 @@ const TrainingDetail = ({id}) => {
                         {Trainings.training.bold_text}
                     </Text>
                     <Text type="medium" overrideClass="text article_text" id="article-content">
-                        {parse(Trainings.training.main_text)}
+                        {}
                     </Text>
                 </Wrap>
             </Wrap>
