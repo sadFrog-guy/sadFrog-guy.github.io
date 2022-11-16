@@ -1065,7 +1065,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
 .training-content.training-content_page{
     overflow: hidden;
     max-height: 0;
-    transition: max-height 0.10s cubic-bezier(0, 1, 0, 1);;
+    transition: max-height 0.2s cubic-bezier(0, 1, 0, 1);;
     background: linear-gradient(180deg, #C8F660 0%, #D1F779 100%);
 }
 
