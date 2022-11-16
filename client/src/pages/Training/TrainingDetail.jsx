@@ -25,6 +25,7 @@ import {useVideo} from "../../hooks/useVideo";
 import ButtonTG from "../../components/ui/GlobalUI/ButtonTG/ButtonTG";
 import {finishPendingStatus, finishStatus, viewedStatus} from "../../utils/consts";
 import {isAndroid} from "react-device-detect";
+import parse from 'html-react-parser'
 
 const TrainingDetail = ({id}) => {
     const navigate = useNavigate()
@@ -179,7 +180,7 @@ const TrainingDetail = ({id}) => {
                         {Trainings.training.bold_text}
                     </Text>
                     <Text type="medium" overrideClass="text article_text" id="article-content">
-                        {Trainings.training.main_text}
+                        {parse(Trainings.training.main_text)}
                     </Text>
                 </Wrap>
             </Wrap>
