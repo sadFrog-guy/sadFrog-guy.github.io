@@ -33,14 +33,14 @@ const Home = () => {
     const [isLoaded, setLoaded] = useState(false)
 
     window.addEventListener('load', async() => {
-        tgInintial()
-
         await Security.postHashKey()
         await User.getUserInfo()
         subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
     })
 
     useEffect(() => {
+        tgInintial()
+
         disableExitConfirmation()
         subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
         backButtonHide()
