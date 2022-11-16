@@ -170,7 +170,7 @@ const TrainingDetail = ({id}) => {
                                 src={Trainings.training.video_url}
                                 poster={Trainings.training.video_preview_image}
                                 ref={videoRef}
-                                onLoad={handleOnLoad}
+                                onLoadEnd={handleOnLoad}
                             />
                             {!isIOS() &&
                                 <div className="fullscreen-button" onClick={onFullscreen}>
