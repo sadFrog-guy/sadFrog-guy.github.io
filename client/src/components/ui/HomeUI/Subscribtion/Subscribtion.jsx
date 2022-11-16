@@ -7,7 +7,7 @@ import {tgWebApp} from "../../../../utils/telegramAPI";
 const Subscribtion = ({isSubscribtionStarter, subscribtion}) => {
     return (
         <span id="timeout">
-            {isSubscribtionStarter && tgWebApp.colorScheme === 'dark'
+            {isSubscribtionStarter
                 && <InfinityIcon/>
             }
 
