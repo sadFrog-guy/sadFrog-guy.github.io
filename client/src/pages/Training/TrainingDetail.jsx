@@ -103,12 +103,6 @@ const TrainingDetail = ({id}) => {
     }, [])
 
     useEffect(() => {
-        if(videoRef.current?.poster) {
-            setLoaded(true)
-        }
-    }, [videoRef.current?.poster])
-
-    useEffect(() => {
         if(Trainings.training.viewed) {
             tgButtonText(viewedStatus)
         } else {
@@ -176,6 +170,7 @@ const TrainingDetail = ({id}) => {
                                 src={Trainings.training.video_url}
                                 poster={Trainings.training.video_preview_image}
                                 ref={videoRef}
+                                onLoadEnd={handleOnLoad}
                             />
                             {!isIOS() &&
                                 <div className="fullscreen-button" onClick={onFullscreen}>
