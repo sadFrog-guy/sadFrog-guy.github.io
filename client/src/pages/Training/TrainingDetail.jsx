@@ -162,7 +162,7 @@ const TrainingDetail = ({id}) => {
                             src={Trainings.training.image_url}
                             rel="preload"
                             alt=""
-                            onLoad={handleOnLoad}
+
                         />
                     }
 
@@ -179,7 +179,7 @@ const TrainingDetail = ({id}) => {
                             />
                             {!isIOS() &&
                                 <div className="fullscreen-button" onClick={onFullscreen}>
-                                    <img className="icon-fullscreen" onLoad={handleOnLoad} src={fullscreen} alt=""/>
+                                    <img className="icon-fullscreen" src={fullscreen} alt=""/>
                                 </div>
                             }
 
