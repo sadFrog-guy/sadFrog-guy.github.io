@@ -29,7 +29,7 @@ const Home = () => {
 
     const {modalActive, modalHide, modalShow} = useModal()
     const {subscribtion, isSubscribtionStarter, subscribeTimer} = useTimeout()
-    const [isLoading, setLoading] = useState(false)
+    const [isLoading, setLoading] = useState(true)
     const [isLoaded, setLoaded] = useState(false)
 
     useEffect(() => {
@@ -38,11 +38,9 @@ const Home = () => {
         backButtonHide()
 
         const fetchData = async() => {
-            // if(!User.user) {
-                await Security.postHashKey()
-                await User.getUserInfo()
-                subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
-            // }
+            await Security.postHashKey()
+            await User.getUserInfo()
+            subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
         }
 
         fetchData()
