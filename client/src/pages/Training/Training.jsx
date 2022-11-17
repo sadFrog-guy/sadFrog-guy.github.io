@@ -53,6 +53,14 @@ const Training = () => {
         }
     }, [isLoaded])
 
+    const itemHandleClick = (training) => {
+        Trainings.setErrorType(training)
+
+        if(!training.allowed_viewing) {
+            modalShow()
+        }
+    }
+
     let location = useLocation();
 
     if(location.search) {
@@ -77,8 +85,7 @@ const Training = () => {
                                 key={training.id}
                                 trainingInfo={training}
                                 imageOnLoad={() => setLoaded(true)}
-                                subitemOnClick={modalShow}
-                                onClick={training.allowed_viewing ? () => {} : modalShow}
+                                onClick={() => itemHandleClick(training)}
                             />
                         )
                     })}

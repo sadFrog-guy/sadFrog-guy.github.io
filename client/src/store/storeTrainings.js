@@ -76,4 +76,14 @@ export default new class StoreTrainings {
             console.log(e)
         }
     }
+
+    setErrorType(training) {
+        if(training.viewing_ban_comment && training.viewing_pay_link) {
+            this.comment = training.viewing_ban_comment
+            this.link = training.viewing_pay_link
+        } else {
+            this.comment = ''
+            this.link = ''
+        }
+    }
 }

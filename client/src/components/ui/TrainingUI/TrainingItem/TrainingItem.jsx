@@ -17,13 +17,22 @@ import {useSearchParams} from "react-router-dom";
 import {LINK_TRAININGS_ITEM} from "../../../../router";
 import {Context} from "../../../../utils/context";
 
-const TrainingItem = ({trainingInfo, imageOnLoad, subitemOnClick, ...props}) => {
+const TrainingItem = ({trainingInfo, imageOnLoad, ...props}) => {
     const {Trainings} = useContext(Context)
     const [isShow, setShow] = useState(false)
+    const {modalShow} = useModal()
 
     const toggleContentHandler = () => {
         if(trainingInfo.allowed_viewing) {
             setShow(!isShow)
+        }
+    }
+
+    const subitemHandleClick = (subitem) => {
+        Trainings.setErrorType(subitem)
+
+        if(!subitem.allowed_viewing) {
+            modalShow()
         }
     }
 
@@ -70,7 +79,7 @@ const TrainingItem = ({trainingInfo, imageOnLoad, subitemOnClick, ...props}) => 
                                     viewed={subitem.viewed}
                                     to={condition ? `?section_id=${subitem.id}` : ''}
                                     active={!!condition}
-                                    onClick={subitem.allowed_viewing ? () => {} : subitemOnClick}
+                                    onClick={() => subitemHandleClick(subitem)}
                                     allowedViewing={subitem.allowed_viewing}
                                 />
                     })}
