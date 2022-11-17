@@ -9,8 +9,6 @@ const TrainingFrame = () => {
     const {id} = useParams()
     const {Trainings} = useContext(Context)
 
-    Trainings.getOneTraining(id)
-
     return (
         <Wrapper>
             <Wrap className="article">
@@ -18,7 +16,7 @@ const TrainingFrame = () => {
                     Обучение
                 </Navigation>
 
-                {/*<iframe src={`https://${window.location.hostname}/trainings/frame/${id.id}`}/>*/}
+                <iframe src={`https://${window.location.hostname}/trainings/frame/${id.id}`}/>
             </Wrap>
         </Wrapper>
     );

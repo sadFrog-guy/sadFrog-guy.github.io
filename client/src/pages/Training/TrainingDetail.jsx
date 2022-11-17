@@ -35,6 +35,8 @@ const TrainingDetail = () => {
     const [hide, setHide] = useState('')
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id.id, videoRef, openInBrowser, setOpenInBrowser)
 
+    console.log(id)
+
     const tgButton = () => {
         if(window.location.href.includes("section_id")) {
             tgButtonInitial()
