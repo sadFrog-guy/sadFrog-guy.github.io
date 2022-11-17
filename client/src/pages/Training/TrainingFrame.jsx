@@ -13,7 +13,7 @@ import {
     tgMainButton
 } from "../../utils/telegramAPI";
 import {finishPendingStatus, finishStatus, viewedStatus} from "../../utils/consts";
-import {useEffect} from "@types/react";
+import {useEffect} from "react";
 
 const TrainingFrame = () => {
     const {id} = useParams()
