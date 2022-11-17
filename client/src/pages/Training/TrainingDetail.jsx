@@ -200,7 +200,10 @@ const TrainingDetail = ({id}) => {
                     </Text>
                 </Wrap>
                 <Frame>
-                    <Home/>
+                    <link rel="stylesheet" href="../../styles/fonts.css"/>
+                    <link rel="stylesheet" href="../../App.css"/>
+
+                    <TrainingDetail id={4}/>
                 </Frame>
             </Wrap>
 
