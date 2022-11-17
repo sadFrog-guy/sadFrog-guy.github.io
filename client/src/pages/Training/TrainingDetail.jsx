@@ -197,11 +197,13 @@ const TrainingDetail = ({id}) => {
                         {Trainings.main_text}
                     </Text>
                 </Wrap>
+                <a href="?section_id=12">adi</a>
             </Wrap>
 
             <Loader
                 isLoading={isLoading}
             />
+
 
             {Trainings.training.success === false
                 &&
