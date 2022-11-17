@@ -27,6 +27,8 @@ import {finishPendingStatus, finishStatus, viewedStatus} from "../../utils/const
 import {isAndroid} from "react-device-detect";
 import parse from 'html-react-parser'
 import training from "./Training";
+import Frame from 'react-frame-component';
+import Home from "../Home/Home";
 
 const TrainingDetail = ({id}) => {
     const navigate = useNavigate()
@@ -197,10 +199,9 @@ const TrainingDetail = ({id}) => {
                         {Trainings.main_text}
                     </Text>
                 </Wrap>
-                <iframe
-                    src={window.location.hostname}
-                    onLoad={() => this.style.height=(this.contentWindow.document.body.scrollHeight+20)+'px'}
-                />
+                <Frame>
+                    <Home/>
+                </Frame>
             </Wrap>
 
             <Loader
