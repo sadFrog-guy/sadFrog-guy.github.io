@@ -1,5 +1,5 @@
 import React from 'react';
-import {useRef, useState} from "@types/react";
+import {useRef, useState} from "react";
 
 const IFrame = ({...props}) => {
     const frameRef = useRef(null)
