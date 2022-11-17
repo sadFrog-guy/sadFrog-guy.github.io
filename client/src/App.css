@@ -398,7 +398,8 @@ body.dark > #root > .wrapper > .main > .main-inner > #timeout > .infinity > .inf
 }
 
 .iframe-wrap {
-    overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:150%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px
+    overflow: auto;
+    width: 100%;
 }
 
 .footer {

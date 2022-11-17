@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useRef} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import Navigation from "../../components/ui/GlobalUI/Navigation/Navigation";
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
@@ -18,11 +18,17 @@ import {useState} from "react";
 
 const TrainingFrame = () => {
     const {id} = useParams()
-    const {Trainings} = useContext(Context)
     const navigate = useNavigate()
-    const [src, setSrc] = useState(id)
+    const {Trainings} = useContext(Context)
+    const frameRef = useRef(null)
+    const [height, setHeight] = useState("0px")
+
+    const onLoad = () => {
+        setHeight(ref.current.contentWindow.document.body.scrollHeight + "px");
+    };
 
     const tgButton = () => {
+        const [src, setSrc] = useState(id)
         if(window.location.href.includes("/trainings/")) {
             tgButtonInitial()
 
@@ -111,7 +117,9 @@ const TrainingFrame = () => {
                 <iframe
                     frameborder="0"
                     className="iframe-wrap"
-                    height="150%"
+                    height={height}
+                    ref={frameRef}
+                    onLoad={onLoad}
                     width="100%"
                     src={`https://${window.location.hostname}/trainings/frame/${src}`}
                 />
