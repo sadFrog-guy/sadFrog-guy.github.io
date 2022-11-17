@@ -27,7 +27,8 @@ const TrainingItem = ({trainingInfo, imageOnLoad, modalShow, ...props}) => {
         }
     }
 
-    const subitemHandleClick = (subitem) => {
+    const subitemHandleClick = (e, subitem) => {
+        e.stopPropagation()
         Trainings.setErrorType(subitem)
 
         if(!subitem.allowed_viewing) {
@@ -78,7 +79,7 @@ const TrainingItem = ({trainingInfo, imageOnLoad, modalShow, ...props}) => {
                                     viewed={subitem.viewed}
                                     to={condition ? `?section_id=${subitem.id}` : ''}
                                     active={!!condition}
-                                    onClick={() => subitemHandleClick(subitem)}
+                                    onClick={(e) => subitemHandleClick(e, subitem)}
                                     allowedViewing={subitem.allowed_viewing}
                                 />
                     })}
