@@ -197,7 +197,10 @@ const TrainingDetail = ({id}) => {
                         {Trainings.main_text}
                     </Text>
                 </Wrap>
-                <iframe src={window.location.hostname}/>
+                <iframe
+                    src={window.location.hostname}
+                    onLoad={() => this.style.height=(this.contentWindow.document.body.scrollHeight+20)+'px'}
+                />
             </Wrap>
 
             <Loader
