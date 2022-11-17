@@ -1,4 +1,4 @@
-import {makeAutoObservable, runInAction} from "mobx";
+import {makeAutoObservable, runInAction, toJS} from "mobx";
 import Trainings from "../services/trainings";
 import {tgID} from "../utils/telegramAPI";
 import parse from "html-react-parser";
@@ -78,7 +78,7 @@ export default new class StoreTrainings {
     }
 
     setErrorType(training) {
-        console.log(training)
+        console.log(toJS(training))
         if(training.viewing_ban_comment && training.viewing_pay_link) {
             this.comment = training.viewing_ban_comment
             this.link = training.viewing_pay_link
