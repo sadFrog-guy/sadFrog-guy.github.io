@@ -29,6 +29,7 @@ import parse from 'html-react-parser'
 import training from "./Training";
 import Frame from 'react-frame-component';
 import Home from "../Home/Home";
+import TrainingFrame from "./TrainingFrame";
 
 const TrainingDetail = ({id}) => {
     const navigate = useNavigate()
@@ -203,7 +204,7 @@ const TrainingDetail = ({id}) => {
                     <link rel="stylesheet" href="../../styles/fonts.css"/>
                     <link rel="stylesheet" href="../../App.css"/>
 
-                    <TrainingDetail id={4}/>
+                    <TrainingFrame id={4}/>
                 </Frame>
             </Wrap>
 
