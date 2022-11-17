@@ -8,7 +8,7 @@ import LoaderButton from "../../GlobalUI/LoaderButton/LoaderButton";
 import {observer} from "mobx-react-lite";
 import {isMobile} from "react-device-detect";
 import Text from "../../GlobalUI/Text/Text";
-import {clear} from "@testing-library/user-event/dist/clear";
+import {debounce} from "debounce"
 
 const CalculateForm = () => {
     const {Calculator} = useContext(Context)
@@ -47,23 +47,24 @@ const CalculateForm = () => {
         intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
     }
 
-    const buttonOnClick = async() => {
-        if(!isClicked) {
+    const buttonOnClick = debounce(async() => {
+        if(val && !Calculator.error) {
             setClicked(true)
+            setIsLoading(true)
 
-            if(val && !Calculator.error) {
-                setIsLoading(true)
-
+            if(isClicked === false) {
                 Calculator.changeAmount(val)
                 await Calculator.getChains(Calculator.amount)
                 intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
-
-                setIsLoading(false)
             } else {
-                setDisabled(true)
+                return
             }
+
+            setIsLoading(false)
+        } else {
+            setDisabled(true)
         }
-    }
+    }, 300)
 
     useEffect(() => {
         return () => {
