@@ -6,7 +6,6 @@ const IFrame = ({...props}) => {
         <iframe
             {...props}
             frameborder="0"
-            width="100%"
         />
     );
 };
