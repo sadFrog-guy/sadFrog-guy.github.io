@@ -20,17 +20,10 @@ import {observer} from "mobx-react-lite";
 import Button from "../../components/ui/GlobalUI/Button/Button";
 import fullscreen from "../../assets/icons/fullscreen.png";
 import {LINK_TRAININGS_ITEM, NOT_AUTH} from "../../router";
-import {useTelegramButton} from "../../hooks/useTelegramButton";
 import {useVideo} from "../../hooks/useVideo";
-import ButtonTG from "../../components/ui/GlobalUI/ButtonTG/ButtonTG";
 import {finishPendingStatus, finishStatus, viewedStatus} from "../../utils/consts";
-import {isAndroid} from "react-device-detect";
-import parse from 'html-react-parser'
-import training from "./Training";
 import Frame from 'react-frame-component';
-import Home from "../Home/Home";
 import TrainingFrame from "./TrainingFrame";
-import styles from "../../App.css"
 
 const TrainingDetail = ({id}) => {
     const navigate = useNavigate()
@@ -142,20 +135,6 @@ const TrainingDetail = ({id}) => {
         }
     }, [])
 
-    const initialContent = () => {
-        return (
-            `<!DOCTYPE html>
-            <html>
-              <head>
-                <link href="${styles}" rel="stylesheet" />
-              </head>
-              <body>
-                <div id="page" class="page"></div>
-              </body>
-            </html>`
-        )
-    }
-
     return (
         <Wrapper>
             <Wrap className="article">
@@ -215,7 +194,7 @@ const TrainingDetail = ({id}) => {
                         {Trainings.main_text}
                     </Text>
                 </Wrap>
-                <Frame initialContent={initialContent}>
+                <Frame>
                     <TrainingFrame name="mmo"/>
                 </Frame>
             </Wrap>
