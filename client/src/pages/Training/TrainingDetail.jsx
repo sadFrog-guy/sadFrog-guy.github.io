@@ -33,6 +33,8 @@ import TrainingFrame from "./TrainingFrame";
 import styles from "../../App.css"
 
 const TrainingDetail = ({id}) => {
+    console.log(styles)
+
     const navigate = useNavigate()
     const location = useLocation()
     const videoRef = useRef(null)
