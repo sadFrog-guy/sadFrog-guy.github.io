@@ -23,8 +23,6 @@ const CalculateForm = () => {
     const inputOnChange = (e) => {
         const value = e.target.value.replace(/\D/g, "")
 
-        clearInterval(intervalId)
-
         setDisabled(false)
         setClicked(false)
 
@@ -49,18 +47,18 @@ const CalculateForm = () => {
     }
 
     const buttonOnClick = async() => {
-        if(Calculator.amount && !Calculator.error) {
-            setIsLoading(true)
+        if(!isClicked) {
+            if(Calculator.amount && !Calculator.error) {
+                setIsLoading(true)
 
-            if(!isClicked) {
                 setClicked(true)
                 await Calculator.getChains(Calculator.amount)
                 intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
-            }
 
-            setIsLoading(false)
-        } else {
-            setDisabled(true)
+                setIsLoading(false)
+            } else {
+                setDisabled(true)
+            }
         }
     }
 
