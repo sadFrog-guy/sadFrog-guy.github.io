@@ -84,7 +84,7 @@ const CalculateForm = () => {
                 pattern="/^\d+$/"
                 onChange={inputOnChange}
                 onFocus={inputOnFocus}
-                value={addCommas(removeNonNumeric(Calculator.amount))}
+                value={addCommas(removeNonNumeric(val))}
                 type={isMobile ? "tel" : "text"}
                 placeholder="Введите сумму прокрутки"
                 overrideClass="calculator-input"
