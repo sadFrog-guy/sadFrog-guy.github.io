@@ -30,11 +30,7 @@ const Training = () => {
         exitConfirmation()
 
         backButtonShow(() => {
-            if(location.search) {
-                navigate('/trainings')
-            } else {
-                navigate('/')
-            }
+            navigate('/')
         })
 
         async function fetchData() {
