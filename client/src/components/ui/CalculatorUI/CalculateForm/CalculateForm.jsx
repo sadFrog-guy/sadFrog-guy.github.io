@@ -15,7 +15,7 @@ const CalculateForm = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [isDisabled, setDisabled] = useState(true)
     const [isClicked, setClicked] = useState(false)
-    const [val, setVal] = useState(0)
+    const [val, setVal] = useState('')
     let intervalId
 
     const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -49,7 +49,7 @@ const CalculateForm = () => {
 
     const buttonOnClick = async() => {
         if(!isClicked) {
-            if(Calculator.amount && !Calculator.error) {
+            if(val && !Calculator.error) {
                 setIsLoading(true)
                 setClicked(true)
 
