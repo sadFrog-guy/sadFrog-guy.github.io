@@ -25,7 +25,7 @@ const TrainingFrame = () => {
     const [src, setSrc] = useState(id)
 
     const onLoad = () => {
-        setHeight(ref.current.contentWindow.document.body.scrollHeight + "px");
+        setHeight(frameRef.current.contentWindow.document.body.scrollHeight + "px");
     };
 
     const tgButton = () => {
