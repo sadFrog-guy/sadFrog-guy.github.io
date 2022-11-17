@@ -1,4 +1,6 @@
 import React from 'react';
+import '../../styles/fonts.css'
+import '../../App.css'
 
 const TrainingFrame = ({name}) => {
     return (
