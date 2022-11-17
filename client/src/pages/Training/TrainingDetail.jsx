@@ -33,9 +33,7 @@ const TrainingDetail = () => {
     const [isLoaded, setLoaded] = useState(false)
     const [openInBrowser, setOpenInBrowser] = useState(false)
     const [hide, setHide] = useState('')
-    const {onFullscreen, browserRedirect} = useVideo(Trainings, id.id, videoRef, openInBrowser, setOpenInBrowser)
-
-    console.log(id)
+    const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
 
     const tgButton = () => {
         if(window.location.href.includes("section_id")) {
@@ -122,7 +120,7 @@ const TrainingDetail = () => {
         })
 
         async function fetchData() {
-            await Trainings.getOneTraining(id.id)
+            await Trainings.getOneTraining(id)
             tgButton()
             window.addEventListener('scroll', handleScroll)
             setLoading(false)

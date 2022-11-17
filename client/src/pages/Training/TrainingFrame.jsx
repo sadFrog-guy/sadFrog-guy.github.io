@@ -7,7 +7,6 @@ import {Context} from "../../utils/context";
 
 const TrainingFrame = () => {
     const {id} = useParams()
-    console.log(id)
     const {Trainings} = useContext(Context)
 
     return (
@@ -17,7 +16,7 @@ const TrainingFrame = () => {
                     Обучение
                 </Navigation>
 
-                <iframe src={`https://${window.location.hostname}/trainings/frame/${id.id}`}/>
+                <iframe src={`https://${window.location.hostname}/trainings/frame/${id}`}/>
             </Wrap>
         </Wrapper>
     );
