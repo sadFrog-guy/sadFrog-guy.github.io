@@ -35,59 +35,6 @@ const TrainingDetail = () => {
     const [hide, setHide] = useState('')
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
 
-    const tgButton = () => {
-        if(window.location.href.includes("section_id")) {
-            tgButtonInitial()
-
-            if(Trainings.training.viewed) {
-                tgButtonText(viewedStatus)
-            } else {
-                tgButtonText(finishStatus)
-            }
-
-            const onClickHandler = async() => {
-                haptic()
-
-                if(Trainings.training.viewed && tgMainButton.text === viewedStatus) {
-                    await Trainings.getOneTraining(Trainings.training.next_article_id)
-
-                    window.scrollTo(0, 0)
-                } else {
-                    tgButtonText(finishPendingStatus)
-
-                    await Trainings.readTraining(id)
-
-                    window.scrollTo(0, 0)
-
-                    if(Trainings.training.viewed && !Trainings.training.next_article_id) {
-                        tgMainButton.hide()
-                    } else {
-                        await Trainings.getOneTraining(Trainings.training.next_article_id)
-                        tgButtonText(viewedStatus)
-
-                        window.scrollTo(0, 0)
-                    }
-                }
-            }
-
-            tgMainButton.onClick(onClickHandler)
-
-            if(Trainings.training.viewed && !Trainings.training.next_article_id) {
-                tgMainButton.hide()
-            }
-        }
-    }
-
-    const handleScroll = () => {
-        const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 170
-
-        if(bottom) {
-            tgMainButton.show()
-        } else {
-            tgMainButton.hide()
-        }
-    };
-
     const handleOnLoad = () => {
         setLoaded(true)
     }
@@ -99,25 +46,7 @@ const TrainingDetail = () => {
     }, [])
 
     useEffect(() => {
-        if(Trainings.training.viewed) {
-            tgButtonText(viewedStatus)
-        } else {
-            tgButtonText(finishStatus)
-        }
-    }, [Trainings.training.viewed])
-
-    useEffect(() => {
-        exitConfirmation()
-
         window.scrollTo(0, 0)
-
-        backButtonShow(() => {
-            if(location.search) {
-                navigate('/trainings')
-            } else {
-                navigate('/')
-            }
-        })
 
         async function fetchData() {
             await Trainings.getOneTraining(id)
@@ -127,11 +56,6 @@ const TrainingDetail = () => {
         }
 
         fetchData()
-
-        return () => {
-            tgMainButton.hide()
-            window.removeEventListener('scroll', handleScroll)
-        }
     }, [])
 
     return (
