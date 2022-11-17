@@ -12,7 +12,6 @@ const IFrame = ({...props}) => {
     return (
         <iframe
             {...props}
-            height={height}
             ref={frameRef}
             onLoad={onLoad}
             frameborder="0"
