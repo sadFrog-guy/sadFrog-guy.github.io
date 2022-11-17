@@ -61,45 +61,39 @@ const Training = () => {
         }
     }
 
-    let location = useLocation();
+    return (
+        <Wrapper>
+            <TrainingModal
+                modalHide={modalHide}
+                modalActive={modalActive}
+            />
 
-    if(location.search) {
-        return <TrainingDetail id={location.search.match(/\d+/)[0]}/>
-    } else {
-        return (
-            <Wrapper>
-                <TrainingModal
-                    modalHide={modalHide}
-                    modalActive={modalActive}
-                />
+            <Navigation to="/">
+                Обучение
+            </Navigation>
 
-                <Navigation to="/">
-                    Обучение
-                </Navigation>
+            <TrainingList title="Обучение">
+                {Trainings?.trainings?.map(training => {
+                    return (
+                        <TrainingItem
+                            id={training.id}
+                            key={training.id}
+                            trainingInfo={training}
+                            imageOnLoad={() => setLoaded(true)}
+                            onClick={() => itemHandleClick(training)}
+                            modalShow={modalShow}
+                        />
+                    )
+                })}
+            </TrainingList>
 
-                <TrainingList title="Обучение">
-                    {Trainings?.trainings?.map(training => {
-                        return (
-                            <TrainingItem
-                                id={training.id}
-                                key={training.id}
-                                trainingInfo={training}
-                                imageOnLoad={() => setLoaded(true)}
-                                onClick={() => itemHandleClick(training)}
-                                modalShow={modalShow}
-                            />
-                        )
-                    })}
-                </TrainingList>
+            <Loader
+                isLoading={isLoading}
+            />
 
-                <Loader
-                    isLoading={isLoading}
-                />
-
-                {Trainings.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
-            </Wrapper>
-        );
-    }
+            {Trainings.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
+        </Wrapper>
+    );
 };
 
 export default observer(Training);

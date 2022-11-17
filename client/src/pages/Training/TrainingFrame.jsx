@@ -14,7 +14,7 @@ const TrainingFrame = () => {
                     Обучение
                 </Navigation>
 
-                <iframe src={`https://${window.location.hostname}/trainings?section_id=${id.id}`}/>
+                <iframe src={`https://${window.location.hostname}/trainings/frame/${id.id}`}/>
             </Wrap>
         </Wrapper>
     );

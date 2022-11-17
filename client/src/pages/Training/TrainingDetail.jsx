@@ -20,18 +20,11 @@ import {observer} from "mobx-react-lite";
 import Button from "../../components/ui/GlobalUI/Button/Button";
 import fullscreen from "../../assets/icons/fullscreen.png";
 import {LINK_TRAININGS_ITEM, NOT_AUTH} from "../../router";
-import {useTelegramButton} from "../../hooks/useTelegramButton";
 import {useVideo} from "../../hooks/useVideo";
-import ButtonTG from "../../components/ui/GlobalUI/ButtonTG/ButtonTG";
 import {finishPendingStatus, finishStatus, viewedStatus} from "../../utils/consts";
-import {isAndroid} from "react-device-detect";
-import parse from 'html-react-parser'
-import training from "./Training";
-import Frame from 'react-frame-component';
-import Home from "../Home/Home";
-import TrainingFrame from "./TrainingFrame";
 
-const TrainingDetail = ({id}) => {
+const TrainingDetail = () => {
+    const {id} = useParams()
     const navigate = useNavigate()
     const location = useLocation()
     const videoRef = useRef(null)
@@ -40,7 +33,7 @@ const TrainingDetail = ({id}) => {
     const [isLoaded, setLoaded] = useState(false)
     const [openInBrowser, setOpenInBrowser] = useState(false)
     const [hide, setHide] = useState('')
-    const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
+    const {onFullscreen, browserRedirect} = useVideo(Trainings, id.id, videoRef, openInBrowser, setOpenInBrowser)
 
     const tgButton = () => {
         if(window.location.href.includes("section_id")) {
@@ -127,7 +120,7 @@ const TrainingDetail = ({id}) => {
         })
 
         async function fetchData() {
-            await Trainings.getOneTraining(id)
+            await Trainings.getOneTraining(id.id)
             tgButton()
             window.addEventListener('scroll', handleScroll)
             setLoading(false)
