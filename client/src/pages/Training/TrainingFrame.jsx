@@ -1,9 +1,9 @@
 import React from 'react';
 
-const TrainingFrame = () => {
+const TrainingFrame = ({name}) => {
     return (
         <div>
-            adiletka mikromen
+            adiletka mikromen - {name}
         </div>
     );
 };

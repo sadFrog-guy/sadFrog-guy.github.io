@@ -204,7 +204,7 @@ const TrainingDetail = ({id}) => {
                     <link rel="stylesheet" href="../../styles/fonts.css"/>
                     <link rel="stylesheet" href="../../App.css"/>
 
-                    <TrainingFrame id={4}/>
+                    <TrainingFrame name="mmo"/>
                 </Frame>
             </Wrap>
 
