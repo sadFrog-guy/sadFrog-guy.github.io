@@ -22,13 +22,13 @@ const TrainingFrame = () => {
     const {Trainings} = useContext(Context)
     const frameRef = useRef(null)
     const [height, setHeight] = useState("0px")
+    const [src, setSrc] = useState(id)
 
     const onLoad = () => {
         setHeight(ref.current.contentWindow.document.body.scrollHeight + "px");
     };
 
     const tgButton = () => {
-        const [src, setSrc] = useState(id)
         if(window.location.href.includes("/trainings/")) {
             tgButtonInitial()
 
