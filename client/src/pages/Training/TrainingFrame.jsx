@@ -15,18 +15,13 @@ import {
 import {finishPendingStatus, finishStatus, viewedStatus} from "../../utils/consts";
 import {useEffect} from "react";
 import {useState} from "react";
+import IFrame from "../../components/ui/GlobalUI/IFrame/IFrame";
 
 const TrainingFrame = () => {
     const {id} = useParams()
     const navigate = useNavigate()
     const {Trainings} = useContext(Context)
-    const frameRef = useRef(null)
-    const [height, setHeight] = useState("0px")
     const [src, setSrc] = useState(id)
-
-    const onLoad = () => {
-        setHeight(frameRef.current.contentWindow.document.body.scrollHeight + "px");
-    };
 
     const tgButton = () => {
         if(window.location.href.includes("/trainings/")) {
@@ -114,13 +109,8 @@ const TrainingFrame = () => {
                     Обучение
                 </Navigation>
 
-                <iframe
-                    frameborder="0"
+                <IFrame
                     className="iframe-wrap"
-                    height={height}
-                    ref={frameRef}
-                    onLoad={onLoad}
-                    width="100%"
                     src={`https://${window.location.hostname}/trainings/frame/${src}`}
                 />
             </Wrap>
