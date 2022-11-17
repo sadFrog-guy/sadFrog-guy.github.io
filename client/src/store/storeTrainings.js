@@ -78,6 +78,7 @@ export default new class StoreTrainings {
     }
 
     setErrorType(training) {
+        console.log(training)
         if(training.viewing_ban_comment && training.viewing_pay_link) {
             this.comment = training.viewing_ban_comment
             this.link = training.viewing_pay_link
