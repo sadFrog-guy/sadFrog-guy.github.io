@@ -7,6 +7,7 @@ import {Context} from "../../utils/context";
 
 const TrainingFrame = () => {
     const {id} = useParams()
+    console.log(id)
     const {Trainings} = useContext(Context)
 
     return (
