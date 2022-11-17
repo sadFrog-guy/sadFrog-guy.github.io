@@ -23,6 +23,8 @@ const CalculateForm = () => {
     const inputOnChange = (e) => {
         const value = e.target.value.replace(/\D/g, "")
 
+        clearInterval(intervalId)
+
         setDisabled(false)
         setClicked(false)
 
