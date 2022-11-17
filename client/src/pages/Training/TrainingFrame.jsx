@@ -16,7 +16,16 @@ const TrainingFrame = () => {
                     Обучение
                 </Navigation>
 
-                <iframe src={`https://${window.location.hostname}/trainings/frame/${id}`}/>
+                <iframe
+                    style={{
+                        overflow: 'hidden',
+                        height: '150%',
+                        width: '150%'
+                    }}
+                    height="150%"
+                    width="150%"
+                    src={`https://${window.location.hostname}/trainings/frame/${id}`}
+                />
             </Wrap>
         </Wrapper>
     );
