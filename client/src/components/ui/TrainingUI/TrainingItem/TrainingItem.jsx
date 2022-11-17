@@ -58,8 +58,6 @@ const TrainingItem = ({trainingInfo, imageOnLoad, subitemOnClick, ...props}) => 
             {trainingInfo.allowed_viewing &&
                 <TrainingSubitemList isShow={isShow}>
                     {trainingInfo.subsections.map((subitem, index) => {
-                        Trainings.checkAccess(subitem)
-
                         const isFirst = (index === 0)
                         const isViewed = subitem.viewed
                         const isAllowed = subitem.allowed_viewing

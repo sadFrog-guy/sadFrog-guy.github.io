@@ -71,8 +71,6 @@ const Training = () => {
 
                 <TrainingList title="Обучение">
                     {Trainings?.trainings?.map(training => {
-                        Trainings.checkAccess(training)
-
                         return (
                             <TrainingItem
                                 id={training.id}

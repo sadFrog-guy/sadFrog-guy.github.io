@@ -14,6 +14,11 @@ export default new class StoreUser {
     avatar
     username
     have_subscribe
+    calculator_comment
+    calculator_link
+    training_comment
+    training_link
+    error_type = 'training'
 
     constructor() {
         makeAutoObservable(this)
@@ -34,6 +39,10 @@ export default new class StoreUser {
                 this.course_support_link = data.course_support_link
                 this.avatar = data.avatar
                 this.have_subscribe = data.have_subscribe
+                this.training_comment = data.ban_training_comment
+                this.training_link = data.pay_training_link
+                this.calculator_comment = data.ban_calculator_comment
+                this.calculator_link = data.pay_calculator_link
             })
 
             window.localStorage.setItem("comment-user", data.comment)
@@ -42,16 +51,20 @@ export default new class StoreUser {
         }
     }
 
+    setErrorType(type) {
+        this.error_type = type
+    }
+
     get checkAccess() {
-        if (this.allowed_training === false && this.allowed_calculator === true) {
+        if(this.error_type === 'training') {
             return {
-                comment: this.user.ban_training_comment,
-                link: this.user.pay_training_link
+                comment: this.training_comment,
+                link: this.training_link,
             }
         } else {
             return {
-                comment: this.user.ban_calculator_comment,
-                link: this.user.pay_calculator_link
+                comment: this.calculator_comment,
+                link: this.calculator_link,
             }
         }
     }

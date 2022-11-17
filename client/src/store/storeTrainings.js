@@ -76,11 +76,4 @@ export default new class StoreTrainings {
             console.log(e)
         }
     }
-
-    checkAccess(training) {
-        if(training.allowed_viewing === false) {
-            this.comment = training.viewing_ban_comment
-            this.link = training.viewing_pay_link
-        }
-    }
 }

@@ -13,7 +13,10 @@ import {haptic} from "../../../../utils/telegramAPI";
 const ButtonList = ({modalShow}) => {
     const {User} = useContext(Context);
 
-    const linkOnClick = (e) => {
+    const linkOnClick = (id) => {
+        if(id !== 'ref') {
+            User.setErrorType(id)
+        }
 
         haptic()
 
@@ -26,7 +29,7 @@ const ButtonList = ({modalShow}) => {
         <Wrap className="button-group">
             <Link
                 to={User.user.allowed_training ? LINK_TRAININGS : ''}
-                onClick={linkOnClick}
+                onClick={() => linkOnClick("training")}
                 className="button"
                 id="training"
             >
@@ -44,7 +47,7 @@ const ButtonList = ({modalShow}) => {
             </Link>
             <Link
                 to={User.user.allowed_calculator ? LINK_CALCULATOR : ''}
-                onClick={linkOnClick}
+                onClick={() => linkOnClick("calculator")}
                 className="button"
                 id="calculator"
             >
@@ -61,7 +64,7 @@ const ButtonList = ({modalShow}) => {
                 to={LINK_REFERAL}
                 className="button"
                 id="ref"
-                onClick={linkOnClick}
+                onClick={() => linkOnClick("ref")}
             >
                 Реферальная система
                 <Wrap className="bubble-wrap bubble-wrap_main arrow-wrap">
