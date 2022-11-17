@@ -17,10 +17,9 @@ import {useSearchParams} from "react-router-dom";
 import {LINK_TRAININGS_ITEM} from "../../../../router";
 import {Context} from "../../../../utils/context";
 
-const TrainingItem = ({trainingInfo, imageOnLoad, ...props}) => {
+const TrainingItem = ({trainingInfo, imageOnLoad, modalShow, ...props}) => {
     const {Trainings} = useContext(Context)
     const [isShow, setShow] = useState(false)
-    const {modalShow} = useModal()
 
     const toggleContentHandler = () => {
         if(trainingInfo.allowed_viewing) {
