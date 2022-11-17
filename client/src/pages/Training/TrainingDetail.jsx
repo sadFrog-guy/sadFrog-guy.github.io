@@ -137,9 +137,6 @@ const TrainingDetail = () => {
     return (
         <Wrapper>
             <Wrap className="article">
-                <Navigation to="/trainings">
-                    Обучение
-                </Navigation>
 
                 <h1 className="button-header article_button-header" id="article-title">
                     {Trainings.training.title}
