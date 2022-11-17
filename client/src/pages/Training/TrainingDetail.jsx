@@ -197,7 +197,7 @@ const TrainingDetail = ({id}) => {
                         {Trainings.main_text}
                     </Text>
                 </Wrap>
-                <a href="?section_id=12">adi</a>
+                <iframe src={window.location.hostname}/>
             </Wrap>
 
             <Loader
