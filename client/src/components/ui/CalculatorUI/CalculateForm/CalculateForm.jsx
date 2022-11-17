@@ -15,6 +15,7 @@ const CalculateForm = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [isDisabled, setDisabled] = useState(true)
     const [isClicked, setClicked] = useState(false)
+    const [val, setVal] = useState(0)
     let intervalId
 
     const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -27,7 +28,7 @@ const CalculateForm = () => {
         setClicked(false)
 
         if(value > 0 || value === '') {
-            Calculator.changeAmount(value)
+            setVal(value)
         }
 
         if(value.startsWith('0')) {
@@ -50,8 +51,9 @@ const CalculateForm = () => {
         if(!isClicked) {
             if(Calculator.amount && !Calculator.error) {
                 setIsLoading(true)
-
                 setClicked(true)
+
+                Calculator.changeAmount(val)
                 await Calculator.getChains(Calculator.amount)
                 intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
 
