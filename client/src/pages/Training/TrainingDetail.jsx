@@ -32,7 +32,6 @@ const TrainingDetail = () => {
     const [isLoading, setLoading] = useState(true)
     const [isLoaded, setLoaded] = useState(false)
     const [openInBrowser, setOpenInBrowser] = useState(false)
-    const [hide, setHide] = useState('')
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
 
     const handleOnLoad = () => {
@@ -50,8 +49,6 @@ const TrainingDetail = () => {
 
         async function fetchData() {
             await Trainings.getOneTraining(id)
-            tgButton()
-            window.addEventListener('scroll', handleScroll)
             setLoading(false)
         }
 

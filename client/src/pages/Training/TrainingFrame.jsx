@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Navigation from "../../components/ui/GlobalUI/Navigation/Navigation";
 import Wrapper from "../../components/utils/Wrapper/Wrapper";
 import Wrap from "../../components/utils/Wrap/Wrap";
@@ -14,10 +14,13 @@ import {
 } from "../../utils/telegramAPI";
 import {finishPendingStatus, finishStatus, viewedStatus} from "../../utils/consts";
 import {useEffect} from "react";
+import {useState} from "react";
 
 const TrainingFrame = () => {
     const {id} = useParams()
     const {Trainings} = useContext(Context)
+    const navigate = useNavigate()
+    const [src, setSrc] = useState(id)
 
     const tgButton = () => {
         if(window.location.href.includes("/trainings/")) {
@@ -33,7 +36,7 @@ const TrainingFrame = () => {
                 haptic()
 
                 if(Trainings.training.viewed && tgMainButton.text === viewedStatus) {
-                    await Trainings.getOneTraining(Trainings.training.next_article_id)
+                    setSrc(Trainings.training.next_article_id)
 
                     window.scrollTo(0, 0)
                 } else {
@@ -46,9 +49,9 @@ const TrainingFrame = () => {
                     if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                         tgMainButton.hide()
                     } else {
-                        await Trainings.getOneTraining(Trainings.training.next_article_id)
-                        tgButtonText(viewedStatus)
+                        setSrc(Trainings.training.next_article_id)
 
+                        tgButtonText(viewedStatus)
                         window.scrollTo(0, 0)
                     }
                 }
@@ -61,6 +64,7 @@ const TrainingFrame = () => {
             }
         }
     }
+
     const handleScroll = () => {
         const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 170
 
@@ -88,6 +92,7 @@ const TrainingFrame = () => {
             navigate('/trainings')
         })
 
+        window.addEventListener('scroll', handleScroll)
         tgButton()
 
         return () => {
@@ -108,7 +113,7 @@ const TrainingFrame = () => {
                     className="iframe-wrap"
                     height="150%"
                     width="100%"
-                    src={`https://${window.location.hostname}/trainings/frame/${id}`}
+                    src={`https://${window.location.hostname}/trainings/frame/${src}`}
                 />
             </Wrap>
         </Wrapper>
