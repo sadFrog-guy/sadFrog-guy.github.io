@@ -1,10 +1,22 @@
 import React from 'react';
+import {useParams} from "react-router-dom";
+import Navigation from "../../components/ui/GlobalUI/Navigation/Navigation";
+import Wrapper from "../../components/utils/Wrapper/Wrapper";
+import Wrap from "../../components/utils/Wrap/Wrap";
 
-const TrainingFrame = ({name}) => {
+const TrainingFrame = () => {
+    const {id} = useParams()
+
     return (
-        <div className="medium">
-            adiletka mikromen - {name}
-        </div>
+        <Wrapper>
+            <Wrap className="article">
+                <Navigation to="/trainings">
+                    Обучение
+                </Navigation>
+
+                <iframe src={`https://${window.location.hostname}/trainings?section_id=${id.id}`}/>
+            </Wrap>
+        </Wrapper>
     );
 };
 

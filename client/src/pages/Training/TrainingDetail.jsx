@@ -30,11 +30,8 @@ import training from "./Training";
 import Frame from 'react-frame-component';
 import Home from "../Home/Home";
 import TrainingFrame from "./TrainingFrame";
-import styles from "../../App.css"
 
 const TrainingDetail = ({id}) => {
-    console.log(styles)
-
     const navigate = useNavigate()
     const location = useLocation()
     const videoRef = useRef(null)
@@ -144,20 +141,6 @@ const TrainingDetail = ({id}) => {
         }
     }, [])
 
-    const initialContent = () => {
-        return (
-            `<!DOCTYPE html>
-            <html>
-              <head>
-                <link href="${styles}" rel="stylesheet" />
-              </head>
-              <body>
-                <div id="page" class="page"></div>
-              </body>
-            </html>`
-        )
-    }
-
     return (
         <Wrapper>
             <Wrap className="article">
@@ -217,9 +200,6 @@ const TrainingDetail = ({id}) => {
                         {Trainings.main_text}
                     </Text>
                 </Wrap>
-                <Frame initialContent={initialContent()}>
-                    <TrainingFrame name="mmo"/>
-                </Frame>
             </Wrap>
 
             <Loader
