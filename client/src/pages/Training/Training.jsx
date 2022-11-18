@@ -75,6 +75,8 @@ const Training = () => {
         }
     }
 
+    console.log(isLoaded)
+
     return (
         <Wrapper>
             <TrainingModal
