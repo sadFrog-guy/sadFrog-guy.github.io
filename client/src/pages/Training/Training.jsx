@@ -27,6 +27,23 @@ const Training = () => {
     const [isLoaded, setLoaded] = useState(false)
 
     useEffect(() => {
+        const loadImage = image => {
+            return new Promise((resolve, reject) => {
+                const loadImg = new Image()
+                loadImg.src = image.url
+                loadImg.onload = () =>
+                    resolve(image.url)
+
+                loadImg.onerror = err => reject(err)
+            })
+        }
+
+        Promise.all(Trainings.imagesArray.map(image => loadImage(image)))
+            .then(() => setLoaded(true))
+            .catch(err => console.log("Failed to load images", err))
+    }, [])
+
+    useEffect(() => {
         exitConfirmation()
 
         backButtonShow(() => {
@@ -35,6 +52,7 @@ const Training = () => {
 
         async function fetchData() {
             await Trainings.getAllTrainings()
+            Trainings.setImagesArray()
         }
         fetchData()
 

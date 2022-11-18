@@ -13,6 +13,7 @@ export default new class StoreTrainings {
     comment = ''
     link = ''
     video_link = ''
+    imagesArray = []
 
     constructor() {
         makeAutoObservable(this)
@@ -86,5 +87,11 @@ export default new class StoreTrainings {
             this.comment = ''
             this.link = ''
         }
+    }
+
+    setImagesArray() {
+        this.trainings.forEach(training => {
+            this.imagesArray.push(training.image_url)
+        })
     }
 }

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import TrainingImage from "../TrainingImage/TrainingImage";
 import TrainingBrief from "../TrainingBrief/TrainingBrief";
 import TrainingHeader from "../TrainingHeader/TrainingHeader";
