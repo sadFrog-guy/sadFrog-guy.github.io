@@ -57,10 +57,9 @@ const CalculateForm = () => {
                 await Calculator.getChains(Calculator.amount)
                 intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
             } else {
-                return
+                setIsLoading(false)
+                return false
             }
-
-            setIsLoading(false)
         } else {
             setDisabled(true)
         }
