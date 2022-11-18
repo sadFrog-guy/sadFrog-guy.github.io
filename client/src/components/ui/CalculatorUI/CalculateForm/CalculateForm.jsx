@@ -26,6 +26,7 @@ const CalculateForm = () => {
 
         setDisabled(false)
         setClicked(false)
+        Calculator.clearError()
 
         if(value > 0 || value === '') {
             setVal(value)
