@@ -27,14 +27,13 @@ import {isAndroid} from "react-device-detect";
 const TrainingDetail = () => {
     const navigate = useNavigate()
     const {id} = useParams()
-    console.log(id)
     const location = useLocation()
     const videoRef = useRef(null)
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
     const [isLoaded, setLoaded] = useState(false)
     const [openInBrowser, setOpenInBrowser] = useState(false)
-    const {onFullscreen, browserRedirect} = useVideo(Trainings, id.id, videoRef, openInBrowser, setOpenInBrowser)
+    const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
 
     const tgButton = () => {
         if(window.location.href.includes("/trainings/")) {
@@ -56,7 +55,7 @@ const TrainingDetail = () => {
                 } else {
                     tgButtonText(finishPendingStatus)
 
-                    await Trainings.readTraining(id.id)
+                    await Trainings.readTraining(id)
 
                     window.scrollTo(0, 0)
 
@@ -121,7 +120,7 @@ const TrainingDetail = () => {
         })
 
         async function fetchData() {
-            await Trainings.getOneTraining(id.id)
+            await Trainings.getOneTraining(id)
             tgButton()
             window.addEventListener('scroll', handleScroll)
             setLoading(false)
