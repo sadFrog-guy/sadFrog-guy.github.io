@@ -24,15 +24,17 @@ import {useVideo} from "../../hooks/useVideo";
 import {finishPendingStatus, finishStatus, viewedStatus} from "../../utils/consts";
 import {isAndroid} from "react-device-detect";
 
-const TrainingDetail = ({id}) => {
+const TrainingDetail = () => {
     const navigate = useNavigate()
+    const {id} = useParams()
+    console.log(id)
     const location = useLocation()
     const videoRef = useRef(null)
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
     const [isLoaded, setLoaded] = useState(false)
     const [openInBrowser, setOpenInBrowser] = useState(false)
-    const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
+    const {onFullscreen, browserRedirect} = useVideo(Trainings, id.id, videoRef, openInBrowser, setOpenInBrowser)
 
     const tgButton = () => {
         if(window.location.href.includes("/trainings/")) {
@@ -54,7 +56,7 @@ const TrainingDetail = ({id}) => {
                 } else {
                     tgButtonText(finishPendingStatus)
 
-                    await Trainings.readTraining(id)
+                    await Trainings.readTraining(id.id)
 
                     window.scrollTo(0, 0)
 
@@ -115,15 +117,11 @@ const TrainingDetail = ({id}) => {
         window.scrollTo(0, 0)
 
         backButtonShow(() => {
-            if(location.search) {
-                navigate('/trainings')
-            } else {
-                navigate('/')
-            }
+            navigate('/trainings')
         })
 
         async function fetchData() {
-            await Trainings.getOneTraining(id)
+            await Trainings.getOneTraining(id.id)
             tgButton()
             window.addEventListener('scroll', handleScroll)
             setLoading(false)
