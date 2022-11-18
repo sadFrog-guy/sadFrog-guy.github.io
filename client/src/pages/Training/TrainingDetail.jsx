@@ -27,7 +27,6 @@ import {isAndroid} from "react-device-detect";
 const TrainingDetail = () => {
     const navigate = useNavigate()
     const {id} = useParams()
-    const location = useLocation()
     const videoRef = useRef(null)
     const {Trainings} = useContext(Context)
     const [isLoading, setLoading] = useState(true)
@@ -51,6 +50,7 @@ const TrainingDetail = () => {
                 if(Trainings.training.viewed && tgMainButton.text === viewedStatus) {
                     navigate(`/trainings/${Trainings.training.next_article_id}`)
 
+                    navigate(0)
                     window.scrollTo(0, 0)
                 } else {
                     tgButtonText(finishPendingStatus)
@@ -65,16 +65,27 @@ const TrainingDetail = () => {
                         navigate(`/trainings/${Trainings.training.next_article_id}`)
                         tgButtonText(viewedStatus)
 
+                        navigate(0)
                         window.scrollTo(0, 0)
                     }
                 }
             }
 
-            const onClickHandlerAndroid = () => {
+            const onClickHandlerAndroid = async() => {
+                if(!Trainings.training.viewed && tgMainButton.text === finishStatus) {
+                    tgButtonText(finishPendingStatus)
+                    await Trainings.readTraining(id)
+                    tgButtonText(viewedStatus)
 
+                    window.scrollTo(0, 0)
+                }
             }
 
-            tgMainButton.onClick(onClickHandler)
+            if(isAndroid) {
+                tgMainButton.onClick(onClickHandlerAndroid)
+            } else {
+                tgMainButton.onClick(onClickHandler)
+            }
 
             if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                 tgMainButton.hide()
