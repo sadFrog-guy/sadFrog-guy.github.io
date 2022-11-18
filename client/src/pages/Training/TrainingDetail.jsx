@@ -85,10 +85,6 @@ const TrainingDetail = () => {
             } else {
                 tgMainButton.onClick(onClickHandler)
             }
-
-            if(Trainings.training.viewed && !Trainings.training.next_article_id) {
-                tgMainButton.hide()
-            }
         }
     }
 
