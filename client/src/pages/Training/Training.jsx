@@ -93,7 +93,6 @@ const Training = () => {
                             id={training.id}
                             key={training.id}
                             trainingInfo={training}
-                            imageOnLoad={() => setLoaded(true)}
                             onClick={() => itemHandleClick(training)}
                             modalShow={modalShow}
                         />

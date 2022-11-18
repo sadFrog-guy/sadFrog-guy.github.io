@@ -38,7 +38,7 @@ const TrainingItem = ({trainingInfo, imageOnLoad, modalShow, ...props}) => {
 
     return (
         <div className="training-item" id={trainingInfo.id} {...props}>
-            <TrainingImage src={trainingInfo.image_url} onLoad={imageOnLoad}/>
+            <TrainingImage src={trainingInfo.image_url}/>
             <TrainingBrief isShow={isShow}  onClick={toggleContentHandler}>
                 <TrainingBriefInner
                     className={

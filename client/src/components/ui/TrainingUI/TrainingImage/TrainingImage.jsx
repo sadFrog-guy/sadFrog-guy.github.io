@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from "react";
 
-const TrainingImage = ({src, onLoad}) => {
+const TrainingImage = ({src}) => {
     return (
         <div className="training-image-wrap">
             <img
@@ -9,7 +9,6 @@ const TrainingImage = ({src, onLoad}) => {
                 height="212"
                 src={src}
                 alt=""
-                onLoad={onLoad}
                 className="training-image"
             />
         </div>
