@@ -72,6 +72,8 @@ const TrainingItem = ({trainingInfo, imageOnLoad, modalShow, ...props}) => {
                         const isAllowed = subitem.allowed_viewing
                         const condition = isFirst || isAllowed || isViewed
 
+                        console.log(subitem.id)
+
                         return <TrainingSubitem
                                     key={subitem.id}
                                     id={subitem.id}
