@@ -10,6 +10,7 @@ const TrainingImage = ({src, onLoad}) => {
                 src={src}
                 alt=""
                 onLoad={onLoad}
+                loading="lazy"
                 className="training-image"
             />
         </div>
