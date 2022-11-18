@@ -51,13 +51,11 @@ const TrainingDetail = () => {
                     navigate(`/trainings/${Trainings.training.next_article_id}`)
 
                     navigate(0)
-                    window.scrollTo(0, 0)
                 } else {
                     tgButtonText(finishPendingStatus)
 
                     await Trainings.readTraining(id)
 
-                    window.scrollTo(0, 0)
 
                     if(Trainings.training.viewed && !Trainings.training.next_article_id) {
                         tgMainButton.hide()
@@ -66,7 +64,6 @@ const TrainingDetail = () => {
                         tgButtonText(viewedStatus)
 
                         navigate(0)
-                        window.scrollTo(0, 0)
                     }
                 }
             }
@@ -76,8 +73,6 @@ const TrainingDetail = () => {
                     tgButtonText(finishPendingStatus)
                     await Trainings.readTraining(id)
                     tgButtonText(viewedStatus)
-
-                    window.scrollTo(0, 0)
                 }
             }
 
