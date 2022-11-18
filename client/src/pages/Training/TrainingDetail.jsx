@@ -20,11 +20,17 @@ import {observer} from "mobx-react-lite";
 import Button from "../../components/ui/GlobalUI/Button/Button";
 import fullscreen from "../../assets/icons/fullscreen.png";
 import {LINK_TRAININGS_ITEM, NOT_AUTH} from "../../router";
+import {useTelegramButton} from "../../hooks/useTelegramButton";
 import {useVideo} from "../../hooks/useVideo";
+import ButtonTG from "../../components/ui/GlobalUI/ButtonTG/ButtonTG";
 import {finishPendingStatus, finishStatus, viewedStatus} from "../../utils/consts";
+import {isAndroid} from "react-device-detect";
+import parse from 'html-react-parser'
+import training from "./Training";
+import Frame from 'react-frame-component';
+import Home from "../Home/Home";
 
-const TrainingDetail = () => {
-    const {id} = useParams()
+const TrainingDetail = ({id}) => {
     const navigate = useNavigate()
     const location = useLocation()
     const videoRef = useRef(null)
@@ -33,6 +39,63 @@ const TrainingDetail = () => {
     const [isLoaded, setLoaded] = useState(false)
     const [openInBrowser, setOpenInBrowser] = useState(false)
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
+
+    const tgButton = () => {
+        if(window.location.href.includes("/trainings/")) {
+            tgButtonInitial()
+
+            if(Trainings.training.viewed) {
+                tgButtonText(viewedStatus)
+            } else {
+                tgButtonText(finishStatus)
+            }
+
+            const onClickHandler = async() => {
+                haptic()
+
+                if(Trainings.training.viewed && tgMainButton.text === viewedStatus) {
+                    navigate(`/trainings/${Trainings.training.next_article_id}`)
+
+                    window.scrollTo(0, 0)
+                } else {
+                    tgButtonText(finishPendingStatus)
+
+                    await Trainings.readTraining(id)
+
+                    window.scrollTo(0, 0)
+
+                    if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                        tgMainButton.hide()
+                    } else {
+                        navigate(`/trainings/${Trainings.training.next_article_id}`)
+                        tgButtonText(viewedStatus)
+
+                        window.scrollTo(0, 0)
+                    }
+                }
+            }
+
+            const onClickHandlerAndroid = () => {
+
+            }
+
+            tgMainButton.onClick(onClickHandler)
+
+            if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                tgMainButton.hide()
+            }
+        }
+    }
+
+    const handleScroll = () => {
+        const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 170
+
+        if(bottom) {
+            tgMainButton.show()
+        } else {
+            tgMainButton.hide()
+        }
+    };
 
     const handleOnLoad = () => {
         setLoaded(true)
@@ -45,20 +108,44 @@ const TrainingDetail = () => {
     }, [])
 
     useEffect(() => {
+        if(Trainings.training.viewed) {
+            tgButtonText(viewedStatus)
+        } else {
+            tgButtonText(finishStatus)
+        }
+    }, [Trainings.training.viewed])
+
+    useEffect(() => {
+        exitConfirmation()
+
         window.scrollTo(0, 0)
+
+        backButtonShow(() => {
+            if(location.search) {
+                navigate('/trainings')
+            } else {
+                navigate('/')
+            }
+        })
 
         async function fetchData() {
             await Trainings.getOneTraining(id)
+            tgButton()
+            window.addEventListener('scroll', handleScroll)
             setLoading(false)
         }
 
         fetchData()
+
+        return () => {
+            tgMainButton.hide()
+            window.removeEventListener('scroll', handleScroll)
+        }
     }, [])
 
     return (
         <Wrapper>
             <Wrap className="article">
-
                 <Navigation to="/trainings">
                     Обучение
                 </Navigation>
@@ -72,7 +159,7 @@ const TrainingDetail = () => {
                         <img
                             className="training-image" id="article-image"
                             src={Trainings.training.image_url}
-                            rel="preload"
+                            onLoad={handleOnLoad}
                             alt=""
 
                         />

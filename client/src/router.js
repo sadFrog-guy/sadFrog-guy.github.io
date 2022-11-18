@@ -9,11 +9,9 @@ import Referal from "./pages/Referal";
 import TrainingDetail from "./pages/Training/TrainingDetail";
 import Calculator from "./pages/Calculator";
 import NotAuth from "./pages/NotAuth";
-import TrainingFrame from "./pages/Training/TrainingFrame";
 
 export const LINK_TRAININGS = '/trainings';
 export const LINK_TRAININGS_ITEM = '/trainings/:id';
-export const LINK_TRAININGS_IFRAME = '/trainings/frame/:id';
 export const LINK_CALCULATOR = '/calculator';
 export const LINK_REFERAL = '/referal';
 export const NOT_AUTH = '/not-auth'
@@ -29,11 +27,7 @@ const routes = [
     },
     {
         path: LINK_TRAININGS_ITEM,
-        element: <TrainingFrame/>,
-    },
-    {
-        path: LINK_TRAININGS_IFRAME,
-        element: <TrainingDetail/>
+        element: <TrainingDetail/>,
     },
     {
         path: LINK_CALCULATOR,
