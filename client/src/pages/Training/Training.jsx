@@ -103,7 +103,7 @@ const Training = () => {
             </TrainingList>
 
             <Loader
-                isLoading={isLoading}
+                isLoading={isLoaded}
             />
 
             {Trainings.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
