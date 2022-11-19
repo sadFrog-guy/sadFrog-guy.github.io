@@ -7,17 +7,11 @@ import {Context} from "../../utils/context";
 import TrainingItem from "../../components/ui/TrainingUI/TrainingItem/TrainingItem";
 import {observer} from "mobx-react-lite";
 import useModal from "../../hooks/useModal";
-import Modal from "../../components/ui/ModalUI/Modal/Modal";
-import Dragger from "../../components/ui/ModalUI/Dragger/Dragger";
-import ModalHeader from "../../components/ui/ModalUI/ModalHeader/ModalHeader";
-import LockIcon from "../../components/icons/LockIcon/LockIcon";
-import ModalText from "../../components/ui/ModalUI/ModalText/ModalText";
 import {Link, useNavigate, Navigate, useSearchParams, useLocation} from "react-router-dom";
 import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {backButtonHide, backButtonShow, exitConfirmation, tgWebApp} from "../../utils/telegramAPI";
 import TrainingModal from "../../components/ui/TrainingUI/TrainingModal/TrainingModal";
 import {NOT_AUTH} from "../../router";
-import TrainingDetail from "./TrainingDetail";
 
 const Training = () => {
     const {Trainings} = useContext(Context);
@@ -39,7 +33,7 @@ const Training = () => {
         }
 
         Promise.all(Trainings.imagesArray.map(image => loadImage(image)))
-            .then(() => setLoaded(true))
+            .then(() => setLoading(false))
             .catch(err => console.log("Failed to load images", err))
     }, [])
 
@@ -61,11 +55,11 @@ const Training = () => {
         }
     }, [])
 
-    useEffect(() => {
-        if(isLoaded) {
-            setLoading(false)
-        }
-    }, [isLoaded])
+    // useEffect(() => {
+    //     if(isLoaded) {
+    //         setLoading(false)
+    //     }
+    // }, [isLoaded])
 
     const itemHandleClick = (training) => {
         Trainings.setErrorType(training)
