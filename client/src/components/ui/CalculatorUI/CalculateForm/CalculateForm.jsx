@@ -14,7 +14,6 @@ const CalculateForm = () => {
     const {Calculator} = useContext(Context)
     const [isLoading, setIsLoading] = useState(false)
     const [isChainsLoaded, setIsChainsLoaded] = useState(false)
-    const [isImagesLoaded, setImagesLoaded] = useState(false)
     const [isDisabled, setDisabled] = useState(true)
     const [isClicked, setClicked] = useState(false)
     const [val, setVal] = useState('')
@@ -84,7 +83,7 @@ const CalculateForm = () => {
         }
 
         Promise.all(Calculator.imagesArray.map(image => loadImage(image)))
-            .then(() => setImagesLoaded(true))
+            .then(() => Calculator.changeImagesLoaded(true))
             .catch(err => console.log("Failed to load images", err))
     }, [])
 
@@ -103,10 +102,10 @@ const CalculateForm = () => {
     }, [Calculator.error])
 
     useEffect(() => {
-        if(isImagesLoaded && isChainsLoaded) {
+        if(Calculator.imagesLoaded && isChainsLoaded) {
             setIsLoading(false)
         }
-    }, [isImagesLoaded, isChainsLoaded])
+    }, [Calculator.imagesLoaded, isChainsLoaded])
 
     return (
         <Wrap className="form">

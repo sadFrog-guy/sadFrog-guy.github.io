@@ -10,6 +10,7 @@ export default new class StoreCalculator {
     error
     have_subscribe
     imagesArray = []
+    imagesLoaded = false
 
     constructor() {
         makeAutoObservable(this)
@@ -47,5 +48,9 @@ export default new class StoreCalculator {
             this.imagesArray.push(chain.currency_icon)
             this.imagesArray.push(chain.market_logo)
         })
+    }
+
+    changeImagesLoaded(boolean) {
+        this.imagesLoaded = boolean
     }
 }
