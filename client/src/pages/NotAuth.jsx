@@ -30,7 +30,7 @@ const NotAuth = () => {
             return CalculatorComment
         }
 
-        return ''
+        return 'Пожалуйста, перезапустите приложение'
     }
 
     return (
