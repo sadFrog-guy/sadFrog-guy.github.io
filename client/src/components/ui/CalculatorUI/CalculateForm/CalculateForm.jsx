@@ -9,6 +9,7 @@ import {observer} from "mobx-react-lite";
 import {isMobile} from "react-device-detect";
 import Text from "../../GlobalUI/Text/Text";
 import {debounce} from "debounce"
+import {haptic} from "../../../../utils/telegramAPI";
 
 const CalculateForm = () => {
     const {Calculator} = useContext(Context)
@@ -50,6 +51,8 @@ const CalculateForm = () => {
     }
 
     const buttonOnClick = debounce(async() => {
+        haptic()
+
         if(val && !Calculator.error) {
             setClicked(true)
             setIsLoading(true)
