@@ -13,6 +13,8 @@ import {debounce} from "debounce"
 const CalculateForm = () => {
     const {Calculator} = useContext(Context)
     const [isLoading, setIsLoading] = useState(false)
+    const [isChainsLoaded, setIsChainsLoaded] = useState(false)
+    const [isImagesLoaded, setImagesLoaded] = useState(false)
     const [isDisabled, setDisabled] = useState(true)
     const [isClicked, setClicked] = useState(false)
     const [val, setVal] = useState('')
@@ -56,6 +58,7 @@ const CalculateForm = () => {
             if(isClicked === false) {
                 Calculator.changeAmount(val)
                 await Calculator.getChains(Calculator.amount)
+                Calculator.setImagesArray()
                 intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
                 setIsLoading(false)
             } else {
@@ -66,6 +69,23 @@ const CalculateForm = () => {
             setDisabled(true)
         }
     }, 300)
+
+    useEffect(() => {
+        const loadImage = image => {
+            return new Promise((resolve, reject) => {
+                const loadImg = new Image()
+                loadImg.src = image
+                loadImg.onload = () =>
+                    resolve(image)
+
+                loadImg.onerror = err => reject(err)
+            })
+        }
+
+        Promise.all(Calculator.imagesArray.map(image => loadImage(image)))
+            .then(() => setImagesLoaded(true))
+            .catch(err => console.log("Failed to load images", err))
+    }, [])
 
     useEffect(() => {
         return () => {
@@ -80,6 +100,12 @@ const CalculateForm = () => {
             setDisabled(false)
         }
     }, [Calculator.error])
+
+    useEffect(() => {
+        if(isImagesLoaded && isChainsLoaded) {
+            setIsLoading(false)
+        }
+    }, [isImagesLoaded, isChainsLoaded])
 
     return (
         <Wrap className="form">

@@ -9,6 +9,7 @@ export default new class StoreCalculator {
     autoupdate_delay
     error
     have_subscribe
+    imagesArray = []
 
     constructor() {
         makeAutoObservable(this)
@@ -39,5 +40,12 @@ export default new class StoreCalculator {
 
     clearError() {
         this.error = ''
+    }
+
+    setImagesArray() {
+        this.chains.forEach(chain => {
+            this.imagesArray.push(chain.currency_icon)
+            this.imagesArray.push(chain.market_logo)
+        })
     }
 }
