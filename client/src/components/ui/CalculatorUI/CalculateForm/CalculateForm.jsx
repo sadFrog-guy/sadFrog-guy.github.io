@@ -58,6 +58,7 @@ const CalculateForm = () => {
             if(isClicked === false) {
                 Calculator.changeAmount(val)
                 await Calculator.getChains(Calculator.amount)
+                setIsChainsLoaded(true)
                 Calculator.setImagesArray()
                 intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
                 setIsLoading(false)
