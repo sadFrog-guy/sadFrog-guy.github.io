@@ -18,6 +18,8 @@ const Training = () => {
     const {modalActive, modalHide, modalShow} = useModal()
     const navigate = useNavigate()
     const [isLoading, setLoading] = useState(true)
+    const [isImagesLoaded, setImagesLoaded] = useState(false)
+    const [isTrainingsLoaded, setTrainingsLoaded] = useState(false)
 
     useEffect(() => {
         const loadImage = image => {
@@ -32,7 +34,7 @@ const Training = () => {
         }
 
         Promise.all(Trainings.imagesArray.map(image => loadImage(image)))
-            .then(() => setLoading(false))
+            .then(() => setImagesLoaded(true))
             .catch(err => console.log("Failed to load images", err))
     }, [])
 
@@ -45,6 +47,7 @@ const Training = () => {
 
         async function fetchData() {
             await Trainings.getAllTrainings()
+            setTrainingsLoaded(true)
             Trainings.setImagesArray()
         }
         fetchData()
@@ -54,11 +57,11 @@ const Training = () => {
         }
     }, [])
 
-    // useEffect(() => {
-    //     if(isLoaded) {
-    //         setLoading(false)
-    //     }
-    // }, [isLoaded])
+    useEffect(() => {
+        if(isImagesLoaded && isTrainingsLoaded) {
+            setLoading(false)
+        }
+    }, [isImagesLoaded, isTrainingsLoaded])
 
     const itemHandleClick = (training) => {
         Trainings.setErrorType(training)
