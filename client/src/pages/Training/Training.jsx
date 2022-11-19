@@ -18,15 +18,14 @@ const Training = () => {
     const {modalActive, modalHide, modalShow} = useModal()
     const navigate = useNavigate()
     const [isLoading, setLoading] = useState(true)
-    const [isLoaded, setLoaded] = useState(false)
 
     useEffect(() => {
         const loadImage = image => {
             return new Promise((resolve, reject) => {
                 const loadImg = new Image()
-                loadImg.src = image.url
+                loadImg.src = image
                 loadImg.onload = () =>
-                    resolve(image.url)
+                    resolve(image)
 
                 loadImg.onerror = err => reject(err)
             })
