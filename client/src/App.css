@@ -53,7 +53,7 @@ body.light > #root > .wrapper > .training > .training-item > .training-image-wra
 }
 
 body.dark > #root > .wrapper > .training > .training-item > .training-image-wrap > .training-image {
-    background-color: #000;
+    background-color: #1c1c1e;
 }
 
 img {
