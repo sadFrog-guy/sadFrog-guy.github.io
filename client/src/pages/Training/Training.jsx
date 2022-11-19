@@ -61,11 +61,11 @@ const Training = () => {
         }
     }, [])
 
-    // useEffect(() => {
-    //     if(isLoaded) {
-    //         setLoading(false)
-    //     }
-    // }, [isLoaded])
+    useEffect(() => {
+        if(isLoaded) {
+            setLoading(false)
+        }
+    }, [isLoaded])
 
     const itemHandleClick = (training) => {
         Trainings.setErrorType(training)
@@ -74,8 +74,6 @@ const Training = () => {
             modalShow()
         }
     }
-
-    console.log(isLoaded)
 
     return (
         <Wrapper>
@@ -103,7 +101,7 @@ const Training = () => {
             </TrainingList>
 
             <Loader
-                isLoading={!isLoaded}
+                isLoading={isLoading}
             />
 
             {Trainings.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
