@@ -61,11 +61,11 @@ const Training = () => {
         }
     }, [])
 
-    useEffect(() => {
-        if(isLoaded) {
-            setLoading(false)
-        }
-    }, [isLoaded])
+    // useEffect(() => {
+    //     if(isLoaded) {
+    //         setLoading(false)
+    //     }
+    // }, [isLoaded])
 
     const itemHandleClick = (training) => {
         Trainings.setErrorType(training)
