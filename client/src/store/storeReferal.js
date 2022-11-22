@@ -8,6 +8,7 @@ export default new class StoreReferal {
     shortLink = ''
     sharingText = ''
     have_subscribe
+    error
 
     constructor() {
         makeAutoObservable(this)
@@ -23,9 +24,8 @@ export default new class StoreReferal {
                 this.have_subscribe = data.have_subscribe
                 this.shortLink = data.visible_part
                 this.sharingText = data.sharing_text
+                this.error = data.comment
             })
-
-            window.localStorage.setItem("comment-referal", data.comment)
         } catch (e) {
             console.log(e)
         }

@@ -29,7 +29,6 @@ export default new class StoreTrainings {
                 this.trainings = data.sections
                 this.have_subscribe = data.have_subscribe
                 this.error = data.comment
-                window.localStorage.setItem("comment-training", data.comment)
             })
         } catch (e) {
             console.log(e)
@@ -46,9 +45,8 @@ export default new class StoreTrainings {
                 this.have_subscribe = data.have_subscribe
                 this.bold_text = data.bold_text
                 this.main_text = parse(data.main_text)
+                this.error = data.comment
             })
-
-            window.localStorage.setItem("comment-training-detail", data.comment)
         } catch (e) {
             console.log(e)
         }

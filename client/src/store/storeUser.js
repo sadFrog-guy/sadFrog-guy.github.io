@@ -19,6 +19,7 @@ export default new class StoreUser {
     training_comment
     training_link
     error_type = 'training'
+    error
 
     constructor() {
         makeAutoObservable(this)
@@ -28,7 +29,6 @@ export default new class StoreUser {
         try {
             const {data} = await User.getUser()
             console.log(data)
-            console.log(tgHash)
 
             runInAction(() => {
                 this.user = data
@@ -43,9 +43,8 @@ export default new class StoreUser {
                 this.training_link = data.pay_training_link
                 this.calculator_comment = data.ban_calculator_comment
                 this.calculator_link = data.pay_calculator_link
+                this.error = data.comment
             })
-
-            window.localStorage.setItem("comment-user", data.comment)
         } catch (e) {
             console.log(e)
         }

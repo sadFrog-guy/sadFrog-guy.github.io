@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link, Navigate} from "react-router-dom";
 import {NOT_AUTH} from "../router";
 import {useContext} from "react";
@@ -10,33 +10,13 @@ import Text from "../components/ui/GlobalUI/Text/Text";
 const NotAuth = () => {
     const {Trainings} = useContext(Context)
 
-    const UserComment = window.localStorage.getItem("comment-user")
-    const TrainingComment = window.localStorage.getItem("comment-training")
-    const TrainingDetailComment = window.localStorage.getItem("comment-training-detail")
-    const ReferalComment = window.localStorage.getItem("comment-referal")
+    useEffect(() => {
+        const fetchError = async() => {
+            await Trainings.getAllTrainings()
+        }
 
-    // const checkAuthorized = () => {
-    //     const UserComment = window.localStorage.getItem("comment-user")
-    //     const TrainingComment = window.localStorage.getItem("comment-training")
-    //     const TrainingDetailComment = window.localStorage.getItem("comment-training-detail")
-    //     const ReferalComment = window.localStorage.getItem("comment-referal")
-    //
-    //     if(UserComment) {
-    //         return UserComment
-    //     }
-    //
-    //     if(TrainingComment) {
-    //         return TrainingComment
-    //     }
-    //
-    //     if(TrainingDetailComment) {
-    //         return TrainingDetailComment
-    //     }
-    //
-    //     if(ReferalComment) {
-    //         return ReferalComment
-    //     }
-    // }
+        fetchError()
+    })
 
     return (
         <Wrap className="not-authorized">
@@ -44,7 +24,7 @@ const NotAuth = () => {
                 Закрыто
             </Text>
             <Text type="medium" overrideClass="not-authorized-text">
-                {UserComment || TrainingComment || TrainingDetailComment || ReferalComment}
+                {Trainings.error}
             </Text>
         </Wrap>
     );
