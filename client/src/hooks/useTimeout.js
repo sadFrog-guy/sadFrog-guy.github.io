@@ -45,24 +45,23 @@ export default function useTimeout() {
             if (hoursBetweenDates <= 24) {
                 const noun = getNoun(hoursBetweenDates, 'час', 'часа', 'часов');
 
-                setSubscription(`${subscribtionName} — сгорает через ${hoursBetweenDates} ${noun}`);
+                window.localStorage.setItem('timer', `${subscribtionName} — сгорает через ${hoursBetweenDates} ${noun}`);
             } else {
-                setSubscription(`${subscribtionName} — до ${day} ${month}, ${year}`);
+                window.localStorage.setItem('timer', `${subscribtionName} — до ${day} ${month}, ${year}`);
             };
 
 
             setSubscribtionStarter(false);
         } else {
-            setSubscription(subscribtionName);
+            window.localStorage.setItem('timer', subscribtionName);
 
             setSubscribtionStarter(true);
         };
     };
 
-    window.localStorage.setItem("isSubscribtionStarter", JSON.stringify(isSubscribtionStarter))
-    window.localStorage.setItem("subscribtion", JSON.stringify(subscribtion))
-
     return {
+        subscribtion,
+        isSubscribtionStarter,
         subscribeTimer
     }
 
