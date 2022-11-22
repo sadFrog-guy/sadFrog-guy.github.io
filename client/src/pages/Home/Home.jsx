@@ -33,21 +33,7 @@ const Home = () => {
     const [isLoading, setLoading] = useState(false)
     const [isLoaded, setLoaded] = useState(false)
 
-    useEffect(() => {
-        tgInintial()
-        disableExitConfirmation()
-        backButtonHide()
-    }, [])
-
-    useLayoutEffect(() => {
-        window.addEventListener("load", async() => {
-            setLoading(true)
-            await Security.postHashKey()
-            await User.getUserInfo()
-            subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
-            setLoading(false)
-        })
-
+    const avatarLoader = () => {
         const loadImage = image => {
             return new Promise((resolve, reject) => {
                 const loadImg = new Image()
@@ -62,6 +48,23 @@ const Home = () => {
         loadImage(User.avatar)
             .then(() => setLoading(false))
             .catch(err => console.log("Failed to load images", err))
+    }
+
+    useEffect(() => {
+        tgInintial()
+        disableExitConfirmation()
+        backButtonHide()
+    }, [])
+
+    useLayoutEffect(() => {
+        window.addEventListener("load", async() => {
+            setLoading(true)
+            await Security.postHashKey()
+            await User.getUserInfo()
+            avatarLoader()
+            subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
+            setLoading(false)
+        })
     })
 
     return (
