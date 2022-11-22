@@ -28,8 +28,9 @@ export default new class StoreTrainings {
             runInAction(() => {
                 this.trainings = data.sections
                 this.have_subscribe = data.have_subscribe
-                this.error = data.comment
             })
+
+            this.error = data.comment
         } catch (e) {
             console.log(e)
         }
