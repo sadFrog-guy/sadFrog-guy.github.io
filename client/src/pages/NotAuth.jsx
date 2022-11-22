@@ -15,18 +15,22 @@ const NotAuth = () => {
         const CalculatorComment = window.localStorage.getItem("comment-calculator")
 
         if(UserComment) {
+            console.log(UserComment)
             return UserComment
         }
 
         if(TrainingComment) {
+            console.log(TrainingComment)
             return TrainingComment
         }
 
         if(ReferalComment) {
+            console.log(ReferalComment)
             return ReferalComment
         }
 
         if(CalculatorComment) {
+            console.log(CalculatorComment)
             return CalculatorComment
         }
 
