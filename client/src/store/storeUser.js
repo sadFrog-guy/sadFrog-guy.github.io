@@ -20,6 +20,8 @@ export default new class StoreUser {
     training_link
     error_type = 'training'
     error
+    subscribtion
+    isSubscribtionStarter
 
     constructor() {
         makeAutoObservable(this)
@@ -52,6 +54,11 @@ export default new class StoreUser {
 
     setErrorType(type) {
         this.error_type = type
+    }
+
+    setTimer(subscribtion, isSubscribtionStarter) {
+        this.subscribtion = subscribtion
+        this.isSubscribtionStarter = isSubscribtionStarter
     }
 
     get checkAccess() {

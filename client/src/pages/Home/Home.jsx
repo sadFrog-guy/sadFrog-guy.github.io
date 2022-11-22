@@ -32,8 +32,6 @@ const Home = () => {
     const [isLoading, setLoading] = useState(true)
     const [isLoaded, setLoaded] = useState(false)
 
-    window.localStorage.setItem("sub", JSON.stringify({subscribtion: subscribtion, isSubscribtionStarter: isSubscribtionStarter}))
-
     useEffect(() => {
         tgInintial()
         disableExitConfirmation()
@@ -45,6 +43,7 @@ const Home = () => {
             await Security.postHashKey()
             await User.getUserInfo()
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
+            User.setTimer(subscribtion, isSubscribtionStarter)
         })
     })
 
@@ -70,8 +69,8 @@ const Home = () => {
                 />
 
                 <Subscribtion
-                    isSubscribtionStarter={JSON.parse(window.localStorage.getItem("sub")).isSubscribtionStarter}
-                    subscribtion={JSON.parse(window.localStorage.getItem("sub")).subscribtion}
+                    isSubscribtionStarter={User.isSubscribtionStarter}
+                    subscribtion={User.subscribtion}
                 />
 
                 <FooterHome/>
