@@ -34,6 +34,23 @@ const TrainingDetail = () => {
     const [openInBrowser, setOpenInBrowser] = useState(false)
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
 
+    const mainImageLoaded = () => {
+        const loadImage = image => {
+            return new Promise((resolve, reject) => {
+                const loadImg = new Image()
+                loadImg.src = image
+                loadImg.onload = () =>
+                    resolve(image)
+
+                loadImg.onerror = err => reject(err)
+            })
+        }
+
+        loadImage(Trainings.training.image_url)
+            .then(() => setLoading(false))
+            .catch(err => console.log("Failed to load images", err))
+    }
+
     const tgButton = () => {
         if(window.location.href.includes("/trainings/")) {
             tgButtonInitial()
@@ -127,6 +144,7 @@ const TrainingDetail = () => {
 
         async function fetchData() {
             await Trainings.getOneTraining(id)
+            mainImageLoaded()
             tgButton()
             window.addEventListener('scroll', handleScroll)
             setLoading(false)
@@ -158,7 +176,6 @@ const TrainingDetail = () => {
                             src={Trainings.training.image_url}
                             onLoad={handleOnLoad}
                             alt=""
-
                         />
                     }
 
