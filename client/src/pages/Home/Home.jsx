@@ -30,7 +30,7 @@ const Home = () => {
 
     const {modalActive, modalHide, modalShow} = useModal()
     const {subscribeTimer} = useTimeout()
-    const [isLoading, setLoading] = useState(true)
+    const [isLoading, setLoading] = useState(false)
     const [isLoaded, setLoaded] = useState(false)
 
     useEffect(() => {
@@ -41,6 +41,7 @@ const Home = () => {
 
     useLayoutEffect(() => {
         window.addEventListener("load", async() => {
+            setLoading(true)
             await Security.postHashKey()
             await User.getUserInfo()
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
