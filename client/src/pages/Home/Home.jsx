@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useLayoutEffect, useState} from 'react';
 import {Context} from "../../utils/context";
 import {observer} from "mobx-react-lite";
 import useModal from "../../hooks/useModal";
@@ -36,21 +36,16 @@ const Home = () => {
         tgInintial()
         disableExitConfirmation()
         backButtonHide()
+    }, [])
 
+
+    useLayoutEffect(() => {
         window.addEventListener("load", async() => {
             await Security.postHashKey()
             await User.getUserInfo()
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
         })
-
-        // const fetchData = async() => {
-        //     await Security.postHashKey()
-        //     await User.getUserInfo()
-        //     subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
-        // }
-        //
-        // fetchData()
-    }, [])
+    })
 
 
     useEffect(() => {

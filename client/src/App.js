@@ -5,6 +5,7 @@ import React, {useEffect} from 'react';
 import './styles/fonts.css'
 import './App.css'
 import {exitConfirmation, tgWebApp} from "./utils/telegramAPI";
+import {useLayoutEffect} from "@types/react";
 
 function App() {
     if(tgWebApp.colorScheme === 'dark') {

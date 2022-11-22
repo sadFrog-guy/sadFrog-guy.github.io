@@ -28,22 +28,24 @@ export default new class StoreUser {
     async getUserInfo() {
         try {
             const {data} = await User.getUser()
-            console.log(data)
+            window.localStorage.setItem("user", JSON.stringify(data))
+            const user = JSON.parse(window.localStorage.getItem("user"))
+            console.log(user)
 
             runInAction(() => {
-                this.user = data
+                this.user = user
                 this.username = tgUser?.first_name
-                this.subscribe_expire_datetime = data.subscribe_expire_datetime
-                this.subscription_name = data.subscription_name
-                this.technical_support_link = data.technical_support_link
-                this.course_support_link = data.course_support_link
-                this.avatar = data.avatar
-                this.have_subscribe = data.have_subscribe
-                this.training_comment = data.ban_training_comment
-                this.training_link = data.pay_training_link
-                this.calculator_comment = data.ban_calculator_comment
-                this.calculator_link = data.pay_calculator_link
-                this.error = data.comment
+                this.subscribe_expire_datetime = user.subscribe_expire_datetime
+                this.subscription_name = user.subscription_name
+                this.technical_support_link = user.technical_support_link
+                this.course_support_link = user.course_support_link
+                this.avatar = user.avatar
+                this.have_subscribe = user.have_subscribe
+                this.training_comment = user.ban_training_comment
+                this.training_link = user.pay_training_link
+                this.calculator_comment = user.ban_calculator_comment
+                this.calculator_link = user.pay_calculator_link
+                this.error = user.comment
             })
         } catch (e) {
             console.log(e)
