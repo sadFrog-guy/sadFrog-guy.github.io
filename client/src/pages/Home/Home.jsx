@@ -32,12 +32,13 @@ const Home = () => {
     const [isLoading, setLoading] = useState(true)
     const [isLoaded, setLoaded] = useState(false)
 
+    window.localStorage.setItem("sub", JSON.stringify({subscribtion: subscribtion, isSubscribtionStarter: isSubscribtionStarter}))
+
     useEffect(() => {
         tgInintial()
         disableExitConfirmation()
         backButtonHide()
     }, [])
-
 
     useLayoutEffect(() => {
         window.addEventListener("load", async() => {
@@ -69,8 +70,8 @@ const Home = () => {
                 />
 
                 <Subscribtion
-                    isSubscribtionStarter={isSubscribtionStarter}
-                    subscribtion={subscribtion}
+                    isSubscribtionStarter={JSON.parse(window.localStorage.getItem("sub")).isSubscribtionStarter}
+                    subscribtion={JSON.parse(window.localStorage.getItem("sub")).subscribtion}
                 />
 
                 <FooterHome/>
