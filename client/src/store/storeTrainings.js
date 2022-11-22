@@ -25,7 +25,6 @@ export default new class StoreTrainings {
             window.localStorage.setItem("comment-training", data.comment)
 
             console.log(data)
-            console.log(window.localStorage.getItem("comment-training"))
 
             runInAction(() => {
                 this.trainings = data.sections

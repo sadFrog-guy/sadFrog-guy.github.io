@@ -15,12 +15,10 @@ const NotAuth = () => {
         const ReferalComment = window.localStorage.getItem("comment-referal")
 
         if(UserComment) {
-            console.log(UserComment)
             return UserComment
         }
 
         if(TrainingComment) {
-            console.log(TrainingComment)
             return TrainingComment
         }
 
@@ -29,7 +27,6 @@ const NotAuth = () => {
         }
 
         if(ReferalComment) {
-            console.log(ReferalComment)
             return ReferalComment
         }
 
@@ -42,7 +39,7 @@ const NotAuth = () => {
                 Закрыто
             </Text>
             <Text type="medium" overrideClass="not-authorized-text">
-                {checkAuthorized()}
+                {window.localStorage.getItem("comment-training")}
             </Text>
         </Wrap>
     );
