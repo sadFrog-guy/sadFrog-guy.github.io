@@ -22,9 +22,7 @@ const NotAuth = () => {
         fetchError()
     })
 
-    return isLoading ? (
-        <Loader isLoading={isLoading}/>
-    ) : (
+    return (
         <Wrap className="not-authorized">
             <Text type="medium" className="not-authorized-header">
                 Закрыто
@@ -32,6 +30,8 @@ const NotAuth = () => {
             <Text type="medium" overrideClass="not-authorized-text">
                 {Trainings.error}
             </Text>
+
+            <Loader isLoading={isLoading}/>
         </Wrap>
     );
 };
