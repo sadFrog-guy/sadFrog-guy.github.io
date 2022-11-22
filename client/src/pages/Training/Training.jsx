@@ -100,7 +100,7 @@ const Training = () => {
                 isLoading={isLoading}
             />
 
-            {Trainings.have_subscribe === false && setTimeout(() => <Navigate to={NOT_AUTH}/>, 500)}
+            {Trainings.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
         </Wrapper>
     );
 };
