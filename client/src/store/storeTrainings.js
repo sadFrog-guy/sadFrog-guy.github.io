@@ -90,7 +90,7 @@ export default new class StoreTrainings {
     }
 
     setImagesArray() {
-        if(this.trainings.length) {
+        if(this.trainings) {
             this.trainings.forEach(training => {
                 this.imagesArray.push(training.image_url)
             })
