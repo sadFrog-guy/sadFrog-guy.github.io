@@ -44,15 +44,15 @@ const Home = () => {
             await Security.postHashKey()
             await User.getUserInfo()
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
-            setLoaded(false)
+            setLoading(false)
         })
     })
 
-    useEffect(() => {
-        if(isLoaded) {
-            setLoading(false)
-        }
-    }, [isLoaded])
+    // useEffect(() => {
+    //     if(isLoaded) {
+    //         setLoading(false)
+    //     }
+    // }, [isLoaded])
 
     return (
         <Wrapper>
