@@ -68,8 +68,8 @@ const Home = () => {
                 />
 
                 <Subscribtion
-                    isSubscribtionStarter={JSON.stringify(window.localStorage.getItem("isSubscribtionStarter"))}
-                    subscribtion={JSON.stringify(window.localStorage.getItem("subscribtion"))}
+                    isSubscribtionStarter={JSON.parse(window.localStorage.getItem("isSubscribtionStarter"))}
+                    subscribtion={JSON.parse(window.localStorage.getItem("subscribtion"))}
                 />
 
                 <FooterHome/>
