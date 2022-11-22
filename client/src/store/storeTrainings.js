@@ -22,14 +22,14 @@ export default new class StoreTrainings {
     async getAllTrainings() {
         try {
             const {data} = await Trainings.getAllTrainings()
-            window.localStorage.setItem("comment-training", data.comment)
-
             console.log(data)
+
             runInAction(() => {
                 this.trainings = data.sections
                 this.have_subscribe = data.have_subscribe
-
             })
+
+            window.localStorage.setItem("comment-training", data.comment)
         } catch (e) {
             console.log(e)
         }
