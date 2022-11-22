@@ -35,6 +35,8 @@ const NotAuth = () => {
         return ''
     }
 
+    console.log(Trainings.error)
+
     return (
         <Wrap className="not-authorized">
             <Text type="medium" className="not-authorized-header">

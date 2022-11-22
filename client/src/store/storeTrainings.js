@@ -29,7 +29,6 @@ export default new class StoreTrainings {
                 this.trainings = data.sections
                 this.have_subscribe = data.have_subscribe
                 this.error = data.comment
-                window.localStorage.setItem("comment-training", data.comment)
             })
         } catch (e) {
             console.log(e)
