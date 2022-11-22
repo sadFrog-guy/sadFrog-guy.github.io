@@ -1,10 +1,8 @@
 import {useState} from "react";
+import {localStore} from '../utils/consts'
 
 
 export default function useTimeout() {
-
-    const [subscribtion, setSubscription] = useState('');
-    const [isSubscribtionStarter, setSubscribtionStarter] = useState(false);
 
     const subscribeTimer = (unix, subscribtionName) => {
         if(unix !== null) {
@@ -45,23 +43,21 @@ export default function useTimeout() {
             if (hoursBetweenDates <= 24) {
                 const noun = getNoun(hoursBetweenDates, 'час', 'часа', 'часов');
 
-                window.localStorage.setItem('timer', `${subscribtionName} — сгорает через ${hoursBetweenDates} ${noun}`);
+                localStore.setItem('subscribtion', `${subscribtionName} — сгорает через ${hoursBetweenDates} ${noun}`);
             } else {
-                window.localStorage.setItem('timer', `${subscribtionName} — до ${day} ${month}, ${year}`);
+                localStore.setItem('subscribtion', `${subscribtionName} — до ${day} ${month}, ${year}`);
             };
 
 
-            setSubscribtionStarter(false);
+            localStore.setItem('isStarter', JSON.stringify(false));
         } else {
-            window.localStorage.setItem('timer', subscribtionName);
+            localStore.setItem('subscribtion', subscribtionName);
 
-            setSubscribtionStarter(true);
+            localStore.setItem('isStarter', JSON.stringify(true));
         };
     };
 
     return {
-        subscribtion,
-        isSubscribtionStarter,
         subscribeTimer
     }
 
