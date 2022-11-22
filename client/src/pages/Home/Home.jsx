@@ -29,6 +29,7 @@ const Home = () => {
 
     const {modalActive, modalHide, modalShow} = useModal()
     const {subscribtion, isSubscribtionStarter, subscribeTimer} = useTimeout()
+    User.setTimer(subscribtion, isSubscribtionStarter)
     const [isLoading, setLoading] = useState(true)
     const [isLoaded, setLoaded] = useState(false)
 
@@ -43,7 +44,6 @@ const Home = () => {
             await Security.postHashKey()
             await User.getUserInfo()
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
-            User.setTimer(subscribtion, isSubscribtionStarter)
         })
     })
 
