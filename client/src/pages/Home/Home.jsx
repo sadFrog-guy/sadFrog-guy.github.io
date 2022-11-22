@@ -34,6 +34,23 @@ const Home = () => {
     const [isLoaded, setLoaded] = useState(false)
 
     useEffect(() => {
+        const loadImage = image => {
+            return new Promise((resolve, reject) => {
+                const loadImg = new Image()
+                loadImg.src = image
+                loadImg.onload = () =>
+                    resolve(image)
+
+                loadImg.onerror = err => reject(err)
+            })
+        }
+
+        loadImage(User.avatar)
+            .then(() => setLoading(false))
+            .catch(err => console.log("Failed to load images", err))
+    }, [])
+
+    useEffect(() => {
         tgInintial()
         disableExitConfirmation()
         backButtonHide()
@@ -45,15 +62,9 @@ const Home = () => {
             await Security.postHashKey()
             await User.getUserInfo()
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
-            // setLoading(false)
+            setLoading(false)
         })
     })
-
-    useEffect(() => {
-        if(isLoaded) {
-            setLoading(false)
-        }
-    }, [isLoaded])
 
     return (
         <Wrapper>
