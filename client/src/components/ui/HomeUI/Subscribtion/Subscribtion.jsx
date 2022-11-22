@@ -8,11 +8,8 @@ const Subscribtion = ({isSubscribtionStarter, subscribtion}) => {
     return (
         <span id="timeout">
             {isSubscribtionStarter
-                && <InfinityIcon/>
-            }
-
-            {!isSubscribtionStarter
-                && <img className="ellipse" width="125" height="56" src={ellipse} alt=""/>
+                ? <InfinityIcon/>
+                : <img className="ellipse" width="125" height="56" src={ellipse} alt=""/>
             }
 
             <span className="timeout-inner">
