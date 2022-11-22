@@ -20,7 +20,7 @@ const NotAuth = () => {
         }
 
         fetchError()
-    })
+    }, [])
 
     return (
         <Wrap className="not-authorized">
