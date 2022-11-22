@@ -91,10 +91,12 @@ export default new class StoreTrainings {
     }
 
     setImagesArray() {
-        if(this.trainings) {
+        try {
             this.trainings.forEach(training => {
                 this.imagesArray.push(training.image_url)
             })
+        } catch (e) {
+            console.log(e)
         }
     }
 }
