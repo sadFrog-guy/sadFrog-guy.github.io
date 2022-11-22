@@ -8,6 +8,8 @@ import Wrap from "../components/utils/Wrap/Wrap";
 import Text from "../components/ui/GlobalUI/Text/Text";
 
 const NotAuth = () => {
+    const {Trainings} = useContext(Context)
+
     const checkAuthorized = () => {
         const UserComment = window.localStorage.getItem("comment-user")
         const TrainingComment = window.localStorage.getItem("comment-training")
@@ -39,7 +41,7 @@ const NotAuth = () => {
                 Закрыто
             </Text>
             <Text type="medium" overrideClass="not-authorized-text">
-                {window.localStorage.getItem("comment-training")}
+                {Trainings.error}
             </Text>
         </Wrap>
     );
