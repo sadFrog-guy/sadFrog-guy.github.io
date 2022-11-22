@@ -10,30 +10,33 @@ import Text from "../components/ui/GlobalUI/Text/Text";
 const NotAuth = () => {
     const {Trainings} = useContext(Context)
 
-    const checkAuthorized = () => {
-        const UserComment = window.localStorage.getItem("comment-user")
-        const TrainingComment = window.localStorage.getItem("comment-training")
-        const TrainingDetailComment = window.localStorage.getItem("comment-training-detail")
-        const ReferalComment = window.localStorage.getItem("comment-referal")
+    const UserComment = window.localStorage.getItem("comment-user")
+    const TrainingComment = window.localStorage.getItem("comment-training")
+    const TrainingDetailComment = window.localStorage.getItem("comment-training-detail")
+    const ReferalComment = window.localStorage.getItem("comment-referal")
 
-        if(UserComment) {
-            return UserComment
-        }
-
-        if(TrainingComment) {
-            return TrainingComment
-        }
-
-        if(TrainingDetailComment) {
-            return TrainingDetailComment
-        }
-
-        if(ReferalComment) {
-            return ReferalComment
-        }
-
-        return ''
-    }
+    // const checkAuthorized = () => {
+    //     const UserComment = window.localStorage.getItem("comment-user")
+    //     const TrainingComment = window.localStorage.getItem("comment-training")
+    //     const TrainingDetailComment = window.localStorage.getItem("comment-training-detail")
+    //     const ReferalComment = window.localStorage.getItem("comment-referal")
+    //
+    //     if(UserComment) {
+    //         return UserComment
+    //     }
+    //
+    //     if(TrainingComment) {
+    //         return TrainingComment
+    //     }
+    //
+    //     if(TrainingDetailComment) {
+    //         return TrainingDetailComment
+    //     }
+    //
+    //     if(ReferalComment) {
+    //         return ReferalComment
+    //     }
+    // }
 
     return (
         <Wrap className="not-authorized">
@@ -41,7 +44,7 @@ const NotAuth = () => {
                 Закрыто
             </Text>
             <Text type="medium" overrideClass="not-authorized-text">
-                {checkAuthorized}
+                {UserComment || TrainingComment || TrainingDetailComment || ReferalComment}
             </Text>
         </Wrap>
     );
