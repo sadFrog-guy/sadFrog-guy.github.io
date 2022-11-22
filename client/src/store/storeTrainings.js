@@ -22,14 +22,14 @@ export default new class StoreTrainings {
     async getAllTrainings() {
         try {
             const {data} = await Trainings.getAllTrainings()
-            console.log(data)
+            window.localStorage.setItem("comment-training", data.comment)
 
+            console.log(data)
             runInAction(() => {
                 this.trainings = data.sections
                 this.have_subscribe = data.have_subscribe
-            })
 
-            window.localStorage.setItem("comment-training", data.comment)
+            })
         } catch (e) {
             console.log(e)
         }
@@ -47,7 +47,7 @@ export default new class StoreTrainings {
                 this.main_text = parse(data.main_text)
             })
 
-            window.localStorage.setItem("comment-training", data.comment)
+            window.localStorage.setItem("comment-training-detail", data.comment)
         } catch (e) {
             console.log(e)
         }
@@ -90,8 +90,10 @@ export default new class StoreTrainings {
     }
 
     setImagesArray() {
-        this.trainings.forEach(training => {
-            this.imagesArray.push(training.image_url)
-        })
+        if(this.trainings.length) {
+            this.trainings.forEach(training => {
+                this.imagesArray.push(training.image_url)
+            })
+        }
     }
 }

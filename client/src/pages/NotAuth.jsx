@@ -11,8 +11,8 @@ const NotAuth = () => {
     const checkAuthorized = () => {
         const UserComment = window.localStorage.getItem("comment-user")
         const TrainingComment = window.localStorage.getItem("comment-training")
+        const TrainingDetailComment = window.localStorage.getItem("comment-training-detail")
         const ReferalComment = window.localStorage.getItem("comment-referal")
-        const CalculatorComment = window.localStorage.getItem("comment-calculator")
 
         if(UserComment) {
             console.log(UserComment)
@@ -24,17 +24,16 @@ const NotAuth = () => {
             return TrainingComment
         }
 
+        if(TrainingDetailComment) {
+            return TrainingDetailComment
+        }
+
         if(ReferalComment) {
             console.log(ReferalComment)
             return ReferalComment
         }
 
-        if(CalculatorComment) {
-            console.log(CalculatorComment)
-            return CalculatorComment
-        }
-
-        return 'Пожалуйста, перезапустите приложение'
+        return ''
     }
 
     return (
