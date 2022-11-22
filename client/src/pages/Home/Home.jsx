@@ -23,13 +23,13 @@ import {
 import {Navigate, useLocation, useNavigate, useParams} from "react-router-dom";
 import {NOT_AUTH} from "../../router";
 import axios from "axios";
+import {toJS} from "mobx";
 
 const Home = () => {
     const {User, Security} = useContext(Context);
 
     const {modalActive, modalHide, modalShow} = useModal()
-    const {subscribtion, isSubscribtionStarter, subscribeTimer} = useTimeout()
-    User.setTimer(subscribtion, isSubscribtionStarter)
+    const {subscribeTimer} = useTimeout()
     const [isLoading, setLoading] = useState(true)
     const [isLoaded, setLoaded] = useState(false)
 
@@ -46,7 +46,6 @@ const Home = () => {
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
         })
     })
-
 
     useEffect(() => {
         if(isLoaded) {
@@ -69,8 +68,8 @@ const Home = () => {
                 />
 
                 <Subscribtion
-                    isSubscribtionStarter={User.isSubscribtionStarter}
-                    subscribtion={User.subscribtion}
+                    isSubscribtionStarter={JSON.stringify(window.localStorage.getItem("isSubscribtionStarter"))}
+                    subscribtion={JSON.stringify(window.localStorage.getItem("subscribtion"))}
                 />
 
                 <FooterHome/>

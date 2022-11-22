@@ -59,9 +59,10 @@ export default function useTimeout() {
         };
     };
 
+    window.localStorage.setItem("isSubscribtionStarter", JSON.stringify(isSubscribtionStarter))
+    window.localStorage.setItem("subscribtion", JSON.stringify(subscribtion))
+
     return {
-        subscribtion,
-        isSubscribtionStarter,
         subscribeTimer
     }
 
