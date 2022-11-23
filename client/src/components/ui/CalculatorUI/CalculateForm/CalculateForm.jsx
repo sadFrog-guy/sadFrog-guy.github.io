@@ -93,6 +93,7 @@ const CalculateForm = () => {
     useEffect(() => {
         return () => {
             Calculator.changeAmount(0)
+            intervalId = ''
         }
     }, [])
 
