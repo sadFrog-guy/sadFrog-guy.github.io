@@ -92,7 +92,7 @@ const CalculateForm = () => {
 
     useEffect(() => {
         return () => {
-            clearInterval(intervalId)
+            Calculator.changeAmount(0)
         }
     }, [])
 
