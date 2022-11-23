@@ -101,6 +101,7 @@ const CalculateForm = () => {
         }
 
         return () => {
+            clearInterval(intervalId)
             setIntervalRunning(false)
         }
     }, [intervalRunning])
