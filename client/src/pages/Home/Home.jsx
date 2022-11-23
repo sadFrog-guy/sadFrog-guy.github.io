@@ -66,7 +66,9 @@ const Home = () => {
             setLoading(false)
         }
 
-        fetchOnce()
+        if(!User.user) {
+            fetchOnce()
+        }
     }, [])
 
     return (
