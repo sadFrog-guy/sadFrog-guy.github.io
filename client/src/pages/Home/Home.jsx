@@ -56,7 +56,7 @@ const Home = () => {
         backButtonHide()
     }, [])
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         async function fetchOnce() {
             setLoading(true)
             await Security.postHashKey()
