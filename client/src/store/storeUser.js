@@ -20,6 +20,7 @@ export default new class StoreUser {
     training_link
     error_type = 'training'
     error
+    isFirstLoad = true
 
     constructor() {
         makeAutoObservable(this)
@@ -52,6 +53,10 @@ export default new class StoreUser {
 
     setErrorType(type) {
         this.error_type = type
+    }
+
+    setFirstLoad(boolean) {
+        this.isFirstLoad = boolean
     }
 
     get checkAccess() {

@@ -57,16 +57,17 @@ const Home = () => {
     }, [])
 
     useEffect(() => {
-        async function fetchOnce() {
+        const fetchOnce = async() => {
             setLoading(true)
             await Security.postHashKey()
             await User.getUserInfo()
+            User.setFirstLoad(false)
             avatarLoader()
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
             setLoading(false)
         }
 
-        if(!User.user) {
+        if(User.isFirstLoad) {
             fetchOnce()
         }
     }, [])
