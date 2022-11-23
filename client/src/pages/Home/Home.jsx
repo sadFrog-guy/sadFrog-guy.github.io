@@ -57,14 +57,16 @@ const Home = () => {
     }, [])
 
     useLayoutEffect(() => {
-        window.addEventListener("load", async function() {
+        async function fetchOnce() {
             setLoading(true)
             await Security.postHashKey()
             await User.getUserInfo()
             avatarLoader()
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
             setLoading(false)
-        })
+        }
+
+        fetchOnce()
     })
 
     return (
