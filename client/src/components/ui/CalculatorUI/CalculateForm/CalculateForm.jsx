@@ -31,7 +31,7 @@ const CalculateForm = () => {
         Calculator.clearError()
 
         if(value > 0 || value === '') {
-            setVal(value)
+            Calculator.changePreAmount(value)
         }
 
         if(value.startsWith('0')) {
@@ -53,12 +53,12 @@ const CalculateForm = () => {
     const buttonOnClick = debounce(async() => {
         haptic()
 
-        if(val && !Calculator.error) {
+        if(Calculator.pre_amount && !Calculator.error) {
             setClicked(true)
             setIsLoading(true)
 
             if(isClicked === false) {
-                Calculator.changeAmount(val)
+                Calculator.changeAmount(Calculator.pre_amount)
                 await Calculator.getChains(Calculator.amount)
                 setIsChainsLoaded(true)
                 Calculator.setImagesArray()
@@ -92,7 +92,7 @@ const CalculateForm = () => {
 
     useEffect(() => {
         return () => {
-            Calculator.changeAmount(0)
+            clearInterval(intervalId)
         }
     }, [])
 
@@ -116,7 +116,7 @@ const CalculateForm = () => {
                 pattern="/^\d+$/"
                 onChange={inputOnChange}
                 onFocus={inputOnFocus}
-                value={addCommas(removeNonNumeric(val))}
+                value={addCommas(removeNonNumeric(Calculator.pre_amount))}
                 type={isMobile ? "tel" : "text"}
                 placeholder="Введите сумму прокрутки"
                 overrideClass="calculator-input"

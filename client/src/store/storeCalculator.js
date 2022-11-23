@@ -5,6 +5,7 @@ export default new class StoreCalculator {
 
     chains = []
     amount = ''
+    pre_amount = ''
     auto_update = false
     autoupdate_delay
     error
@@ -37,6 +38,10 @@ export default new class StoreCalculator {
 
     changeAmount(amount) {
         this.amount = amount
+    }
+
+    changePreAmount(amount) {
+        this.pre_amount = amount
     }
 
     clearError() {
