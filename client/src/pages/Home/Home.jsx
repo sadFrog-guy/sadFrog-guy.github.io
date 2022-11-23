@@ -57,7 +57,7 @@ const Home = () => {
     }, [])
 
     useLayoutEffect(() => {
-        window.addEventListener("load", async() => {
+        window.addEventListener("load", async function() {
             setLoading(true)
             await Security.postHashKey()
             await User.getUserInfo()
