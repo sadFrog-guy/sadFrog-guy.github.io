@@ -97,6 +97,7 @@ const CalculateForm = () => {
             intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
         } else {
             clearInterval(intervalId)
+            intervalId = 0
         }
 
         return () => {
