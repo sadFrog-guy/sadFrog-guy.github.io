@@ -39,7 +39,6 @@ const Home = () => {
             setLoading(true)
             await Security.postHashKey()
             await User.getUserInfo()
-            setLoading(false)
             User.setFirstLoad(false)
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
         }
@@ -49,7 +48,11 @@ const Home = () => {
         }
     }, [])
 
-    console.log(imageLoaded)
+    useEffect(() => {
+        if(imageLoaded) {
+            setLoading(false)
+        }
+    }, [imageLoaded])
 
     return (
         <Wrapper>
