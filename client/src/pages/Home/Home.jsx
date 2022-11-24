@@ -56,7 +56,7 @@ const Home = () => {
                     modalHide={modalHide}
                 />
 
-                <HeaderHome avatarOnLoad={() => console.log('yours only yours')} />
+                <HeaderHome avatarOnLoad={() => setLoading(true)} />
 
                 <ButtonList
                     modalShow={modalShow}
