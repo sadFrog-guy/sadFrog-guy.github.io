@@ -49,10 +49,6 @@ const CalculateForm = () => {
         intervalId.current = setInterval(intervalId.current, Calculator.autoupdate_delay * 1000)
     }
 
-    useEffect(() => {
-        console.log(intervalId.current)
-    }, [intervalId.current])
-
     const buttonOnClick = debounce(async() => {
         haptic()
 
@@ -80,13 +76,11 @@ const CalculateForm = () => {
         if(Calculator.counter === Calculator.imagesArray.length && Calculator.imagesArray.length > 0) {
             Calculator.setImagesLoaded(true)
         }
-
-        console.log(Calculator.counter + ', ' + Calculator.imagesArray.length)
     },[Calculator.counter])
 
     useEffect(() => {
         return () => {
-            Calculator.changeAmount(0)
+            clearInterval(intervalId.current)
         }
     }, [])
 
