@@ -1455,6 +1455,10 @@ body.dark > #root > .wrapper > .currency-list > .currency-item.red {
     width: 100%;
 }
 
+.currency-list.hide {
+    visibility: hidden;
+}
+
 .currency-item {
     padding: 20px 20px 26px 20px;
     margin-bottom: 26px;

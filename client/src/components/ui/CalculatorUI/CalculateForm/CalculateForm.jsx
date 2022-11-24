@@ -66,7 +66,7 @@ const CalculateForm = () => {
     useEffect(() => {
         if(Calculator.counter === Calculator.imagesArray.length && Calculator.imagesArray.length > 0) {
             setLoading(false)
-            // Calculator.setImagesLoaded(true)
+            Calculator.setImagesLoaded(true)
         }
 
         console.log(Calculator.counter)

@@ -10,7 +10,7 @@ const CurrencyList = () => {
     const {Calculator} = useContext(Context)
 
     return (
-        <Wrap className="currency-list">
+        <Wrap className={Calculator.isImagesLoaded ? "currency-list" : "currency-list hide"}>
             {Calculator.chains.map((chain, index) => {
                     return (
                         <CurrencyItem
