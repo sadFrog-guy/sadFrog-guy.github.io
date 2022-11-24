@@ -116,6 +116,7 @@ const TrainingDetail = () => {
 
         async function fetchData() {
             await Trainings.getOneTraining(id)
+            if(!Trainings.training.video_url && !Trainings.training.image_url) setLoading(false)
             tgButton()
             window.addEventListener('scroll', handleScroll)
         }
