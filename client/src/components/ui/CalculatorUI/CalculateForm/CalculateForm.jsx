@@ -56,6 +56,9 @@ const CalculateForm = () => {
 
             Calculator.changeAmount(Calculator.pre_amount)
             await Calculator.getChains(Calculator.amount)
+
+            setLoading(false)
+
             Calculator.setImagesArray()
             intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
         } else {
@@ -65,7 +68,6 @@ const CalculateForm = () => {
 
     useEffect(() => {
         if(Calculator.counter === Calculator.imagesArray.length && Calculator.imagesArray.length > 0) {
-            setLoading(false)
             Calculator.setImagesLoaded(true)
         }
 
