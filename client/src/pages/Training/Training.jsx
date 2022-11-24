@@ -38,21 +38,6 @@ const Training = () => {
     //         .catch(err => console.log("Failed to load images", err))
     // }, [])
 
-    function loadImages(files) {
-        let i = 0
-        let filesLoading = files.length;
-        const onload = () => --filesLoading === 0 && setImagesLoaded(true);
-        const images = {};
-        while (i < files.length) {
-            const img = images[files[i]] = new Image;
-            img.src = files[i++];
-            img.onload = onload;
-            console.log(img)
-        }
-
-        setImages(images)
-    }
-
     useEffect(() => {
         exitConfirmation()
 
@@ -62,8 +47,6 @@ const Training = () => {
 
         async function fetchData() {
             await Trainings.getAllTrainings()
-            loadImages(Trainings.imagesArray)
-            console.log(images)
             Trainings.setImagesArray()
         }
         fetchData()
@@ -74,10 +57,10 @@ const Training = () => {
     }, [])
 
     useEffect(() => {
-        if(isImagesLoaded) {
+        // if(isImagesLoaded) {
             setLoading(false)
-        }
-    }, [isImagesLoaded])
+        // }
+    }, [])
 
     const itemHandleClick = (training) => {
         Trainings.setErrorType(training)
@@ -104,7 +87,6 @@ const Training = () => {
                         <TrainingItem
                             id={training.id}
                             key={training.id}
-                            // image={}
                             trainingInfo={training}
                             onClick={() => itemHandleClick(training)}
                             modalShow={modalShow}
