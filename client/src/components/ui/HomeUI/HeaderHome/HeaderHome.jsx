@@ -9,14 +9,14 @@ import {useContext} from "react";
 import {Context} from "../../../../utils/context";
 import {haptic, vibrationDuration} from "../../../../utils/telegramAPI";
 
-const HeaderHome = ({avatarOnLoad}) => {
+const HeaderHome = () => {
     const {User} = useContext(Context);
 
     return (
         <Header>
             <Wrap className="user-info">
                 <Text type="medium" id="username">{User.username}</Text>
-                <Avatar onLoad={avatarOnLoad} source={User.avatar}/>
+                <Avatar source={User.avatar}/>
             </Wrap>
             <LinkTG onClick={haptic} source={User.course_support_link} id="settings-bubble">
                 <QuestionIcon/>

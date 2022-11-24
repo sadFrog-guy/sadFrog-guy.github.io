@@ -21,6 +21,7 @@ export default new class StoreUser {
     error_type = 'training'
     error
     isFirstLoad = true
+    isAvatarLoaded = false
 
     constructor() {
         makeAutoObservable(this)
@@ -57,6 +58,10 @@ export default new class StoreUser {
 
     setFirstLoad(boolean) {
         this.isFirstLoad = boolean
+    }
+
+    setAvatarLoaded(boolean) {
+        this.isAvatarLoaded = boolean
     }
 
     get checkAccess() {

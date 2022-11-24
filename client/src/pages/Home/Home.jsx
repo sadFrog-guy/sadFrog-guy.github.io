@@ -26,7 +26,6 @@ const Home = () => {
     const {modalActive, modalHide, modalShow} = useModal()
     const {subscribeTimer} = useTimeout()
     const [isLoading, setLoading] = useState(false)
-    const [imageLoaded, setImageLoaded] = useState(false)
 
     useEffect(() => {
         tgInintial()
@@ -36,7 +35,6 @@ const Home = () => {
 
     useEffect(() => {
         const fetchOnce = async() => {
-            setLoading(true)
             await Security.postHashKey()
             await User.getUserInfo()
             User.setFirstLoad(false)
@@ -48,14 +46,6 @@ const Home = () => {
         }
     }, [])
 
-    useEffect(() => {
-        if(imageLoaded) {
-            setLoading(false)
-        }
-
-        console.log(imageLoaded)
-    }, [imageLoaded])
-
     return (
         <Wrapper>
             <WrapperHome>
@@ -64,7 +54,7 @@ const Home = () => {
                     modalHide={modalHide}
                 />
 
-                <HeaderHome avatarOnLoad={() => setImageLoaded(true)} />
+                <HeaderHome/>
 
                 <ButtonList
                     modalShow={modalShow}
@@ -79,7 +69,7 @@ const Home = () => {
             </WrapperHome>
 
             <Loader
-                isLoading={isLoading}
+                isLoading={User.isAvatarLoaded}
             />
 
             {User.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
