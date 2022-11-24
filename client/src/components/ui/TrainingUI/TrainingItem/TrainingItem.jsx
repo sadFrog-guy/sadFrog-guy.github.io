@@ -20,6 +20,7 @@ import {Context} from "../../../../utils/context";
 const TrainingItem = ({trainingInfo, modalShow, ...props}) => {
     const {Trainings} = useContext(Context)
     const [isShow, setShow] = useState(false)
+    let counter = 0
 
     const toggleContentHandler = () => {
         if(trainingInfo.allowed_viewing) {
@@ -36,9 +37,15 @@ const TrainingItem = ({trainingInfo, modalShow, ...props}) => {
         }
     }
 
+    useEffect(() => {
+        if(counter === 4) {
+            console.log('all images loaded')
+        }
+    },[counter])
+
     return (
         <div className="training-item" id={trainingInfo.id} {...props}>
-            <TrainingImage onLoad={() => console.log('loaded')} src={trainingInfo.image_url}/>
+            <TrainingImage onLoad={() => counter++} src={trainingInfo.image_url}/>
             <TrainingBrief isShow={isShow}  onClick={toggleContentHandler}>
                 <TrainingBriefInner
                     className={
