@@ -46,6 +46,8 @@ const Home = () => {
         }
     }, [])
 
+    console.log(User.isAvatarLoaded)
+
     return (
         <Wrapper>
             <WrapperHome>
