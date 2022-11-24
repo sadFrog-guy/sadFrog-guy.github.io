@@ -6,7 +6,7 @@ const Avatar = ({source}) => {
 
     return (
         <div className="avatar-wrap">
-            <img src={source} onLoad={() => User.setAvatarLoaded(true)} id="avatar" alt="avatar"/>
+            <img src={source} id="avatar" alt="avatar"/>
         </div>
     );
 };
