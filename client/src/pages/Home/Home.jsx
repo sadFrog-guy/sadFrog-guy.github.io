@@ -51,6 +51,8 @@ const Home = () => {
         if(User.isAvatarLoaded) {
             setLoading(false)
         }
+
+        console.log(User.isAvatarLoaded)
     }, [User.isAvatarLoaded])
 
     return (
