@@ -38,7 +38,6 @@ const Home = () => {
             setLoading(true)
             await Security.postHashKey()
             await User.getUserInfo()
-            setLoading(false)
             User.setFirstLoad(false)
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
         }
@@ -49,7 +48,9 @@ const Home = () => {
     }, [])
 
     useEffect(() => {
-        console.log(User.isAvatarLoaded)
+        if(User.isAvatarLoaded) {
+            setLoading(false)
+        }
     }, [User.isAvatarLoaded])
 
     return (
