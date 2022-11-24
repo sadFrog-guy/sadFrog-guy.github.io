@@ -12,12 +12,13 @@ import Loader from "../../components/ui/GlobalUI/Loader/Loader";
 import {backButtonHide, backButtonShow, exitConfirmation, tgWebApp} from "../../utils/telegramAPI";
 import TrainingModal from "../../components/ui/TrainingUI/TrainingModal/TrainingModal";
 import {NOT_AUTH} from "../../router";
+import {toJS} from "mobx";
 
 const Training = () => {
     const {Trainings} = useContext(Context);
     const {modalActive, modalHide, modalShow} = useModal()
     const navigate = useNavigate()
-    const [isLoading, setLoading] = useState(false)
+    const [isLoading, setLoading] = useState(true)
     const [counter, setCounter] = useState(0)
 
     useEffect(() => {
@@ -28,10 +29,8 @@ const Training = () => {
         })
 
         async function fetchData() {
-            setLoading(true)
             await Trainings.getAllTrainings()
             Trainings.setImagesArray()
-            setLoading(false)
         }
         fetchData()
 
@@ -40,11 +39,13 @@ const Training = () => {
         }
     }, [])
 
-    // useEffect(() => {
-    //     if(counter === Trainings.imagesArray.length) {
-    //         setLoading(false)
-    //     }
-    // },[counter])
+    console.log(toJS(Trainings.imagesArray.length))
+
+    useEffect(() => {
+        if(counter === Trainings.imagesArray.length) {
+            setLoading(false)
+        }
+    },[counter])
 
     const itemHandleClick = (training) => {
         Trainings.setErrorType(training)
