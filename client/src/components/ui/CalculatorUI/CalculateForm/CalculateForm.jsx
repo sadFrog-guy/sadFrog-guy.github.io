@@ -59,8 +59,8 @@ const CalculateForm = () => {
             if(isClicked === false) {
                 Calculator.changeAmount(Calculator.pre_amount)
                 await Calculator.getChains(Calculator.amount)
-                setLoading(false)
                 Calculator.setImagesArray()
+                setLoading(false)
                 intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
             } else {
                 setLoading(false)
@@ -92,12 +92,6 @@ const CalculateForm = () => {
             setDisabled(false)
         }
     }, [Calculator.error])
-
-    useEffect(() => {
-        if(Calculator.imagesLoaded && isChainsLoaded) {
-            setIsLoading(false)
-        }
-    }, [Calculator.imagesLoaded, isChainsLoaded])
 
     return (
         <Wrap className="form">
