@@ -10,7 +10,6 @@ import {isMobile} from "react-device-detect";
 import Text from "../../GlobalUI/Text/Text";
 import {debounce} from "debounce"
 import {haptic} from "../../../../utils/telegramAPI";
-import {clear} from "@testing-library/user-event/dist/clear";
 
 const CalculateForm = () => {
     const {Calculator} = useContext(Context)
@@ -19,7 +18,6 @@ const CalculateForm = () => {
     const [isDisabled, setDisabled] = useState(true)
     const [isClicked, setClicked] = useState(false)
     const [val, setVal] = useState('')
-    const [intervalRunning, setIntervalRunning] = useState(false)
     let intervalId
 
     const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -64,7 +62,7 @@ const CalculateForm = () => {
                 await Calculator.getChains(Calculator.amount)
                 setIsChainsLoaded(true)
                 Calculator.setImagesArray()
-                setIntervalRunning(true)
+                intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
                 setIsLoading(false)
             } else {
                 setIsLoading(false)
@@ -93,18 +91,10 @@ const CalculateForm = () => {
     }, [])
 
     useEffect(() => {
-        if(intervalRunning) {
-            intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
-        } else {
-            clearInterval(intervalId)
-            intervalId = 0
-        }
-
         return () => {
-            clearInterval(intervalId)
-            setIntervalRunning(false)
+            Calculator.changeAmount(0)
         }
-    }, [intervalRunning])
+    }, [])
 
     useEffect(() => {
         if(Calculator.error) {

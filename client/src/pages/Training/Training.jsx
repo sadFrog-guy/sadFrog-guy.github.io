@@ -19,24 +19,38 @@ const Training = () => {
     const navigate = useNavigate()
     const [isLoading, setLoading] = useState(true)
     const [isImagesLoaded, setImagesLoaded] = useState(false)
-    const [isTrainingsLoaded, setTrainingsLoaded] = useState(false)
+    const [images, setImages] = useState({})
 
-    useEffect(() => {
-        const loadImage = image => {
-            return new Promise((resolve, reject) => {
-                const loadImg = new Image()
-                loadImg.src = image
-                loadImg.onload = () =>
-                    resolve(image)
+    // useEffect(() => {
+    //     const loadImage = image => {
+    //         return new Promise((resolve, reject) => {
+    //             const loadImg = new Image()
+    //             loadImg.src = image
+    //             loadImg.onload = () =>
+    //                 resolve(image)
+    //
+    //             loadImg.onerror = err => reject(err)
+    //         })
+    //     }
+    //
+    //     Promise.all(Trainings.imagesArray.map(image => loadImage(image)))
+    //         .then(() => setImagesLoaded(true))
+    //         .catch(err => console.log("Failed to load images", err))
+    // }, [])
 
-                loadImg.onerror = err => reject(err)
-            })
+    function loadImages(names, files) {
+        let i = 0
+        let numLoading = names.length;
+        const onload = () => --numLoading === 0 && setImagesLoaded(true);
+        const images = {};
+        while (i < names.length) {
+            const img = images[names[i]] = new Image;
+            img.src = files[i++];
+            img.onload = onload;
         }
 
-        Promise.all(Trainings.imagesArray.map(image => loadImage(image)))
-            .then(() => setImagesLoaded(true))
-            .catch(err => console.log("Failed to load images", err))
-    }, [])
+        setImages(images)
+    }
 
     useEffect(() => {
         exitConfirmation()
@@ -47,7 +61,8 @@ const Training = () => {
 
         async function fetchData() {
             await Trainings.getAllTrainings()
-            setTrainingsLoaded(true)
+            loadImages(Trainings.imagesArray, Trainings.imagesArray)
+            console.log(images)
             Trainings.setImagesArray()
         }
         fetchData()
@@ -58,10 +73,10 @@ const Training = () => {
     }, [])
 
     useEffect(() => {
-        if(isImagesLoaded && isTrainingsLoaded) {
+        if(isImagesLoaded) {
             setLoading(false)
         }
-    }, [isImagesLoaded, isTrainingsLoaded])
+    }, [isImagesLoaded])
 
     const itemHandleClick = (training) => {
         Trainings.setErrorType(training)
@@ -83,11 +98,12 @@ const Training = () => {
             </Navigation>
 
             <TrainingList title="Обучение">
-                {Trainings?.trainings?.map(training => {
+                {Trainings?.trainings?.map((training, index) => {
                     return (
                         <TrainingItem
                             id={training.id}
                             key={training.id}
+                            // image={}
                             trainingInfo={training}
                             onClick={() => itemHandleClick(training)}
                             modalShow={modalShow}
