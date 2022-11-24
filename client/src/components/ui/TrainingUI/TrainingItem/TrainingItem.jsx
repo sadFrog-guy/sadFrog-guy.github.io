@@ -20,7 +20,7 @@ import {Context} from "../../../../utils/context";
 const TrainingItem = ({trainingInfo, modalShow, ...props}) => {
     const {Trainings} = useContext(Context)
     const [isShow, setShow] = useState(false)
-    let counter = 0
+    const [counter, setCounter] = useState(0)
 
     const toggleContentHandler = () => {
         if(trainingInfo.allowed_viewing) {
@@ -47,7 +47,7 @@ const TrainingItem = ({trainingInfo, modalShow, ...props}) => {
 
     return (
         <div className="training-item" id={trainingInfo.id} {...props}>
-            <TrainingImage onLoad={() => counter += 1} src={trainingInfo.image_url}/>
+            <TrainingImage onLoad={() => setCounter(prev => prev + 1)} src={trainingInfo.image_url}/>
             <TrainingBrief isShow={isShow}  onClick={toggleContentHandler}>
                 <TrainingBriefInner
                     className={
