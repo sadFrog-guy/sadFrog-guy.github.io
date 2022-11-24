@@ -49,6 +49,10 @@ const CalculateForm = () => {
         setInterval(intervalId.current, Calculator.autoupdate_delay * 1000)
     }
 
+    useEffect(() => {
+        console.log(intervalId.current)
+    }, [intervalId])
+
     const buttonOnClick = debounce(async() => {
         haptic()
 
