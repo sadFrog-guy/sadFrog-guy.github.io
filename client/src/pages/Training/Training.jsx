@@ -47,6 +47,7 @@ const Training = () => {
             const img = images[files[i]] = new Image;
             img.src = files[i++];
             img.onload = onload;
+            console.log(img)
         }
 
         setImages(images)
