@@ -44,7 +44,8 @@ const CalculateForm = () => {
     }
 
     const intervalDelayUpdate = async() => {
-        clearInterval(intervalDelayUpdate)
+        clearInterval(intervalId)
+        console.log(intervalId)
         if(Calculator.auto_update && !Calculator.error) await Calculator.getChains(Calculator.amount)
         setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
     }
@@ -57,11 +58,13 @@ const CalculateForm = () => {
             setLoading(true)
 
             if(isClicked === false) {
+                clearInterval(intervalId)
+                console.log(intervalId)
                 Calculator.changeAmount(Calculator.pre_amount)
                 await Calculator.getChains(Calculator.amount)
                 Calculator.setImagesArray()
                 setLoading(false)
-                setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
+                setTimeout(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
             } else {
                 setLoading(false)
                 return false
