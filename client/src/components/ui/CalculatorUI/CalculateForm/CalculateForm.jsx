@@ -68,6 +68,8 @@ const CalculateForm = () => {
             setLoading(false)
             Calculator.setImagesLoaded(true)
         }
+
+        console.log(Calculator.counter)
     },[Calculator.counter])
 
     useEffect(() => {
