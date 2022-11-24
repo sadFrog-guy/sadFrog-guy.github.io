@@ -51,12 +51,13 @@ const CalculateForm = () => {
 
     useEffect(() => {
         console.log(intervalId.current)
-    }, [intervalId])
+    }, [intervalId.current])
 
     const buttonOnClick = debounce(async() => {
         haptic()
 
         if(Calculator.pre_amount && !Calculator.error) {
+            clearInterval(intervalId.current)
             setClicked(true)
             setLoading(true)
 
