@@ -35,8 +35,10 @@ const Home = () => {
 
     useEffect(() => {
         const fetchOnce = async() => {
+            setLoading(true)
             await Security.postHashKey()
             await User.getUserInfo()
+            setLoading(false)
             User.setFirstLoad(false)
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
         }
