@@ -1142,7 +1142,7 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
     margin: 17px 0;
 }
 
-.article_text:last-child {
+.article_text > img:last-child {
     margin-bottom: 0;
 }
 
