@@ -57,7 +57,7 @@ const CalculateForm = () => {
         haptic()
 
         if(Calculator.pre_amount && !Calculator.error) {
-            clearInterval(intervalId.current)
+            if(intervalId.current) clearInterval(intervalId.current)
             setClicked(true)
             setLoading(true)
 
@@ -66,7 +66,7 @@ const CalculateForm = () => {
                 await Calculator.getChains(Calculator.amount)
                 Calculator.setImagesArray()
                 setLoading(false)
-                setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
+                intervalId.current = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
             } else {
                 setLoading(false)
                 return false
