@@ -51,6 +51,7 @@ const CalculateForm = () => {
 
     const buttonOnClick = debounce(async() => {
         haptic()
+        clearInterval(intervalId)
 
         if(Calculator.pre_amount && !Calculator.error) {
             setClicked(true)
