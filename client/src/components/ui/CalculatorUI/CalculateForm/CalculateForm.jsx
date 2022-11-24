@@ -69,7 +69,7 @@ const CalculateForm = () => {
             Calculator.setImagesLoaded(true)
         }
 
-        console.log(Calculator.counter)
+        console.log(Calculator.counter + ', ' + Calculator.imagesArray.length)
     },[Calculator.counter])
 
     useEffect(() => {
