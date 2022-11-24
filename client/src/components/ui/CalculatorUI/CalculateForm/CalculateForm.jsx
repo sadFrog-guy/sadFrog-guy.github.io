@@ -44,9 +44,9 @@ const CalculateForm = () => {
     }
 
     const intervalDelayUpdate = async() => {
-        clearInterval(intervalId.current)
+        // clearInterval(intervalId.current)
         if(Calculator.auto_update && !Calculator.error) await Calculator.getChains(Calculator.amount)
-        setInterval(intervalId.current, Calculator.autoupdate_delay * 1000)
+        // setInterval(intervalId.current, Calculator.autoupdate_delay * 1000)
     }
 
     useEffect(() => {
