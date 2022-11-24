@@ -26,6 +26,7 @@ const CalculateForm = () => {
         const value = e.target.value.replace(/\D/g, "")
 
         setDisabled(false)
+        setClicked(false)
         Calculator.clearError()
 
         if(value > 0 || value === '') {
@@ -52,15 +53,19 @@ const CalculateForm = () => {
         haptic()
 
         if(Calculator.pre_amount && !Calculator.error) {
+            setClicked(true)
             setLoading(true)
 
-            Calculator.changeAmount(Calculator.pre_amount)
-            await Calculator.getChains(Calculator.amount)
-
-            setLoading(false)
-
-            Calculator.setImagesArray()
-            intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
+            if(isClicked === false) {
+                Calculator.changeAmount(Calculator.pre_amount)
+                await Calculator.getChains(Calculator.amount)
+                setLoading(false)
+                Calculator.setImagesArray()
+                intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
+            } else {
+                setLoading(false)
+                return false
+            }
         } else {
             setDisabled(true)
         }
@@ -87,6 +92,12 @@ const CalculateForm = () => {
             setDisabled(false)
         }
     }, [Calculator.error])
+
+    useEffect(() => {
+        if(Calculator.imagesLoaded && isChainsLoaded) {
+            setIsLoading(false)
+        }
+    }, [Calculator.imagesLoaded, isChainsLoaded])
 
     return (
         <Wrap className="form">
