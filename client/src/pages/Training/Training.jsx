@@ -64,7 +64,7 @@ const Training = () => {
             </Navigation>
 
             <TrainingList title="Обучение">
-                {Trainings?.trainings?.map((training, index) => {
+                {Trainings?.trainings?.map(training => {
                     return (
                         <TrainingItem
                             id={training.id}
