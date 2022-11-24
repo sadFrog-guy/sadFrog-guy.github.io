@@ -13,8 +13,7 @@ import {haptic} from "../../../../utils/telegramAPI";
 
 const CalculateForm = () => {
     const {Calculator} = useContext(Context)
-    const [isLoading, setIsLoading] = useState(false)
-    const [isChainsLoaded, setIsChainsLoaded] = useState(false)
+    const [isLoading, setLoading] = useState(false)
     const [isDisabled, setDisabled] = useState(true)
     const [isClicked, setClicked] = useState(false)
     const [val, setVal] = useState('')
@@ -55,17 +54,15 @@ const CalculateForm = () => {
 
         if(Calculator.pre_amount && !Calculator.error) {
             setClicked(true)
-            setIsLoading(true)
+            setLoading(true)
 
             if(isClicked === false) {
                 Calculator.changeAmount(Calculator.pre_amount)
                 await Calculator.getChains(Calculator.amount)
-                setIsChainsLoaded(true)
                 Calculator.setImagesArray()
                 intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
-                setIsLoading(false)
             } else {
-                setIsLoading(false)
+                setLoading(false)
                 return false
             }
         } else {
@@ -74,21 +71,10 @@ const CalculateForm = () => {
     }, 300)
 
     useEffect(() => {
-        const loadImage = image => {
-            return new Promise((resolve, reject) => {
-                const loadImg = new Image()
-                loadImg.src = image
-                loadImg.onload = () =>
-                    resolve(image)
-
-                loadImg.onerror = err => reject(err)
-            })
+        if(Calculator.counter === Calculator.imagesArray.length && Calculator.imagesArray.length > 0) {
+            setLoading(false)
         }
-
-        Promise.all(Calculator.imagesArray.map(image => loadImage(image)))
-            .then(() => Calculator.changeImagesLoaded(true))
-            .catch(err => console.log("Failed to load images", err))
-    }, [])
+    },[Calculator.counter])
 
     useEffect(() => {
         return () => {
@@ -103,12 +89,6 @@ const CalculateForm = () => {
             setDisabled(false)
         }
     }, [Calculator.error])
-
-    useEffect(() => {
-        if(Calculator.imagesLoaded && isChainsLoaded) {
-            setIsLoading(false)
-        }
-    }, [Calculator.imagesLoaded, isChainsLoaded])
 
     return (
         <Wrap className="form">

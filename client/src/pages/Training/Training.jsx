@@ -19,7 +19,6 @@ const Training = () => {
     const {modalActive, modalHide, modalShow} = useModal()
     const navigate = useNavigate()
     const [isLoading, setLoading] = useState(true)
-    const [counter, setCounter] = useState(0)
 
     useEffect(() => {
         exitConfirmation()
@@ -42,10 +41,10 @@ const Training = () => {
     console.log(toJS(Trainings.imagesArray.length))
 
     useEffect(() => {
-        if(counter === Trainings.imagesArray.length && Trainings.imagesArray.length > 0) {
+        if(Trainings.counter === Trainings.imagesArray.length && Trainings.imagesArray.length > 0) {
             setLoading(false)
         }
-    },[counter])
+    },[Trainings.counter])
 
     const itemHandleClick = (training) => {
         Trainings.setErrorType(training)
@@ -72,7 +71,6 @@ const Training = () => {
                         <TrainingItem
                             id={training.id}
                             key={training.id}
-                            setCounter={setCounter}
                             trainingInfo={training}
                             onClick={() => itemHandleClick(training)}
                             modalShow={modalShow}

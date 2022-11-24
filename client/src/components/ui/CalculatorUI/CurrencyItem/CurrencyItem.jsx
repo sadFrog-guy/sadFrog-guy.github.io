@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import LightingIcon from "../../../icons/LightingIcon/LightingIcon";
 import Wrap from "../../../utils/Wrap/Wrap";
 import Rectangle from "../../GlobalUI/Rectangle/Rectangle";
 import CurrencyHeader from "../CurrencyHeader/CurrencyHeader";
 import CurrencyForecast from "../CurrencyForecast/CurrencyForecast";
 import CurrencyValue from "../CurrencyValue/CurrencyValue";
+import {Context} from "../../../../utils/context";
 
 const CurrencyItem = ({chain, ...props}) => {
+    const {Calculator} = useContext(Context)
+
     let currencyStyle
 
     switch (chain.style) {
@@ -39,7 +42,11 @@ const CurrencyItem = ({chain, ...props}) => {
             />
 
             <Wrap className="currency-market">
-                <img src={chain.market_logo} className="market-logo" alt=""/>
+                <img
+                    onLoad={() => Calculator.setCounter(Calculator.counter++)}
+                    src={chain.market_logo}
+                    className="market-logo"
+                    alt=""/>
             </Wrap>
         </Rectangle>
     );

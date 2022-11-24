@@ -17,7 +17,7 @@ import {useSearchParams} from "react-router-dom";
 import {LINK_TRAININGS_ITEM} from "../../../../router";
 import {Context} from "../../../../utils/context";
 
-const TrainingItem = ({trainingInfo, modalShow, setCounter, ...props}) => {
+const TrainingItem = ({trainingInfo, modalShow, ...props}) => {
     const {Trainings} = useContext(Context)
     const [isShow, setShow] = useState(false)
 
@@ -38,7 +38,7 @@ const TrainingItem = ({trainingInfo, modalShow, setCounter, ...props}) => {
 
     return (
         <div className="training-item" id={trainingInfo.id} {...props}>
-            <TrainingImage onLoad={() => setCounter(prev => prev += 1)} src={trainingInfo.image_url}/>
+            <TrainingImage onLoad={() => Trainings.setCounter(Trainings.counter++)} src={trainingInfo.image_url}/>
             <TrainingBrief isShow={isShow}  onClick={toggleContentHandler}>
                 <TrainingBriefInner
                     className={

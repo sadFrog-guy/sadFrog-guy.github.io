@@ -11,7 +11,7 @@ export default new class StoreCalculator {
     error
     have_subscribe
     imagesArray = []
-    imagesLoaded = false
+    counter = 0
 
     constructor() {
         makeAutoObservable(this)
@@ -55,7 +55,7 @@ export default new class StoreCalculator {
         })
     }
 
-    changeImagesLoaded(boolean) {
-        this.imagesLoaded = boolean
+    setCounter(number) {
+        this.counter = number
     }
 }

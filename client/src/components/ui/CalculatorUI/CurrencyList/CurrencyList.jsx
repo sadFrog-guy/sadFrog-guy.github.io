@@ -11,9 +11,7 @@ const CurrencyList = () => {
 
     return (
         <Wrap className="currency-list">
-            {Calculator.imagesLoaded
-                ?
-                Calculator.chains.map((chain, index) => {
+            {Calculator?.chains?.map((chain, index) => {
                     return (
                         <CurrencyItem
                             chain={chain}
@@ -21,7 +19,6 @@ const CurrencyList = () => {
                         />
                     )
                 })
-                : ''
             }
 
             {Calculator.have_subscribe === false && <Navigate to={NOT_AUTH}/>}

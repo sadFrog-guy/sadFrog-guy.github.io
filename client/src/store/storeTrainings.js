@@ -15,6 +15,7 @@ export default new class StoreTrainings {
     video_link = ''
     imagesArray = []
     error = ''
+    counter = 0
 
     constructor() {
         makeAutoObservable(this)
@@ -97,5 +98,9 @@ export default new class StoreTrainings {
         } catch (e) {
             console.log(e)
         }
+    }
+
+    setCounter(number) {
+        this.counter = number
     }
 }
