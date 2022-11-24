@@ -62,7 +62,7 @@ const CalculateForm = () => {
                 await Calculator.getChains(Calculator.amount)
                 Calculator.setImagesArray()
                 setLoading(false)
-                setTimeout(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
+                setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
             } else {
                 setLoading(false)
                 return false
