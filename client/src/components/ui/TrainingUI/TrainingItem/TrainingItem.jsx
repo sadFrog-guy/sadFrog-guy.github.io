@@ -17,10 +17,9 @@ import {useSearchParams} from "react-router-dom";
 import {LINK_TRAININGS_ITEM} from "../../../../router";
 import {Context} from "../../../../utils/context";
 
-const TrainingItem = ({trainingInfo, modalShow, ...props}) => {
+const TrainingItem = ({trainingInfo, modalShow, setCounter, ...props}) => {
     const {Trainings} = useContext(Context)
     const [isShow, setShow] = useState(false)
-    const [counter, setCounter] = useState(0)
 
     const toggleContentHandler = () => {
         if(trainingInfo.allowed_viewing) {
@@ -36,14 +35,6 @@ const TrainingItem = ({trainingInfo, modalShow, ...props}) => {
             modalShow()
         }
     }
-
-    useEffect(() => {
-        if(counter === 4) {
-            console.log('all images loaded')
-        }
-
-        console.log(counter)
-    },[counter])
 
     return (
         <div className="training-item" id={trainingInfo.id} {...props}>

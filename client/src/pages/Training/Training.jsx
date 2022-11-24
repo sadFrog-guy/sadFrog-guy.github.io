@@ -20,6 +20,7 @@ const Training = () => {
     const [isLoading, setLoading] = useState(true)
     const [isImagesLoaded, setImagesLoaded] = useState(false)
     const [images, setImages] = useState({})
+    const [counter, setCounter] = useState(0)
 
     // useEffect(() => {
     //     const loadImage = image => {
@@ -62,6 +63,14 @@ const Training = () => {
         // }
     }, [])
 
+    useEffect(() => {
+        if(counter === 4) {
+            console.log('all images loaded')
+        }
+
+        console.log(counter)
+    },[counter])
+
     const itemHandleClick = (training) => {
         Trainings.setErrorType(training)
 
@@ -87,6 +96,7 @@ const Training = () => {
                         <TrainingItem
                             id={training.id}
                             key={training.id}
+                            setCounter={setCounter}
                             trainingInfo={training}
                             onClick={() => itemHandleClick(training)}
                             modalShow={modalShow}
