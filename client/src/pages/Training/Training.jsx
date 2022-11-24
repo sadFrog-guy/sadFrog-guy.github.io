@@ -44,6 +44,8 @@ const Training = () => {
         if(Trainings.counter === Trainings.imagesArray.length && Trainings.imagesArray.length > 0) {
             setLoading(false)
         }
+
+        console.log(Trainings.counter)
     },[Trainings.counter])
 
     const itemHandleClick = (training) => {
