@@ -55,7 +55,7 @@ export default new class StoreCalculator {
         })
     }
 
-    setCounter(number) {
-        this.counter = number
+    setCounter() {
+        this.counter += 1
     }
 }

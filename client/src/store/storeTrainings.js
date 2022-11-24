@@ -100,7 +100,7 @@ export default new class StoreTrainings {
         }
     }
 
-    setCounter(number) {
-        this.counter = number
+    setCounter() {
+        this.counter += 1
     }
 }
