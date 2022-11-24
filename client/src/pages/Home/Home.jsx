@@ -14,15 +14,10 @@ import ModalHome from "../../components/ui/HomeUI/ModalHome/ModalHome";
 import {
     backButtonHide,
     disableExitConfirmation,
-    exitConfirmation,
-    tgID,
     tgInintial,
-    tgInitData,
-    tgWebApp
 } from "../../utils/telegramAPI";
-import {Navigate, useLocation, useNavigate, useParams} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import {NOT_AUTH} from "../../router";
-import axios from "axios";
 import {localStore} from "../../utils/consts";
 
 const Home = () => {
@@ -43,6 +38,7 @@ const Home = () => {
             setLoading(true)
             await Security.postHashKey()
             await User.getUserInfo()
+            setLoading(false)
             User.setFirstLoad(false)
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
         }
@@ -60,7 +56,7 @@ const Home = () => {
                     modalHide={modalHide}
                 />
 
-                <HeaderHome avatarOnLoad={() => setLoading(false)} />
+                <HeaderHome avatarOnLoad={() => console.log('yours only yours')} />
 
                 <ButtonList
                     modalShow={modalShow}
