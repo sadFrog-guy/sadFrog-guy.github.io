@@ -1137,6 +1137,11 @@ body.dark > #root > .wrapper > .training > .training-item > .training-brief > .t
     text-decoration: underline;
 }
 
+.article_text > img {
+    border-radius: 32px;
+    margin: 17px 0;
+}
+
 /* training-item */
 
 .video-wrapper {
