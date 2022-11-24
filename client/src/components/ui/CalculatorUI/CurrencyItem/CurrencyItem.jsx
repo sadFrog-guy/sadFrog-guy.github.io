@@ -43,7 +43,7 @@ const CurrencyItem = ({chain, ...props}) => {
 
             <Wrap className="currency-market">
                 <img
-                    onLoad={() => Calculator.setCounter(Calculator.counter++)}
+                    onLoad={() => Calculator.setCounter()}
                     src={chain.market_logo}
                     className="market-logo"
                     alt=""/>

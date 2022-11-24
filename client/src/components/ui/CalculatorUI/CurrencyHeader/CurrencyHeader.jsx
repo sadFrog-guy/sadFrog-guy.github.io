@@ -10,7 +10,7 @@ const CurrencyHeader = ({icon, name, code}) => {
     return (
         <Wrap className="currency-header">
             <div className="bubble-white">
-                <img onLoad={() => Calculator.setCounter(Calculator.counter++)} src={icon} alt=""/>
+                <img onLoad={() => Calculator.setCounter()} src={icon} alt=""/>
             </div>
             <span>
                 <CurrencyName>
