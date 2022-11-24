@@ -18,26 +18,7 @@ const Training = () => {
     const {modalActive, modalHide, modalShow} = useModal()
     const navigate = useNavigate()
     const [isLoading, setLoading] = useState(true)
-    const [isImagesLoaded, setImagesLoaded] = useState(false)
-    const [images, setImages] = useState({})
     const [counter, setCounter] = useState(0)
-
-    // useEffect(() => {
-    //     const loadImage = image => {
-    //         return new Promise((resolve, reject) => {
-    //             const loadImg = new Image()
-    //             loadImg.src = image
-    //             loadImg.onload = () =>
-    //                 resolve(image)
-    //
-    //             loadImg.onerror = err => reject(err)
-    //         })
-    //     }
-    //
-    //     Promise.all(Trainings.imagesArray.map(image => loadImage(image)))
-    //         .then(() => setImagesLoaded(true))
-    //         .catch(err => console.log("Failed to load images", err))
-    // }, [])
 
     useEffect(() => {
         exitConfirmation()
@@ -58,17 +39,9 @@ const Training = () => {
     }, [])
 
     useEffect(() => {
-        // if(isImagesLoaded) {
+        if(counter === Trainings.imagesArray.length) {
             setLoading(false)
-        // }
-    }, [])
-
-    useEffect(() => {
-        if(counter === 4) {
-            console.log('all images loaded')
         }
-
-        console.log(counter)
     },[counter])
 
     const itemHandleClick = (training) => {
