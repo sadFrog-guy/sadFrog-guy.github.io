@@ -52,6 +52,8 @@ const Home = () => {
         if(imageLoaded) {
             setLoading(false)
         }
+
+        console.log(imageLoaded)
     }, [imageLoaded])
 
     return (
