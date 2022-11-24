@@ -90,8 +90,6 @@ const CalculateForm = () => {
     useEffect(() => {
         exitConfirmation()
 
-        intervalId.current = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
-
         backButtonShow(() => {
             clearInterval(intervalId.current)
             navigate('/')
