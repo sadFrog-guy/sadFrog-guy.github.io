@@ -46,7 +46,9 @@ const Home = () => {
         }
     }, [])
 
-    console.log(User.isAvatarLoaded)
+    useEffect(() => {
+        console.log(User.isAvatarLoaded)
+    }, [User.isAvatarLoaded])
 
     return (
         <Wrapper>
