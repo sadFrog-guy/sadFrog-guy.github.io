@@ -31,6 +31,7 @@ const Training = () => {
             setLoading(true)
             await Trainings.getAllTrainings()
             Trainings.setImagesArray()
+            setLoading(false)
         }
         fetchData()
 
@@ -39,11 +40,11 @@ const Training = () => {
         }
     }, [])
 
-    useEffect(() => {
-        if(counter === Trainings.imagesArray.length) {
-            setLoading(false)
-        }
-    },[counter])
+    // useEffect(() => {
+    //     if(counter === Trainings.imagesArray.length) {
+    //         setLoading(false)
+    //     }
+    // },[counter])
 
     const itemHandleClick = (training) => {
         Trainings.setErrorType(training)
