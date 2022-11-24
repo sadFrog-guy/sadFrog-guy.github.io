@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Input from "../../GlobalUI/Input/Input";
 import Button from "../../GlobalUI/Button/Button";
 import Wrap from "../../../utils/Wrap/Wrap";
@@ -16,8 +16,8 @@ const CalculateForm = () => {
     const [isLoading, setLoading] = useState(false)
     const [isDisabled, setDisabled] = useState(true)
     const [isClicked, setClicked] = useState(false)
+    const intervalId = useRef(null)
     const [val, setVal] = useState('')
-    let intervalId
 
     const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "");
@@ -44,9 +44,9 @@ const CalculateForm = () => {
     }
 
     const intervalDelayUpdate = async() => {
-        clearInterval(intervalDelayUpdate)
+        clearInterval(intervalId.current)
         if(Calculator.auto_update && !Calculator.error) await Calculator.getChains(Calculator.amount)
-        setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
+        setInterval(intervalId.current, Calculator.autoupdate_delay * 1000)
     }
 
     const buttonOnClick = debounce(async() => {
@@ -57,7 +57,6 @@ const CalculateForm = () => {
             setLoading(true)
 
             if(isClicked === false) {
-                clearInterval(intervalDelayUpdate)
                 Calculator.changeAmount(Calculator.pre_amount)
                 await Calculator.getChains(Calculator.amount)
                 Calculator.setImagesArray()
