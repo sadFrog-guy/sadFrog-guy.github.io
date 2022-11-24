@@ -41,6 +41,8 @@ const TrainingItem = ({trainingInfo, modalShow, ...props}) => {
         if(counter === 4) {
             console.log('all images loaded')
         }
+
+        console.log(counter)
     },[counter])
 
     return (
