@@ -42,7 +42,7 @@ const Training = () => {
     console.log(toJS(Trainings.imagesArray.length))
 
     useEffect(() => {
-        if(counter === Trainings.imagesArray.length && Trainings.imagesArray > 0) {
+        if(counter === Trainings.imagesArray.length && Trainings.imagesArray.length > 0) {
             setLoading(false)
         }
     },[counter])
