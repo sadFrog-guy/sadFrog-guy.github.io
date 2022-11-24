@@ -13,20 +13,6 @@ import {backButtonHide, backButtonShow, exitConfirmation} from "../utils/telegra
 import {useNavigate} from "react-router-dom";
 
 const Calculator = () => {
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        exitConfirmation()
-
-        backButtonShow(() => {
-            navigate('/')
-        })
-
-        return () => {
-            backButtonHide()
-        }
-    }, [])
-
     return (
         <Wrapper>
             <Navigation to="/">

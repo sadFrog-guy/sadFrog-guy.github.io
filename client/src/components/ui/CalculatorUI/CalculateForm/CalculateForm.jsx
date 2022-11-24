@@ -9,7 +9,8 @@ import {observer} from "mobx-react-lite";
 import {isMobile} from "react-device-detect";
 import Text from "../../GlobalUI/Text/Text";
 import {debounce} from "debounce"
-import {haptic} from "../../../../utils/telegramAPI";
+import {backButtonHide, backButtonShow, exitConfirmation, haptic} from "../../../../utils/telegramAPI";
+import {useNavigate} from "react-router-dom";
 
 const CalculateForm = () => {
     const {Calculator} = useContext(Context)
@@ -17,7 +18,7 @@ const CalculateForm = () => {
     const [isDisabled, setDisabled] = useState(true)
     const [isClicked, setClicked] = useState(false)
     const intervalId = useRef(null)
-    const [val, setVal] = useState('')
+    const navigate = useNavigate()
 
     const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "");
@@ -79,18 +80,25 @@ const CalculateForm = () => {
     },[Calculator.counter])
 
     useEffect(() => {
-        return () => {
-            clearInterval(intervalId.current)
-        }
-    }, [])
-
-    useEffect(() => {
         if(Calculator.error) {
             setDisabled(true)
         } else {
             setDisabled(false)
         }
     }, [Calculator.error])
+
+    useEffect(() => {
+        exitConfirmation()
+
+        backButtonShow(() => {
+            clearInterval(intervalId.current)
+            navigate('/')
+        })
+
+        return () => {
+            backButtonHide()
+        }
+    }, [])
 
     return (
         <Wrap className="form">
