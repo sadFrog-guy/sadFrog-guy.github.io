@@ -45,7 +45,7 @@ const Training = () => {
             setLoading(false)
         }
 
-        console.log(Trainings.counter)
+        console.log(Trainings.counter, 'trainings counter')
     },[Trainings.counter])
 
     const itemHandleClick = (training) => {
