@@ -17,7 +17,7 @@ const Training = () => {
     const {Trainings} = useContext(Context);
     const {modalActive, modalHide, modalShow} = useModal()
     const navigate = useNavigate()
-    const [isLoading, setLoading] = useState(true)
+    const [isLoading, setLoading] = useState(false)
     const [counter, setCounter] = useState(0)
 
     useEffect(() => {
@@ -28,6 +28,7 @@ const Training = () => {
         })
 
         async function fetchData() {
+            setLoading(true)
             await Trainings.getAllTrainings()
             Trainings.setImagesArray()
         }
