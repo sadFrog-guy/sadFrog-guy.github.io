@@ -26,7 +26,6 @@ const CalculateForm = () => {
         const value = e.target.value.replace(/\D/g, "")
 
         setDisabled(false)
-        setClicked(false)
         Calculator.clearError()
 
         if(value > 0 || value === '') {
@@ -53,18 +52,12 @@ const CalculateForm = () => {
         haptic()
 
         if(Calculator.pre_amount && !Calculator.error) {
-            setClicked(true)
             setLoading(true)
 
-            if(isClicked === false) {
-                Calculator.changeAmount(Calculator.pre_amount)
-                await Calculator.getChains(Calculator.amount)
-                Calculator.setImagesArray()
-                intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
-            } else {
-                setLoading(false)
-                return false
-            }
+            Calculator.changeAmount(Calculator.pre_amount)
+            await Calculator.getChains(Calculator.amount)
+            Calculator.setImagesArray()
+            intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
         } else {
             setDisabled(true)
         }
@@ -73,6 +66,7 @@ const CalculateForm = () => {
     useEffect(() => {
         if(Calculator.counter === Calculator.imagesArray.length && Calculator.imagesArray.length > 0) {
             setLoading(false)
+            Calculator.setImagesLoaded(true)
         }
     },[Calculator.counter])
 

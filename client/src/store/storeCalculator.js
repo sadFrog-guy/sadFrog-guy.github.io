@@ -11,6 +11,7 @@ export default new class StoreCalculator {
     error
     have_subscribe
     imagesArray = []
+    isImagesLoaded = false
     counter = 0
 
     constructor() {
@@ -53,6 +54,10 @@ export default new class StoreCalculator {
             this.imagesArray.push(chain.currency_icon)
             this.imagesArray.push(chain.market_logo)
         })
+    }
+
+    setImagesLoaded(boolean) {
+        this.isImagesLoaded = boolean
     }
 
     setCounter() {
