@@ -75,7 +75,7 @@ const Home = () => {
             </WrapperHome>
 
             <Loader
-                isLoading={User.isAvatarLoaded}
+                isLoading={isLoading}
             />
 
             {User.have_subscribe === false && <Navigate to={NOT_AUTH}/>}
