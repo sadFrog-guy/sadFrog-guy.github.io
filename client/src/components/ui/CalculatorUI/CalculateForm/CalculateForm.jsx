@@ -44,14 +44,14 @@ const CalculateForm = () => {
     }
 
     const intervalDelayUpdate = async() => {
-        clearInterval(intervalId)
+        // clearInterval(intervalId)
         if(Calculator.auto_update && !Calculator.error) await Calculator.getChains(Calculator.amount)
-        intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
+        setTimeout(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
+        // intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
     }
 
     const buttonOnClick = debounce(async() => {
         haptic()
-        clearInterval(intervalId)
 
         if(Calculator.pre_amount && !Calculator.error) {
             setClicked(true)
@@ -62,7 +62,7 @@ const CalculateForm = () => {
                 await Calculator.getChains(Calculator.amount)
                 Calculator.setImagesArray()
                 setLoading(false)
-                intervalId = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
+                setTimeout(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
             } else {
                 setLoading(false)
                 return false
