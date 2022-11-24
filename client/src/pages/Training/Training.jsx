@@ -38,13 +38,13 @@ const Training = () => {
     //         .catch(err => console.log("Failed to load images", err))
     // }, [])
 
-    function loadImages(names, files) {
+    function loadImages(files) {
         let i = 0
-        let numLoading = names.length;
-        const onload = () => --numLoading === 0 && setImagesLoaded(true);
+        let filesLoading = files.length;
+        const onload = () => --filesLoading === 0 && setImagesLoaded(true);
         const images = {};
-        while (i < names.length) {
-            const img = images[names[i]] = new Image;
+        while (i < files.length) {
+            const img = images[files[i]] = new Image;
             img.src = files[i++];
             img.onload = onload;
         }
@@ -61,7 +61,7 @@ const Training = () => {
 
         async function fetchData() {
             await Trainings.getAllTrainings()
-            loadImages(Trainings.imagesArray, Trainings.imagesArray)
+            loadImages(Trainings.imagesArray)
             console.log(images)
             Trainings.setImagesArray()
         }
