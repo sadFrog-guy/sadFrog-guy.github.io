@@ -1,12 +1,10 @@
 import React, {useContext} from 'react';
 import {Context} from "../../../../utils/context";
 
-const Avatar = ({source}) => {
-    const {User} = useContext(Context)
-
+const Avatar = ({source, onLoad}) => {
     return (
         <div className="avatar-wrap">
-            <img src={source} id="avatar" alt="avatar"/>
+            <img src={source} onLoad={onLoad} id="avatar" alt="avatar"/>
         </div>
     );
 };

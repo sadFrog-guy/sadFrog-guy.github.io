@@ -16,7 +16,7 @@ const HeaderHome = () => {
         <Header>
             <Wrap className="user-info">
                 <Text type="medium" id="username">{User.username}</Text>
-                <Avatar source={User.avatar}/>
+                <Avatar source={User.avatar} onLoad={() => User.setAvatarLoaded(true)}/>
             </Wrap>
             <LinkTG onClick={haptic} source={User.course_support_link} id="settings-bubble">
                 <QuestionIcon/>
