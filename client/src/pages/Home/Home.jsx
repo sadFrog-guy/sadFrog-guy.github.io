@@ -31,24 +31,6 @@ const Home = () => {
     const {modalActive, modalHide, modalShow} = useModal()
     const {subscribeTimer} = useTimeout()
     const [isLoading, setLoading] = useState(false)
-    const [isLoaded, setLoaded] = useState(false)
-
-    const avatarLoader = () => {
-        const loadImage = image => {
-            return new Promise((resolve, reject) => {
-                const loadImg = new Image()
-                loadImg.src = image
-                loadImg.onload = () =>
-                    resolve(image)
-
-                loadImg.onerror = err => reject(err)
-            })
-        }
-
-        loadImage(User.avatar)
-            .then(() => setLoading(false))
-            .catch(err => console.log("Failed to load images", err))
-    }
 
     useEffect(() => {
         tgInintial()
@@ -62,9 +44,7 @@ const Home = () => {
             await Security.postHashKey()
             await User.getUserInfo()
             User.setFirstLoad(false)
-            avatarLoader()
             subscribeTimer(User.subscribe_expire_datetime, User.subscription_name);
-            setLoading(false)
         }
 
         if(User.isFirstLoad) {
@@ -80,7 +60,7 @@ const Home = () => {
                     modalHide={modalHide}
                 />
 
-                <HeaderHome avatarOnLoad={() => setLoaded(true)} />
+                <HeaderHome avatarOnLoad={() => setLoading(false)} />
 
                 <ButtonList
                     modalShow={modalShow}
