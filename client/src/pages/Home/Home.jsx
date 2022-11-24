@@ -26,6 +26,7 @@ const Home = () => {
     const {modalActive, modalHide, modalShow} = useModal()
     const {subscribeTimer} = useTimeout()
     const [isLoading, setLoading] = useState(false)
+    const [imageLoaded, setImageLoaded] = useState(false)
 
     useEffect(() => {
         tgInintial()
@@ -47,6 +48,8 @@ const Home = () => {
         }
     }, [])
 
+    console.log(imageLoaded)
+
     return (
         <Wrapper>
             <WrapperHome>
@@ -55,7 +58,7 @@ const Home = () => {
                     modalHide={modalHide}
                 />
 
-                <HeaderHome avatarOnLoad={() => setLoading(false)} />
+                <HeaderHome avatarOnLoad={() => setImageLoaded(true)} />
 
                 <ButtonList
                     modalShow={modalShow}
