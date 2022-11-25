@@ -108,8 +108,6 @@ const TrainingDetail = () => {
     useEffect(() => {
         exitConfirmation()
 
-        window.scrollTo(0, 0)
-
         backButtonShow(() => {
             navigate('/trainings')
         })
@@ -118,16 +116,30 @@ const TrainingDetail = () => {
             await Trainings.getOneTraining(id)
             if(!Trainings.training.video_url && !Trainings.training.image_url) setLoading(false)
             tgButton()
-            window.addEventListener('scroll', handleScroll)
         }
 
         fetchData()
+    }, [])
+
+    useEffect(() => {
+        const screenHeight = window.innerHeight;
+        const totalHeight = window.body.scrollHeight;
+
+        window.scrollTo(0, 0)
+
+        if(screenHeight < totalHeight) {
+            window.addEventListener('scroll', handleScroll)
+        }
+
+        if(screenHeight === totalHeight) {
+            tgMainButton.show()
+        }
 
         return () => {
-            tgMainButton.hide()
             window.removeEventListener('scroll', handleScroll)
+            tgMainButton.hide()
         }
-    }, [])
+    })
 
     return (
         <Wrapper>
