@@ -123,7 +123,9 @@ const TrainingDetail = () => {
 
     useEffect(() => {
         const screenHeight = window.innerHeight;
-        const totalHeight = window.body.scrollHeight;
+        const totalHeight = window.scrollHeight;
+
+        console.log(screenHeight + ', ' + totalHeight)
 
         window.scrollTo(0, 0)
 
