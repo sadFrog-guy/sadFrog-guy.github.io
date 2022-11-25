@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ArrowIcon from "../../../icons/ArrowIcon/ArrowIcon";
 import {useNavigate} from "react-router-dom";
-import {haptic, vibrationDuration} from "../../../../utils/telegramAPI";
+import {haptic} from "../../../../utils/telegramAPI";
+import {Context} from "../../../../utils/context";
 
 const Navigation = ({children, to}) => {
     const navigate = useNavigate()
+    const {Calculator} = useContext(Context)
 
     const navigationOnClick = () => {
+        clearInterval(Calculator.intervalId)
         haptic()
         navigate(to ? to : -1)
     }

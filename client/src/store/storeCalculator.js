@@ -13,6 +13,7 @@ export default new class StoreCalculator {
     imagesArray = []
     isImagesLoaded = false
     counter = 0
+    intervalId = null
 
     constructor() {
         makeAutoObservable(this)
@@ -62,5 +63,9 @@ export default new class StoreCalculator {
 
     setCounter() {
         this.counter += 1
+    }
+
+    setIntervalId(id) {
+        this.intervalId = id
     }
 }
