@@ -5,13 +5,12 @@ import {haptic} from "../../../../utils/telegramAPI";
 import {Context} from "../../../../utils/context";
 import {observer} from "mobx-react-lite";
 
-const Navigation = ({children, to}) => {
+const Navigation = ({children, to, callback}) => {
     const navigate = useNavigate()
-    const {Calculator} = useContext(Context)
 
     const navigationOnClick = () => {
-        clearInterval(Calculator.intervalId)
         haptic()
+        if(callback) callback()
         navigate(to ? to : -1)
     }
 

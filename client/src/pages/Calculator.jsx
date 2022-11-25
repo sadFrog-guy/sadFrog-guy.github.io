@@ -11,15 +11,18 @@ import {Context} from "../utils/context";
 import Loader from "../components/ui/GlobalUI/Loader/Loader";
 import {backButtonHide, backButtonShow, exitConfirmation} from "../utils/telegramAPI";
 import {useNavigate} from "react-router-dom";
+import {useRef} from "@types/react";
 
 const Calculator = () => {
+    const intervalId = useRef(null)
+
     return (
         <Wrapper>
-            <Navigation to="/">
+            <Navigation to="/" callback={() => clearInterval(intervalId.current)}>
                 Калькулятор
             </Navigation>
 
-            <CalculateForm/>
+            <CalculateForm intervalId={intervalId}/>
 
             <CurrencyList/>
         </Wrapper>

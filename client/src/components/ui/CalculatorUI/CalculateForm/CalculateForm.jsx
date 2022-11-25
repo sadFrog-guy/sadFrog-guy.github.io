@@ -12,12 +12,11 @@ import {debounce} from "debounce"
 import {backButtonHide, backButtonShow, exitConfirmation, haptic} from "../../../../utils/telegramAPI";
 import {useNavigate} from "react-router-dom";
 
-const CalculateForm = () => {
+const CalculateForm = ({intervalId}) => {
     const {Calculator} = useContext(Context)
     const [isLoading, setLoading] = useState(false)
     const [isDisabled, setDisabled] = useState(true)
     const [isClicked, setClicked] = useState(false)
-    const intervalId = useRef(null)
     const navigate = useNavigate()
 
     const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -92,7 +91,6 @@ const CalculateForm = () => {
 
         backButtonShow(() => {
             clearInterval(intervalId.current)
-            Calculator.setIntervalId(intervalId.current)
             navigate('/')
         })
 
