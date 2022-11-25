@@ -11,7 +11,7 @@ import {Context} from "../utils/context";
 import Loader from "../components/ui/GlobalUI/Loader/Loader";
 import {backButtonHide, backButtonShow, exitConfirmation} from "../utils/telegramAPI";
 import {useNavigate} from "react-router-dom";
-import {useRef} from "@types/react";
+import {useRef} from "react";
 
 const Calculator = () => {
     const intervalId = useRef(null)
