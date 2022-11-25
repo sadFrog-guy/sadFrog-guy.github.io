@@ -122,7 +122,7 @@ const TrainingDetail = () => {
     }, [])
 
     useEffect(() => {
-        const screenHeight = document.innerHeight;
+        const screenHeight = window.innerHeight;
         const totalHeight = document.body.scrollHeight;
 
         console.log(screenHeight + ', ' + totalHeight)
