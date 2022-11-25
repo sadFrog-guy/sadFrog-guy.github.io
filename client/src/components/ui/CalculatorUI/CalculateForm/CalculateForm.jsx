@@ -50,14 +50,13 @@ const CalculateForm = ({intervalId}) => {
     }
 
     const buttonOnClick = debounce(async() => {
-        haptic()
-
         if(Calculator.pre_amount && !Calculator.error) {
-            if(intervalId.current) clearInterval(intervalId.current)
             setClicked(true)
             setLoading(true)
 
             if(isClicked === false) {
+                if(intervalId.current) clearInterval(intervalId.current)
+                haptic()
                 Calculator.changeAmount(Calculator.pre_amount)
                 await Calculator.getChains(Calculator.amount)
                 Calculator.setImagesArray()
