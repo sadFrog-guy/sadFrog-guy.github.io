@@ -17,6 +17,7 @@ const CalculateForm = () => {
     const [isLoading, setLoading] = useState(false)
     const [isDisabled, setDisabled] = useState(true)
     const [isClicked, setClicked] = useState(false)
+    const intervalId = useRef(null)
     const navigate = useNavigate()
 
     const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -44,16 +45,16 @@ const CalculateForm = () => {
     }
 
     const intervalDelayUpdate = async() => {
-        // clearInterval(Calculator.intervalId)
+        // clearInterval(intervalId.current)
         if(Calculator.auto_update && !Calculator.error) await Calculator.getChains(Calculator.amount)
-        // Calculator.setIntervalId(setInterval(Calculator.intervalId, Calculator.autoupdate_delay * 1000))
+        // intervalId.current = setInterval(intervalId.current, Calculator.autoupdate_delay * 1000)
     }
 
     const buttonOnClick = debounce(async() => {
         haptic()
 
         if(Calculator.pre_amount && !Calculator.error) {
-            if(Calculator.intervalId) clearInterval(Calculator.intervalId)
+            if(intervalId.current) clearInterval(intervalId.current)
             setClicked(true)
             setLoading(true)
 
@@ -62,7 +63,7 @@ const CalculateForm = () => {
                 await Calculator.getChains(Calculator.amount)
                 Calculator.setImagesArray()
                 setLoading(false)
-                Calculator.setIntervalId(setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000))
+                intervalId.current = setInterval(intervalDelayUpdate, Calculator.autoupdate_delay * 1000)
             } else {
                 setLoading(false)
                 return false
@@ -90,7 +91,8 @@ const CalculateForm = () => {
         exitConfirmation()
 
         backButtonShow(() => {
-            clearInterval(Calculator.intervalId)
+            clearInterval(intervalId.current)
+            Calculator.setIntervalId(intervalId.current)
             navigate('/')
         })
 
