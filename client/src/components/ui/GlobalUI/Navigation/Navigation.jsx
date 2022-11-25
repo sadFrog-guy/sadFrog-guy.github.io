@@ -3,6 +3,7 @@ import ArrowIcon from "../../../icons/ArrowIcon/ArrowIcon";
 import {useNavigate} from "react-router-dom";
 import {haptic} from "../../../../utils/telegramAPI";
 import {Context} from "../../../../utils/context";
+import {observer} from "mobx-react-lite";
 
 const Navigation = ({children, to}) => {
     const navigate = useNavigate()
@@ -26,4 +27,4 @@ const Navigation = ({children, to}) => {
     );
 };
 
-export default Navigation;
+export default observer(Navigation);
