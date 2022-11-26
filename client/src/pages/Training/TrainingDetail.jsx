@@ -127,6 +127,7 @@ const TrainingDetail = () => {
 
         console.log(screenHeight + ', ' + totalHeight)
 
+        tgMainButton.hide()
         window.scrollTo(0, 0)
 
         if(screenHeight < totalHeight) {
