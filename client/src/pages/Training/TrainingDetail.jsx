@@ -33,6 +33,8 @@ const TrainingDetail = () => {
     const [openInBrowser, setOpenInBrowser] = useState(false)
     const {onFullscreen, browserRedirect} = useVideo(Trainings, id, videoRef, openInBrowser, setOpenInBrowser)
 
+    console.log('read training with id - ' + id)
+
     const tgButton = () => {
         if(window.location.href.includes("/trainings/")) {
             tgButtonInitial()
@@ -58,8 +60,7 @@ const TrainingDetail = () => {
                 } else {
                     tgButtonText(finishPendingStatus)
 
-                    console.log('read training with id - ' + id)
-                    // await Trainings.readTraining(id)
+                    await Trainings.readTraining(id)
 
                     if(Trainings.viewed && !Trainings.next_article_id) {
                         tgMainButton.hide()
