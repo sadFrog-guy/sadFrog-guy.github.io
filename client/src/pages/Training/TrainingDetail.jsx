@@ -59,7 +59,7 @@ const TrainingDetail = () => {
                     tgButtonText(finishPendingStatus)
 
                     console.log('read training with id - ' + id)
-                    await Trainings.readTraining(id)
+                    // await Trainings.readTraining(id)
 
                     if(Trainings.viewed && !Trainings.next_article_id) {
                         tgMainButton.hide()
