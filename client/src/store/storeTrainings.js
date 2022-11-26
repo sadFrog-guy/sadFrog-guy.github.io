@@ -7,6 +7,8 @@ export default new class StoreTrainings {
 
     trainings = []
     training = {}
+    viewed
+    next_article_id
     bold_text = ''
     main_text = ''
     have_subscribe
@@ -44,6 +46,8 @@ export default new class StoreTrainings {
 
             runInAction(() => {
                 this.training = data
+                this.next_article_id = data.next_article_id
+                this.viewed = data.viewed
                 this.have_subscribe = data.have_subscribe
                 this.bold_text = data.bold_text
                 this.main_text = parse(data.main_text)

@@ -37,22 +37,22 @@ const TrainingDetail = () => {
         if(window.location.href.includes("/trainings/")) {
             tgButtonInitial()
 
-            if(Trainings.training.viewed) {
+            if(Trainings.viewed) {
                 tgButtonText(viewedStatus)
             } else {
                 tgButtonText(finishStatus)
             }
 
-            if(Trainings.training.next_article_id === null && Trainings.training.viewed) {
+            if(Trainings.next_article_id === null && Trainings.viewed) {
                 tgMainButton.hide()
             }
 
             const onClickHandler = async() => {
                 haptic()
 
-                if(Trainings.training.viewed && tgMainButton.text === viewedStatus) {
-                    if(Trainings.training.next_article_id) {
-                        navigate(`/trainings/${Trainings.training.next_article_id}`)
+                if(Trainings.viewed && tgMainButton.text === viewedStatus) {
+                    if(Trainings.next_article_id) {
+                        navigate(`/trainings/${Trainings.next_article_id}`)
                         navigate(0)
                     }
                 } else {
@@ -60,10 +60,10 @@ const TrainingDetail = () => {
 
                     await Trainings.readTraining(id)
 
-                    if(Trainings.training.viewed && !Trainings.training.next_article_id) {
+                    if(Trainings.viewed && !Trainings.next_article_id) {
                         tgMainButton.hide()
                     } else {
-                        navigate(`/trainings/${Trainings.training.next_article_id}`)
+                        navigate(`/trainings/${Trainings.next_article_id}`)
                         tgButtonText(viewedStatus)
 
                         navigate(0)
@@ -72,7 +72,7 @@ const TrainingDetail = () => {
             }
 
             const onClickHandlerAndroid = async() => {
-                if(!Trainings.training.viewed && tgMainButton.text === finishStatus) {
+                if(!Trainings.viewed && tgMainButton.text === finishStatus) {
                     tgButtonText(finishPendingStatus)
                     await Trainings.readTraining(id)
                     tgButtonText(viewedStatus)
@@ -98,12 +98,12 @@ const TrainingDetail = () => {
     };
 
     useEffect(() => {
-        if(Trainings.training.viewed) {
+        if(Trainings.viewed) {
             tgButtonText(viewedStatus)
         } else {
             tgButtonText(finishStatus)
         }
-    }, [Trainings.training.viewed])
+    }, [Trainings.viewed])
 
     useEffect(() => {
         exitConfirmation()
