@@ -74,6 +74,7 @@ export default new class StoreTrainings {
         try {
             await Trainings.readTraining(id)
             const {data} = await Trainings.getOneTraining(id);
+            console.log(data)
 
             runInAction(() => {
                 this.training = data

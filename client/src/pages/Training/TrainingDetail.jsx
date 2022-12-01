@@ -128,8 +128,6 @@ const TrainingDetail = () => {
         const screenHeight = window.innerHeight;
         const totalHeight = document.body.scrollHeight;
 
-        console.log(screenHeight + ', ' + totalHeight)
-
         window.scrollTo(0, 0)
 
         if(screenHeight < totalHeight) {
@@ -174,7 +172,7 @@ const TrainingDetail = () => {
                                 className="video"
                                 disablePictureInPicture
                                 controlsList={`noplaybackrate nodownload ${isIOS() === false ? 'nofullscreen' : ''}`}
-                                src={Trainings.training.video_url}
+                                src={`https://crypto-learn.ru/private_file/976284834/18420430318bcba34901069bbb73c6979d551d6a0c164376930112256f36ee98/article-4-main_video`}
                                 poster={Trainings.training.video_preview_image}
                                 ref={videoRef}
                                 // onLoadedData={() => setLoading(false)}
